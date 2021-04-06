@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 
 $main-cards-cont-wid: 930px;
+$gray-light: #969696;
 
 .header {
 	@media (max-width: 767px) {
@@ -94,44 +95,71 @@ $main-cards-cont-wid: 930px;
 }
 // ! card
 .card {
+	position: relative;
 	font-family: Roboto;
-	margin: 15px 0 0 15px;
 	position: relative;
 	width: 290px;
 	height: 203px;
 	background-color: #ffffff;
 	box-shadow: 1px 4px 5px #8b8b8b, 1px -2px 5px #d3d3d3;
 	border-radius: 4px;
+	&_main {
+		margin: 15px 0 0 15px;
+	}
 	&__logo {
+		position: absolute;
+		top: 4px;
+		left: 4px;
 	}
 	&__title,
 	&__subt {
+		width: 170px;
 		position: absolute;
 		left: 60px;
+		resize: none;
+		overflow: hidden;
+		border: none;
 	}
 	&__title {
 		top: 4px;
-		font-size: 20px;
+		font-size: 18px;
 	}
 	&__subt {
-		top: 30px;
+		top: 44px;
+		font-size: 12px;
+		color: $gray-light;
 	}
 	.info {
 		position: absolute;
 		top: 77px;
 		width: 80%;
+		&__flex {
+			display: flex;
+			justify-content: space-between;
+			position: relative;
+			left: 4px;
+		}
 		&__cell {
 			display: block;
-			border: 2px solid red;
+		}
+		&__example {
+			position: absolute;
+			bottom: 2px;
+		}
+		&__simple {
+			width: 75px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
 		}
 	}
 }
-.flex-sb {
-	display: flex;
-	justify-content: space-between;
-}
+
 .w100 {
 	width: calc(100% - 30px);
+	.info__simple{
+		width: 100%;
+	}
 }
 .card-flex {
 	display: flex;
@@ -153,18 +181,15 @@ $main-cards-cont-wid: 930px;
 }
 .tags {
 	border: 2px solid red;
-	margin-top: 20px;
 	width: 80%;
-	position: absolute;
-	top: 120px;
+	position: relative;
+	left: 4px;
+	top: 140px;
+	&__select {
+		width: 100%;
+	}
 }
 .tag {
-	margin: 4px 0 0 4px;
-	font-size: 16px;
-	border: 1px solid;
-	border-radius: 4px;
-	padding: 2px;
-	display: inline-block;
 }
 // ! switch
 .switch {

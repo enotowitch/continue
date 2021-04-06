@@ -131,8 +131,8 @@
 }
 
 .card {
+  position: relative;
   font-family: Roboto;
-  margin: 15px 0 0 15px;
   position: relative;
   width: 290px;
   height: 203px;
@@ -142,18 +142,34 @@
   border-radius: 4px;
 }
 
+.card_main {
+  margin: 15px 0 0 15px;
+}
+
+.card__logo {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+
 .card__title, .card__subt {
+  width: 170px;
   position: absolute;
   left: 60px;
+  resize: none;
+  overflow: hidden;
+  border: none;
 }
 
 .card__title {
   top: 4px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .card__subt {
-  top: 30px;
+  top: 44px;
+  font-size: 12px;
+  color: #969696;
 }
 
 .card .info {
@@ -162,18 +178,22 @@
   width: 80%;
 }
 
-.card .info__cell {
-  display: block;
-  border: 2px solid red;
-}
-
-.flex-sb {
+.card .info__flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.card .info__cell {
+  display: block;
+}
+
+.card .info__example {
+  position: absolute;
+  bottom: 2px;
 }
 
 .w100 {
@@ -214,19 +234,13 @@
 
 .tags {
   border: 2px solid red;
-  margin-top: 20px;
   width: 80%;
   position: absolute;
-  top: 120px;
+  top: 140px;
 }
 
-.tag {
-  margin: 4px 0 0 4px;
-  font-size: 16px;
-  border: 1px solid;
-  border-radius: 4px;
-  padding: 2px;
-  display: inline-block;
+.tags__select {
+  width: 100%;
 }
 
 .switch {

@@ -51,12 +51,56 @@
 }
 
 .form-card {
+  position: relative;
   font-family: Montserrat;
   font-size: 13px;
 }
 
-.fill-cards {
-  margin: 0;
+.form-card textarea {
+  text-decoration: underline;
+}
+
+.fake-logo {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.add-logo {
+  width: 40px;
+  height: 40px;
+  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 2px solid #969696;
+  border-radius: 50%;
+}
+
+.add-logo__line {
+  width: 30px;
+  height: 2px;
+  background-color: #969696;
+}
+
+.add-logo__line::after {
+  position: absolute;
+  content: "";
+  width: 30px;
+  height: 2px;
+  background-color: #969696;
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 
 .arrow {

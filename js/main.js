@@ -9,12 +9,15 @@ $(document).ready(function () {
 	})
 
 	$('.switch').on('click', function () {
-		$('.card').not('.fill-cards').toggleClass('w100');
+		$('.card').not('.prevent100').toggleClass('w100');
 	})
 
 	// ! delete
 
-	$('.form-card').on('submit', function(){
+	$('.info__cell').not('.info__example').not('.info__simple').chosen();
+	$('.tags__select').chosen({max_selected_options: 3});
+
+	$('.form-card').on('submit', function () {
 		var еее = $('.card__title').val();
 		var ggg = $('.card__subt').val();
 		alert(еее + ggg);

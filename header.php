@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="css/norm.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/post-job.css">
+	<link rel="stylesheet" href="chosen/chosen.css">
 </head>
 
 <body>

@@ -1,3 +1,5 @@
+$gray-light: #969696;
+
 @media (max-width: 700px) {
 	.cross {
 		order: 1;
@@ -28,15 +30,43 @@
 	margin: 68px auto 15px;
 }
 .form-card {
+	position: relative;
 	font-family: Montserrat;
 	font-size: 13px;
+	textarea {
+		text-decoration: underline;
+	}
 }
-.fill-cards {
-	margin: 0;
+.fake-logo {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
 }
 .add-logo {
-	// width: 0.1px;
-	// height: 0.1px;
+	width: 40px;
+	height: 40px;
+	display: block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid $gray-light;
+	border-radius: 50%;
+	&__line {
+		width: 30px;
+		height: 2px;
+		background-color: $gray-light;
+		&::after {
+			position: absolute;
+			content: "";
+			width: 30px;
+			height: 2px;
+			background-color: $gray-light;
+			transform: rotate(90deg);
+		}
+	}
 }
 .arrow {
 	margin: 10px;
