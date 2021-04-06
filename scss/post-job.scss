@@ -1,0 +1,50 @@
+@media (max-width: 700px) {
+	.cross {
+		order: 1;
+	}
+	.form-card {
+		order: 2;
+	}
+	.arrow {
+		order: 3;
+		transform: rotate(90deg);
+	}
+	.card2 {
+		order: 4;
+	}
+}
+
+.cards-wrapper {
+	@media (max-width: 700px) {
+		max-width: 290px;
+		justify-content: center;
+	}
+	border: 2px solid red;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 740px;
+	flex-wrap: wrap;
+	margin: 68px auto 15px;
+}
+.form-card {
+	font-family: Montserrat;
+	font-size: 13px;
+}
+.fill-cards {
+	margin: 0;
+}
+.add-logo {
+	// width: 0.1px;
+	// height: 0.1px;
+}
+.arrow {
+	margin: 10px;
+}
+.cross {
+	margin: 0 0px 10px 0px;
+	align-self: start;
+}
+.bg {
+	background: url("../img/bg-img1920-grey.png") 0 0 / cover no-repeat;
+}

@@ -1,0 +1,75 @@
+@media (max-width: 700px) {
+  .cross {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+  .form-card {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+  .arrow {
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;
+    -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+  .card2 {
+    -webkit-box-ordinal-group: 5;
+        -ms-flex-order: 4;
+            order: 4;
+  }
+}
+
+.cards-wrapper {
+  border: 2px solid red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 740px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 68px auto 15px;
+}
+
+@media (max-width: 700px) {
+  .cards-wrapper {
+    max-width: 290px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.form-card {
+  font-family: Montserrat;
+  font-size: 13px;
+}
+
+.fill-cards {
+  margin: 0;
+}
+
+.arrow {
+  margin: 10px;
+}
+
+.cross {
+  margin: 0 0px 10px 0px;
+  -ms-flex-item-align: start;
+      -ms-grid-row-align: start;
+      align-self: start;
+}
+
+.bg {
+  background: url("../img/bg-img1920-grey.png") 0 0/cover no-repeat;
+}
