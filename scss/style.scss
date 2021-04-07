@@ -10,7 +10,6 @@ $gray-light: #969696;
 			display: none;
 		}
 	}
-	border: 2px solid red;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -46,7 +45,6 @@ $gray-light: #969696;
 		background-color: #fff;
 	}
 	&__button {
-		border: 2px solid red;
 		display: flex;
 		align-items: center;
 		height: 40px;
@@ -131,8 +129,8 @@ $gray-light: #969696;
 	}
 	.info {
 		position: absolute;
-		top: 77px;
-		width: 80%;
+		top: 85px;
+		width: 85%;
 		&__flex {
 			display: flex;
 			justify-content: space-between;
@@ -141,10 +139,16 @@ $gray-light: #969696;
 		}
 		&__cell {
 			display: block;
+			width: 90px;
 		}
 		&__example {
-			position: absolute;
-			bottom: 2px;
+			height: 23px;
+			border: 1px solid $gray-light;
+			border-radius: 4px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			white-space: nowrap;
 		}
 		&__simple {
 			width: 75px;
@@ -157,7 +161,7 @@ $gray-light: #969696;
 
 .w100 {
 	width: calc(100% - 30px);
-	.info__simple{
+	.info__simple {
 		width: 100%;
 	}
 }
@@ -168,9 +172,8 @@ $gray-light: #969696;
 	margin: 0 auto;
 }
 .inter-icons {
-	border: 1px solid red;
 	position: absolute;
-	right: 4px;
+	right: 0px;
 	top: 4px;
 	display: flex;
 	flex-direction: column;
@@ -179,8 +182,13 @@ $gray-light: #969696;
 	height: 193px;
 	width: 40px;
 }
+.apply {
+	&_ok {
+		position: absolute;
+		bottom: 0;
+	}
+}
 .tags {
-	border: 2px solid red;
 	width: 80%;
 	position: relative;
 	left: 4px;
@@ -190,11 +198,18 @@ $gray-light: #969696;
 	}
 }
 .tag {
+	color: $gray-light;
+	border: 1px solid $gray-light;
+	font-size: 14px;
+	font-family: Roboto;
+	display: inline-block;
+	padding: 4px 8px;
+	border-radius: 4px;
+	margin-top: 4px;
 }
 // ! switch
 .switch {
 	max-width: $main-cards-cont-wid;
 	margin: 0 auto;
-	border: 2px solid red;
 	text-align: right;
 }

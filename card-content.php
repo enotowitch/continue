@@ -19,9 +19,9 @@
 			</div>
 		</div>
 		<div class="inter-icons">
-			<img class="del" src="img/del" alt="del">
-			<img class="like" src="img/like" alt="like">
-			<img class="apply" src="img/apply" alt="apply">
+			<img class="del" src="img/icons/delete.svg" alt="del">
+			<img class="like" src="img/icons/like.svg" alt="like">
+			<img class="apply" src="img/icons/apply.svg" alt="apply">
 		</div>
 		<div class="tags">
 			<div class="tag">jdfjkfjkhfghf</div>

@@ -25,7 +25,6 @@
 }
 
 .cards-wrapper {
-  border: 2px solid red;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -58,6 +57,7 @@
 
 .form-card textarea {
   text-decoration: underline;
+  outline: none;
 }
 
 .fake-logo {
@@ -107,13 +107,38 @@
   margin: 10px;
 }
 
-.cross {
+.cross_mb {
   margin: 0 0px 10px 0px;
   -ms-flex-item-align: start;
       -ms-grid-row-align: start;
       align-self: start;
 }
 
+.cross_ml {
+  margin: 0 0px 0px 10px;
+}
+
+.cross_small {
+  background: url("../img/icons/cross.svg") 50%/cover no-repeat;
+  border: none;
+  width: 28px;
+  height: 28px;
+  -webkit-transform: scale(0.8);
+      -ms-transform: scale(0.8);
+          transform: scale(0.8);
+  padding: 0;
+  outline: none;
+}
+
 .bg {
   background: url("../img/bg-img1920-grey.png") 0 0/cover no-repeat;
+}
+
+.ok-gray {
+  background: url("../img/icons/info-ok-grey.svg") 0 0/cover no-repeat;
+  border: none;
+  width: 22px;
+  height: 24px;
+  padding: 0;
+  outline: none;
 }

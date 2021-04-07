@@ -631,7 +631,7 @@
 				<option value="Zambia">Zambia</option>
 				<option value="Zimbabwe">Zimbabwe</option>
 			</select>
-			<div class="info__cell info__example">Example</div>
+			<div class="info__cell info__example">Load Example</div>
 		</div>
 	</div>
 </div>

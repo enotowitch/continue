@@ -4,7 +4,7 @@
 <div class="bg">
 	<div class="cards-wrapper">
 		<!-- ! CARD -->
-		<form class="card form-card prevent100">
+		<form class="card form-card not100">
 			<label class="card__logo add-logo" for="fake-logo">
 				<div class="add-logo__line"></div>
 				<input class="fake-logo" type="file" id="fake-logo">
@@ -16,9 +16,8 @@
 				require_once "info-select.php"
 			?>
 			<div class="inter-icons">
-				<img class="del" src="img/del" alt="del">
-				<img class="like" src="img/like" alt="like">
-				<input class="apply" type="submit" value="SUBMIT">
+				<input class="del cross_small" type="reset" value="">
+				<input class="apply ok-gray" type="submit" value="">
 			</div>
 			<div class="tags">
 				<? 
@@ -30,15 +29,42 @@
 		<img class="arrow" src="img/icons/arrow.svg" alt="arrow">
 		<!-- ! 2 CARD -->
 
-		<div class="card card2 prevent100">
-			<? 
-				require "card-content.php"
-			?>
+		<div class="card card2 not100">
+			<div class="card__content">
+				<img class="card__logo" src="img/applicantLogo.png" alt="card__logo">
+				<div class="card__title">2d Artist, Illustrator test</div>
+				<div class="card__subt">Company Name</div>
+				<div class="info">
+					<div class="info__flex">
+						<div class="info__block">
+							<div class="info__cell info__simple">20009999 USD</div>
+							<div class="info__cell info__simple">Temporary</div>
+						</div>
+						<div class="info__block">
+							<div class="info__cell info__simple">44 years</div>
+							<div class="info__cell info__simple">111 h/mo</div>
+						</div>
+						<div class="info__block">
+							<div class="info__cell info__simple">Afghanistan 2 Afghanistan</div>
+							<div class="info__cell info__simple">Example</div>
+						</div>
+					</div>
+				</div>
+				<div class="inter-icons">
+					<img class="apply apply_ok" src="img/icons/info-ok.svg" alt="apply">
+				</div>
+				<div class="tags">
+					<div class="tag">jdfjkfjkhfghf</div>
+					<div class="tag">пропропропропро</div>
+					<div class="tag">итьит</div>
+				</div>
+			</div>
+
 		</div>
 
 
 		<!-- ? 2 CARD -->
-		<img class="cross" src="img/icons/cross.svg" alt="cross">
+		<img class="cross cross_mb" src="img/icons/cross.svg" alt="cross">
 	</div>
 </div>
 

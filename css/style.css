@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 .header {
-  border: 2px solid red;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -66,7 +65,6 @@
 }
 
 .burger__button {
-  border: 2px solid red;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -174,8 +172,8 @@
 
 .card .info {
   position: absolute;
-  top: 77px;
-  width: 80%;
+  top: 85px;
+  width: 85%;
 }
 
 .card .info__flex {
@@ -185,19 +183,45 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  position: relative;
+  left: 4px;
 }
 
 .card .info__cell {
   display: block;
+  width: 90px;
 }
 
 .card .info__example {
-  position: absolute;
-  bottom: 2px;
+  height: 23px;
+  border: 1px solid #969696;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  white-space: nowrap;
+}
+
+.card .info__simple {
+  width: 75px;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .w100 {
   width: calc(100% - 30px);
+}
+
+.w100 .info__simple {
+  width: 100%;
 }
 
 .card-flex {
@@ -211,9 +235,8 @@
 }
 
 .inter-icons {
-  border: 1px solid red;
   position: absolute;
-  right: 4px;
+  right: 0px;
   top: 4px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -232,10 +255,15 @@
   width: 40px;
 }
 
-.tags {
-  border: 2px solid red;
-  width: 80%;
+.apply_ok {
   position: absolute;
+  bottom: 0;
+}
+
+.tags {
+  width: 80%;
+  position: relative;
+  left: 4px;
   top: 140px;
 }
 
@@ -243,9 +271,19 @@
   width: 100%;
 }
 
+.tag {
+  color: #969696;
+  border: 1px solid #969696;
+  font-size: 14px;
+  font-family: Roboto;
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
 .switch {
   max-width: 930px;
   margin: 0 auto;
-  border: 2px solid red;
   text-align: right;
 }

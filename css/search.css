@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+.search {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  background-color: #fff;
+}
+
+.search__body {
+  max-width: 740px;
+  margin: 0px auto;
+  border: 2px solid red;
+}
+
+.search__topics {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.search__topic {
+  position: relative;
+  display: inline-block;
+  font-family: Montserrat;
+  font-size: 20px;
+  padding: 0 4px 0 4px;
+}
+
+.search__topic span {
+  display: block;
+  position: relative;
+  top: 2.5px;
+}
+
+.search__topic:hover {
+  border-bottom: 1.5px solid #6fda44;
+  color: #6fda44;
+}
+
+.search__topic::after {
+  content: "|";
+  position: absolute;
+  bottom: -1px;
+  right: -4px;
+}
+
+.search__topic_active {
+  color: #6fda44;
+  position: relative;
+  bottom: 2px;
+  left: 2px;
+}
+
+.search__tags {
+  display: none;
+}
+
+.search__tags_active {
+  display: block;
+}
