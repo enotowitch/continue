@@ -1,15 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+.search-topics-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  max-width: 570px;
+}
+
 .search {
-  position: fixed;
+  margin-top: 52px;
+  position: relative;
   width: 100%;
   z-index: 10;
   background-color: #fff;
+  display: none;
+}
+
+.search_active {
+  display: block;
 }
 
 .search__body {
-  max-width: 740px;
+  max-width: 570px;
   margin: 0px auto;
-  border: 2px solid red;
+  padding: 15px;
 }
 
 .search__topics {
@@ -54,6 +73,7 @@
   position: relative;
   bottom: 2px;
   left: 2px;
+  border-bottom: 1.5px solid #6fda44;
 }
 
 .search__tags {

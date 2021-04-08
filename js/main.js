@@ -27,10 +27,18 @@ $(document).ready(function () {
 	infoCell.not('.info__example').not('.info__simple').chosen();
 	tagsSelect.chosen({ max_selected_options: 3 });
 
-	// ! delete
+	// ! search
 
+	var search = $('.search');
+	var searchIcon = $('.search-icon');
 	var searchTopic = $('.search__topic');
 	var searchTags = $('.search__tags');
+
+	searchIcon.on('click', function () {
+		// !!!
+		search.next().toggle();
+		search.toggleClass('search_active');
+	})
 
 	searchTopic.on('click', function () {
 		searchTopic.removeClass('search__topic_active').eq($(this).index()).addClass('search__topic_active');
@@ -38,6 +46,46 @@ $(document).ready(function () {
 
 	})
 
+	// ! delete
 
+	$('.del').on('click', function (e) {
+
+		var card_id = $(this).closest('.card').find('.card-id').val();
+
+		$.ajax({
+			url: 'delete.php',
+			type: 'POST',
+			data: {
+				card_id: card_id
+			},
+			// beforeSend: function () {
+			// 	return confirm("Are you sure?");
+			// },
+			success: function () {
+				$(e.target).closest('.card').hide();
+			}
+		})
+	})
+
+		// ! DELETE THIS
+
+		$('.del_portf').on('click', function (e) {
+
+			var card_id = $(this).closest('.card').find('.card-id').val();
+	
+			$.ajax({
+				url: 'delete-portf.php',
+				type: 'POST',
+				data: {
+					card_id: card_id
+				},
+				// beforeSend: function () {
+				// 	return confirm("Are you sure?");
+				// },
+				success: function () {
+					$(e.target).closest('.card').hide();
+				}
+			})
+		})
 
 })

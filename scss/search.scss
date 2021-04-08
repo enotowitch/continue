@@ -1,18 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 
+$search-maw: 570px;
+
 $brandcolor: #6fda44;
 $gray-light: #969696;
 
+.search-topics-flex {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	max-width: $search-maw;
+}
+
 .search {
-	position: fixed;
+	margin-top: 52px;
+	position: relative;
 	width: 100%;
 	z-index: 10;
 	background-color: #fff;
+	display: none;
+	&_active {
+		display: block;
+	}
 
 	&__body {
-		max-width: 740px;
+		max-width: $search-maw;
 		margin: 0px auto;
-		border: 2px solid red;
+		padding: 15px;
 	}
 
 	&__topics {
@@ -48,7 +62,7 @@ $gray-light: #969696;
 			position: relative;
 			bottom: 2px;
 			left: 2px;
-			// border-bottom: 1.5px solid $brandcolor;
+			border-bottom: 1.5px solid $brandcolor;
 		}
 	}
 

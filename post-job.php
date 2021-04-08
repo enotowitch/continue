@@ -1,10 +1,13 @@
 <?
 	require_once "header.php";
 ?>
+<?
+	require_once "search.php";
+?>
 <div class="bg">
 	<div class="cards-wrapper">
 		<!-- ! CARD -->
-		<form class="card form-card not100">
+		<form class="card form-card not100" id="post_job">
 			<label class="card__logo add-logo" for="fake-logo">
 				<div class="add-logo__line"></div>
 				<input class="fake-logo" type="file" id="fake-logo">
@@ -16,7 +19,7 @@
 				require_once "info-select.php"
 			?>
 			<div class="inter-icons">
-				<input class="del cross_small" type="reset" value="">
+				<input class="cross_small" type="reset" value="">
 				<input class="apply ok-gray" type="submit" value="">
 			</div>
 			<div class="tags">
@@ -64,16 +67,18 @@
 
 
 		<!-- ? 2 CARD -->
-		<img class="cross cross_mb" src="img/icons/cross.svg" alt="cross">
+		<img class="cross cross_post" src="img/icons/cross.svg" alt="cross">
 	</div>
 </div>
 
 
 <!-- ! TEST CARDs -->
 
-<div class="switch">
-	switch
-</div>
+<!-- ! switch -->
+<?
+	require_once "switch.php"
+?>
+<!-- ? switch -->
 
 
 

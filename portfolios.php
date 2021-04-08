@@ -22,9 +22,9 @@
 
 <? 
 	require "DB.php";
-	$posts = R::find('post');
+	$portfolios = R::find('portfolio');
 
-	foreach($posts as $post): 
+	foreach($portfolios as $portfolio): 
 	
 ?>
 
@@ -45,3 +45,7 @@
 <?
  require_once "footer.php";
 ?>
+
+<script>
+	$('.del').addClass('del_portf');
+</script>

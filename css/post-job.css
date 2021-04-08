@@ -107,14 +107,14 @@
   margin: 10px;
 }
 
-.cross_mb {
+.cross_post {
   margin: 0 0px 10px 0px;
   -ms-flex-item-align: start;
       -ms-grid-row-align: start;
       align-self: start;
 }
 
-.cross_ml {
+.cross_search {
   margin: 0 0px 0px 10px;
 }
 

@@ -21,7 +21,7 @@
 		<a href=""><img class="header__icon" src="img/header/03.svg" alt="img/03.svg"></a>
 		<a href="post-portfolio.php"><img class="header__icon" src="img/header/04.svg" alt="img/04.svg"></a>
 		<a href=""><img class="header__icon" src="img/header/05.svg" alt="img/05.svg"></a>
-		<a href=""><img class="header__icon" src="img/header/06.svg" alt="img/06.svg"></a>
+		<div class="header__icon search-icon"><img src="img/header/06.svg" alt="img/06.svg"></div>
 		<!-- ! BURGER-->
 		<div class="burger" hidden>
 			<div class="burger__button">
@@ -32,7 +32,7 @@
 				<a class="header__icon burger__icon" href="#"><img src="img/burger/03.svg" alt="img/03.svg">MESSAGES</a>
 				<a class="header__icon burger__icon" href="post-portfolio.php"><img src="img/burger/04.svg" alt="img/04.svg">POST PORTFOLIO</a>
 				<a class="header__icon burger__icon" href="#"><img src="img/burger/05.svg" alt="img/05.svg">SIGN IN/UP</a>
-				<a class="header__icon burger__icon" href="#"><img src="img/burger/06.svg" alt="img/06.svg">SEARCH</a>
+				<div class="header__icon burger__icon search-icon" href="#"><img src="img/burger/06.svg" alt="img/06.svg">SEARCH</div>
 			</div>
 		</div>
 		<!-- ? BURGER-->

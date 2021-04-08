@@ -1,13 +1,15 @@
 <div class="search bg">
 	<div class="search__body">
-		<div class="search__topics">
-			<div class="search__topic search__topic_active"><span>DESIGN</span></div>
-			<div class="search__topic"><span>DEV</span></div>
-			<div class="search__topic"><span>MARKETING</span></div>
-			<div class="search__topic"><span>WRITING</span></div>
-			<div class="search__topic"><span>ADMIN</span></div>
-			<div class="search__topic"><span>LEGAL</span></div>
-			<img class="cross cross_ml" src="img/icons/cross.svg" alt="cross">
+		<div class="search-topics-flex">
+			<div class="search__topics">
+				<div class="search__topic search__topic_active"><span>DESIGN</span></div>
+				<div class="search__topic"><span>DEV</span></div>
+				<div class="search__topic"><span>MARKETING</span></div>
+				<div class="search__topic"><span>WRITING</span></div>
+				<div class="search__topic"><span>ADMIN</span></div>
+				<div class="search__topic"><span>LEGAL</span></div>
+			</div>
+			<img class="cross cross_search" src="img/icons/cross.svg" alt="cross">
 		</div>
 		<!-- ! DESIGN -->
 		<div class="search__tags search__tags_active">
