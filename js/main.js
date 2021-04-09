@@ -50,13 +50,15 @@ $(document).ready(function () {
 
 	$('.del').on('click', function (e) {
 
-		var card_id = $(this).closest('.card').find('.card-id').val();
+		var card_id = $(this).closest('.card').find('.card_id').val();
+		var card_from = $(this).closest('.card').find('.card_from').val();
 
 		$.ajax({
 			url: 'delete.php',
 			type: 'POST',
 			data: {
-				card_id: card_id
+				card_id: card_id,
+				card_from: card_from
 			},
 			// beforeSend: function () {
 			// 	return confirm("Are you sure?");
@@ -68,24 +70,5 @@ $(document).ready(function () {
 	})
 
 		// ! DELETE THIS
-
-		$('.del_portf').on('click', function (e) {
-
-			var card_id = $(this).closest('.card').find('.card-id').val();
-	
-			$.ajax({
-				url: 'delete-portf.php',
-				type: 'POST',
-				data: {
-					card_id: card_id
-				},
-				// beforeSend: function () {
-				// 	return confirm("Are you sure?");
-				// },
-				success: function () {
-					$(e.target).closest('.card').hide();
-				}
-			})
-		})
 
 })

@@ -1,50 +1,30 @@
-// ! post_job
-var post_job = $('#post_job');
+// ! post form_card (2)
+var form_card = $('.form-card');
 
 
-post_job.on('submit', function (e) {
+form_card.on('submit', function (e) {
+
+	var card_from = $(this).closest('.card').find('.card_from').val();
 
 	e.preventDefault();
 
-	var title = $('.card__title').val();
 
 	$.ajax({
-		url: 'insert-job.php',
+		url: 'insert.php',
 		type: 'POST',
-		data: {
-			title: title
-		},
+		data: $(this).serialize(),
 		// beforeSend: function () {
 		// 	return confirm("Are you sure?");
 		// },
 		success: function () {
-			window.location.href = 'index.php';
+			if (card_from == '/post-job.php') {
+				window.location.href = 'index.php';
+			}
+			if (card_from == '/post-portfolio.php') {
+				window.location.href = 'portfolios.php';
+			}
 		}
 	})
 })
 
-// ! post_portfolio
-
-var post_portfolio = $('#post_portfolio');
-
-
-post_portfolio.on('submit', function (e) {
-
-	e.preventDefault();
-
-	var title = $('.card__title').val();
-
-	$.ajax({
-		url: 'insert-portfolio.php',
-		type: 'POST',
-		data: {
-			title: title
-		},
-		// beforeSend: function () {
-		// 	return confirm("Are you sure?");
-		// },
-		success: function () {
-			window.location.href = 'portfolios.php';
-		}
-	})
-})
+// ! 

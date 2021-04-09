@@ -1,7 +1,7 @@
 <div class="info">
 	<div class="info__flex">
 		<div class="info__block">
-			<select class="info__cell" title="Salary">
+			<select class="info__cell" name="salary" title="Salary">
 				<option selected disabled value="0">Salary</option>
 				<option value="100 USD">100 USD</option>
 				<option value="200 USD">200 USD</option>
@@ -103,7 +103,7 @@
 				<option value="9800 USD">9800 USD</option>
 				<option value="9900 USD">9900 USD</option>
 			</select>
-			<select class="info__cell" title="Duration">
+			<select class="info__cell" name="duration" title="Duration">
 				<option selected disabled value="0">Duration</option>
 				<option value="Permanent">Permanent</option>
 				<option value="Temporary">Temporary</option>
@@ -111,7 +111,7 @@
 			</select>
 		</div>
 		<div class="info__block">
-			<select class="info__cell" title="Experience">
+			<select class="info__cell" name="experience" title="Experience">
 				<option selected disabled value="0">Experience</option>
 				<option value="No Exp.">No Exp.</option>
 				<option value="1 year">1 year</option>
@@ -165,7 +165,7 @@
 				<option value="49 years">49 years</option>
 				<option value="50 years">50 years</option>
 			</select>
-			<select class="info__cell" title="Workload">
+			<select class="info__cell" name="workload" title="Workload">
 				<option selected disabled value="0">Workload</option>
 				<option value="1 /mo">1 /mo</option>
 				<option value="2 h/mo">2 h/mo</option>
@@ -370,7 +370,7 @@
 			</select>
 		</div>
 		<div class="info__block">
-			<select class="info__cell" title="Location">
+			<select class="info__cell" name="location" title="Location">
 				<option selected disabled value="0">Location</option>
 				<option value="Worldwide">Worldwide</option>
 				<option value="Afghanistan">Afghanistan</option>

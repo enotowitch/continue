@@ -46,6 +46,3 @@
  require_once "footer.php";
 ?>
 
-<script>
-	$('.del').addClass('del_portf');
-</script>

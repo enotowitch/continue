@@ -7,14 +7,18 @@
 <div class="bg">
 	<div class="cards-wrapper">
 		<!-- ! CARD -->
-		<form class="card form-card not100" id="post_job">
+		<form class="card form-card not100">
+			<!-- ! card_from -->
+			<input class="card_from" name="card_from" type="hidden" value="<? echo $_SERVER['PHP_SELF'] ?>">
+			<!-- ? card_from -->
 			<label class="card__logo add-logo" for="fake-logo">
 				<div class="add-logo__line"></div>
 				<input class="fake-logo" type="file" id="fake-logo">
 			</label>
-			<textarea class="card__title" placeholder="Type a job title you're looking for..." maxlength="40"
+			<textarea class="card__title" name="title" placeholder="Type a job title you're looking for..." maxlength="40"
 				minlength="4"></textarea>
-			<textarea class="card__subt" placeholder="Type your company name..." maxlength="50" minlength="2"></textarea>
+			<textarea class="card__subt" name="subt" placeholder="Type your company name..." maxlength="50"
+				minlength="2"></textarea>
 			<? 
 				require_once "info-select.php"
 			?>
