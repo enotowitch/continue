@@ -631,7 +631,10 @@
 				<option value="Zambia">Zambia</option>
 				<option value="Zimbabwe">Zimbabwe</option>
 			</select>
-			<div class="info__cell info__example">Load Example</div>
+			<label class="info__cell info__example" for="fake-example">
+				Load Example
+				<input class="fake-example" type="file" multiple id="fake-example">
+			</label>
 		</div>
 	</div>
 </div>

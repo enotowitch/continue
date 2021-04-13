@@ -53,7 +53,7 @@
 						</div>
 						<div class="info__block">
 							<div class="info__cell info__simple">Afghanistan 2 Afghanistan</div>
-							<div class="info__cell info__simple">Example</div>
+							<div class="info__cell info__simple">Examples</div>
 						</div>
 					</div>
 				</div>

@@ -60,7 +60,8 @@
   outline: none;
 }
 
-.fake-logo {
+.fake-logo,
+.fake-example {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;

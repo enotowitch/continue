@@ -28,7 +28,7 @@
 	
 ?>
 
-	<div class="card card_main">
+	<div class="card card_main w100">
 		<? 
 			require "card-content.php"
 		?>
