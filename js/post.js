@@ -6,67 +6,28 @@ form_card.on('submit', function (e) {
 
 	e.preventDefault();
 
+	// for success
 	var card_from = $('.card_from').val();
 
+	var fd = new FormData();
+
 	var logo = $('.fake-logo').prop('files')[0];
+	fd.append("logo", logo);
 
-	var title = $('.card__title').val();
-	var subt = $('.card__subt').val();
+	var file_data = $('input[type="file"]')[1].files; // for multiple files
+	for (var i = 0; i < file_data.length; i++) {
+		fd.append("example_" + (i + 1), file_data[i]);
+	}
 
-	var salary = $(this).find('select[name="salary"]').val();
-	var duration = $(this).find('select[name="duration"]').val();
-	var experience = $(this).find('select[name="experience"]').val();
-	var workload = $(this).find('select[name="workload"]').val();
-	var location = $(this).find('select[name="location"]').val();
+	var other_data = $('form').serializeArray();
+	$.each(other_data, function (key, input) {
+		fd.append(input.name, input.value);
+	});
 
-	var tag_1 = $(this).find('optgroup').children('option:selected').eq(0).val();
-	var tag_2 = $(this).find('optgroup').children('option:selected').eq(1).val();
-	var tag_3 = $(this).find('optgroup').children('option:selected').eq(2).val();
-
-	var example_1 = $('.fake-example').prop('files')[0];
-	var example_2 = $('.fake-example').prop('files')[1];
-	var example_3 = $('.fake-example').prop('files')[2];
-	var example_4 = $('.fake-example').prop('files')[3];
-	var example_5 = $('.fake-example').prop('files')[4];
-	var example_6 = $('.fake-example').prop('files')[5];
-	var example_7 = $('.fake-example').prop('files')[6];
-	var example_8 = $('.fake-example').prop('files')[7];
-	var example_9 = $('.fake-example').prop('files')[8];
-	var example_10 = $('.fake-example').prop('files')[9];
-
-
-	var form_data = new FormData();
-	form_data.append('card_from', card_from);
-
-	form_data.append('logo', logo);
-
-	form_data.append('title', title);
-	form_data.append('subt', subt);
-
-	form_data.append('salary', salary);
-	form_data.append('duration', duration);
-	form_data.append('experience', experience);
-	form_data.append('workload', workload);
-	form_data.append('location', location);
-
-	form_data.append('tag_1', tag_1);
-	form_data.append('tag_2', tag_2);
-	form_data.append('tag_3', tag_3);
-
-	form_data.append('example_1', example_1);
-	form_data.append('example_2', example_2);
-	form_data.append('example_3', example_3);
-	form_data.append('example_4', example_4);
-	form_data.append('example_5', example_5);
-	form_data.append('example_6', example_6);
-	form_data.append('example_7', example_7);
-	form_data.append('example_8', example_8);
-	form_data.append('example_9', example_9);
-	form_data.append('example_10', example_10);
 
 	$.post({
 		url: 'insert.php',
-		data: form_data,
+		data: fd,
 		processData: false,
 		contentType: false,
 		// beforeSend: function () {
@@ -114,3 +75,33 @@ form_card.on('submit', function (e) {
 // 		  console.log(data);
 // 	 }
 // });
+
+// https://stackoverflow.com/questions/11740231/how-to-concatenate-php-variable-name
+	// https://www.php.net/manual/ru/language.variables.variable.php
+
+	
+	// ${"check" . $counter} = "some value";
+
+
+// 	You can also create new variables in a loop:
+// <?php
+
+// for( $i = 1; $i < 6; $i++ )
+// {
+// $var_name[] = "new_variable_" . $i; //$var_name[] will hold the new variable NAME
+// }
+
+// ${$var_name[0]}  = "value 1"; //Value of $new_variable_1 = "value 1"
+// ${$var_name[1]}  = "value 2"; //Value of $new_variable_2 = "value 2"
+// ${$var_name[2]}  = "value 3"; //Value of $new_variable_3 = "value 3"
+// ${$var_name[3]}  = "value 4"; //Value of $new_variable_4 = "value 4"
+// ${$var_name[4]}  = "value 5"; //Value of $new_variable_5 = "value 5"
+
+// echo "VARIABLE: " . $var_name[0] . "\n";
+// echo "<br />";
+// echo "VALUE: " . ${$var_name[0]};
+// ?>
+
+// The OUTPUT is:
+// VARIABLE: new_variable_1
+// VALUE: value 1

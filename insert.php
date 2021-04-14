@@ -3,51 +3,18 @@
 	require "DB.php";
 
 	// ! UPLOAD PICS
-	$logo = "uploads/" . rand() .  $_FILES['logo']['name'];
+	
+	$logo_path = "uploads/" . rand() .  $_FILES['logo']['name'];
+	move_uploaded_file($_FILES['logo']['tmp_name'], $logo_path);
 
-	$example_1 = "uploads/" . rand() .  $_FILES['example_1']['name'];
-	$example_2 = "uploads/" . rand() .  $_FILES['example_2']['name'];
-	$example_3 = "uploads/" . rand() .  $_FILES['example_3']['name'];
-	$example_4 = "uploads/" . rand() .  $_FILES['example_4']['name'];
-	$example_5 = "uploads/" . rand() .  $_FILES['example_5']['name'];
-	$example_6 = "uploads/" . rand() .  $_FILES['example_6']['name'];
-	$example_7 = "uploads/" . rand() .  $_FILES['example_7']['name'];
-	$example_8 = "uploads/" . rand() .  $_FILES['example_8']['name'];
-	$example_9 = "uploads/" . rand() .  $_FILES['example_9']['name'];
-	$example_10 = "uploads/" . rand() .  $_FILES['example_10']['name'];
 
-	move_uploaded_file($_FILES['logo']['tmp_name'], $logo);
+	$examples_path = array();
 
-	if(isset($_FILES['example_1'])){
-	move_uploaded_file($_FILES['example_1']['tmp_name'], $example_1);
+	for($i=1;$i<=10;$i++){
+		$examples_path[] = "uploads/" . rand() .  $_FILES["example_$i"]["name"];
+		move_uploaded_file($_FILES["example_$i"]['tmp_name'], $examples_path[($i-1)]);
 	}
-	if(isset($_FILES['example_2'])){
-	move_uploaded_file($_FILES['example_2']['tmp_name'], $example_2);
-	}
-	if(isset($_FILES['example_3'])){
-	move_uploaded_file($_FILES['example_3']['tmp_name'], $example_3);
-	}
-	if(isset($_FILES['example_4'])){
-	move_uploaded_file($_FILES['example_4']['tmp_name'], $example_4);
-	}
-	if(isset($_FILES['example_5'])){
-	move_uploaded_file($_FILES['example_5']['tmp_name'], $example_5);
-	}
-	if(isset($_FILES['example_6'])){
-	move_uploaded_file($_FILES['example_6']['tmp_name'], $example_6);
-	}
-	if(isset($_FILES['example_7'])){
-	move_uploaded_file($_FILES['example_7']['tmp_name'], $example_7);
-	}
-	if(isset($_FILES['example_8'])){
-	move_uploaded_file($_FILES['example_8']['tmp_name'], $example_8);
-	}
-	if(isset($_FILES['example_9'])){
-	move_uploaded_file($_FILES['example_9']['tmp_name'], $example_9);
-	}
-	if(isset($_FILES['example_10'])){
-	move_uploaded_file($_FILES['example_10']['tmp_name'], $example_10);
-	}
+
 	// ? UPLOAD PICS
 
 	
@@ -62,9 +29,9 @@
 	$workload = $_POST['workload'];
 	$location = $_POST['location'];
 
-	$tag_1 = $_POST['tag_1'];
-	$tag_2 = $_POST['tag_2'];
-	$tag_3 = $_POST['tag_3'];
+	$tag_1 = $_POST['tags'][0];
+	$tag_2 = $_POST['tags'][1];
+	$tag_3 = $_POST['tags'][2];
 
 
 	// 
@@ -87,41 +54,15 @@
 		$post->tag_2 = $tag_2;
 		$post->tag_3 = $tag_3;
 
-		$post->logo = $logo;
+		$post->logo = $logo_path;
 
 
-		if(isset($_FILES['example_1'])){
-		$post->example_1 = $example_1;
+		for($i=1;$i<=10;$i++){
+			if(isset($_FILES["example_$i"])){
+				$post["example_$i"] = $examples_path[($i-1)];
+				}
 		}
-		if(isset($_FILES['example_2'])){
-		$post->example_2 = $example_2;
-		}
-		if(isset($_FILES['example_3'])){
-		$post->example_3 = $example_3;
-		}
-		if(isset($_FILES['example_4'])){
-		$post->example_4 = $example_4;
-		}
-		if(isset($_FILES['example_5'])){
-		$post->example_5 = $example_5;
-		}
-		if(isset($_FILES['example_6'])){
-		$post->example_6 = $example_6;
-		}
-		if(isset($_FILES['example_7'])){
-		$post->example_7 = $example_7;
-		}
-		if(isset($_FILES['example_8'])){
-		$post->example_8 = $example_8;
-		}
-		if(isset($_FILES['example_9'])){
-		$post->example_9 = $example_9;
-		}
-		if(isset($_FILES['example_10'])){
-		$post->example_10 = $example_10;
-		}
-
-
+		
 		R::store( $post );
 
 	}
@@ -130,7 +71,7 @@
 
 		$portfolio = R::dispense('portfolio');
 
-		
+
 		$portfolio->title = $title;
 		$portfolio->subt = $subt;
 
@@ -144,9 +85,15 @@
 		$portfolio->tag_2 = $tag_2;
 		$portfolio->tag_3 = $tag_3;
 
-		$portfolio->logo = $logo;
+		$portfolio->logo = $logo_path;
 
-	
+
+		for($i=1;$i<=10;$i++){
+			if(isset($_FILES["example_$i"])){
+				$portfolio["example_$i"] = $examples_path[($i-1)];
+				}
+		}
+		
 		R::store( $portfolio );
 		
 	}

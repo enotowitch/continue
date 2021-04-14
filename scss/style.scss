@@ -111,25 +111,28 @@ $gray-light: #969696;
 		width: 40px;
 		height: 40px;
 		border-radius: 50%;
-		background-size: cover;
+		object-fit: cover;
 	}
 	&__title,
 	&__subt {
-		width: 170px;
 		position: absolute;
-		left: 60px;
+		left: 50px;
 		resize: none;
 		overflow: hidden;
+		text-overflow: ellipsis;
 		border: none;
+		margin-right: 40px;
 	}
 	&__title {
 		top: 4px;
 		font-size: 18px;
+		max-height: 40px;
 	}
 	&__subt {
 		top: 44px;
 		font-size: 12px;
 		color: $gray-light;
+		max-height: 26px;
 	}
 	.info {
 		position: absolute;
@@ -267,6 +270,7 @@ $gray-light: #969696;
 		@media (max-width: 499px) {
 			width: 85%;
 		}
+		white-space: nowrap;
 		position: relative;
 		top: 0;
 		left: 0px;
@@ -306,4 +310,7 @@ $gray-light: #969696;
 .change-page {
 	text-align: center;
 	font-weight: 700;
+}
+.dn {
+	display: none !important;
 }

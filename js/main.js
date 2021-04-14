@@ -20,6 +20,7 @@ $(document).ready(function () {
 
 	$('.switch').on('click', function () {
 		card.not('.not100').toggleClass('w100');
+		$('.info__pics').toggleClass('dn');
 	})
 
 	// ! chosen
@@ -79,22 +80,22 @@ $(document).ready(function () {
 		slidesToScroll: 5,
 		responsive: [
 			{
-			  breakpoint: 650,
-			  settings: {
-				infinite: true,
-				slidesToShow: 4,
-				slidesToScroll: 4,
-			  }
+				breakpoint: 650,
+				settings: {
+					infinite: true,
+					slidesToShow: 4,
+					slidesToScroll: 4,
+				}
 			},
 			{
 				breakpoint: 550,
 				settings: {
-				 infinite: true,
-				 slidesToShow: 3,
-				 slidesToScroll: 3,
+					infinite: true,
+					slidesToShow: 3,
+					slidesToScroll: 3,
 				}
-			 },
-		 ]
+			},
+		]
 	});
 
 })
