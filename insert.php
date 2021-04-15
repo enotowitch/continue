@@ -34,68 +34,41 @@
 	$tag_3 = $_POST['tags'][2];
 
 
-	// 
+	// ! DB
 
 	if($card_from == '/post-job.php'){
+		$destination = "post";
+	} else {
+		$destination = "portfolio";
+	}
 
-		$post = R::dispense('post');
+
+		$destination = R::dispense("$destination");
 
 
-		$post->title = $title;
-		$post->subt = $subt;
+		$destination->title = $title;
+		$destination->subt = $subt;
 
-		$post->salary = $salary;
-		$post->duration = $duration;
-		$post->experience = $experience;
-		$post->workload = $workload;
-		$post->location = $location;
+		$destination->salary = $salary;
+		$destination->duration = $duration;
+		$destination->experience = $experience;
+		$destination->workload = $workload;
+		$destination->location = $location;
 
-		$post->tag_1 = $tag_1;
-		$post->tag_2 = $tag_2;
-		$post->tag_3 = $tag_3;
+		$destination->tag_1 = $tag_1;
+		$destination->tag_2 = $tag_2;
+		$destination->tag_3 = $tag_3;
 
-		$post->logo = $logo_path;
+		$destination->logo = $logo_path;
 
 
 		for($i=1;$i<=10;$i++){
 			if(isset($_FILES["example_$i"])){
-				$post["example_$i"] = $examples_path[($i-1)];
+				$destination["example_$i"] = $examples_path[($i-1)];
 				}
 		}
 		
-		R::store( $post );
-
-	}
-
-	if($card_from == '/post-portfolio.php'){
-
-		$portfolio = R::dispense('portfolio');
-
-
-		$portfolio->title = $title;
-		$portfolio->subt = $subt;
-
-		$portfolio->salary = $salary;
-		$portfolio->duration = $duration;
-		$portfolio->experience = $experience;
-		$portfolio->workload = $workload;
-		$portfolio->location = $location;
-
-		$portfolio->tag_1 = $tag_1;
-		$portfolio->tag_2 = $tag_2;
-		$portfolio->tag_3 = $tag_3;
-
-		$portfolio->logo = $logo_path;
-
-
-		for($i=1;$i<=10;$i++){
-			if(isset($_FILES["example_$i"])){
-				$portfolio["example_$i"] = $examples_path[($i-1)];
-				}
-		}
+		R::store( $destination );
 		
-		R::store( $portfolio );
-		
-	}
 
 ?>

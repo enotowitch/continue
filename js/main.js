@@ -70,8 +70,6 @@ $(document).ready(function () {
 		})
 	})
 
-	// ! DELETE THIS
-
 	// ! slick
 
 	$('.info__pics').slick({
@@ -97,5 +95,74 @@ $(document).ready(function () {
 			},
 		]
 	});
+
+// ! DELETE THIS
+
+$('.ex').on('click', function(){
+	$('.info__pics').slick('unslick');
+	$('.info__pics').addClass('pics100');
+	$('.info__pics').removeClass('info__pics');
+	$('.tags').hide();
+
+	$('.tags-pics-flex').append('<div class="close-pics"><img src="img/icons/cross.svg" alt="close-pics"></div>')
+
+	$('.pics100').slick({
+		infinite: true,
+		slidesToShow: 5,
+		slidesToScroll: 5,
+		responsive: [
+			{
+				breakpoint: 650,
+				settings: {
+					infinite: true,
+					slidesToShow: 4,
+					slidesToScroll: 4,
+				}
+			},
+			{
+				breakpoint: 550,
+				settings: {
+					infinite: true,
+					slidesToShow: 3,
+					slidesToScroll: 3,
+				}
+			},
+		]
+	});
+});
+
+$(document).on('click', '.close-pics', function(){
+	$('.pics100').slick('unslick');
+	$('.pics100').addClass('info__pics');
+	$('.pics100').removeClass('pics100');
+	$('.tags').show();
+
+	$('.close-pics').empty();
+
+	$('.info__pics').slick({
+		infinite: true,
+		slidesToShow: 5,
+		slidesToScroll: 5,
+		responsive: [
+			{
+				breakpoint: 650,
+				settings: {
+					infinite: true,
+					slidesToShow: 4,
+					slidesToScroll: 4,
+				}
+			},
+			{
+				breakpoint: 550,
+				settings: {
+					infinite: true,
+					slidesToShow: 3,
+					slidesToScroll: 3,
+				}
+			},
+		]
+	});
+
+})
 
 })

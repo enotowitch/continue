@@ -37,7 +37,7 @@
 				<div class="info__cell info__simple">
 					<? if($_SERVER['PHP_SELF'] == '/index.php'){echo $post->location;}else{echo $portfolio->location;} ?>
 				</div>
-				<div class="info__cell info__simple">
+				<div class="info__cell info__simple ex">
 					Examples
 				</div>
 			</div>
@@ -61,36 +61,13 @@
 			</div>
 		</div>
 		<div class="info__cell info__simple info__pics">
+		<? for($i=1;$i<=10;$i++): ?>
+		<? if($post["example_$i"] != NULL || $portfolio["example_$i"] != NULL): ?>
 			<img
-				src="<? if($_SERVER['PHP_SELF'] == '/index.php'){echo $post->example_1;}else{echo $portfolio->example_1;} ?>"
+				src="<? if($_SERVER['PHP_SELF'] == '/index.php'){echo $post["example_$i"] ;}else{echo $portfolio["example_$i"] ;} ?>"
 				alt="1">
-			<img
-				src="<? if($_SERVER['PHP_SELF'] == '/index.php'){echo $post->example_2;}else{echo $portfolio->example_2;} ?>"
-				alt="2">
-			<img
-				src="<? if($_SERVER['PHP_SELF'] == '/index.php'){echo $post->example_3;}else{echo $portfolio->example_3;} ?>"
-				alt="3">
-			<img
-				src="<? if($_SERVER['PHP_SELF'] == '/index.php'){echo $post->example_4;}else{echo $portfolio->example_4;} ?>"
-				alt="4">
-			<img
-				src="<? if($_SERVER['PHP_SELF'] == '/index.php'){echo $post->example_5;}else{echo $portfolio->example_5;} ?>"
-				alt="5">
-			<img
-				src="<? if($_SERVER['PHP_SELF'] == '/index.php'){echo $post->example_6;}else{echo $portfolio->example_6;} ?>"
-				alt="6">
-			<img
-				src="<? if($_SERVER['PHP_SELF'] == '/index.php'){echo $post->example_7;}else{echo $portfolio->example_7;} ?>"
-				alt="7">
-			<img
-				src="<? if($_SERVER['PHP_SELF'] == '/index.php'){echo $post->example_8;}else{echo $portfolio->example_8;} ?>"
-				alt="8">
-			<img
-				src="<? if($_SERVER['PHP_SELF'] == '/index.php'){echo $post->example_9;}else{echo $portfolio->example_9;} ?>"
-				alt="9">
-			<img
-				src="<? if($_SERVER['PHP_SELF'] == '/index.php'){echo $post->example_10;}else{echo $portfolio->example_10;} ?>"
-				alt="10">
+		<? endif; ?>
+		<? endfor; ?>
 		</div>
 	</div>
 </div>

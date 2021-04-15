@@ -267,6 +267,47 @@
      object-fit: cover;
 }
 
+.pics100 {
+  width: 100% !important;
+  height: 203px !important;
+  position: relative;
+  border-radius: 4px 0 0 4px;
+  top: 4px !important;
+}
+
+@media (max-width: 499px) {
+  .pics100 {
+    display: none !important;
+  }
+}
+
+.pics100 img {
+  width: 100% !important;
+  height: 203px !important;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.pics100 .slick-arrow {
+  position: absolute;
+  top: 40%;
+}
+
+.close-pics {
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  width: 40px;
+  height: 40px;
+  text-align: right;
+}
+
+.close-pics img {
+  -webkit-transform: scale(0.7);
+      -ms-transform: scale(0.7);
+          transform: scale(0.7);
+}
+
 .tags-pics-flex {
   position: absolute;
   bottom: 4px;
