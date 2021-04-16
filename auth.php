@@ -7,15 +7,40 @@ $user_form_from = $_POST['user_form_from'];
 $user_mail = $_POST["user_mail"];
 $user_pass = $_POST["user_pass"];
 
+// ! reg
+
 if($user_form_from == "/reg.php"){
+
+	$check_mail = R::findOne('user', 'user_mail = ?', [$user_mail]);
+
+	// ! not same mail
+
+	if($check_mail["user_mail"] != $user_mail){
+		$user = R::dispense('user');
+
+		$user->user_mail = $user_mail; 
+		$user->user_pass = md5($user_pass); 
 	
-	$user = R::dispense('user');
+		$user_id = R::store($user);
 
-	$user->user_mail = $user_mail; 
-	$user->user_pass = md5($user_pass); 
+		$new_user = R::load('user', $user_id);
 
-	R::store($user);
+
+		$_SESSION["user"] = [
+			"id" => $new_user["id"],
+			"mail" => $new_user["user_mail"]
+		];
+
+
+
+	} else {
+		print "USER MAIL ALREADY EXISTS!!!";
+	}
+	
+
 }
+
+// ! login
 
 if($user_form_from == "/login.php"){
 

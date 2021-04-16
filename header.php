@@ -20,8 +20,8 @@
 		<a href="/"><img class="header__icon header__logo" src="img/header/01.svg" alt="header__logo"></a>
 		<a href="post-job.php"><img class="header__icon" src="img/header/02.svg" alt="Post Job"></a>
 		<a href=""><img class="header__icon" src="img/header/03.svg" alt="Messages"></a>
-		<a href="post-portfolio.php"><img class="header__icon" src="img/header/04.svg" alt="Add Portfolio"></a>
-		<a href="profile.php"><img class="header__icon" src="img/header/05.svg" alt="Profile"></a>
+		<a href="post-portfolio.php"><img class="header__icon" src="" alt="Add Portfolio"></a>
+		<a href="profile.php"><img class="header__icon" src="" alt="Profile"></a>
 		<div class="header__icon search-icon"><img src="img/header/06.svg" alt="Search"></div>
 		<!-- ! BURGER-->
 		<div class="burger" hidden>

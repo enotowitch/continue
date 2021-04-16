@@ -30,7 +30,7 @@
 
 	<div class="card card_main w100">
 		<? 
-			require_once "card-content.php"
+			include "card-content.php"
 		?>
 	</div>
 	

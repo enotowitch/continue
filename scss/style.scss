@@ -344,3 +344,11 @@ $gray-light: #969696;
 .dn {
 	display: none !important;
 }
+.del-anim {
+	height: 100%;
+	width: 0;
+	background-color: tomato;
+	position: relative;
+	z-index: 3;
+	border-radius: 4px;
+}

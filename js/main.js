@@ -65,7 +65,12 @@ $(document).ready(function () {
 			// 	return confirm("Are you sure?");
 			// },
 			success: function () {
-				$(e.target).closest('.card').hide();
+				$(e.target).closest('.card').append('<div class="del-anim"></div>');
+				$('.del-anim').animate({'width':'100%'});
+				setTimeout(() => {
+					$(e.target).closest('.card').hide();
+				}, 600);
+				
 			}
 		})
 	})

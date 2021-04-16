@@ -7,8 +7,7 @@ $(document).ready(function () {
 			url: 'auth.php',
 			data: $(this).serialize(),
 			success: function () {
-				alert('555');
-				// window.location.href = 'auth.php';
+				window.location.href = 'index.php';
 			},
 		})
 	})
