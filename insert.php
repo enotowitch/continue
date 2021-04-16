@@ -1,6 +1,6 @@
 <?
 
-	require "DB.php";
+require_once "DB.php";
 
 	// ! UPLOAD PICS
 	

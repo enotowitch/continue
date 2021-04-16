@@ -1,0 +1,50 @@
+.user-form {
+	width: 290px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	font-family: Montserrat;
+	label {
+		font-size: 20px;
+	}
+	input {
+		width: 100%;
+		font-size: 18px;
+		&:focus {
+		}
+	}
+	p {
+	}
+	a {
+		text-decoration: underline;
+	}
+	label,
+	input,
+	p {
+		margin-top: 10px;
+	}
+}
+.out {
+	text-align: right;
+	color: tomato;
+	text-decoration: none !important;
+	font-style: normal;
+}
+.log-as {
+	font-style: italic;
+	display: flex;
+	justify-content: space-between;
+	div {
+		text-align: left;
+	}
+	span {
+		font-style: normal;
+		font-weight: 700;
+		display: block;
+		max-width: 230px;
+		padding-left: 3px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}

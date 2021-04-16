@@ -358,3 +358,9 @@ template {
 [hidden] {
 	display: none;
 }
+* {
+	box-sizing: border-box;
+}
+p {
+	margin: 0;
+}

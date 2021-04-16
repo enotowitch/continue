@@ -6,6 +6,7 @@
 	<script src="slick/slick.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/post.js"></script>
+	<script src="js/auth.js"></script>
 
 
 </body>

@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 
 $main-cards-cont-wid: 930px;
+$brandcolor: #6fda44;
 $gray-light: #969696;
 
 .header {
@@ -14,7 +15,7 @@ $gray-light: #969696;
 	justify-content: space-between;
 	align-items: center;
 	width: calc(100% - 30px);
-	position: fixed;
+	// position: fixed;
 	z-index: 10;
 	background-color: #fff;
 	top: 0;
@@ -86,10 +87,9 @@ $gray-light: #969696;
 }
 // ! banner
 .banner {
-	margin-top: 48px;
 	width: 100%;
 	height: 300px;
-	background-color: rgb(255, 255, 255);
+	background-color: rgb(216, 216, 216);
 }
 // ! card
 .card {

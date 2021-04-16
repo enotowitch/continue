@@ -21,7 +21,7 @@
 <div class="card-flex">
 
 <? 
-	require "DB.php";
+	require_once "DB.php";
 	$portfolios = R::find('portfolio');
 
 	foreach($portfolios as $portfolio): 
@@ -30,7 +30,7 @@
 
 	<div class="card card_main w100">
 		<? 
-			require "card-content.php"
+			require_once "card-content.php"
 		?>
 	</div>
 	
