@@ -22,9 +22,9 @@
 
 <? 
 	require_once "DB.php";
-	$portfolios = R::find('portfolio');
+	$posts = R::find('portfolio');
 
-	foreach($portfolios as $portfolio): 
+	foreach($posts as $post): 
 	
 ?>
 

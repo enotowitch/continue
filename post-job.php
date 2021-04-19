@@ -1,5 +1,6 @@
 <?
-	require_once "header.php";
+session_start();
+require_once "header.php";
 ?>
 <?
 	require_once "search.php";
@@ -8,6 +9,9 @@
 	<div class="cards-wrapper">
 		<!-- ! CARD -->
 		<form class="card form-card not100">
+			<!-- ! user_id -->
+			<input class="user_id" name="user_id" type="hidden" value="<? echo $_SESSION["user"]["id"]; ?>">
+			<!-- ? user_id -->
 			<!-- ! card_from -->
 			<input class="card_from" name="card_from" type="hidden" value="<? echo $_SERVER['PHP_SELF'] ?>">
 			<!-- ? card_from -->
@@ -85,6 +89,36 @@
 <!-- ? switch -->
 
 
+<!-- ! CARD -->
+<div class="card-flex">
+
+<? 
+	require_once "DB.php";
+	// ! SHOW ONLY MY POSTS
+	if($_SERVER['PHP_SELF'] == '/post-job.php'){
+		$posts = R::find('post', 'user_id = ?', [$_SESSION["user"]["id"]]);
+	}
+	if($_SERVER['PHP_SELF'] == '/post-portfolio.php'){
+		$posts = R::find('portfolio', 'user_id = ?', [$_SESSION["user"]["id"]]);
+	}
+
+	foreach($posts as $post): 
+	
+?>
+
+	<div class="card card_main w100">
+		<? 
+			include "card-content.php"
+		?>
+	</div>
+	
+<? endforeach; ?>
+
+	
+
+</div>
+
+<!-- ? CARD -->
 
 
 <!-- ? TEST CARDs -->

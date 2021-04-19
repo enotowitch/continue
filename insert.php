@@ -20,6 +20,8 @@ require_once "DB.php";
 	
 	$card_from = $_POST['card_from'];
 
+	$user_id = $_POST['user_id'];
+
 	$title = $_POST['title'];
 	$subt = $_POST['subt'];
 
@@ -45,6 +47,8 @@ require_once "DB.php";
 
 		$destination = R::dispense("$destination");
 
+
+		$destination->user_id = $user_id;
 
 		$destination->title = $title;
 		$destination->subt = $subt;
