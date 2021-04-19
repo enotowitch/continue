@@ -37,7 +37,7 @@ if($user_pass == ""){
 	echo json_encode($data);
 	die();
 }
-if(strlen($user_pass) < 6){
+if($user_form_from == "/reg.php" && strlen($user_pass) < 6){
 	$data['msg'] = ["Password: 5+ chars!"];
 	echo json_encode($data);
 	die();
@@ -82,6 +82,14 @@ if($user_form_from == "/login.php"){
 
 	$check_user = R::findOne('user', 'user_mail = ?', [$user_mail]);
 
+	if($check_user["user_mail"] == $user_mail && $check_user["user_pass"] != md5($user_pass)){
+		$data['msg'] = ["Wrong password!"];
+	}
+
+	if($check_user["user_mail"] != $user_mail){
+		$data['msg'] = ["No such user!"];
+	}
+
 
 	if($check_user["user_pass"] == md5($user_pass)){
 		$_SESSION["user"] = [
@@ -93,9 +101,7 @@ if($user_form_from == "/login.php"){
 			'status' => true,
 			'msg' => 'Welcome!'
 			];
-	} else {
-		$data['msg'] = ["No such user!"];
-	}
+	} 
 
 	
 }

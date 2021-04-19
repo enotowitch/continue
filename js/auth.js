@@ -23,8 +23,11 @@ $(document).ready(function () {
 				}
 				if(data.status == true){
 					$('input[type="submit"]').val(data.msg);
+					setTimeout(() => {
+						window.location.reload();
+					}, 600);
 				}
-				// window.location.href = 'index.php';
+				
 			},
 		})
 	})
