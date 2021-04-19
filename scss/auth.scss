@@ -1,29 +1,49 @@
+$brandcolor: #6fda44;
+
 .user-form {
 	width: 290px;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	text-align: center;
 	font-family: Montserrat;
 	label {
 		font-size: 20px;
 	}
 	input {
-		width: 100%;
+		width: 80%;
+		height: 40px;
 		font-size: 18px;
+		border: 2px solid $brandcolor;
 		&:focus {
 		}
 	}
-	p {
+	input[type="submit"] {
+		border: none;
+		background-color: $brandcolor;
+		color: #fff;
+		font-weight: 700;
 	}
 	a {
 		text-decoration: underline;
 	}
 	label,
-	input,
-	p {
+	input {
 		margin-top: 10px;
 	}
+	p {
+		margin-top: 50px;
+	}
+	label {
+		p {
+			margin-top: 10px;
+		}
+	}
+}
+.inputs {
+	margin-top: 40px;
+	width: 100%;
 }
 .out {
 	text-align: right;
@@ -32,9 +52,11 @@
 	font-style: normal;
 }
 .log-as {
+	width: 100%;
 	font-style: italic;
 	display: flex;
 	justify-content: space-between;
+	margin: 15px auto 0px;
 	div {
 		text-align: left;
 	}
@@ -47,4 +69,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
+}
+.red {
+	background-color: tomato !important;
 }
