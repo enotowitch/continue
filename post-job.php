@@ -92,11 +92,13 @@ require_once "header.php";
 <? if($_SERVER['PHP_SELF'] == '/post-job.php'){echo "YOUR POSTS:";}else{echo "YOUR PORTFOLIOS:";} ?>
 </div>
 
+<div class="sort-flex">
 <!-- ! switch -->
 <?
 	require_once "switch.php"
 ?>
 <!-- ? switch -->
+</div>
 
 <!-- ! CARD -->
 <div class="card-flex">

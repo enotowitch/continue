@@ -101,7 +101,6 @@ $(document).ready(function () {
 		]
 	});
 
-	// ! DELETE THIS
 
 	$('.ex').on('click', function () {
 		$('.info__pics').slick('unslick');
@@ -170,19 +169,51 @@ $(document).ready(function () {
 
 	})
 
-	// ! REALLY DELETE THIS
+	// ! current user animations
 
 	var current_user = $('.current_user').val();
 
-	var current_user_posts = $('.user_id[value="' + current_user + '"]');
+	var current_user_posts = $('.user_id[value="' + current_user + '"]').closest('.card').not('.not100');
 
-	current_user_posts.closest('.card').not('.not100').append('<div class="cur_user_anim"></div>');
-	$('.cur_user_anim').animate({ 'width': '100%' }, 500);
+	function cur_user_anim() {
 
-	setTimeout(() => {
-		$('.cur_user_anim').animate({ 'left': '100%' }, 500);
-	}, 500);
+		current_user_posts.addClass('dn').append('<div class="cur_user_anim"></div>');
+
+		setTimeout(() => {
+			current_user_posts.removeClass('dn');
+			$('.cur_user_anim').animate({ 'left': '100%' }, 600);
+
+		}, 600);
+
+		setTimeout(() => {
+			$('.cur_user_anim').detach();
+		}, 1200);
 
 
+	}
+
+	cur_user_anim();
+
+	$(document).on('click', '.sort-my', function () {
+		cur_user_anim();
+
+		$('.card').toggleClass('dn');
+		current_user_posts.toggleClass('db');
+
+		$('.sort-my').text('ALL POSTS').addClass('flip-posts').removeClass('sort-my');
+
+	});
+
+	$(document).on('click', '.flip-posts', function () {
+		cur_user_anim();
+
+		$('.card').toggleClass('dn');
+		current_user_posts.toggleClass('db');
+
+		$('.flip-posts').text('MY POSTS').addClass('sort-my').removeClass('flip-posts');
+
+	})
+
+	// ! DELETE THIS
 
 })

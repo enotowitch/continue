@@ -13,11 +13,16 @@ session_start();
 	require_once "change-page.php";
 ?>
 <!-- ? change-page -->
+<div class="sort-flex">
+<div class="sort-my">MY POSTS</div>
 <!-- ! switch -->
 <?
 	require_once "switch.php"
 ?>
 <!-- ? switch -->
+</div>
+
+
 <!-- ! CARD -->
 <div class="card-flex">
 

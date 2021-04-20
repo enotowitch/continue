@@ -51,6 +51,7 @@
 }
 
 .form-card {
+  overflow: visible;
   position: relative;
   font-family: Montserrat;
   font-size: 13px;

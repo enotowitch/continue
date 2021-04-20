@@ -462,7 +462,6 @@
 
 .switch {
   max-width: 930px;
-  margin: 0 auto;
   text-align: right;
   padding: 0 15px;
 }
@@ -487,10 +486,26 @@
 }
 
 .cur_user_anim {
-  height: 100%;
-  width: 0;
   background-color: #83df5e;
   position: relative;
+  width: 100%;
+  height: 100%;
+  left: -100%;
   z-index: 3;
   border-radius: 4px;
+}
+
+.sort-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 930px;
+  margin: 0 auto;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.db {
+  display: block;
 }
