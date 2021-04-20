@@ -14,13 +14,15 @@ $gray-light: #969696;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: calc(100% - 30px);
+	width: calc(100% - 0px);
 	// position: fixed;
 	z-index: 10;
 	background-color: #fff;
 	top: 0;
 	left: 0;
+	box-shadow: 1px 2px 5px #8b8b8b, 1px 0px 5px #d3d3d3;
 	padding: 0 15px 0 15px;
+	margin-bottom: 15px;
 }
 // ! burger
 .burger {
@@ -90,12 +92,13 @@ $gray-light: #969696;
 	width: 100%;
 	height: 300px;
 	background-color: rgb(216, 216, 216);
+	margin: 0px auto 15px;
 }
 // ! card
 .card {
+	overflow: hidden;
 	position: relative;
 	font-family: Roboto;
-	position: relative;
 	width: 290px;
 	height: 203px;
 	background-color: #ffffff;
@@ -335,11 +338,13 @@ $gray-light: #969696;
 	max-width: $main-cards-cont-wid;
 	margin: 0 auto;
 	text-align: right;
+	padding: 0 15px;
 }
 // ! change-page
 .change-page {
 	text-align: center;
 	font-weight: 700;
+	margin: 0px auto 15px;
 }
 .dn {
 	display: none !important;
@@ -348,6 +353,14 @@ $gray-light: #969696;
 	height: 100%;
 	width: 0;
 	background-color: tomato;
+	position: relative;
+	z-index: 3;
+	border-radius: 4px;
+}
+.cur_user_anim {
+	height: 100%;
+	width: 0;
+	background-color: lighten($brandcolor, 6%);
 	position: relative;
 	z-index: 3;
 	border-radius: 4px;

@@ -7,6 +7,9 @@
 	<input class="user_id" type="hidden"
 		value="<? echo $post->user_id; ?>">
 	<!-- ? user_id -->
+	<!-- ! current_user -->
+	<input class="current_user" type="hidden" value="<? echo $_SESSION['user']['id']; ?>">
+	<!-- ? current_user -->
 	<!-- ! card_from -->
 	<input class="card_from" type="hidden" value="<? echo $_SERVER['PHP_SELF']; ?>">
 	<!-- ? card_from -->

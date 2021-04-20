@@ -42,7 +42,7 @@ $brandcolor: #6fda44;
 	}
 }
 .inputs {
-	margin-top: 40px;
+	margin-top: 25px;
 	width: 100%;
 }
 .out {
@@ -54,17 +54,18 @@ $brandcolor: #6fda44;
 .log-as {
 	width: 100%;
 	font-style: italic;
+	font-family: Montserrat;
 	display: flex;
 	justify-content: space-between;
-	margin: 15px auto 0px;
+	margin: 0px auto 15px;
 	div {
 		text-align: left;
+		max-width: 230px;
 	}
 	span {
 		font-style: normal;
 		font-weight: 700;
 		display: block;
-		max-width: 230px;
 		padding-left: 3px;
 		overflow: hidden;
 		text-overflow: ellipsis;

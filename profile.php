@@ -1,6 +1,6 @@
 <?
 
-header("location: reg.php");
+header("location: login.php");
 
  require_once "header.php";
 ?>

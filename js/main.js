@@ -66,11 +66,11 @@ $(document).ready(function () {
 			// },
 			success: function () {
 				$(e.target).closest('.card').append('<div class="del-anim"></div>');
-				$('.del-anim').animate({'width':'100%'});
+				$('.del-anim').animate({ 'width': '100%' });
 				setTimeout(() => {
 					$(e.target).closest('.card').hide();
 				}, 600);
-				
+
 			}
 		})
 	})
@@ -101,73 +101,88 @@ $(document).ready(function () {
 		]
 	});
 
-// ! DELETE THIS
+	// ! DELETE THIS
 
-$('.ex').on('click', function(){
-	$('.info__pics').slick('unslick');
-	$('.info__pics').addClass('pics100');
-	$('.info__pics').removeClass('info__pics');
-	$('.tags').hide();
+	$('.ex').on('click', function () {
+		$('.info__pics').slick('unslick');
+		$('.info__pics').addClass('pics100');
+		$('.info__pics').removeClass('info__pics');
+		$('.tags').hide();
 
-	$('.tags-pics-flex').append('<div class="close-pics"><img src="img/icons/cross.svg" alt="close-pics"></div>')
+		$('.tags-pics-flex').append('<div class="close-pics"><img src="img/icons/cross.svg" alt="close-pics"></div>')
 
-	$('.pics100').slick({
-		infinite: true,
-		slidesToShow: 5,
-		slidesToScroll: 5,
-		responsive: [
-			{
-				breakpoint: 650,
-				settings: {
-					infinite: true,
-					slidesToShow: 4,
-					slidesToScroll: 4,
-				}
-			},
-			{
-				breakpoint: 550,
-				settings: {
-					infinite: true,
-					slidesToShow: 3,
-					slidesToScroll: 3,
-				}
-			},
-		]
-	});
-});
-
-$(document).on('click', '.close-pics', function(){
-	$('.pics100').slick('unslick');
-	$('.pics100').addClass('info__pics');
-	$('.pics100').removeClass('pics100');
-	$('.tags').show();
-
-	$('.close-pics').empty();
-
-	$('.info__pics').slick({
-		infinite: true,
-		slidesToShow: 5,
-		slidesToScroll: 5,
-		responsive: [
-			{
-				breakpoint: 650,
-				settings: {
-					infinite: true,
-					slidesToShow: 4,
-					slidesToScroll: 4,
-				}
-			},
-			{
-				breakpoint: 550,
-				settings: {
-					infinite: true,
-					slidesToShow: 3,
-					slidesToScroll: 3,
-				}
-			},
-		]
+		$('.pics100').slick({
+			infinite: true,
+			slidesToShow: 5,
+			slidesToScroll: 5,
+			responsive: [
+				{
+					breakpoint: 650,
+					settings: {
+						infinite: true,
+						slidesToShow: 4,
+						slidesToScroll: 4,
+					}
+				},
+				{
+					breakpoint: 550,
+					settings: {
+						infinite: true,
+						slidesToShow: 3,
+						slidesToScroll: 3,
+					}
+				},
+			]
+		});
 	});
 
-})
+	$(document).on('click', '.close-pics', function () {
+		$('.pics100').slick('unslick');
+		$('.pics100').addClass('info__pics');
+		$('.pics100').removeClass('pics100');
+		$('.tags').show();
+
+		$('.close-pics').empty();
+
+		$('.info__pics').slick({
+			infinite: true,
+			slidesToShow: 5,
+			slidesToScroll: 5,
+			responsive: [
+				{
+					breakpoint: 650,
+					settings: {
+						infinite: true,
+						slidesToShow: 4,
+						slidesToScroll: 4,
+					}
+				},
+				{
+					breakpoint: 550,
+					settings: {
+						infinite: true,
+						slidesToShow: 3,
+						slidesToScroll: 3,
+					}
+				},
+			]
+		});
+
+	})
+
+	// ! REALLY DELETE THIS
+
+	var current_user = $('.current_user').val();
+
+	var current_user_posts = $('.user_id[value="' + current_user + '"]');
+
+	current_user_posts.closest('.card').not('.not100').append('<div class="cur_user_anim"></div>');
+	$('.cur_user_anim').animate({ 'width': '100%' }, 500);
+
+	setTimeout(() => {
+		$('.cur_user_anim').animate({ 'left': '100%' }, 500);
+	}, 500);
+
+
 
 })

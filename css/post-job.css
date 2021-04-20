@@ -37,12 +37,13 @@
   max-width: 740px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin: 68px auto 15px;
+  padding: 0 15px 15px;
+  margin: 0 auto 15px;
 }
 
 @media (max-width: 700px) {
   .cards-wrapper {
-    max-width: 290px;
+    max-width: 320px;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -142,4 +143,14 @@
   height: 24px;
   padding: 0;
   outline: none;
+}
+
+.your-posts {
+  max-width: 930px;
+  padding: 15px 15px 0;
+  margin: 0 auto;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: Montserrat;
+  color: #6fda44;
 }

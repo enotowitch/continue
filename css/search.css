@@ -8,7 +8,7 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  max-width: 570px;
+  max-width: 600px;
 }
 
 .search {
@@ -24,8 +24,8 @@
 }
 
 .search__body {
-  max-width: 570px;
-  margin: 0px auto;
+  max-width: 600px;
+  margin: 0px auto 15px;
   padding: 15px;
 }
 

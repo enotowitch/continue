@@ -51,7 +51,7 @@
 }
 
 .inputs {
-  margin-top: 40px;
+  margin-top: 25px;
   width: 100%;
 }
 
@@ -65,24 +65,25 @@
 .log-as {
   width: 100%;
   font-style: italic;
+  font-family: Montserrat;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin: 15px auto 0px;
+  margin: 0px auto 15px;
 }
 
 .log-as div {
   text-align: left;
+  max-width: 230px;
 }
 
 .log-as span {
   font-style: normal;
   font-weight: 700;
   display: block;
-  max-width: 230px;
   padding-left: 3px;
   overflow: hidden;
   -o-text-overflow: ellipsis;

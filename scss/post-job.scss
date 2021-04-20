@@ -1,4 +1,6 @@
 $gray-light: #969696;
+$main-cards-cont-wid: 930px;
+$brandcolor: #6fda44;
 
 @media (max-width: 700px) {
 	.cross {
@@ -18,7 +20,7 @@ $gray-light: #969696;
 
 .cards-wrapper {
 	@media (max-width: 700px) {
-		max-width: 290px;
+		max-width: 320px;
 		justify-content: center;
 	}
 	display: flex;
@@ -26,7 +28,8 @@ $gray-light: #969696;
 	align-items: center;
 	max-width: 740px;
 	flex-wrap: wrap;
-	margin: 68px auto 15px;
+	padding: 0 15px 15px;
+	margin: 0 auto 15px;
 }
 .form-card {
 	position: relative;
@@ -100,4 +103,13 @@ $gray-light: #969696;
 	height: 24px;
 	padding: 0;
 	outline: none;
+}
+.your-posts{
+	max-width: $main-cards-cont-wid;
+	padding: 15px 15px 0;
+	margin: 0 auto;
+	font-size: 20px;
+	font-weight: 700;
+	font-family: Montserrat;
+	color: $brandcolor;
 }

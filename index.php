@@ -1,4 +1,5 @@
 <?
+session_start();
 	require_once "header.php";
 ?>
 <?
@@ -22,7 +23,14 @@
 
 <? 
 	require_once "DB.php";
-	$posts = R::find('post');
+	
+	if($_SERVER['PHP_SELF'] == '/index.php'){
+		$posts = R::find('post', 'ORDER BY id DESC');
+	}
+	if($_SERVER['PHP_SELF'] == '/portfolios.php'){
+		$posts = R::find('portfolio', 'ORDER BY id DESC');
+	}
+	
 
 	foreach($posts as $post): 
 	

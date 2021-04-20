@@ -1,4 +1,4 @@
-$search-maw: 570px;
+$search-maw: 600px;
 
 $brandcolor: #6fda44;
 $gray-light: #969696;
@@ -22,7 +22,7 @@ $gray-light: #969696;
 
 	&__body {
 		max-width: $search-maw;
-		margin: 0px auto;
+		margin: 0px auto 15px;
 		padding: 15px;
 	}
 

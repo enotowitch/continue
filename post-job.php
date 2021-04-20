@@ -2,11 +2,17 @@
 session_start();
 require_once "header.php";
 ?>
+
 <?
 	require_once "search.php";
 ?>
 <div class="bg">
 	<div class="cards-wrapper">
+		<!-- ! log-as -->
+		<? 
+			require_once "log-as.php"
+		?>
+		<!-- ? log-as -->
 		<!-- ! CARD -->
 		<form class="card form-card not100">
 			<!-- ! user_id -->
@@ -82,12 +88,15 @@ require_once "header.php";
 
 <!-- ! TEST CARDs -->
 
+<div class="your-posts">
+<? if($_SERVER['PHP_SELF'] == '/post-job.php'){echo "YOUR POSTS:";}else{echo "YOUR PORTFOLIOS:";} ?>
+</div>
+
 <!-- ! switch -->
 <?
 	require_once "switch.php"
 ?>
 <!-- ? switch -->
-
 
 <!-- ! CARD -->
 <div class="card-flex">
@@ -96,10 +105,10 @@ require_once "header.php";
 	require_once "DB.php";
 	// ! SHOW ONLY MY POSTS
 	if($_SERVER['PHP_SELF'] == '/post-job.php'){
-		$posts = R::find('post', 'user_id = ?', [$_SESSION["user"]["id"]]);
+		$posts = R::find('post', 'user_id = ?', [$_SESSION["user"]["id"]], 'ORDER BY id DESC');
 	}
 	if($_SERVER['PHP_SELF'] == '/post-portfolio.php'){
-		$posts = R::find('portfolio', 'user_id = ?', [$_SESSION["user"]["id"]]);
+		$posts = R::find('portfolio', 'user_id = ?', [$_SESSION["user"]["id"]], 'ORDER BY id DESC');
 	}
 
 	foreach($posts as $post): 
