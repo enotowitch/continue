@@ -1,6 +1,6 @@
 <?
 session_start();
 unset($_SESSION['user']);
-header("location: login.php");
+header('Location: ' . $_SERVER['HTTP_REFERER']);
 
 ?>

@@ -69,7 +69,7 @@
 		</div>
 		<div class="info__cell info__simple info__pics">
 		<? for($i=1;$i<=10;$i++): ?>
-		<? if($post["example_$i"] != NULL || $portfolio["example_$i"] != NULL): ?>
+		<? if($post["example_$i"] != NULL): ?>
 			<img
 				src="<? echo $post["example_$i"]; ?>"
 				alt="1">

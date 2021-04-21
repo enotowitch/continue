@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="css/search.css">
 	<link rel="stylesheet" href="css/auth.css">
 	<link rel="stylesheet" href="chosen/chosen.css">
+	<script src="js/jquery.js"></script>
 </head>
 
 <body>

@@ -93,3 +93,18 @@
 .red {
   background-color: tomato !important;
 }
+
+.no-user {
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  font-family: Montserrat;
+  margin: 0 auto 15px;
+  font-weight: 700;
+}
+
+.no-user a {
+  color: #6fda44;
+  text-decoration: underline;
+  font-weight: 400;
+}

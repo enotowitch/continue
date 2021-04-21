@@ -13,6 +13,20 @@ require_once "header.php";
 			require_once "log-as.php"
 		?>
 		<!-- ? log-as -->
+		<!-- ! no user -->
+		<? if($_SESSION["user"] == NULL): ?>
+			<div class="no-user">
+			To <? if($_SERVER['PHP_SELF'] == '/post-job.php'){echo "post";}else{echo "add";} ?> <? if($_SERVER['PHP_SELF'] == '/post-job.php'){echo "jobs";}else{echo "portfolios";} ?>, please <a href="login.php"><nobr>SIGN IN</a> or <a href="reg.php">SIGN UP</nobr></a>
+			</div>
+			<script>
+				$(document).ready(function(){
+					$('.card').addClass('op05');
+					$('input, textarea, select, label').prop('disabled', true);
+				})
+			</script>
+			
+		<? endif; ?>
+		<!-- ? no user -->
 		<!-- ! CARD -->
 		<form class="card form-card not100">
 			<!-- ! user_id -->

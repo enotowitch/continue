@@ -24,7 +24,7 @@ $(document).ready(function () {
 				if(data.status == true){
 					$('input[type="submit"]').val(data.msg);
 					setTimeout(() => {
-						window.location.reload();
+						window.history.back();
 					}, 600);
 				}
 				

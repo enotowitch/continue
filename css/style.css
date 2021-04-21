@@ -61,6 +61,7 @@
           justify-content: space-between;
   padding: 15px;
   position: absolute;
+  z-index: 3;
   right: 0px;
   top: 45px;
   background-color: #fff;
@@ -472,8 +473,12 @@
   margin: 0px auto 15px;
 }
 
-.dn {
+.dn-imp {
   display: none !important;
+}
+
+.dn {
+  display: none;
 }
 
 .del-anim {
@@ -485,7 +490,7 @@
   border-radius: 4px;
 }
 
-.cur_user_anim {
+.new_user_post {
   background-color: #83df5e;
   position: relative;
   width: 100%;

@@ -20,7 +20,7 @@ $(document).ready(function () {
 
 	$('.switch').on('click', function () {
 		card.not('.not100').toggleClass('w100');
-		$('.info__pics').toggleClass('dn');
+		$('.info__pics').toggleClass('dn-imp');
 	})
 
 	// ! chosen
@@ -169,48 +169,43 @@ $(document).ready(function () {
 
 	})
 
-	// ! current user animations
+	// ! current user / new user animations
 
 	var current_user = $('.current_user').val();
-
+	var new_user_post = $('.user_id[value="' + current_user + '"]').closest('.card').not('.not100').eq(0);
 	var current_user_posts = $('.user_id[value="' + current_user + '"]').closest('.card').not('.not100');
 
-	function cur_user_anim() {
 
-		current_user_posts.addClass('dn').append('<div class="cur_user_anim"></div>');
+	new_user_post.append('<div class="new_user_post"></div>');
 
-		setTimeout(() => {
-			current_user_posts.removeClass('dn');
-			$('.cur_user_anim').animate({ 'left': '100%' }, 600);
+	setTimeout(() => {
 
-		}, 600);
+		$('.new_user_post').animate({ 'left': '100%' }, 600);
 
-		setTimeout(() => {
-			$('.cur_user_anim').detach();
-		}, 1200);
+	}, 600);
+
+	setTimeout(() => {
+		$('.new_user_post').detach();
+	}, 1200);
 
 
-	}
-
-	cur_user_anim();
+	// ! sort MY POSTS & ALL POSTS
 
 	$(document).on('click', '.sort-my', function () {
-		cur_user_anim();
 
-		$('.card').toggleClass('dn');
-		current_user_posts.toggleClass('db');
 
-		$('.sort-my').text('ALL POSTS').addClass('flip-posts').removeClass('sort-my');
+		$('.card').not(current_user_posts).addClass('dn');
+
+		$('.sort-my').text('ALL POSTS').addClass('sort-all').removeClass('sort-my');
 
 	});
 
-	$(document).on('click', '.flip-posts', function () {
-		cur_user_anim();
+	$(document).on('click', '.sort-all', function () {
 
-		$('.card').toggleClass('dn');
-		current_user_posts.toggleClass('db');
 
-		$('.flip-posts').text('MY POSTS').addClass('sort-my').removeClass('flip-posts');
+		$('.card').removeClass('dn');
+
+		$('.sort-all').text('MY POSTS').addClass('sort-my').removeClass('sort-all');
 
 	})
 
