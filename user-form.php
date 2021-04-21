@@ -14,7 +14,7 @@
 		<p>Password</p>
 		<input name="user_pass" type="password">
 	</label>
-	<input type="submit" value="SIGN <? if($_SERVER['PHP_SELF'] == '/reg.php'){echo "UP";}else{echo "IN";}?>">
+	<input type="submit" value="SIGN <? if_page('/reg.php', "UP", "IN"); ?>">
 </div>
-	<p><? if($_SERVER['PHP_SELF'] == '/reg.php'){echo "Already";}else{echo "Don't";}?> have account? - <a href="<? if($_SERVER['PHP_SELF'] == '/reg.php'){echo "login.php";}else{echo "reg.php";}?>">SIGN <? if($_SERVER['PHP_SELF'] == '/reg.php'){echo "IN";}else{echo "UP";}?></a></p>
+	<p><? if_page('/reg.php', "Already", "Don't"); ?> have account? - <a href="<? if_page('/reg.php', "login.php", "reg.php"); ?>">SIGN <? if_page('/reg.php', "IN", "UP"); ?></a></p>
 </form>

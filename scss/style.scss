@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 
-$main-cards-cont-wid: 930px;
-$brandcolor: #6fda44;
-$gray-light: #969696;
+@import "vars.scss";
 
 .header {
 	@media (max-width: 767px) {
@@ -96,7 +94,7 @@ $gray-light: #969696;
 	margin: 0px auto 15px;
 }
 // ! card
-.card{
+.card {
 	overflow: hidden;
 	position: relative;
 	font-family: Roboto;
@@ -375,6 +373,6 @@ $gray-light: #969696;
 	margin: 0 auto;
 	justify-content: flex-end;
 }
-.db{
+.db {
 	display: block;
 }

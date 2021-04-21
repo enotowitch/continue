@@ -1,6 +1,4 @@
-$gray-light: #969696;
-$main-cards-cont-wid: 930px;
-$brandcolor: #6fda44;
+@import "vars.scss";
 
 @media (max-width: 700px) {
 	.cross {

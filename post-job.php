@@ -16,7 +16,7 @@ require_once "header.php";
 		<!-- ! no user -->
 		<? if($_SESSION["user"] == NULL): ?>
 			<div class="no-user">
-			To <? if($_SERVER['PHP_SELF'] == '/post-job.php'){echo "post";}else{echo "add";} ?> <? if($_SERVER['PHP_SELF'] == '/post-job.php'){echo "jobs";}else{echo "portfolios";} ?>, please <a href="login.php"><nobr>SIGN IN</a> or <a href="reg.php">SIGN UP</nobr></a>
+			To <? if_page('/post-job.php', 'post jobs', 'add portfolios'); ?>, please <a href="login.php"><nobr>SIGN IN</a> or <a href="reg.php">SIGN UP</nobr></a>
 			</div>
 			<script>
 				$(document).ready(function(){
@@ -103,7 +103,7 @@ require_once "header.php";
 <!-- ! TEST CARDs -->
 
 <div class="your-posts">
-<? if($_SERVER['PHP_SELF'] == '/post-job.php'){echo "YOUR POSTS:";}else{echo "YOUR PORTFOLIOS:";} ?>
+<? if_page('/post-job.php', "YOUR POSTS:", "YOUR PORTFOLIOS:") ?>
 </div>
 
 <div class="sort-flex">

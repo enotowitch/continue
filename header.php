@@ -39,3 +39,7 @@
 		</div>
 		<!-- ? BURGER-->
 	</header>
+
+<?
+	require_once "functions.php";
+?>
