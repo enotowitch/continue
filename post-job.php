@@ -39,10 +39,14 @@ require_once "header.php";
 				<div class="add-logo__line"></div>
 				<input class="fake-logo" type="file" id="fake-logo">
 			</label>
-			<textarea class="card__title" name="title" placeholder="Type a job title you're looking for..." maxlength="40"
-				minlength="4"></textarea>
-			<textarea class="card__subt" name="subt" placeholder="Type your company name..." maxlength="50"
-				minlength="2"></textarea>
+
+			<div class="title-and-subt">
+				<textarea class="card__title" name="title" placeholder="Type in POSITION" maxlength="40"
+								minlength="4"></textarea>
+							<textarea class="card__subt" name="subt" placeholder="Type in YOUR COMPANY NAME" maxlength="50"
+								minlength="2"></textarea>
+			</div>
+			
 			<? 
 				require_once "info-select.php"
 			?>
@@ -61,35 +65,9 @@ require_once "header.php";
 		<!-- ! 2 CARD -->
 
 		<div class="card card2 not100">
-			<div class="card__content">
-				<img class="card__logo" src="img/applicantLogo.png" alt="card__logo">
-				<div class="card__title">2d Artist, Illustrator test</div>
-				<div class="card__subt">Company Name</div>
-				<div class="info">
-					<div class="info__flex">
-						<div class="info__block">
-							<div class="info__cell info__simple">20009999 USD</div>
-							<div class="info__cell info__simple">Temporary</div>
-						</div>
-						<div class="info__block">
-							<div class="info__cell info__simple">44 years</div>
-							<div class="info__cell info__simple">111 h/mo</div>
-						</div>
-						<div class="info__block">
-							<div class="info__cell info__simple">Afghanistan 2 Afghanistan</div>
-							<div class="info__cell info__simple">Examples</div>
-						</div>
-					</div>
-				</div>
-				<div class="inter-icons">
-					<img class="apply apply_ok" src="img/icons/info-ok.svg" alt="apply">
-				</div>
-				<div class="tags">
-					<div class="tag">jdfjkfjkhfghf</div>
-					<div class="tag">пропропропропро</div>
-					<div class="tag">итьит</div>
-				</div>
-			</div>
+<? 
+require_once "card-content.php";
+?>
 
 		</div>
 

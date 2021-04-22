@@ -131,12 +131,26 @@
   margin: 0px auto 15px;
 }
 
+.all-card-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 203px;
+}
+
 .card {
   overflow: hidden;
   position: relative;
-  font-family: Roboto;
-  width: 290px;
   height: 203px;
+  width: 290px;
+  font-family: Roboto;
   background-color: #ffffff;
   -webkit-box-shadow: 1px 4px 5px #8b8b8b, 1px -2px 5px #d3d3d3;
           box-shadow: 1px 4px 5px #8b8b8b, 1px -2px 5px #d3d3d3;
@@ -149,6 +163,7 @@
 
 .card__logo {
   position: absolute;
+  z-index: 2;
   top: 4px;
   left: 4px;
   width: 40px;
@@ -159,33 +174,34 @@
 }
 
 .card__title, .card__subt {
-  position: absolute;
-  left: 50px;
   resize: none;
+  word-wrap: break-word;
   overflow: hidden;
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
-  border: none;
-  margin-right: 40px;
+}
+
+.card .title-and-subt {
+  position: relative;
+  top: 4px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .card__title {
-  top: 4px;
   font-size: 18px;
-  max-height: 40px;
+  height: 35px;
 }
 
 .card__subt {
-  top: 44px;
   font-size: 12px;
   color: #969696;
-  max-height: 26px;
+  height: 25px;
 }
 
-.card .info {
-  position: absolute;
-  top: 85px;
-  width: 85%;
+.card textarea.card__subt {
+  white-space: nowrap;
+  width: 100%;
 }
 
 .card .info__flex {
@@ -196,19 +212,20 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding-right: 50px;
+  padding-left: 4px;
   position: relative;
-  left: 4px;
-  bottom: 10px;
+  top: 14px;
 }
 
 .card .info__cell {
   display: block;
-  width: 90px;
+  width: 94px;
 }
 
 .card .info__example {
   min-width: 0px;
-  height: 23px;
+  height: 25px;
   border: 1px solid #969696;
   border-radius: 4px;
   display: -webkit-box;
@@ -312,10 +329,6 @@
 }
 
 .tags-pics-flex {
-  position: absolute;
-  bottom: 4px;
-  right: 45px;
-  width: calc(100% - 45px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -325,6 +338,8 @@
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+  padding-right: 50px;
+  height: 80px;
 }
 
 .slick-list {
@@ -383,8 +398,12 @@
 
 .inter-icons {
   position: absolute;
-  right: 0px;
-  top: 4px;
+  right: 0;
+  top: 0;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  height: 100%;
+  width: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -398,8 +417,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 193px;
-  width: 40px;
 }
 
 .apply_ok {
@@ -417,8 +434,8 @@
 .tags_main {
   white-space: nowrap;
   position: relative;
-  top: 0;
-  left: 0px;
+  top: -2px;
+  left: -2px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -481,18 +498,26 @@
   display: none;
 }
 
-.del-anim {
+.del-anim,
+.post-anim {
   height: 100%;
   width: 0;
   background-color: tomato;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 3;
   border-radius: 4px;
 }
 
+.post-anim {
+  background-color: #6fda44;
+}
+
 .new_user_post {
   background-color: #83df5e;
-  position: relative;
+  position: absolute;
+  top: 0;
   width: 100%;
   height: 100%;
   left: -100%;

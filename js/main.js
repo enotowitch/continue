@@ -78,6 +78,7 @@ $(document).ready(function () {
 	// ! slick
 
 	$('.info__pics').slick({
+		lazyLoad: 'ondemand',
 		infinite: true,
 		slidesToShow: 5,
 		slidesToScroll: 5,

@@ -94,12 +94,19 @@
 	margin: 0px auto 15px;
 }
 // ! card
+.all-card-flex {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 203px;
+}
 .card {
 	overflow: hidden;
 	position: relative;
-	font-family: Roboto;
-	width: 290px;
 	height: 203px;
+	width: 290px;
+	font-family: Roboto;
+
 	background-color: #ffffff;
 	box-shadow: 1px 4px 5px #8b8b8b, 1px -2px 5px #d3d3d3;
 	border-radius: 4px;
@@ -108,6 +115,7 @@
 	}
 	&__logo {
 		position: absolute;
+		z-index: 2;
 		top: 4px;
 		left: 4px;
 		width: 40px;
@@ -117,44 +125,47 @@
 	}
 	&__title,
 	&__subt {
-		position: absolute;
-		left: 50px;
 		resize: none;
+		word-wrap: break-word;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		border: none;
-		margin-right: 40px;
+	}
+	.title-and-subt {
+		position: relative;
+		top: 4px;
+		padding-left: 50px;
+		padding-right: 50px;
 	}
 	&__title {
-		top: 4px;
 		font-size: 18px;
-		max-height: 40px;
+		height: 35px;
 	}
 	&__subt {
-		top: 44px;
 		font-size: 12px;
 		color: $gray-light;
-		max-height: 26px;
+		height: 25px;
+	}
+	textarea.card__subt {
+		white-space: nowrap;
+		width: 100%;
 	}
 	.info {
-		position: absolute;
-		top: 85px;
-		width: 85%;
 		&__flex {
 			min-width: 0px;
 			display: flex;
 			justify-content: space-between;
+			padding-right: 50px;
+			padding-left: 4px;
 			position: relative;
-			left: 4px;
-			bottom: 10px;
+			top: 14px;
 		}
 		&__cell {
 			display: block;
-			width: 90px;
+			width: 94px;
 		}
 		&__example {
 			min-width: 0px;
-			height: 23px;
+			height: 25px;
 			border: 1px solid $gray-light;
 			border-radius: 4px;
 			display: flex;
@@ -226,13 +237,11 @@
 	}
 }
 .tags-pics-flex {
-	position: absolute;
-	bottom: 4px;
-	right: 45px;
-	width: calc(100% - 45px);
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
+	padding-right: 50px;
+	height: 80px;
 }
 .slick-list {
 	overflow: hidden;
@@ -278,14 +287,16 @@
 }
 .inter-icons {
 	position: absolute;
-	right: 0px;
-	top: 4px;
+	right: 0;
+	top: 0;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	height: 100%;
+	width: 40px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	height: 193px;
-	width: 40px;
 }
 .apply {
 	&_ok {
@@ -304,8 +315,8 @@
 		}
 		white-space: nowrap;
 		position: relative;
-		top: 0;
-		left: 0px;
+		top: -2px;
+		left: -2px;
 		display: flex;
 		align-items: flex-end;
 		flex-wrap: wrap;
@@ -350,17 +361,24 @@
 .dn {
 	display: none;
 }
-.del-anim {
+.del-anim,
+.post-anim {
 	height: 100%;
 	width: 0;
 	background-color: tomato;
-	position: relative;
+	position: absolute;
+	top: 0;
+	left: 0;
 	z-index: 3;
 	border-radius: 4px;
 }
+.post-anim {
+	background-color: $brandcolor;
+}
 .new_user_post {
 	background-color: lighten($brandcolor, 6%);
-	position: relative;
+	position: absolute;
+	top: 0;
 	width: 100%;
 	height: 100%;
 	left: -100%;

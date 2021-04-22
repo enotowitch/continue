@@ -4,7 +4,7 @@
 $card_id = $_POST['card_id'];
 $card_from = $_POST['card_from'];
 
-if($card_from == '/index.php' || '/post-job.php'){
+if($card_from == '/index.php' || $card_from == '/post-job.php'){
 	$destination = "post";
 } else {
 	$destination = "portfolio";

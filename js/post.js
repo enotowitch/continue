@@ -34,12 +34,25 @@ form_card.on('submit', function (e) {
 		// 	return confirm("Are you sure?");
 		// },
 		success: function () {
-			if (card_from == '/post-job.php') {
-				window.location.href = 'index.php';
-			}
-			if (card_from == '/post-portfolio.php') {
-				window.location.href = 'portfolios.php';
-			}
+
+			$(e.target).append('<div class="post-anim"></div>');
+
+			$('.post-anim').animate({ 'width': '100%' }, 300);
+
+			setTimeout(() => {
+
+				if (card_from == '/post-job.php') {
+					window.location.href = 'index.php';
+				}
+				if (card_from == '/post-portfolio.php') {
+					window.location.href = 'portfolios.php';
+				}
+		
+			}, 300);
+		
+
+
+
 		}
 	});
 
