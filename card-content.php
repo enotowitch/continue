@@ -78,3 +78,7 @@
 		<img class="apply" src="img/icons/apply.svg" alt="apply">
 	</div>
 </div>
+
+<? if($_SERVER['PHP_SELF'] == '/index.php' || $_SERVER['PHP_SELF'] == '/portfolios.php'): ?>
+	<script> $('.apply').addClass('mes-form'); </script>
+<? endif; ?>

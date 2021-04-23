@@ -1,0 +1,12 @@
+.msg {
+  border: 2px solid black;
+  margin-bottom: 15px;
+}
+
+.msg__from {
+  color: #6fda44;
+}
+
+.msg__write {
+  border: 2px solid red;
+}

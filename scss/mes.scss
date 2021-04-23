@@ -1,0 +1,15 @@
+@import "vars.scss";
+
+.msg {
+	border: 2px solid rgb(0, 0, 0);
+	margin-bottom: 15px;
+	&__from {
+		color: $brandcolor;
+	}
+
+	&__body {
+	}
+	&__write{
+		border: 2px solid red;
+	}
+}
