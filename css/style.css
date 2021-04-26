@@ -181,13 +181,6 @@
      text-overflow: ellipsis;
 }
 
-.card .title-and-subt {
-  position: relative;
-  top: 4px;
-  padding-left: 50px;
-  padding-right: 50px;
-}
-
 .card__title {
   font-size: 18px;
   height: 35px;
@@ -285,6 +278,13 @@
   height: 80px !important;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.title-and-subt {
+  position: relative;
+  top: 4px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .pics100 {

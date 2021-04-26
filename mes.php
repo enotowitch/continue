@@ -16,11 +16,9 @@ require_once "DB.php";
 
 <? foreach($my_msg as $my_msg): ?>
 
-
-	<div class="msg">
-		<div class="msg__from"><? echo $my_msg->user_from_mail; ?></div>
-		<div class="msg__body"><? echo $my_msg->user_from_msg; ?></div>
-	</div>
+<!-- ! msg -->
+	<? require "msg.php"; ?>
+<!-- ? msg -->
 
 <? endforeach; ?>
 

@@ -18,11 +18,11 @@ $(document).on('click', '.mes-send', function(e){
 		url: 'mes-send.php',
 		data: $(e.target).closest('form').serialize(),
 		success: function(data){
-			
+			setTimeout(() => {
+				window.location.reload();
+			}, 100);
 		},
 	})
 
-	setTimeout(() => {
-		window.location.reload();
-	}, 1000);
+
 })

@@ -130,12 +130,6 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
-	.title-and-subt {
-		position: relative;
-		top: 4px;
-		padding-left: 50px;
-		padding-right: 50px;
-	}
 	&__title {
 		font-size: 18px;
 		height: 35px;
@@ -205,6 +199,12 @@
 			}
 		}
 	}
+}
+.title-and-subt {
+	position: relative;
+	top: 4px;
+	padding-left: 50px;
+	padding-right: 50px;
 }
 .pics100 {
 	@media (max-width: 499px) {
