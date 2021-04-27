@@ -118,3 +118,9 @@ form_card.on('submit', function (e) {
 // The OUTPUT is:
 // VARIABLE: new_variable_1
 // VALUE: value 1
+
+// ! PHP
+
+// $user_from_logo = R::getAll( 'SELECT logo FROM post WHERE user_id = :user_id',
+// [':user_id' => $_SESSION["user"]["id"]]
+// );

@@ -51,19 +51,28 @@ if($user_form_from == "/reg.php"){
 	// ! if mail is free => REG
 
 	if($check_mail["user_mail"] != $user_mail){
+
+		// create "no-logo" in case user will not add logos to posts/folios
+		$first_mail_char = $user_mail[0];
+		switch($first_mail_char){
+			case "$first_mail_char": $logo = 'img/no-logo/'."$first_mail_char".'.png';break;
+		}	
+
 		$user = R::dispense('user');
 
 		$user->user_mail = $user_mail; 
 		$user->user_pass = md5($user_pass); 
+		$user->user_logo = $logo; 
 	
 		$user_id = R::store($user);
 
 		$new_user = R::load('user', $user_id);
 
-
+		// add user to session to skip login
 		$_SESSION["user"] = [
 			"id" => $new_user["id"],
-			"mail" => $new_user["user_mail"]
+			"mail" => $new_user["user_mail"],
+			"logo" => $logo
 		];
 
 		$data = [

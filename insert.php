@@ -1,8 +1,8 @@
 <?
-
+session_start();
 require_once "DB.php";
 
-	// ! UPLOAD PICS
+	// ! upload pics
 	
 	$logo_path = "uploads/" . rand() .  $_FILES['logo']['name'];
 	move_uploaded_file($_FILES['logo']['tmp_name'], $logo_path);
@@ -15,7 +15,7 @@ require_once "DB.php";
 		move_uploaded_file($_FILES["example_$i"]['tmp_name'], $examples_path[($i-1)]);
 	}
 
-	// ? UPLOAD PICS
+	// ! vars
 
 	
 	$card_from = $_POST['card_from'];
@@ -36,7 +36,7 @@ require_once "DB.php";
 	$tag_3 = $_POST['tags'][2];
 
 
-	// ! DB
+	// ! DB post/folio
 
 	if($card_from == '/post-job.php'){
 		$destination = "post";
@@ -63,8 +63,15 @@ require_once "DB.php";
 		$destination->tag_2 = $tag_2;
 		$destination->tag_3 = $tag_3;
 
-		$destination->logo = $logo_path;
-
+		
+		if(isset($_FILES['logo'])){
+			
+			$destination->logo = $logo_path;
+			
+		} else {
+// if no logo added -> logo = $_SESSION['user']['logo'] = first user_mail char
+			$destination->logo = $_SESSION['user']['logo'];
+		}
 
 		for($i=1;$i<=10;$i++){
 			if(isset($_FILES["example_$i"])){
