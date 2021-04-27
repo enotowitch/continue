@@ -3,7 +3,7 @@
 	require_once "header.php";
 	require_once "DB.php";
 
-
+	// todo
 	$my_msg = R::find('message', 'user_to_id = ?', [$_SESSION['user']['id']], 'ORDER BY id DESC');
 	
 ?>
@@ -15,6 +15,7 @@
 <? 
 	foreach($my_msg as $my_msg): 
 		// ! 0 msgs
+		// todo
 	$yet_shown_msg[] = ""; 
 	
 ?>
@@ -26,7 +27,7 @@
 <a href="mes.php?from=<? echo $my_msg->user_from_id; ?>">
 
 <!-- ! msg -->
-<? require "msg.php"; ?>
+<? include "msg.php"; ?>
 <!-- ? msg -->
 
 </a>
