@@ -52,7 +52,8 @@
 	font-style: normal;
 }
 .log-as {
-	width: 100%;
+	max-width: $main-cards-cont-wid;
+	padding: 0px 12px;
 	font-style: italic;
 	font-family: Montserrat;
 	display: flex;
@@ -73,6 +74,9 @@
 }
 .red {
 	background-color: tomato !important;
+}
+.red-b {
+	border: 2px solid tomato !important;
 }
 .no-user {
 	width: 100%;

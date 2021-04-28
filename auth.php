@@ -18,27 +18,32 @@ $check_mail = R::findOne('user', 'user_mail = ?', [$user_mail]);
 // ? check if mail already in use when REGISTER
 if($user_form_from == "/reg.php" && $check_mail["user_mail"] == $user_mail && $user_mail != ""){
 	$data['msg'] = ["Email already exists!"];
+	$data['field'] = ["user_mail"];
 	echo json_encode($data);
 	die();
 }
 
 if($user_mail == ""){
 	$data['msg'] = ["Please enter email!"];
+	$data['field'] = ["user_mail"];
 	echo json_encode($data);
 	die();
 }
 if(!filter_var($user_mail, FILTER_VALIDATE_EMAIL)){
 	$data['msg'] = ["Please enter valid email!"];
+	$data['field'] = ["user_mail"];
 	echo json_encode($data);
 	die();
 }
 if($user_pass == ""){
 	$data['msg'] = ["Please enter password!"];
+	$data['field'] = ["user_pass"];
 	echo json_encode($data);
 	die();
 }
 if($user_form_from == "/reg.php" && strlen($user_pass) < 6){
 	$data['msg'] = ["Password: 5+ chars!"];
+	$data['field'] = ["user_pass"];
 	echo json_encode($data);
 	die();
 }
@@ -93,10 +98,12 @@ if($user_form_from == "/login.php"){
 
 	if($check_user["user_mail"] == $user_mail && $check_user["user_pass"] != md5($user_pass)){
 		$data['msg'] = ["Wrong password!"];
+		$data['field'] = ["user_pass"];
 	}
 
 	if($check_user["user_mail"] != $user_mail){
 		$data['msg'] = ["No such user!"];
+		$data['field'] = ["user_mail"];
 	}
 
 

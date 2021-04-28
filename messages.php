@@ -8,9 +8,15 @@
 	
 ?>
 
-<? 
-	require_once "log-as.php"; 
-?>
+<!-- ! no user -->
+<? include "no-user.php"; ?>
+<!-- ? no user -->
+
+
+
+<!-- ! your -->
+<? include "your.php"; ?>
+<!-- ? your -->
 
 <div class="mes-wrap">
 	<div class="mes-inner">

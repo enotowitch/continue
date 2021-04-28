@@ -24,9 +24,9 @@
 }
 
 .mes-wrap {
-  border: 2px solid #222222;
-  max-width: 700px;
-  margin: 0 auto;
+  max-width: 930px;
+  padding: 0px 15px;
+  margin: 15px auto 0;
 }
 
 .mes-inner {

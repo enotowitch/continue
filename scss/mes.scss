@@ -25,9 +25,9 @@
 	}
 }
 .mes-wrap {
-	border: 2px solid $gray-dark;
-	max-width: 700px;
-	margin: 0 auto;
+	max-width: $main-cards-cont-wid;
+	padding: 0px 15px;
+	margin: 15px auto 0;
 }
 .mes-inner {
 	min-height: 75vh;

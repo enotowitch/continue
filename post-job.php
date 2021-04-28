@@ -8,24 +8,9 @@ require_once "header.php";
 ?>
 <div class="bg">
 	<div class="cards-wrapper">
-		<!-- ! log-as -->
-		<? 
-			require_once "log-as.php"
-		?>
-		<!-- ? log-as -->
+
 		<!-- ! no user -->
-		<? if($_SESSION["user"] == NULL): ?>
-			<div class="no-user">
-			To <? if_page('/post-job.php', 'post jobs', 'add portfolios'); ?>, please <a href="login.php"><nobr>SIGN IN</a> or <a href="reg.php">SIGN UP</nobr></a>
-			</div>
-			<script>
-				$(document).ready(function(){
-					$('.card').addClass('op05');
-					$('input, textarea, select, label').prop('disabled', true);
-				})
-			</script>
-			
-		<? endif; ?>
+		<? include "no-user.php"; ?>
 		<!-- ? no user -->
 		<!-- ! CARD -->
 		<form class="card form-card not100">
@@ -80,9 +65,9 @@ require_once "card-content.php";
 
 <!-- ! TEST CARDs -->
 
-<div class="your-posts">
-<? if_page('/post-job.php', "YOUR POSTS:", "YOUR PORTFOLIOS:") ?>
-</div>
+<!-- ! your -->
+<? include "your.php"; ?>
+<!-- ? your -->
 
 <div class="sort-flex">
 <!-- ! switch -->

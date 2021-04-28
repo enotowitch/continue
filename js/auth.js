@@ -13,7 +13,11 @@ $(document).ready(function () {
 			success: function (data) {
 				if (data.status == false) {
 					$('input[type="submit"]').addClass('red').val(data.msg);
+					data.field.forEach(field => {
+						$(`input[name="${field}"]`).addClass('red-b');
+					});
 					setTimeout(() => {
+						$('input[name*="user"]').removeClass('red-b');
 						if (user_form_from == '/reg.php') {
 							$('input[type="submit"]').removeClass('red').val("SIGN UP");
 						} else {
