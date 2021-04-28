@@ -17,18 +17,24 @@ $user_to_id = $_GET['from'];
 
 ?>
 
-<? foreach($my_msg as $my_msg): ?>
+<div class="mes-wrap">
+	<div class="mes-inner">
 
-<!-- ! msg -->
-	<? require "msg.php"; ?>
-<!-- ? msg -->
+	<? foreach($my_msg as $my_msg): ?>
+	
+	<!-- ! msg -->
+		<? require "msg.php"; ?>
+	<!-- ? msg -->
+	
+	<? endforeach; ?>
+	</div>
 
-<? endforeach; ?>
+	<? include "mes-form-form.php"; ?>
+
+</div>
 
 
 
-
-<? include "mes-form-form.php"; ?>
 
 <?
  require_once "footer.php";

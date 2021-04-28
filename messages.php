@@ -12,36 +12,39 @@
 	require_once "log-as.php"; 
 ?>
 
-<? 
-	foreach($my_msg as $my_msg): 
-		// ! 0 msgs
-		// todo
-	$yet_shown_msg[] = ""; 
+<div class="mes-wrap">
+	<div class="mes-inner">
+
+	<? 
+		foreach($my_msg as $my_msg): 
+			// ! 0 msgs
+			// todo
+		$yet_shown_msg[] = ""; 
+		
+	?>
 	
-?>
-
-	<? if(in_array($my_msg['user_from_id'], $yet_shown_msg)){
-		continue;
-	} ?>
-
-<a href="mes.php?from=<? echo $my_msg->user_from_id; ?>">
-
-<!-- ! msg -->
-<? include "msg.php"; ?>
-<!-- ? msg -->
-
-</a>
-
-
-
-
-<!-- // ! 1,2,3 and more msgs... -->
-<? $yet_shown_msg[] = $my_msg['user_from_id']; ?>
-
-
-<? endforeach; ?>
-
-
+		<? if(in_array($my_msg['user_from_id'], $yet_shown_msg)){
+			continue;
+		} ?>
+	
+	<a href="mes.php?from=<? echo $my_msg->user_from_id; ?>">
+	
+	<!-- ! msg -->
+	<? include "msg.php"; ?>
+	<!-- ? msg -->
+	
+	</a>
+	
+	
+	
+	
+	<!-- // ! 1,2,3 and more msgs... -->
+	<? $yet_shown_msg[] = $my_msg['user_from_id']; ?>
+	
+	
+	<? endforeach; ?>
+	</div>
+</div>
 
 <?
  require_once "footer.php";

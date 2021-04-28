@@ -80,5 +80,5 @@
 </div>
 
 <? if($_SERVER['PHP_SELF'] == '/index.php' || $_SERVER['PHP_SELF'] == '/portfolios.php'): ?>
-	<script> $('.apply').addClass('mes-form'); </script>
+	<script> $('.apply').addClass('get-mes-form'); </script>
 <? endif; ?>

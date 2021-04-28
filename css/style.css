@@ -539,3 +539,7 @@
 .db {
   display: block;
 }
+
+.brand {
+  color: #6fda44;
+}
