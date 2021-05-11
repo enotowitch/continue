@@ -48,6 +48,11 @@ if($user_form_from == "/reg.php" && strlen($user_pass) < 6){
 	die();
 }
 
+// create "no-logo" in case user will not add logos to posts/folios
+$first_mail_char = $user_mail[0];
+switch($first_mail_char){
+	case "$first_mail_char": $logo = 'img/no-logo/'."$first_mail_char".'.png';break;
+}
 
 // ! REG
 
@@ -57,11 +62,7 @@ if($user_form_from == "/reg.php"){
 
 	if($check_mail["user_mail"] != $user_mail){
 
-		// create "no-logo" in case user will not add logos to posts/folios
-		$first_mail_char = $user_mail[0];
-		switch($first_mail_char){
-			case "$first_mail_char": $logo = 'img/no-logo/'."$first_mail_char".'.png';break;
-		}	
+	
 
 		$user = R::dispense('user');
 
@@ -110,7 +111,8 @@ if($user_form_from == "/login.php"){
 	if($check_user["user_pass"] == md5($user_pass)){
 		$_SESSION["user"] = [
 			"id" => $check_user["id"],
-			"mail" => $check_user["user_mail"]
+			"mail" => $check_user["user_mail"],
+			"logo" => $logo
 		];
 
 		$data = [

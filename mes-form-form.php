@@ -5,7 +5,7 @@
 <input name="user_from_mail" type="hidden" value="<? echo strtok($_SESSION['user']['mail'], '@'); ?>">
 
 
-<textarea class="msg__write" name="user_from_msg" placeholder="Type your message here..."></textarea>
+<textarea class="msg__write" name="user_from_msg" placeholder="Type your message here..." autofocus></textarea>
 
 <div class="inter-icons">
 	<img class="apply mes-send mta" src="img/icons/apply.svg" alt="mes-send">
