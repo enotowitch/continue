@@ -550,3 +550,12 @@
   margin: 15px 0 0 15px;
   height: auto;
 }
+
+.flex-sb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}

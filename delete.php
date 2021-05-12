@@ -28,6 +28,10 @@ if($card_from == '/index.php' || $card_from == '/post-job.php'){
 
 	$delete = R::hunt($destination, 'id = ?', [$card_id]);
 
+	// ! delete card_id from LIKE
+
+	R::hunt('like', 'card_id = ?', [$_POST['card_id']]);
+
 
 
 ?>

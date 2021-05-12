@@ -1,11 +1,7 @@
 <?
-
-header("location: login.php");
-
- require_once "header.php";
+header("location: jobs-like.php");
+ include "profile-header.php";
 ?>
-
-<h1>PROFILE</h1>
 
 
 <?
