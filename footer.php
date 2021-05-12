@@ -9,6 +9,7 @@
 	<script src="js/auth.js"></script>
 	<script src="js/mes.js"></script>
 	<script src="js/like.js"></script>
+	<script src="js/delete.js"></script>
 
 
 </body>
