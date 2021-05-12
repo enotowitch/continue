@@ -68,7 +68,7 @@ if($user_form_from == "/reg.php"){
 
 		$user->user_mail = $user_mail; 
 		$user->user_pass = md5($user_pass); 
-		$user->user_logo = $logo; 
+		$user->user_logo = $logo;
 	
 		$user_id = R::store($user);
 

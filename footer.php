@@ -8,6 +8,7 @@
 	<script src="js/post.js"></script>
 	<script src="js/auth.js"></script>
 	<script src="js/mes.js"></script>
+	<script src="js/like.js"></script>
 
 
 </body>
