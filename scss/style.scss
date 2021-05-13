@@ -404,7 +404,35 @@
 	margin: 15px 0 0 15px;
 	height: auto;
 }
-.flex-sb{
+.flex-sb {
 	display: flex;
 	justify-content: space-between;
+}
+.mb2x {
+	margin-bottom: 30px !important;
+}
+.no-hist {
+	padding-top: 45px;
+	text-align: center;
+	font-size: 18px;
+	font-family: Roboto;
+	a{
+		color: $brandcolor;
+	}
+}
+// ! profile
+.bor-like,
+.bor-del,
+.bor-mes {
+	position: relative;
+	top: 2px;
+}
+.bor-like {
+	border-bottom: 2px solid $like;
+}
+.bor-del {
+	border-bottom: 2px solid $del;
+}
+.bor-mes {
+	border-bottom: 2px solid $brandcolor;
 }

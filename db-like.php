@@ -1,5 +1,4 @@
 <?
- include "profile-header.php";
  session_start();
  require_once "DB.php";
 

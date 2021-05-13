@@ -14,7 +14,7 @@ if($_SESSION["user"]["id"] == NULL){
 	?>
 	<!-- ? log-as -->
 
-<div class="your">YOUR PROFILE</div>
+<div class="your mb2x">YOUR PROFILE</div>
 <?
 	require_once "change-page.php";
 ?>

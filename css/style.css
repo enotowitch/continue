@@ -559,3 +559,37 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+
+.mb2x {
+  margin-bottom: 30px !important;
+}
+
+.no-hist {
+  padding-top: 45px;
+  text-align: center;
+  font-size: 18px;
+  font-family: Roboto;
+}
+
+.no-hist a {
+  color: #6fda44;
+}
+
+.bor-like,
+.bor-del,
+.bor-mes {
+  position: relative;
+  top: 2px;
+}
+
+.bor-like {
+  border-bottom: 2px solid #FFBF1C;
+}
+
+.bor-del {
+  border-bottom: 2px solid #FF4242;
+}
+
+.bor-mes {
+  border-bottom: 2px solid #6fda44;
+}
