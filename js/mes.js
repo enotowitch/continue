@@ -4,6 +4,22 @@ $('.get-mes-form').on('click', function (e) {
 	$('.card-mes').detach();
 
 	var user_to_id = $(e.target).closest('.card').find('.user_id').val();
+	var current_user = $(e.target).closest('.card').find('.current_user').val();
+
+	// cannt message
+	if(current_user == ""){
+		$('.please-log').detach();
+		$(e.target).closest('.card').before('<div class="please-log">Please <a class="brand" href="login.php">SIGN IN</a> or <a class="brand" href="reg.php">SIGN UP</a> to message<img src="img/icons/cross.svg"></div>');
+		return;
+	}
+
+// cannt message to your self
+	if(user_to_id == current_user){
+		$('.please-log').detach();
+		$(e.target).closest('.card').before('<div class="please-log">You can not message your self<img src="img/icons/cross.svg"></div>');
+		return;
+	}
+
 
 	// ! load form to card
 	$.post({

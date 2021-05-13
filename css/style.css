@@ -545,10 +545,26 @@
 }
 
 .please-log {
+  position: fixed;
+  z-index: 3;
+  top: 54px;
+  right: 15px;
+  padding: 4px 40px 4px 4px;
+  width: 290px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 1px 4px 5px #8b8b8b, 1px -2px 5px #d3d3d3;
+          box-shadow: 1px 4px 5px #8b8b8b, 1px -2px 5px #d3d3d3;
   font-size: 20px;
-  position: relative;
-  margin: 15px 0 0 15px;
-  height: auto;
+  line-height: 22px;
+}
+
+.please-log img {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  -webkit-transform: scale(0.7);
+      -ms-transform: scale(0.7);
+          transform: scale(0.7);
 }
 
 .flex-sb {
