@@ -7,8 +7,7 @@ $(document).ready(function () {
 		var current_user = $('.current_user').val();
 
 		if (current_user == "") {
-			$('.please-log').detach();
-			$(e.target).closest('.card').before('<div class="please-log">Please <a class="brand" href="login.php">SIGN IN</a> or <a class="brand" href="reg.php">SIGN UP</a> to hide</div>');
+			alert('no current_user');
 			return;
 		} else {
 
@@ -23,6 +22,7 @@ $(document).ready(function () {
 				// 	return confirm("Are you sure?");
 				// },
 				success: function () {
+
 					$(e.target).closest('.card').append('<div class="del-anim"></div>');
 					$('.del-anim').animate({ 'width': '100%' });
 					setTimeout(() => {

@@ -10,6 +10,7 @@
 	<script src="js/mes.js"></script>
 	<script src="js/like.js"></script>
 	<script src="js/delete.js"></script>
+	<script src="js/hide.js"></script>
 
 
 </body>

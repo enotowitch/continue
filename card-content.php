@@ -73,7 +73,7 @@
 	</div>
 	
 	<div class="inter-icons">
-		<img class="del" src="img/icons/delete.svg" alt="del">
+		<img class="hide" src="img/icons/delete.svg" alt="del">
 		<img class="like" src="img/icons/like.svg" alt="like">
 		<img class="apply" src="img/icons/apply.svg" alt="apply">
 	</div>

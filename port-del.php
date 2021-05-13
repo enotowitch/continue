@@ -3,6 +3,10 @@ include "profile-header.php";
 ?>
 
 <? 
+include "db-hide.php";
+?>
+
+<? 
 include "footer.php"; 
 ?>
 
