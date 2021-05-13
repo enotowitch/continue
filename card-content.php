@@ -79,6 +79,6 @@
 	</div>
 </div>
 
-<? if($_SERVER['PHP_SELF'] == '/index.php' || $_SERVER['PHP_SELF'] == '/portfolios.php'): ?>
+<? if($_SERVER['PHP_SELF'] != '/post-job.php' || $_SERVER['PHP_SELF'] != '/post-portfolio.php'): ?>
 	<script> $('.apply').addClass('get-mes-form'); </script>
 <? endif; ?>

@@ -13,3 +13,7 @@
 
 </form>
 
+<script>
+var card_id = $('.clicked').closest('.card__content').find('.card_id').val();
+$('.mes-form').append('<input name="card_id" type="hidden" value="'+card_id+'">');
+</script>

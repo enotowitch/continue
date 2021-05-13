@@ -7,14 +7,14 @@ $(document).ready(function () {
 		var card_from = $('.card_from').val();
 
 		// ! links for anchors: added to liked & removed from liked
-		if(card_from == '/index.php' || card_from == '/jobs-like.php'){
+		if(card_from == '/index.php' || card_from == '/jobs-like.php' || card_from == '/jobs-del.php' || card_from == '/jobs-mes.php'){
 			var like_link = '/jobs-like.php';
 		}
-		if(card_from == '/portfolios.php' || card_from == '/port-like.php'){
+		if(card_from == '/portfolios.php' || card_from == '/port-like.php' || card_from == '/port-del.php' || card_from == '/port-mes.php'){
 			var like_link = '/port-like.php';
 		}
 
-
+// ! log to like
 		if(current_user == ""){
 			$('.please-log').detach();
 			$(e.target).closest('.card').before('<div class="please-log">Please <a class="brand" href="login.php">SIGN IN</a> or <a class="brand" href="reg.php">SIGN UP</a> to like<img src="img/icons/cross.svg"></div>');
