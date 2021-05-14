@@ -346,7 +346,9 @@
 .switch {
 	max-width: $main-cards-cont-wid;
 	text-align: right;
-	padding: 0 15px;
+	@media (max-width: 610px) {
+		display: none;
+	}
 }
 // ! change-page
 .change-page {
@@ -386,15 +388,22 @@
 }
 .sort-flex {
 	display: flex;
-	width: $main-cards-cont-wid;
+	max-width: $main-cards-cont-wid;
 	margin: 0 auto;
-	justify-content: flex-end;
+	padding: 0 15px;
+	justify-content: space-between;
 }
 .db {
 	display: block;
 }
 .brand {
 	color: $brandcolor;
+}
+.brand-like {
+	color: $like;
+}
+.brand-del {
+	color: $del;
 }
 // ! please-log
 .please-log {

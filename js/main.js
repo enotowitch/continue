@@ -170,7 +170,7 @@ $(document).ready(function () {
 
 		$('.card').not(current_user_posts).addClass('dn');
 
-		$('.sort-my').text('ALL POSTS').addClass('sort-all').removeClass('sort-my');
+		$('.sort-my').text('MY POSTS').addClass('sort-all').removeClass('sort-my');
 
 	});
 
@@ -179,7 +179,7 @@ $(document).ready(function () {
 
 		$('.card').removeClass('dn');
 
-		$('.sort-all').text('MY POSTS').addClass('sort-my').removeClass('sort-all');
+		$('.sort-all').text('ALL POSTS').addClass('sort-my').removeClass('sort-all');
 
 	})
 

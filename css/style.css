@@ -481,7 +481,12 @@
 .switch {
   max-width: 930px;
   text-align: right;
-  padding: 0 15px;
+}
+
+@media (max-width: 610px) {
+  .switch {
+    display: none;
+  }
 }
 
 .change-page {
@@ -529,11 +534,12 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 930px;
+  max-width: 930px;
   margin: 0 auto;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  padding: 0 15px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .db {
@@ -542,6 +548,14 @@
 
 .brand {
   color: #6fda44;
+}
+
+.brand-like {
+  color: #FFBF1C;
+}
+
+.brand-del {
+  color: #FF4242;
 }
 
 .please-log {
