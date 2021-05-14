@@ -50,9 +50,77 @@ require_once "header.php";
 		<!-- ! 2 CARD -->
 
 		<div class="card card2 not100">
-<? 
-require_once "card-content.php";
-?>
+
+			<!-- ! example -->
+		<div class="card__content usn">
+	
+	<img class="card__logo" src="img/bitten-donut.jpg" alt="card__logo">
+	<div class="all-card-flex">
+		<div class="title-and-subt">
+			<div class="card__title">
+				Artist, Developer, Generalist
+			</div>
+			<div class="card__subt">
+				Microsoft, Apple, Google
+			</div>
+		</div>
+	
+		<div class="info">
+			<div class="info__flex">
+				<div class="info__block">
+					<div class="info__cell info__simple">
+					3000 USD
+					</div>
+					<div class="info__cell info__simple">
+					Permanent
+					</div>
+				</div>
+				<div class="info__block">
+					<div class="info__cell info__simple">
+					10 years
+					</div>
+					<div class="info__cell info__simple">
+					150 h/mo
+					</div>
+				</div>
+				<div class="info__block">
+					<div class="info__cell info__simple">
+					United States
+					</div>
+					<div class="info__cell info__simple">
+					Examples
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tags-pics-flex">
+			<div class="tags tags_main">
+				<div class="tag tag_main">
+				art
+				</div>
+				<div class="tag tag_main">
+				UX / UI
+				</div>
+				<div class="tag tag_main">
+				back-end
+				</div>
+			</div>
+			<div class="info__cell info__simple info__pics">
+				<? for($i=1;$i<=10;$i++): ?>
+				<? if($post["example_$i"] != NULL): ?>
+				<img data-lazy="<? echo $post["example_$i"]; ?>" src="img/white.png">
+				<? endif; ?>
+				<? endfor; ?>
+			</div>
+		</div>
+	</div>
+	
+	<div class="inter-icons">
+		<img src="img/icons/delete.svg" alt="del">
+		<img src="img/icons/like.svg" alt="like">
+		<img src="img/icons/apply.svg" alt="apply">
+	</div>
+</div>
 
 		</div>
 

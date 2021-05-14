@@ -4,7 +4,7 @@
 
 
 
-<div class="msg">
+<div class="msg <? if_page('/mes.php', 'msg-single'); ?>">
 	<img class="card__logo" src="<? echo $my_msg->user_from_logo; ?>" alt="card__logo">
 	<div class="title-and-subt">
 		<div class="card__title msg__from">

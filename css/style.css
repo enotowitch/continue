@@ -623,3 +623,15 @@
 .bor-mes {
   border-bottom: 2px solid #6fda44;
 }
+
+.msg-single {
+  border: none !important;
+  padding: 10px 0;
+}
+
+.usn {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}

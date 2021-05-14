@@ -22,7 +22,7 @@ $(document).ready(function () {
 		// ! cannt message to yourself
 		if (user_to_id == current_user) {
 			$('.please-log').detach();
-			$(e.target).closest('.card').before('<div class="please-log">You can not message yourself<img src="img/icons/cross.svg"></div>');
+			$(e.target).closest('.card').before('<div class="please-log brand-del">You can not message yourself<img src="img/icons/cross.svg"></div>');
 			return;
 		}
 
@@ -47,6 +47,22 @@ $(document).ready(function () {
 	$(document).on('click', '.mes-send', function (e) {
 
 		var card_from = $('.card_from').val();
+
+
+		if (card_from != undefined) {
+			// if mes_text (everywhere but mes.php) is < 3
+			var mes_text = $('.msg__write_main').val();
+			if (mes_text.length <= 3) {
+
+				$('.please-log').detach();
+
+				$('body').before('<div class="please-log brand-del">Message should be > 3 chars<img src="img/icons/cross.svg"></div>');
+
+				return;
+			};
+		}
+
+
 
 		// ! links for anchors: mes_link
 		if (card_from == '/index.php' || card_from == '/jobs-like.php' || card_from == '/jobs-del.php' || card_from == '/jobs-mes.php') {
