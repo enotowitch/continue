@@ -12,6 +12,7 @@
 	<script src="js/like.js"></script>
 	<script src="js/delete.js"></script>
 	<script src="js/hide.js"></script>
+	<script src="js/my-slick.js"></script>
 
 
 </body>

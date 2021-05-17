@@ -206,14 +206,16 @@
 	padding-right: 50px;
 }
 .pics100 {
-	@media (max-width: 499px) {
-		display: none !important;
-	}
+	// @media (max-width: 499px) {
+	// 	display: none !important;
+	// }
 	width: 100% !important;
 	height: 203px !important;
 	position: relative;
+	z-index: 3;
 	border-radius: 4px 0 0 4px;
 	top: 4px !important;
+	background-color: #fff;
 	img {
 		width: 100% !important;
 		height: 203px !important;
@@ -226,20 +228,21 @@
 }
 .close-pics {
 	position: absolute;
+	z-index: 3;
 	top: 4px;
-	right: 2px;
+	right: 52px;
 	width: 40px;
 	height: 40px;
 	text-align: right;
 	img {
-		transform: scale(0.7);
+		transform: scale(0.8);
 	}
 }
 .tags-pics-flex {
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
-	padding-right: 50px;
+	padding-right: 40px;
 	height: 80px;
 }
 .slick-list {
@@ -260,13 +263,13 @@
 	top: 25%;
 }
 .slick-prev {
-	left: 0px;
+	left: 4px;
 	background: url("../img/icons/arrow_l.svg") 0 0 / cover no-repeat;
 	height: 40px;
 	width: 20px;
 }
 .slick-next {
-	right: 0px;
+	right: 4px;
 	background: url("../img/icons/arrow_r.svg") 0 0 / cover no-repeat;
 	height: 40px;
 	width: 20px;
