@@ -20,10 +20,20 @@ form_card.on('submit', function (e) {
 	}
 
 	var other_data = $('form').serializeArray();
-	$.each(other_data, function (key, input) {
+
+	// ! form_card -> title + subt TEXT FORMAT
+	for(var i = 2; i <= 3; i++){
+		other_data[i].value = other_data[i].value.toLowerCase().replace(/\s+/g, ' ').trim();
+		other_data[i].value = other_data[i].value[0].toUpperCase()+other_data[i].value.slice(1);
+	}
+
+
+	
+	$.each(other_data, function (key, input) {		
 		fd.append(input.name, input.value);
 	});
 
+	
 
 	$.post({
 		url: 'insert.php',
