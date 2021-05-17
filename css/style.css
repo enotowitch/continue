@@ -561,7 +561,7 @@
 .please-log {
   position: fixed;
   z-index: 4;
-  top: 54px;
+  top: 50px;
   right: 15px;
   padding: 4px 40px 4px 4px;
   width: 290px;
@@ -634,4 +634,9 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+.red-b-chosen {
+  border: 2px solid tomato !important;
+  border-radius: 5px !important;
 }

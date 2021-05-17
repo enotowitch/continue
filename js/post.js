@@ -6,6 +6,62 @@ form_card.on('submit', function (e) {
 
 	e.preventDefault();
 
+
+	var title_val = form_card.find('textarea[name="title"]').val().replace(/\s+/g, '').trim();
+	var subt_val = form_card.find('textarea[name="subt"]').val().replace(/\s+/g, '').trim();
+
+	var title = form_card.find('textarea[name="title"]');
+	var subt = form_card.find('textarea[name="subt"]');
+
+	// ! validation
+	$('.please-log').detach();
+
+	// Title
+	if (title_val.length <= 3) {
+		my_alert("brand-del", "Title should have more than 3 chars!");
+		title.addClass('red-b');
+		throw new Error("error from title");
+	} else {
+		title.removeClass('red-b');
+	}
+	// Subtitle
+	if (subt_val.length <= 3) {
+		my_alert("brand-del", "Subtitle should have more than 3 chars!");
+		subt.addClass('red-b');
+		throw new Error("error from subt");
+	} else {
+		subt.removeClass('red-b');
+	}
+
+	// selects
+	// next() = .chosen-container -> select is hidden by chosen-JQ
+	form_card.find('select').each(function () {
+		if ($(this).val() == null) {
+
+			var name = this.name;
+
+			$(this).next().addClass('red-b-chosen');
+			my_alert("brand-del", `Please select ${name}!`);
+
+			throw new Error("error from each select");
+
+		} else {
+			$(this).next().removeClass('red-b-chosen');
+		}
+	});
+
+	// tags
+	var tags_count = form_card.find('.tags__select :selected');
+
+	if (tags_count.length < 3) {
+		my_alert("brand-del", "Please choose 3 tags!");
+		form_card.find('.chosen-choices').addClass('red-b-chosen');
+		throw new Error("error from tags");
+	} else {
+		form_card.find('.chosen-choices').removeClass('red-b-chosen');
+	}
+
+
 	// for success
 	var card_from = $('.card_from').val();
 
@@ -22,18 +78,18 @@ form_card.on('submit', function (e) {
 	var other_data = $('form').serializeArray();
 
 	// ! form_card -> title + subt TEXT FORMAT
-	for(var i = 2; i <= 3; i++){
+	for (var i = 2; i <= 3; i++) {
 		other_data[i].value = other_data[i].value.toLowerCase().replace(/\s+/g, ' ').trim();
-		other_data[i].value = other_data[i].value[0].toUpperCase()+other_data[i].value.slice(1);
+		other_data[i].value = other_data[i].value[0].toUpperCase() + other_data[i].value.slice(1);
 	}
 
 
-	
-	$.each(other_data, function (key, input) {		
+
+	$.each(other_data, function (key, input) {
 		fd.append(input.name, input.value);
 	});
 
-	
+
 
 	$.post({
 		url: 'insert.php',
@@ -57,9 +113,9 @@ form_card.on('submit', function (e) {
 				if (card_from == '/post-portfolio.php') {
 					window.location.href = 'portfolios.php';
 				}
-		
+
 			}, 300);
-		
+
 
 
 
@@ -102,7 +158,7 @@ form_card.on('submit', function (e) {
 // https://stackoverflow.com/questions/11740231/how-to-concatenate-php-variable-name
 	// https://www.php.net/manual/ru/language.variables.variable.php
 
-	
+
 	// ${"check" . $counter} = "some value";
 
 
