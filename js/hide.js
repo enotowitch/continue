@@ -7,12 +7,16 @@ $(document).ready(function () {
 		var card_from = $('.card_from').val();
 
 				// ! links for anchors: added to hidden & removed from hidden
-				if(card_from == '/index.php' || card_from == '/jobs-del.php' || card_from == '/jobs-like.php' || card_from == '/jobs-mes.php'){
+				if(card_from == '/index.php' || card_from == '/jobs-del.php' || card_from == '/jobs-like.php' || card_from == '/jobs-mes.php' || card_from == '/post-job.php'){
 					var hide_link = '/jobs-del.php';
 				}
 				if(card_from == '/portfolios.php' || card_from == '/port-del.php' || card_from == '/port-like.php' || card_from == '/port-mes.php'){
 					var hide_link = '/port-del.php';
 				}
+
+		// !!! added to hidden	
+		$('.please-log').detach();
+		$(e.target).closest('.card').before('<div class="please-log">Added to <a href="'+hide_link+'"><span class="brand">hidden</span></a><img src="img/icons/cross.svg"></div>');
 
 		// ! log to hide
 		if(current_user == ""){
@@ -20,11 +24,7 @@ $(document).ready(function () {
 			$(e.target).closest('.card').before('<div class="please-log">Please <a class="brand" href="login.php">SIGN IN</a> or <a class="brand" href="reg.php">SIGN UP</a> to hide<img src="img/icons/cross.svg"></div>');
 			return;
 		}
-		// !!! added to hidden
-		if(card_from == "/index.php" || card_from == '/portfolios.php' || card_from == '/jobs-like.php' || card_from == '/port-like.php' || card_from == '/jobs-mes.php' || card_from == '/port-mes.php'){
-			$('.please-log').detach();
-			$(e.target).closest('.card').before('<div class="please-log">Added to <a href="'+hide_link+'"><span class="brand">hidden</span></a><img src="img/icons/cross.svg"></div>');
-		}
+
 		// ! removed from hidden
 		if(card_from == "/jobs-del.php" || card_from == "/port-del.php"){
 			$('.please-log').detach();
