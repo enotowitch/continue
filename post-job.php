@@ -6,7 +6,7 @@ require_once "header.php";
 <?
 	require_once "search.php";
 ?>
-<div class="bg">
+<div class="post bg">
 	<div class="cards-wrapper">
 
 		<!-- ! no user -->
@@ -36,7 +36,7 @@ require_once "header.php";
 				require_once "info-select.php"
 			?>
 			<div class="inter-icons">
-				<input class="cross_small" type="reset" value="">
+				<input class="cross_reset" type="reset" value="">
 				<input class="apply ok-gray" type="submit" value="">
 			</div>
 			<div class="tags">

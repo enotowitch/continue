@@ -118,7 +118,7 @@
   margin: 0 0px 0px 10px;
 }
 
-.cross_small {
+.cross_reset {
   background: url("../img/icons/cross.svg") 50%/cover no-repeat;
   border: none;
   width: 28px;
@@ -156,4 +156,11 @@
 
 .op05 {
   opacity: 0.5;
+}
+
+.post-btn {
+  position: relative;
+  margin: 0 auto;
+  left: 0px;
+  width: 40px;
 }
