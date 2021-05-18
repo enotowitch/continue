@@ -50,6 +50,16 @@ form_card.on('submit', function (e) {
 		}
 	});
 
+	// files
+	var files_count = $('.fake-example')[0].files;
+	if (files_count.length < 1) {
+		my_alert("brand-del", "Please upload atleast 1 example!");
+		$('.info__example').addClass('red-b-chosen');
+		throw new Error("error from example");
+	} else {
+		$('.info__example').removeClass('red-b-chosen');
+	}
+
 	// tags
 	var tags_count = form_card.find('.tags__select :selected');
 

@@ -308,6 +308,9 @@
 }
 // ! tags
 .tags {
+	&_post{
+		width: 250px !important;
+	}
 	&_main {
 		@media (max-width: 767px) {
 			width: 40px;

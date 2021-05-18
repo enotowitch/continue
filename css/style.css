@@ -428,6 +428,10 @@
   left: 4px;
 }
 
+.tags_post {
+  width: 250px !important;
+}
+
 .tags_main {
   white-space: nowrap;
   position: relative;

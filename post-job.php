@@ -94,7 +94,7 @@ require_once "header.php";
 			</div>
 		</div>
 		<div class="tags-pics-flex">
-			<div class="tags tags_main">
+			<div class="tags tags_main tags_post">
 				<div class="tag tag_main">
 				art
 				</div>
@@ -105,7 +105,7 @@ require_once "header.php";
 				back-end
 				</div>
 			</div>
-			<div class="info__cell info__simple info__pics">
+			<div class="info__cell info__simple">
 				<? for($i=1;$i<=10;$i++): ?>
 				<? if($post["example_$i"] != NULL): ?>
 				<img data-lazy="<? echo $post["example_$i"]; ?>" src="img/white.png">
@@ -116,9 +116,8 @@ require_once "header.php";
 	</div>
 	
 	<div class="inter-icons">
-		<img src="img/icons/delete.svg" alt="del">
-		<img src="img/icons/like.svg" alt="like">
-		<img src="img/icons/apply.svg" alt="apply">
+		<input disabled class="cross_reset" type="reset" value="">
+		<img class="apply ok-gray" src="img/icons/info-ok.svg" alt="info-ok">
 	</div>
 </div>
 
