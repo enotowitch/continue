@@ -49,11 +49,6 @@ $(document).ready(function () {
 	infoCell.not('.info__example').not('.info__simple').chosen();
 	tagsSelect.chosen({ max_selected_options: 3 });
 
-
-
-
-
-
 	// ! current user / new user animations
 
 	var current_user = $('.current_user').val();
@@ -61,18 +56,17 @@ $(document).ready(function () {
 	var current_user_posts = $('.user_id[value="' + current_user + '"]').closest('.card').not('.not100');
 
 
-	new_user_post.append('<div class="new_user_post"></div>');
+	new_user_post.append('<div class="post-anim"></div>');
 
 	setTimeout(() => {
 
-		$('.new_user_post').animate({ 'left': '100%' }, 600);
+		$('.post-anim').animate({ 'width': '100%' });
 
 	}, 600);
 
 	setTimeout(() => {
-		$('.new_user_post').detach();
+		$('.post-anim').detach();
 	}, 1200);
-
 
 	// ! sort MY POSTS & ALL POSTS
 
@@ -94,7 +88,7 @@ $(document).ready(function () {
 
 	})
 
-	// cross_reset form reset
+	// ! cross_reset form reset
 	$('.cross_reset').on('click', function (e) {
 		e.preventDefault();
 		if (confirm("Are you sure you want to clear this form?")) {

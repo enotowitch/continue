@@ -25,23 +25,23 @@
 		<div class="info">
 			<div class="info__flex">
 				<div class="info__block">
-					<div class="info__cell info__simple">
+					<div class="info__cell info__simple salary">
 						<? echo $post->salary; ?>
 					</div>
-					<div class="info__cell info__simple">
+					<div class="info__cell info__simple duration">
 						<? echo $post->duration; ?>
 					</div>
 				</div>
 				<div class="info__block">
-					<div class="info__cell info__simple">
+					<div class="info__cell info__simple experience">
 						<? echo $post->experience; ?>
 					</div>
-					<div class="info__cell info__simple">
+					<div class="info__cell info__simple workload">
 						<? echo $post->workload; ?>
 					</div>
 				</div>
 				<div class="info__block">
-					<div class="info__cell info__simple">
+					<div class="info__cell info__simple location">
 						<? echo $post->location; ?>
 					</div>
 					<div class="info__cell info__simple ex">

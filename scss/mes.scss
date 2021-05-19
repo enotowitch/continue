@@ -35,12 +35,15 @@
 .mes-form {
 	position: relative;
 }
-.card-mes {
+.card-mes, .card-update {
 	width: 100%;
 	height: 100%;
 	background-color: #fff;
 	position: relative;
 	z-index: 3;
+}
+.card-update{
+	width: calc(100% + 40px);
 }
 .mes-to{
 	display: flex;

@@ -2,16 +2,20 @@
 var form_card = $('.form-card');
 
 
-form_card.on('submit', function (e) {
+$(document).on('click', '.ok-gray', function (e) {
 
 	e.preventDefault();
 
+	
 
-	var title_val = form_card.find('textarea[name="title"]').val().replace(/\s+/g, '').trim();
-	var subt_val = form_card.find('textarea[name="subt"]').val().replace(/\s+/g, '').trim();
+	var card_from = $(e.target).closest('.card').find('.card_from').val();
 
-	var title = form_card.find('textarea[name="title"]');
-	var subt = form_card.find('textarea[name="subt"]');
+	var title_val = $(e.target).closest('.card').find('textarea[name="title"]').val().replace(/\s+/g, '').trim();
+	var subt_val = $(e.target).closest('.card').find('textarea[name="subt"]').val().replace(/\s+/g, '').trim();
+
+	var title = $(e.target).closest('.card').find('textarea[name="title"]');
+	var subt = $(e.target).closest('.card').find('textarea[name="subt"]');
+
 
 	// ! validation
 	$('.please-log').detach();
@@ -33,9 +37,12 @@ form_card.on('submit', function (e) {
 		subt.removeClass('red-b');
 	}
 
-	// selects
+	// ! if card_from == post-job.php -> validate selects it can be from update, and update already must have this!
+	if(card_from == '/post-job.php'){
+	
+		// selects
 	// next() = .chosen-container -> select is hidden by chosen-JQ
-	form_card.find('select').each(function () {
+	$(e.target).closest('.card').find('select').each(function () {
 		if ($(this).val() == null) {
 
 			var name = this.name;
@@ -50,42 +57,57 @@ form_card.on('submit', function (e) {
 		}
 	});
 
+	} 
+	
+	
+	// ! if card_from == post-job.php -> validate files it can be from update, and update already must have this!
+	if(card_from == '/post-job.php'){
+
 	// files
-	var files_count = $('.fake-example')[0].files;
+	var files_count = $(e.target).closest('.card').find('.fake-example')[0].files;
 	if (files_count.length < 1) {
 		my_alert("brand-del", "Please upload atleast 1 example!");
-		$('.info__example').addClass('red-b-chosen');
+		$(e.target).closest('.card').find('.info__example').addClass('red-b-chosen');
 		throw new Error("error from example");
 	} else {
-		$('.info__example').removeClass('red-b-chosen');
+		$(e.target).closest('.card').find('.info__example').removeClass('red-b-chosen');
 	}
 
+}
+
+// ! if card_from == post-job.php -> validate tags it can be from update, and update already must have this!
+if(card_from == '/post-job.php'){
+
 	// tags
-	var tags_count = form_card.find('.tags__select :selected');
+	var tags_count = $(e.target).closest('.card').find('.tags__select :selected');
 
 	if (tags_count.length < 3) {
 		my_alert("brand-del", "Please choose 3 tags!");
-		form_card.find('.chosen-choices').addClass('red-b-chosen');
+		$(e.target).closest('.card').find('.chosen-choices').addClass('red-b-chosen');
 		throw new Error("error from tags");
 	} else {
-		form_card.find('.chosen-choices').removeClass('red-b-chosen');
+		$(e.target).closest('.card').find('.chosen-choices').removeClass('red-b-chosen');
 	}
+
+}
+
+
 
 
 	// for success
-	var card_from = $('.card_from').val();
+
 
 	var fd = new FormData();
 
-	var logo = $('.fake-logo').prop('files')[0];
+	var logo = $(e.target).closest('.card').find('.fake-logo').prop('files')[0];
 	fd.append("logo", logo);
 
-	var file_data = $('input[type="file"]')[1].files; // for multiple files
+	var file_data = $(e.target).closest('.card').find('input[type="file"]')[1].files; // for multiple files
 	for (var i = 0; i < file_data.length; i++) {
 		fd.append("example_" + (i + 1), file_data[i]);
 	}
 
-	var other_data = $('form').serializeArray();
+	var other_data = $(e.target).closest('form').serializeArray();
 
 	// ! form_card -> title + subt TEXT FORMAT
 	for (var i = 2; i <= 3; i++) {
@@ -99,10 +121,15 @@ form_card.on('submit', function (e) {
 		fd.append(input.name, input.value);
 	});
 
-
+	if(card_from == '/post-job.php'){
+		var link = 'insert.php';
+	}
+	if(card_from == '/update-form.php'){
+		var link = 'update.php';
+	}
 
 	$.post({
-		url: 'insert.php',
+		url: `${link}`,
 		data: fd,
 		processData: false,
 		contentType: false,
@@ -122,6 +149,9 @@ form_card.on('submit', function (e) {
 				}
 				if (card_from == '/post-portfolio.php') {
 					window.location.href = 'portfolios.php';
+				}
+				if (card_from == '/update-form.php') {
+					window.location.reload();
 				}
 
 			}, 300);
