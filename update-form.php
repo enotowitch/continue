@@ -57,9 +57,9 @@
 	// location causes problems
 	$('.update-card').find('select[name="location"] option[value="0"]').prop("disabled", false).text(`${loca}`).val(`${loca}`);
 
-	$('.update-card').find('select[name="tags[]"] option').eq(0).attr('selected', 'true').text(`${tag_1}`);
-	$('.update-card').find('select[name="tags[]"] option').eq(1).attr('selected', 'true').text(`${tag_2}`);
-	$('.update-card').find('select[name="tags[]"] option').eq(2).attr('selected', 'true').text(`${tag_3}`);
+	$('.update-card').find('select[name="tags[]"] option').eq(0).attr('selected', 'true').text(`${tag_1}`).val(`${tag_1}`);
+	$('.update-card').find('select[name="tags[]"] option').eq(1).attr('selected', 'true').text(`${tag_2}`).val(`${tag_2}`);
+	$('.update-card').find('select[name="tags[]"] option').eq(2).attr('selected', 'true').text(`${tag_3}`).val(`${tag_3}`);
 
 
 	$(document).ready(function(){
