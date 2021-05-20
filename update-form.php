@@ -50,12 +50,12 @@
 	$('.update-card').find('textarea[name="title"]').text(`${title}`);
 	$('.update-card').find('textarea[name="subt"]').text(`${subt}`);
 
-	$('.update-card').find('select[name="salary"] option[value="0"]').text(`${salary}`);
-	$('.update-card').find('select[name="duration"] option[value="0"]').text(`${duration}`);
-	$('.update-card').find('select[name="experience"] option[value="0"]').text(`${experience}`);
-	$('.update-card').find('select[name="workload"] option[value="0"]').text(`${workload}`);
+	$('.update-card').find('select[name="salary"] option[value="0"]').prop("disabled", false).text(`${salary}`).val(`${salary}`);
+	$('.update-card').find('select[name="duration"] option[value="0"]').prop("disabled", false).text(`${duration}`).val(`${duration}`);
+	$('.update-card').find('select[name="experience"] option[value="0"]').prop("disabled", false).text(`${experience}`).val(`${experience}`);
+	$('.update-card').find('select[name="workload"] option[value="0"]').prop("disabled", false).text(`${workload}`).val(`${workload}`);
 	// location causes problems
-	$('.update-card').find('select[name="location"] option[value="0"]').text(`${loca}`);
+	$('.update-card').find('select[name="location"] option[value="0"]').prop("disabled", false).text(`${loca}`).val(`${loca}`);
 
 	$('.update-card').find('select[name="tags[]"] option').eq(0).attr('selected', 'true').text(`${tag_1}`);
 	$('.update-card').find('select[name="tags[]"] option').eq(1).attr('selected', 'true').text(`${tag_2}`);
