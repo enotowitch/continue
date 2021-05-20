@@ -1,8 +1,10 @@
 $(document).on('change', '.fake-logo', function (e) {
 
 	var preview = URL.createObjectURL(e.target.files[0]);
-	$(e.target).closest('.card').find('label[for="fake-logo"]').append('<img class="card__logo card__logo_preview" src="' + preview + '" alt="preview">');
-	$(e.target).closest('.card').find('label[for="fake-logo"]').css({ 'border': 'none' });
+	$('label[for="fake-logo"]').append('<img class="card__logo card__logo_preview" src="' + preview + '" alt="preview">');
+	$('label[for="fake-logo"]').css({ 'border': 'none' });
+
+	console.log(e.target.files[0]);
 
 });
 
@@ -100,10 +102,10 @@ $(document).on('click', '.ok-gray', function (e) {
 
 	var fd = new FormData();
 
-	var logo = $(e.target).closest('.card').find('.fake-logo').prop('files')[0];
+	var logo = $('.fake-logo').prop('files')[0];
 	fd.append("logo", logo);
 
-	var file_data = $(e.target).closest('.card').find('input[type="file"]')[1].files; // for multiple files
+	var file_data = $('input[type="file"]')[1].files; // for multiple files
 	for (var i = 0; i < file_data.length; i++) {
 		fd.append("example_" + (i + 1), file_data[i]);
 	}
