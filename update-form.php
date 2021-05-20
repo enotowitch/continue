@@ -63,10 +63,21 @@
 
 
 	$(document).ready(function(){
+
 		$('.update-card').find('select').chosen();
-		$('.update-card').find('.chosen-single, .info__example').css({"width": "120px"});
-		$('.update-card').find('.chosen-choices').css({"width": "180px"});
+		// 
+		$('.update-card').find('.chosen-single, .info__example').addClass('upd-info');
+		// ! slick will take space so width = auto for now
+		// $('.update-card').find('.chosen-choices').addClass('upd-tags');
+		// let it be .css
 		$('.update-card').find('.info__block').css({"width": "100px"});
+
+		$('.update-card').find('.cross_reset').on('click', function(){
+			$(this).closest('.card-update').detach();
+		})
+
+		$('.update-card').find('.inter-icons').css({"right": "8px"})
+
 	})
 
 

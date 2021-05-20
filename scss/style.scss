@@ -308,7 +308,7 @@
 }
 // ! tags
 .tags {
-	&_post{
+	&_post {
 		width: 250px !important;
 	}
 	&_main {
@@ -465,3 +465,15 @@
 	border: 2px solid tomato !important;
 	border-radius: 5px !important;
 }
+// ! update
+.upd-info {
+	width: 136px !important;
+	@media (max-width: 767px) {
+		width: 94px !important;
+	}
+}
+// !
+// .upd-tags {
+// 	width: 280px !important;
+// }
+

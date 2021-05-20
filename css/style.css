@@ -630,3 +630,13 @@
   border: 2px solid tomato !important;
   border-radius: 5px !important;
 }
+
+.upd-info {
+  width: 136px !important;
+}
+
+@media (max-width: 767px) {
+  .upd-info {
+    width: 94px !important;
+  }
+}

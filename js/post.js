@@ -38,7 +38,7 @@ $(document).on('click', '.ok-gray', function (e) {
 	}
 
 	// ! if card_from == post-job.php -> validate selects it can be from update, and update already must have this!
-	if(card_from == '/post-job.php'){
+	if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
 	
 		// selects
 	// next() = .chosen-container -> select is hidden by chosen-JQ
@@ -61,7 +61,7 @@ $(document).on('click', '.ok-gray', function (e) {
 	
 	
 	// ! if card_from == post-job.php -> validate files it can be from update, and update already must have this!
-	if(card_from == '/post-job.php'){
+	if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
 
 	// files
 	var files_count = $(e.target).closest('.card').find('.fake-example')[0].files;
@@ -76,7 +76,7 @@ $(document).on('click', '.ok-gray', function (e) {
 }
 
 // ! if card_from == post-job.php -> validate tags it can be from update, and update already must have this!
-if(card_from == '/post-job.php'){
+if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
 
 	// tags
 	var tags_count = $(e.target).closest('.card').find('.tags__select :selected');
@@ -91,11 +91,7 @@ if(card_from == '/post-job.php'){
 
 }
 
-
-
-
-	// for success
-
+// ? validation ends
 
 	var fd = new FormData();
 
@@ -121,7 +117,7 @@ if(card_from == '/post-job.php'){
 		fd.append(input.name, input.value);
 	});
 
-	if(card_from == '/post-job.php'){
+	if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
 		var link = 'insert.php';
 	}
 	if(card_from == '/update-form.php'){
@@ -138,7 +134,7 @@ if(card_from == '/post-job.php'){
 		// },
 		success: function () {
 
-			$(e.target).append('<div class="post-anim"></div>');
+			$(e.target).closest('.card').append('<div class="post-anim"></div>');
 
 			$('.post-anim').animate({ 'width': '100%' }, 300);
 
