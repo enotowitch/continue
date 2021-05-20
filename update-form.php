@@ -74,6 +74,7 @@
 
 		$('.update-card').find('.cross_reset').on('click', function(){
 			$(this).closest('.card-update').detach();
+			$('.card').removeClass('op01');
 		})
 
 		$('.update-card').find('.inter-icons').css({"right": "8px"})

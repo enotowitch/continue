@@ -16,6 +16,10 @@ $(document).ready(function () {
 	$('.update').on('click', function (e) {
 
 		$('.card-update').detach();
+		post_hide();
+
+		$('.card').addClass('op01');
+		$(e.target).closest('.card').removeClass('op01');
 
 		var card_id = $(e.target).closest('.card').find('.card_id').val();
 

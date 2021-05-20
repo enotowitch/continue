@@ -21,7 +21,7 @@ $(document).ready(function () {
 	burgerMenu.on('click', function () {
 		$(this).hide(300);
 		burger_line.toggleClass('burger__line_active');
-		$('.post-btn').detach();
+		$('.post-show').detach();
 	})
 
 	// ! burgerMenu click outside
@@ -96,18 +96,15 @@ $(document).ready(function () {
 		}
 	})
 
-	var post = $('.post');
-
 	// ! hide post
 	$('.cross_post').on('click', function () {
-		$('.post-btn').detach();
-		post.before('<div class="burger__button post-btn"><div class="burger__line"></div></div>');
-		post.slideUp(600);
+		post_hide();
 	})
 
-	$(document).on('click', '.post-btn', function () {
+	$(document).on('click', '.post-show', function () {
 		post.slideDown(600);
-		$('.post-btn').detach();
+		$('.post-show').detach();
+		$('.card-update').detach();
 	})
 
 	// ! search

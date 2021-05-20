@@ -173,6 +173,11 @@
      object-fit: cover;
 }
 
+.card__logo_preview {
+  top: 0px;
+  left: 0px;
+}
+
 .card__title, .card__subt {
   resize: none;
   word-wrap: break-word;

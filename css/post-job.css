@@ -158,7 +158,11 @@
   opacity: 0.5;
 }
 
-.post-btn {
+.op01 {
+  opacity: 0.1;
+}
+
+.post-show {
   position: relative;
   margin: 0 auto;
   left: 0px;

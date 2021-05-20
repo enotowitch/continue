@@ -1,5 +1,10 @@
-// ! post form_card (2)
-var form_card = $('.form-card');
+$(document).on('change', '.fake-logo', function (e) {
+
+	var preview = URL.createObjectURL(e.target.files[0]);
+	$(e.target).closest('.card').find('label[for="fake-logo"]').append('<img class="card__logo card__logo_preview" src="' + preview + '" alt="preview">');
+	$(e.target).closest('.card').find('label[for="fake-logo"]').css({ 'border': 'none' });
+
+});
 
 
 $(document).on('click', '.ok-gray', function (e) {

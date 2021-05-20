@@ -121,6 +121,10 @@
 		height: 40px;
 		border-radius: 50%;
 		object-fit: cover;
+		&_preview{
+			top: 0px;
+			left: 0px;
+		}
 	}
 	&__title,
 	&__subt {
