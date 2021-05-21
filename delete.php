@@ -32,9 +32,11 @@ if($card_from == '/post-portfolio.php'){
 
 	$delete = R::hunt($destination, 'id = ?', [$card_id]);
 
-	// ! delete card_id from LIKE
+	// ! delete card_id from DB - LIKE, HIDE, MESD
 
 	R::hunt('like', 'card_id = ?', [$_POST['card_id']]);
+	R::hunt('hide', 'card_id = ?', [$_POST['card_id']]);
+	R::hunt('mesd', 'card_id = ?', [$_POST['card_id']]);
 
 
 
