@@ -64,6 +64,8 @@
 
 	$(document).ready(function(){
 
+		$('.update-card').find('.cross_reset').after('<img class="del mba" src="img/icons/delete.svg" alt="del">');
+
 		$('.update-card').find('select').chosen();
 		// 
 		$('.update-card').find('.chosen-single, .info__example').addClass('upd-info');

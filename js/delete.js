@@ -1,9 +1,9 @@
 $(document).ready(function () {
 
-	$('.del').on('click', function (e) {
+	$(document).on('click', '.del', function (e) {
 
 		var card_id = $(this).closest('.card').find('.card_id').val();
-		var card_from = $(this).closest('.card').find('.card_from').val();
+		var card_from = $('.post').find('.card_from').val();
 		var current_user = $('.current_user').val();
 
 		if (current_user == "") {
@@ -19,7 +19,7 @@ $(document).ready(function () {
 					card_from: card_from
 				},
 				// beforeSend: function () {
-				// 	return confirm("Are you sure?");
+				// 	return confirm("Are you sure you want to delete this post forever?");
 				// },
 				success: function () {
 

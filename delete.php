@@ -4,9 +4,13 @@
 $card_id = $_POST['card_id'];
 $card_from = $_POST['card_from'];
 
-if($card_from == '/index.php' || $card_from == '/post-job.php'){
+var_dump($_POST);
+// die();
+
+if($card_from == '/post-job.php'){
 	$destination = "post";
-} else {
+} 
+if($card_from == '/post-portfolio.php'){
 	$destination = "portfolio";
 }
 

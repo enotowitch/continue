@@ -6,7 +6,7 @@ var card_from = $('.card_from').val();
 
 if (card_from == '/post-job.php' || card_from == '/post-portfolio.php') {
 	current_user_posts.find('.hide').after('<img class="update" src="img/icons/update.svg" alt="update">');
-	current_user_posts.find('.hide').hide();
+	current_user_posts.find('.hide').detach();
 }
 
 // ! ready

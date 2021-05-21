@@ -37,7 +37,8 @@
   position: relative;
 }
 
-.card-mes, .card-update {
+.card-mes,
+.card-update {
   width: 100%;
   height: 100%;
   background-color: #fff;
@@ -61,4 +62,8 @@
 
 .mta {
   margin-top: auto;
+}
+
+.mba {
+  margin-bottom: auto;
 }
