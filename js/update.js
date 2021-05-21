@@ -16,7 +16,8 @@ $(document).ready(function () {
 	$('.update').on('click', function (e) {
 
 		$('.card-update').detach();
-		post_hide();
+		$('.post-block').detach();
+		$('.post').prepend('<div class="post-block">Please finish updating the card below to post new... or <span class="brand reload">reload</span> the page</div>');
 
 		$('.card').addClass('op01');
 		$(e.target).closest('.card').removeClass('op01');
@@ -53,7 +54,9 @@ $(document).ready(function () {
 		})
 	})
 
-
+	$(document).on('click', '.reload', function(){
+		window.location.reload();
+	})
 
 
 })

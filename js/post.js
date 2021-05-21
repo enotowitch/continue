@@ -154,7 +154,7 @@ $(document).on('click', '.ok-gray', function (e) {
 					window.location.href = 'portfolios.php';
 				}
 				if (card_from == '/update-form.php') {
-					// window.location.reload();	
+					window.location.reload();	
 				}
 
 			}, 300);
