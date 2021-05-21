@@ -1,7 +1,6 @@
 <?
 	session_start();
 	require_once "DB.php";
-	var_dump($_FILES);
 
 	
 	$update = R::load('post', $_POST["card_id"]);
@@ -24,8 +23,11 @@
 	if(isset($_FILES['logo'])){
 
 	// ! delete old logo
-	unlink($update["logo"]);
-
+	// if logo src starts from i (img) -> don't delete - it's default file (no-logo)
+	if($update["logo"][0] != 'i'){
+		unlink($update["logo"]);
+	}
+	
 	// ! upload new logo
 	$logo_path = "uploads/" . rand() .  $_FILES['logo']['name'];
 	move_uploaded_file($_FILES['logo']['tmp_name'], $logo_path);
