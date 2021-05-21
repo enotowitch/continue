@@ -1,3 +1,5 @@
+// ! POST & UPDATE
+
 $(document).on('change', '.fake-logo', function (e) {
 
 	var preview = URL.createObjectURL(e.target.files[0]);

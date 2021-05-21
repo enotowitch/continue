@@ -12,7 +12,7 @@
 	<input class="card_from" type="hidden" value="<? echo $_SERVER['PHP_SELF']; ?>">
 	<!-- ? card_from -->
 	<img class="card__logo" src="<? echo $post->logo; ?>" alt="card__logo">
-	<div class="all-card-flex">
+	<div class="inner-card-flex">
 		<div class="title-and-subt">
 			<div class="card__title">
 				<? echo $post->title; ?>

@@ -23,85 +23,17 @@ include "post-form.php";
 		<div class="card card2 not100">
 
 			<!-- ! example -->
-		<div class="card__content usn">
-	
-	<img class="card__logo" src="img/bitten-donut.jpg" alt="card__logo">
-	<div class="all-card-flex">
-		<div class="title-and-subt">
-			<div class="card__title">
-				Artist, Developer, Generalist
-			</div>
-			<div class="card__subt">
-				Microsoft, Apple, Google
-			</div>
+		<? 
+			include "card-content.php";
+		?>
+		
 		</div>
-	
-		<div class="info">
-			<div class="info__flex">
-				<div class="info__block">
-					<div class="info__cell info__simple">
-					3000 USD
-					</div>
-					<div class="info__cell info__simple">
-					Permanent
-					</div>
-				</div>
-				<div class="info__block">
-					<div class="info__cell info__simple">
-					10 years
-					</div>
-					<div class="info__cell info__simple">
-					150 h/mo
-					</div>
-				</div>
-				<div class="info__block">
-					<div class="info__cell info__simple">
-					United States
-					</div>
-					<div class="info__cell info__simple">
-					Examples
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="tags-pics-flex">
-			<div class="tags tags_main tags_post">
-				<div class="tag tag_main">
-				art
-				</div>
-				<div class="tag tag_main">
-				UX / UI
-				</div>
-				<div class="tag tag_main">
-				back-end
-				</div>
-			</div>
-			<div class="info__cell info__simple">
-				<? for($i=1;$i<=10;$i++): ?>
-				<? if($post["example_$i"] != NULL): ?>
-				<img data-lazy="<? echo $post["example_$i"]; ?>" src="img/white.png">
-				<? endif; ?>
-				<? endfor; ?>
-			</div>
-		</div>
-	</div>
-	
-	<div class="inter-icons">
-		<input disabled class="cross_reset" type="reset" value="">
-		<img class="apply ok-gray" src="img/icons/info-ok.svg" alt="info-ok">
-	</div>
-</div>
-
-		</div>
-
-
 		<!-- ? 2 CARD -->
+
 		<img class="cross cross_post" src="img/icons/cross.svg" alt="cross">
 	</div>
 </div>
 
-
-<!-- ! TEST CARDs -->
 
 <!-- ! your -->
 <? include "your.php"; ?>
@@ -147,8 +79,27 @@ include "post-form.php";
 <!-- ? CARD -->
 
 
-<!-- ? TEST CARDs -->
-
 <?
  require_once "footer.php";
 ?>
+
+<script>
+
+$('.card2').find('.card__content').addClass('usn');
+$('.card2').find('.card__logo').attr('src', 'img/bitten-donut.jpg');	
+$('.card2').find('.card__title').text('Artist, Developer, Generalist');	
+$('.card2').find('.card__subt').text('Microsoft, Apple, Google');	
+$('.card2').find('.info__simple').eq(0).text('3000 USD');	
+$('.card2').find('.info__simple').eq(1).text('Permanent');	
+$('.card2').find('.info__simple').eq(2).text('10 years');	
+$('.card2').find('.info__simple').eq(3).text('150 h/mo');	
+$('.card2').find('.info__simple').eq(4).text('United States');	
+$('.card2').find('.tag').eq(0).text('art');	
+$('.card2').find('.tag').eq(1).text('UX / UI');	
+$('.card2').find('.tag').eq(2).text('back-end');
+$('.card2').find('.info__pics ').detach();	
+$('.card2').find('.inter-icons').empty();
+$('.card2').find('.inter-icons').append('<input disabled class="cross_reset">');
+$('.card2').find('.inter-icons').append('<img src="img/icons/info-ok.svg" alt="info-ok">');
+			
+</script>
