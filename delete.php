@@ -18,16 +18,18 @@ if($card_from == '/post-portfolio.php'){
 
 	foreach($del_files as $del_file){
 		// if logo src starts from i (img) -> don't delete - it's default file (no-logo)
-	if($del_file["logo"][0] == "i"){
-		continue;
-	} else {
+	if($del_file["logo"][0] != "i"){
 		unlink($del_file["logo"]);
+	} 
+
+	for($i=1;$i<=10;$i++){
+		unlink($del_file["example_$i"]);
 	}
-		
-		for($i=1;$i<=10;$i++){
-			unlink($del_file["example_$i"]);
-		}
+	
 	}
+
+
+
 
 
 	$delete = R::hunt($destination, 'id = ?', [$card_id]);
