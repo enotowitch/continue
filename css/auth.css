@@ -60,11 +60,13 @@
   color: tomato;
   text-decoration: none !important;
   font-style: normal;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
 }
 
 .log-as {
   max-width: 930px;
-  padding: 0px 12px;
+  padding: 0px 15px;
   font-style: italic;
   font-family: Montserrat;
   display: -webkit-box;
@@ -73,22 +75,35 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0px auto 15px;
 }
 
-.log-as div {
-  text-align: left;
-  max-width: 230px;
+.img-mail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.log-as span {
-  font-style: normal;
+.log-as-img {
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.log-as-mail {
   font-weight: 700;
-  display: block;
-  padding-left: 3px;
-  overflow: hidden;
-  -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
+}
+
+@media (max-width: 499px) {
+  .log-as-mail {
+    word-wrap: break-word;
+    width: 190px;
+  }
 }
 
 .red {
