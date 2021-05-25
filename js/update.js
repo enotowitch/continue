@@ -15,6 +15,7 @@ $(document).ready(function () {
 
 	$('.update').on('click', function (e) {
 
+
 		$('.card-update').detach();
 		$('.post-block').detach();
 		$('.post').prepend('<div class="post-block">Please finish updating the card below to post new... or <span class="brand reload">reload</span> the page</div>');
@@ -52,11 +53,124 @@ $(document).ready(function () {
 				$(e.target).closest('.card').find('.card-update').html(data);
 			},
 		})
+
+		
+		// ! add del icon to imgs in card update
+		setTimeout(() => {
+			$('.update-card').find('.info__pics').find('img').each(function(){
+				$(this).before('<div class="upd_pic_del">X</div>');
+			})
+		}, 300);
+		
 	})
+
+
+
+
+
+
+	$(document).on('click', '.upd_pic_del', function(e){
+
+		if(confirm('Are you sure you want to delete this picture forever?')){
+
+			var index = $(this).next().attr('alt');
+			var src = $(this).next('img').attr('src');
+
+			$.post({
+				url: 'update-imgs.php',
+				data: ({card_id:card_id,src:src,index:index}),
+				success: function (data) {
+					$(e.target).closest('.slick-slide').detach();
+				},
+			})
+
+		}
+
+		
+	})
+
+	// ! multiple PREVIEW 
+
+	$(function() {
+		// Multiple images preview in browser
+		var imagesPreview = function(input, placeToInsertImagePreview) {
+  
+			 if (input.files) {
+				  var filesAmount = input.files.length;
+  
+				  for (i = 0; i < filesAmount; i++) {
+						var reader = new FileReader();
+  
+						reader.onload = function(event) {
+							 $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+						}
+  
+						reader.readAsDataURL(input.files[i]);
+				  }
+			 }
+  
+		};
+
+
+
+		$(document).on('change', '.fake-example-upd', function (e) {
+
+			console.log($(this));
+
+			$('.info__pics').slick('unslick');
+			$(e.target).closest('.update-card').find('.info__pics').empty();
+
+			
+			imagesPreview(this, 'div.info__pics_preview');
+
+
+			setTimeout(() => {
+				
+				$('.info__pics').slick({
+					lazyLoad: 'ondemand',
+					infinite: false,
+					slidesToShow: 5,
+					slidesToScroll: 5,
+					responsive: [
+						{
+							breakpoint: 650,
+							settings: {
+								infinite: true,
+								slidesToShow: 4,
+								slidesToScroll: 4,
+							}
+						},
+						{
+							breakpoint: 550,
+							settings: {
+								infinite: true,
+								slidesToShow: 3,
+								slidesToScroll: 3,
+							}
+						},
+					]
+				});
+
+
+
+			}, 500);
+			
+	
+		});
+  
+  });
+
+
+
+	
 
 	$(document).on('click', '.reload', function(){
 		window.location.reload();
 	})
+
+
+
+
 
 
 })
