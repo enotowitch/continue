@@ -331,6 +331,7 @@
 }
 
 .tags-pics-flex {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -342,6 +343,11 @@
           align-items: flex-end;
   padding-right: 40px;
   height: 80px;
+}
+
+.tpfupd {
+  position: relative;
+  top: 9px;
 }
 
 .slick-list {
@@ -400,6 +406,7 @@
 
 .inter-icons {
   position: absolute;
+  z-index: 2;
   right: 0;
   top: 0;
   padding-top: 4px;
@@ -431,10 +438,6 @@
   position: absolute;
   top: 139px;
   left: 4px;
-}
-
-.tags_post {
-  width: 250px !important;
 }
 
 .tags_main {
@@ -644,4 +647,26 @@
   .upd-info {
     width: 94px !important;
   }
+}
+
+.upd-tags {
+  max-width: 280px !important;
+  margin-left: 6px;
+  margin-bottom: 2px;
+}
+
+.update-card .info__flex {
+  position: relative;
+  top: 6px;
+}
+
+.multiple-preview {
+  position: relative;
+}
+
+.upd_pic_del {
+  position: absolute;
+  z-index: 2;
+  font-size: 30px;
+  color: tomato;
 }
