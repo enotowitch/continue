@@ -37,6 +37,30 @@
 		
 	}
 
+	// ! examples
+
+	$examples_path = array();
+
+	for($i=1;$i<=10;$i++){
+		$examples_path[] = "uploads/" . rand() .  $_FILES["example_$i"]["name"];
+	}
+
+	for($i=1;$i<=10;$i++){
+
+		// ! if atleast 1 uploaded -del all -update all(NULL) 
+		if($_FILES["example_1"] != NULL){
+			unlink($update["example_$i"]);
+			$update["example_$i"] = NULL;
+		}
+		// ! -> store uploaded 
+		if($_FILES["example_$i"] != NULL){
+			move_uploaded_file($_FILES["example_$i"]['tmp_name'], $examples_path[($i-1)]);
+			$update["example_$i"] = $examples_path[($i-1)];
+			}
+	}
+
+
+
 	R::store($update);
 
 	
