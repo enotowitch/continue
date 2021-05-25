@@ -65,7 +65,7 @@
 			<div class="info__cell info__simple info__pics">
 				<? for($i=1;$i<=10;$i++): ?>
 				<? if($post["example_$i"] != NULL): ?>
-				<img data-lazy="<? echo $post["example_$i"]; ?>" src="img/white.png">
+				<img data-lazy="<? echo $post["example_$i"]; ?>" src="">
 				<? endif; ?>
 				<? endfor; ?>
 			</div>
