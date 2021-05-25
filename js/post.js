@@ -16,7 +16,7 @@ $(document).on('click', '.ok-gray', function (e) {
 	e.preventDefault();
 
 	
-
+	var update_card_from = $('.post').find('.card_from').val();
 	var card_from = $(e.target).closest('.card').find('.card_from').val();
 
 	var title_val = $(e.target).closest('.card').find('textarea[name="title"]').val().replace(/\s+/g, '').trim();
@@ -133,6 +133,9 @@ $(document).on('click', '.ok-gray', function (e) {
 	$.each(other_data, function (key, input) {
 		fd.append(input.name, input.value);
 	});
+
+	fd.append("update_card_from", update_card_from);
+
 
 	if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
 		var link = 'insert.php';
