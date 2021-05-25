@@ -107,10 +107,18 @@ $(document).on('click', '.ok-gray', function (e) {
 	var logo = $('.fake-logo').prop('files')[0];
 	fd.append("logo", logo);
 
-	var file_data = $('input[type="file"]')[1].files; // for multiple files
+
+	if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
+		var file_data = $('input[type="file"]')[1].files; // for multiple files
+	}
+	if(card_from == '/update-form.php'){
+		var file_data = $('.update-card').find('input[type="file"]')[1].files; // for multiple files
+	}
+
 	for (var i = 0; i < file_data.length; i++) {
 		fd.append("example_" + (i + 1), file_data[i]);
 	}
+
 
 	var other_data = $(e.target).closest('form').serializeArray();
 
@@ -132,6 +140,7 @@ $(document).on('click', '.ok-gray', function (e) {
 	if(card_from == '/update-form.php'){
 		var link = 'update.php';
 	}
+
 
 	$.post({
 		url: `${link}`,
