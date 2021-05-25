@@ -2,7 +2,15 @@
 	session_start();
 	require_once "DB.php";
 
-	$files = R::load('post', $_POST['card_id']);
+	if($_POST["card_from"] == '/post-job.php'){
+		$files = R::load('post', $_POST['card_id']);
+	}
+
+	if($_POST["card_from"] == '/post-portfolio.php'){
+		$files = R::load('portfolio', $_POST['card_id']);
+	}
+
+	
 ?>
 
 <input type="hidden" name="card_id" value="<? echo $_POST['card_id']; ?>">
@@ -93,7 +101,7 @@
 
 		$('.update-card').find('.tags').addClass('tags_main').wrap('<div class="tags-pics-flex tpfupd"></div>');
 
-		$('.update-card').find('.tags').after(`<div class="info__cell info__simple info__pics info__pics_preview"><img class="" src="<? echo $files["example_1"]; ?>" alt="1"><img class="" src="<? echo $files["example_2"]; ?>" alt="2"><img class="" src="<? echo $files["example_3"]; ?>" alt="3"><img class="" src="<? echo $files["example_4"]; ?>" alt="4"><img class="" src="<? echo $files["example_5"]; ?>" alt="5"><img class="" src="<? echo $files["example_6"]; ?>" alt="6"><img class="" src="<? echo $files["example_7"]; ?>" alt="7"><img class="" src="<? echo $files["example_8"]; ?>" alt="8"><img class="" src="<? echo $files["example_9"]; ?>" alt="9"><img class="" src="<? echo $files["example_10"]; ?>" alt="10"></div>`);
+		$('.update-card').find('.tags').after(`<div class="info__cell info__simple info__pics info__pics_preview"><img src="<? echo $files["example_1"]; ?>" alt="1"><img src="<? echo $files["example_2"]; ?>" alt="2"><img src="<? echo $files["example_3"]; ?>" alt="3"><img src="<? echo $files["example_4"]; ?>" alt="4"><img src="<? echo $files["example_5"]; ?>" alt="5"><img src="<? echo $files["example_6"]; ?>" alt="6"><img src="<? echo $files["example_7"]; ?>" alt="7"><img src="<? echo $files["example_8"]; ?>" alt="8"><img src="<? echo $files["example_9"]; ?>" alt="9"><img src="<? echo $files["example_10"]; ?>" alt="10"></div>`);
 
 		// ! delete empty pics before slick init
 		var empty_pic = $('img[src=""]');

@@ -47,7 +47,7 @@ $(document).ready(function () {
 		// ! load update form to card
 		$.post({
 			url: 'update-form.php',
-			data: ({card_id:card_id,title:title,subt:subt,salary:salary,duration:duration,experience:experience,workload:workload,location:location,tag_1:tag_1,tag_2:tag_2,tag_3:tag_3}),
+			data: ({card_from:card_from,card_id:card_id,title:title,subt:subt,salary:salary,duration:duration,experience:experience,workload:workload,location:location,tag_1:tag_1,tag_2:tag_2,tag_3:tag_3}),
 			success: function (data) {
 				$(e.target).closest('.card').prepend('<div class="card-update"></div>');
 				$(e.target).closest('.card').find('.card-update').html(data);
