@@ -104,7 +104,6 @@ $(document).ready(function () {
 	$(document).on('click', '.post-show', function () {
 		post.slideDown(600);
 		$('.post-show').detach();
-		$('.card-update').detach();
 	})
 
 	// ! search
