@@ -1,5 +1,8 @@
 <?
 	session_start();
+	require_once "DB.php";
+
+	$files = R::load('post', $_POST['card_id']);
 ?>
 
 <input type="hidden" name="card_id" value="<? echo $_POST['card_id']; ?>">
@@ -21,6 +24,7 @@
 <?
 	include "post-form.php";
 ?>
+
 
 
 <script>
@@ -61,7 +65,7 @@
 	$('.update-card').find('select[name="tags[]"] option').eq(1).attr('selected', 'true').text(`${tag_2}`).val(`${tag_2}`);
 	$('.update-card').find('select[name="tags[]"] option').eq(2).attr('selected', 'true').text(`${tag_3}`).val(`${tag_3}`);
 
-
+// ! ready
 	$(document).ready(function(){
 
 		$('.update-card').find('.cross_reset').after('<img class="del mba" src="img/icons/delete.svg" alt="del">');
@@ -70,7 +74,7 @@
 		// 
 		$('.update-card').find('.chosen-single, .info__example').addClass('upd-info');
 		// ! slick will take space so width = auto for now
-		// $('.update-card').find('.chosen-choices').addClass('upd-tags');
+		$('.update-card').find('.tags').addClass('upd-tags');
 		// let it be .css
 		$('.update-card').find('.info__block').css({"width": "100px"});
 
@@ -80,11 +84,52 @@
 			$('.post-block').detach();
 		})
 
-		$('.update-card').find('.inter-icons').css({"right": "8px"})
+		// ! load examples + slick
+
+		// ! diffs btw post-form & update-form
+		$('.update-card').find('.fake-example').addClass('fake-example-upd');
+		$('.update-card').find('[for="fake-example"]').attr('for', 'fake-example-upd');
+		$('.update-card').find('.fake-example').attr('id', 'fake-example-upd');
+
+		$('.update-card').find('.tags').addClass('tags_main').wrap('<div class="tags-pics-flex tpfupd"></div>');
+
+		$('.update-card').find('.tags').after(`<div class="info__cell info__simple info__pics info__pics_preview"><img class="" src="<? echo $files["example_1"]; ?>" alt="1"><img class="" src="<? echo $files["example_2"]; ?>" alt="2"><img class="" src="<? echo $files["example_3"]; ?>" alt="3"><img class="" src="<? echo $files["example_4"]; ?>" alt="4"><img class="" src="<? echo $files["example_5"]; ?>" alt="5"><img class="" src="<? echo $files["example_6"]; ?>" alt="6"><img class="" src="<? echo $files["example_7"]; ?>" alt="7"><img class="" src="<? echo $files["example_8"]; ?>" alt="8"><img class="" src="<? echo $files["example_9"]; ?>" alt="9"><img class="" src="<? echo $files["example_10"]; ?>" alt="10"></div>`);
+
+		// ! delete empty pics before slick init
+		var empty_pic = $('img[src=""]');
+		empty_pic.detach();
+		
+		$('.update-card').find('.info__pics').slick({
+		lazyLoad: 'ondemand',
+		infinite: false,
+		slidesToShow: 5,
+		slidesToScroll: 5,
+		responsive: [
+			{
+				breakpoint: 650,
+				settings: {
+					infinite: true,
+					slidesToShow: 4,
+					slidesToScroll: 4,
+				}
+			},
+			{
+				breakpoint: 550,
+				settings: {
+					infinite: true,
+					slidesToShow: 3,
+					slidesToScroll: 3,
+				}
+			},
+		]
+	});
+
+
 
 	})
 
-
+	
 
 	
 </script>
+
