@@ -78,7 +78,7 @@ $(document).ready(function () {
 
 			$.post({
 				url: 'update-imgs.php',
-				data: ({card_id:card_id,src:src,index:index}),
+				data: ({card_from:card_from,card_id:card_id,src:src,index:index}),
 				success: function (data) {
 					$(e.target).closest('.slick-slide').detach();
 				},
