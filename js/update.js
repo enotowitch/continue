@@ -17,10 +17,8 @@ $(document).ready(function () {
 
 
 		$('.card-update').detach();
-		$('.post-block').detach();
-		$('.post').prepend('<div class="post-block">Please finish updating the card below to post new... or <span class="brand reload">reload</span> the page</div>');
 
-		$('.card').addClass('op01');
+		$('.card').not('.form-card').not('.card2').addClass('op01');
 		$(e.target).closest('.card').removeClass('op01');
 
 		var card_id = $(e.target).closest('.card').find('.card_id').val();
@@ -164,9 +162,7 @@ $(document).ready(function () {
 
 	
 
-	$(document).on('click', '.reload', function(){
-		window.location.reload();
-	})
+
 
 
 

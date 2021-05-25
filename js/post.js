@@ -104,17 +104,24 @@ $(document).on('click', '.ok-gray', function (e) {
 
 	var fd = new FormData();
 
-	var logo = $('.fake-logo').prop('files')[0];
+	// ! logo
+	if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
+		var logo = $('.fake-logo').prop('files')[0];
+	}
+	if(card_from == '/update-form.php'){
+		var logo = $('.fake-logo-upd').prop('files')[0];
+	}
+	
 	fd.append("logo", logo);
 
-
+	// ! files
 	if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
 		var file_data = $('input[type="file"]')[1].files; // for multiple files
 	}
 	if(card_from == '/update-form.php'){
 		var file_data = $('.update-card').find('input[type="file"]')[1].files; // for multiple files
 	}
-
+	// ! examples
 	for (var i = 0; i < file_data.length; i++) {
 		fd.append("example_" + (i + 1), file_data[i]);
 	}

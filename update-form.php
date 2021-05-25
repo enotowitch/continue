@@ -89,7 +89,6 @@
 		$('.update-card').find('.cross_reset').on('click', function(){
 			$(this).closest('.card-update').detach();
 			$('.card').removeClass('op01');
-			$('.post-block').detach();
 		})
 
 		// ! load examples + slick
@@ -131,6 +130,21 @@
 			},
 		]
 	});
+
+		// ! preview
+
+		$('.update-card').find('.fake-logo').addClass('fake-logo-upd').removeClass('fake-logo');
+		$('.update-card').find('[for="fake-logo"]').attr('for', 'fake-logo-upd');
+		$('.update-card').find('.fake-logo-upd').attr('id','fake-logo-upd');
+
+		$(document).on('change', '.fake-logo-upd', function (e) {
+
+		var preview = URL.createObjectURL(e.target.files[0]);
+		$('.update-card').find('label[for="fake-logo-upd"]').append('<img class="card__logo card__logo_preview" src="' + preview + '" alt="preview">');
+		$('.update-card').find('label[for="fake-logo-upd"]').css({ 'border': 'none' });
+
+
+		});
 
 
 
