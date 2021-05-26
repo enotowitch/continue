@@ -110,7 +110,7 @@ $(document).ready(function () {
 
 	var search = $('.search');
 	var searchIcon = $('.search-icon');
-	var searchTopic = $('.search__topic');
+	var searchTopic = $('.search').find('.search__topic');
 	var searchTags = $('.search__tags');
 
 	searchIcon.on('click', function () {
@@ -133,6 +133,12 @@ $(document).ready(function () {
 
 	// ! DELETE THIS
 
+	$('.tag').on('click', function(){
 
+		var text = $(this).text().trim();
+		var link = window.location.href.replace(/\?.*/,'')+"?"+text;
+
+		window.location.href = link;
+	})
 
 })

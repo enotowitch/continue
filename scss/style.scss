@@ -354,6 +354,10 @@
 	&_main {
 		margin: 4px 0px 0px 4px;
 	}
+	&:hover,&_active {
+		background-color: #c4c4c4;
+		color: #fff;
+	}
 }
 // ! switch
 .switch {

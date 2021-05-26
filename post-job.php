@@ -103,3 +103,10 @@ $('.card2').find('.inter-icons').append('<input disabled class="cross_reset">');
 $('.card2').find('.inter-icons').append('<img src="img/icons/info-ok.svg" alt="info-ok">');
 			
 </script>
+
+
+<!-- ! must be last - search-script -->
+<? 
+include_once "search-script.php";
+?>
+<!-- ? search-script -->

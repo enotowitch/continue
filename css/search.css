@@ -74,6 +74,10 @@
   border-bottom: 1.5px solid #6fda44;
 }
 
+.search__topic_active span {
+  color: #6fda44;
+}
+
 .search__tags {
   display: none;
 }

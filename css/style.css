@@ -487,6 +487,11 @@
   margin: 4px 0px 0px 4px;
 }
 
+.tag:hover, .tag_active {
+  background-color: #c4c4c4;
+  color: #fff;
+}
+
 .switch {
   max-width: 930px;
   text-align: right;

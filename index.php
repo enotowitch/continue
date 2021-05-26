@@ -61,3 +61,11 @@ session_start();
 <?
  require_once "footer.php";
 ?>
+
+
+
+<!-- ! must be last - search-script -->
+<? 
+include_once "search-script.php";
+?>
+<!-- ? search-script -->
