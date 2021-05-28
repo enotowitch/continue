@@ -22,7 +22,7 @@ $arr = array();
  }
 
 
-
+ $user = R::load('user', $_SESSION["user"]["id"]);
 
 ?>
 
@@ -36,7 +36,7 @@ $arr = array();
 	
 		<? if($post['id'] != "0"): ?>
 		
-		<div class="card card_main w100">
+		<div class="card card_main <? echo $user["size"]; ?>">
 			<? 
 				include "card-content.php";
 			?>

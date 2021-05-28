@@ -290,6 +290,12 @@
 		width: 100%;
 	}
 }
+.w_small {
+	width: 290px;
+	.info__pics{
+		display: none;
+	}
+}
 .card-flex {
 	display: flex;
 	flex-wrap: wrap;
@@ -354,7 +360,8 @@
 	&_main {
 		margin: 4px 0px 0px 4px;
 	}
-	&:hover,&_active {
+	&:hover,
+	&_active {
 		background-color: #c4c4c4;
 		color: #fff;
 	}

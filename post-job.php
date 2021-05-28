@@ -60,11 +60,13 @@ include "post-form.php";
 		$posts = R::find('portfolio', 'user_id = ?', [$_SESSION["user"]["id"]], 'ORDER BY id DESC');
 	}
 
+	$user = R::load('user', $_SESSION["user"]["id"]);
+
 	foreach($posts as $post): 
 	
 ?>
 
-	<div class="card card_main w100">
+	<div class="card card_main <? echo $user["size"]; ?>">
 		<? 
 			include "card-content.php"
 		?>

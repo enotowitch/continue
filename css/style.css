@@ -394,6 +394,14 @@
   width: 100%;
 }
 
+.w_small {
+  width: 290px;
+}
+
+.w_small .info__pics {
+  display: none;
+}
+
 .card-flex {
   display: -webkit-box;
   display: -ms-flexbox;

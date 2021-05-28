@@ -38,7 +38,7 @@
 <script>
 
 // difference btw update-form & post-form
-	$('.form-card:not(:first-child)').addClass('update-card').removeClass('not100').addClass('w100');
+	$('.form-card:not(:first-child)').addClass('update-card').removeClass('not100');
 
 	var card_id = $('input[name="card_id"]').val();
 
@@ -146,7 +146,9 @@
 
 		});
 
-
+		// ! must be last - if user size db = w_small
+		$('.w_small').find('.update-card').find('.chosen-single, .info__example').removeClass('upd-info');
+		$('.w100').find('.update-card').addClass('w100');
 
 	})
 

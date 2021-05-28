@@ -126,7 +126,6 @@ $(document).ready(function () {
 		banner.slideDown(600);
 	})
 
-	// ! DELETE THIS
 
 	// ! tags link
 
@@ -145,19 +144,24 @@ $(document).ready(function () {
 		window.location.href = "?"+link;
 	})
 
+	// ! DELETE THIS
+
 	// ! switch
 
 	$('.switch-size').on('change', function () {
 
-		var text = $(this).val();
-		//  get ALL AFTER last ?
-		var last_filter = window.location.href.split('?').pop();
-		var last_filter = last_filter.replaceAll('?', '');
-		var last_filter = last_filter.replace(www, '');
-		var last_filter = last_filter.replaceAll(/&size.*&/g, '&');
-		var link = last_filter+"&size=" + text;
+		var size = $(this).val();
 
-		window.location.href = "?"+link;
+		if(size != 'change size' && current_user != ""){
+			$.post({
+				url: 'switch-size-db.php',
+				data: { size: size,current_user:current_user },
+				success: function (data) {
+					window.location.reload();
+				},
+			})
+		}
+
 
 	})
 
