@@ -8,6 +8,10 @@ if($_SESSION["user"]["id"] == NULL){
  require_once "header.php";
 ?>
 
+<?
+	require_once "search.php";
+?>
+
 <!-- ! log-as -->
 <? 
 		require_once "log-as.php"
@@ -18,4 +22,10 @@ if($_SESSION["user"]["id"] == NULL){
 <?
 	require_once "change-page.php";
 ?>
+<div class="sort-flex">
+<?
+	include_once "switch-size.php";
+?>
+</div>
+
 

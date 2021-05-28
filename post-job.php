@@ -42,7 +42,7 @@ include "post-form.php";
 <div class="sort-flex">
 <!-- ! switch -->
 <?
-	require_once "switch.php"
+	include_once "switch-size.php";
 ?>
 <!-- ? switch -->
 </div>
@@ -104,9 +104,3 @@ $('.card2').find('.inter-icons').append('<img src="img/icons/info-ok.svg" alt="i
 			
 </script>
 
-
-<!-- ! must be last - search-script -->
-<? 
-include_once "search-script.php";
-?>
-<!-- ? search-script -->

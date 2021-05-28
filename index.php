@@ -20,7 +20,7 @@ session_start();
 <div class="sort-my">ALL/MY</div>
 <!-- ! switch -->
 <?
-	require_once "switch.php"
+	include_once "switch-size.php";
 ?>
 <!-- ? switch -->
 </div>
@@ -64,8 +64,3 @@ session_start();
 
 
 
-<!-- ! must be last - search-script -->
-<? 
-include_once "search-script.php";
-?>
-<!-- ? search-script -->

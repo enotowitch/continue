@@ -37,12 +37,7 @@ $(document).ready(function () {
 		}
 	});
 
-	// ! switch
 
-	$('.switch').on('click', function () {
-		card.not('.not100').toggleClass('w100');
-		$('.info__pics').toggleClass('dn-imp');
-	})
 
 	// ! chosen
 
@@ -133,12 +128,37 @@ $(document).ready(function () {
 
 	// ! DELETE THIS
 
-	$('.tag').on('click', function(){
+	// ! tags link
+
+	var www = window.location.href;
+
+	$('.tag').on('click', function () {
 
 		var text = $(this).text().trim();
-		var link = window.location.href.replace(/\?.*/,'')+"?"+text;
+		//  get ALL AFTER last ?
+		var last_filter = window.location.href.split('?').pop();
+		var last_filter = last_filter.replaceAll('?', '');
+		var last_filter = last_filter.replace(www, '');
+		var last_filter = last_filter.replaceAll(/&search.*&/g, '&');
+		var link = last_filter+"&search=" + text;
 
-		window.location.href = link;
+		window.location.href = "?"+link;
+	})
+
+	// ! switch
+
+	$('.switch-size').on('change', function () {
+
+		var text = $(this).val();
+		//  get ALL AFTER last ?
+		var last_filter = window.location.href.split('?').pop();
+		var last_filter = last_filter.replaceAll('?', '');
+		var last_filter = last_filter.replace(www, '');
+		var last_filter = last_filter.replaceAll(/&size.*&/g, '&');
+		var link = last_filter+"&size=" + text;
+
+		window.location.href = "?"+link;
+
 	})
 
 })

@@ -66,10 +66,10 @@ $(document).ready(function () {
 
 					if (id == element) {
 					
-						$(this).hide();
+						$(this).addClass('dn');
 							// if cards are on jobs-del or port-del -> show
 						if(card_from == '/jobs-del.php' || card_from == '/port-del.php'){
-							$(this).show();
+							$(this).addClass('db-hidden').addClass('db');
 						}
 						
 					}

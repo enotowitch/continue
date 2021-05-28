@@ -1,11 +1,13 @@
-<script>
-	var search_tag = /[^?]*$/.exec(window.location)[0];
-</script>
+<input type="hidden" name="search_tag" value="<? echo $_GET["search"]; ?>">
 
 <? var_dump($_GET); ?>
-<? if(isset($_GET)): ?>
+<? if(isset($_GET["search"])): ?>
 	<script>
 
+	var search_tag = $('[name="search_tag"]').val().replaceAll('?','');
+
+	// var search_tag = /[^?]*$/.exec(window.location)[0].replace('&search=','');
+	
 
 		$(`.card:contains(${search_tag})`).each(function(){
 			$(this).find('.tag').each(function(){
@@ -17,6 +19,8 @@
 		});
 
 		$('.card').not('.form-card').not('.card2').hide();
+		$('.db-hidden').addClass('dn');
+
 		$('.searched').closest('.card').show();
 
 		$(`.tag:contains(${search_tag})`).each(function(){

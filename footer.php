@@ -15,6 +15,18 @@
 	<script src="js/update.js"></script>
 	<script src="js/my-slick.js"></script>
 
+	<?
+	include_once "switch-size-script.php";
+	?>
+
+
+
+	<!-- ! must be last - search-script -->
+	<? 
+	include_once "search-script.php";
+	?>
+	<!-- ? search-script -->
+
 
 </body>
 
