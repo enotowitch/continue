@@ -67,6 +67,7 @@ $(document).ready(function () {
 
 					if (id == element) {
 						$(this).find('.like').attr('src', 'img/icons/liked.svg');
+						$(this).addClass('db-liked');
 					}
 				})
 			});

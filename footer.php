@@ -16,7 +16,9 @@
 	<script src="js/my-slick.js"></script>
 
 
-
+	<? 
+	include_once "filter-script.php";
+	?>
 
 
 	<!-- ! must be last - search-script -->

@@ -14,10 +14,9 @@ session_start();
 ?>
 <!-- ? change-page -->
 <div class="sort-flex">
-<a class="brand-del" href="<? if_page('/index.php', '/jobs-del.php', '/port-del.php'); ?>">HIDDEN</a>
+<!-- <a class="brand-del" href="<? if_page('/index.php', '/jobs-del.php', '/port-del.php'); ?>">HIDDEN</a>
 <a class="brand-like" href="<? if_page('/index.php', '/jobs-like.php', '/port-like.php'); ?>">LIKED</a>
-<a class="brand" href="<? if_page('/index.php', '/jobs-mes.php', '/port-mes.php'); ?>">MESSAGED</a>
-<div class="sort-my">ALL/MY</div>
+<a class="brand" href="<? if_page('/index.php', '/jobs-mes.php', '/port-mes.php'); ?>">MESSAGED</a> -->
 <!-- ! switch -->
 <?
 	include_once "switch-size.php";

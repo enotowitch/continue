@@ -63,25 +63,7 @@ $(document).ready(function () {
 		$('.post-anim').detach();
 	}, 1200);
 
-	// ! sort MY POSTS & ALL POSTS
-
-	$(document).on('click', '.sort-my', function () {
-
-
-		$('.card').not(current_user_posts).addClass('dn');
-
-		$('.sort-my').addClass('sort-all').removeClass('sort-my');
-
-	});
-
-	$(document).on('click', '.sort-all', function () {
-
-
-		$('.card').removeClass('dn');
-
-		$('.sort-all').addClass('sort-my').removeClass('sort-all');
-
-	})
+	
 
 	// ! cross_reset form reset
 	$('.cross_reset').on('click', function (e) {
@@ -144,7 +126,7 @@ $(document).ready(function () {
 		window.location.href = "?"+link;
 	})
 
-	// ! DELETE THIS
+	
 
 	// ! switch
 
@@ -160,6 +142,28 @@ $(document).ready(function () {
 					window.location.reload();
 				},
 			})
+		}
+
+
+	})
+
+	// ! DELETE THIS
+
+	$('.filter').on('change', function () {
+
+		var text = $(this).val();
+
+		if(text != 'filter'){
+
+			//  get ALL AFTER last ?
+		var last_filter = window.location.href.split('?').pop();
+		var last_filter = last_filter.replaceAll('?', '');
+		var last_filter = last_filter.replace(www, '');
+		var last_filter = last_filter.replaceAll(/&filter.*&/g, '&');
+		var link = last_filter+"&filter=" + text;
+
+		window.location.href = "?"+link;
+
 		}
 
 

@@ -14,9 +14,17 @@ $(document).ready(function () {
 					var hide_link = '/port-del.php';
 				}
 
-		// !!! added to hidden	
-		$('.please-log').detach();
-		$(e.target).closest('.card').before('<div class="please-log">Added to <a href="'+hide_link+'"><span class="brand">hidden</span></a><img src="img/icons/cross.svg"></div>');
+			// ! removed from hidden
+		if(card_from == "/jobs-del.php" || card_from == "/port-del.php" || $(e.target).closest('.card').hasClass('db-hidden')){
+			$('.please-log').detach();
+			$(e.target).closest('.card').before('<div class="please-log">removed from <a href="'+hide_link+'"><span class="brand">hidden</span></a><img src="img/icons/cross.svg"></div>');
+		} else {
+			// !!! added to hidden	
+			$('.please-log').detach();
+			$(e.target).closest('.card').before('<div class="please-log">Added to <a href="'+hide_link+'"><span class="brand">hidden</span></a><img src="img/icons/cross.svg"></div>');
+		}
+
+		
 
 		// ! log to hide
 		if(current_user == ""){
@@ -25,11 +33,7 @@ $(document).ready(function () {
 			return;
 		}
 
-		// ! removed from hidden
-		if(card_from == "/jobs-del.php" || card_from == "/port-del.php"){
-			$('.please-log').detach();
-			$(e.target).closest('.card').before('<div class="please-log">removed from <a href="'+hide_link+'"><span class="brand">hidden</span></a><img src="img/icons/cross.svg"></div>');
-		}
+
 		
 
 
@@ -66,10 +70,10 @@ $(document).ready(function () {
 
 					if (id == element) {
 					
-						$(this).addClass('dn');
+						$(this).addClass('db-hidden').addClass('dn');
 							// if cards are on jobs-del or port-del -> show
 						if(card_from == '/jobs-del.php' || card_from == '/port-del.php'){
-							$(this).addClass('db-hidden').addClass('db');
+							$(this).addClass('db');
 						}
 						
 					}

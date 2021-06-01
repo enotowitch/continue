@@ -120,6 +120,27 @@ $(document).ready(function () {
 	})
 
 
+	$.post({
+		'url': 'messaged-filter.php',
+		'dataType': 'json',
+		success: function (data) {
+
+			// ! load messaged from DB
+			data.forEach(element => {
+
+				$('.card').each(function () {
+
+					var id = $(this).find('.card_id').val();
+
+					if (id == element) {
+						$(this).addClass('db-messaged');
+					}
+				})
+			});
+		}
+	});
+
+
 
 
 })
