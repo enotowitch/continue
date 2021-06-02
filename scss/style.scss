@@ -404,11 +404,12 @@
 .sort-flex {
 	display: flex;
 	max-width: $main-cards-cont-wid;
-	min-width: 320px;
 	margin: 0 auto;
-	padding: 0 15px;
-	justify-content: space-between;
 	flex-wrap: wrap;
+	>div,>select{
+		margin-left: 15px;
+		margin-top: 5px;
+	}
 }
 .db {
 	display: block;

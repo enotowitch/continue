@@ -22,10 +22,10 @@ if($_SESSION["user"]["id"] == NULL){
 <?
 	require_once "change-page.php";
 ?>
-<div class="sort-flex">
+
 <?
-	include_once "switch-size.php";
+	include_once "filters.php";
 ?>
-</div>
+
 
 

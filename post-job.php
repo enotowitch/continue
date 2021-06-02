@@ -39,13 +39,13 @@ include "post-form.php";
 <? include "your.php"; ?>
 <!-- ? your -->
 
-<div class="sort-flex">
+
 <!-- ! switch -->
 <?
-	include_once "switch-size.php";
+	include_once "filters.php";
 ?>
 <!-- ? switch -->
-</div>
+
 
 <!-- ! CARD -->
 <div class="card-flex">
