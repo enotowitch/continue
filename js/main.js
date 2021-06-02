@@ -120,8 +120,8 @@ $(document).ready(function () {
 		var last_filter = window.location.href.split('?').pop();
 		var last_filter = last_filter.replaceAll('?', '');
 		var last_filter = last_filter.replace(www, '');
-		var last_filter = last_filter.replaceAll(/&search.*&/g, '&');
-		var link = last_filter+"&search=" + text;
+		var last_filter = last_filter.replaceAll(/&search-tag.*&/g, '&');
+		var link = last_filter+"&search-tag=" + text;
 
 		window.location.href = "?"+link;
 	})
@@ -147,7 +147,7 @@ $(document).ready(function () {
 
 	})
 
-	// ! DELETE THIS
+	
 
 	$('.filter').on('change', function () {
 
@@ -168,5 +168,37 @@ $(document).ready(function () {
 
 
 	})
+
+// ! DELETE THIS
+
+$(document).on('change', '.tags__select2', function(){
+
+	var text = $(this).val();
+	//  get ALL AFTER last ?
+	var last_filter = window.location.href.split('?').pop();
+	var last_filter = last_filter.replaceAll('?', '');
+	var last_filter = last_filter.replace(www, '');
+	var last_filter = last_filter.replaceAll(/&search-tag.*&/g, '&');
+	var link = last_filter+"&search-tag=" + text;
+
+	window.location.href = "?"+link;
+
+})
+
+$(document).on('change', '.search-word', function(){
+
+	var text = $(this).val();
+
+		//  get ALL AFTER last ?
+	var last_filter = window.location.href.split('?').pop();
+	var last_filter = last_filter.replaceAll('?', '');
+	var last_filter = last_filter.replace(www, '');
+	var last_filter = last_filter.replaceAll(/&search-word.*&/g, '&');
+	var link = last_filter+"&search-word=" + text;
+
+	window.location.href = "?"+link;
+
+})
+
 
 })

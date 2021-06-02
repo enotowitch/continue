@@ -7,7 +7,7 @@
 
 	$('.card-flex').prepend('<div class="w100 loading">Loading hidden...</div>');
 
-	$('.filter').after('<div class="cancel-filter"><? echo $_GET["filter"]; ?><span class="close-cancel-filter"></span></div>');
+	$('.filter').after('<div class="cancel-filter"><? echo $_GET["filter"]; ?><span class="close-cancel-filter close_filter"></span></div>');
 
 	// ! ready
 $(document).ready(function(){
@@ -50,12 +50,7 @@ $(document).ready(function(){
 	}, 500);
 	
 	
-	$('.cancel-filter').on('click', function(){
 
-	var without_filter = window.location.href.replace('&filter=hidden', '');
-	window.location.href = without_filter;
-
-})
 
 })
 
@@ -71,7 +66,7 @@ $(document).ready(function(){
 
 $('.card-flex').prepend('<div class="w100 loading">Loading liked...</div>');
 
-$('.filter').after('<div class="cancel-filter"><? echo $_GET["filter"]; ?><span class="close-cancel-filter"></span></div>');
+$('.filter').after('<div class="cancel-filter"><? echo $_GET["filter"]; ?><span class="close-cancel-filter close_filter"></span></div>');
 
 	// ! ready
 $(document).ready(function(){
@@ -114,12 +109,7 @@ $(document).ready(function(){
 	}, 500);
 	
 	
-	$('.cancel-filter').on('click', function(){
 
-	var without_filter = window.location.href.replace('&filter=liked', '');
-	window.location.href = without_filter;
-
-})
 
 })
 
@@ -135,7 +125,7 @@ $(document).ready(function(){
 
 $('.card-flex').prepend('<div class="w100 loading">Loading messaged...</div>');
 
-$('.filter').after('<div class="cancel-filter"><? echo $_GET["filter"]; ?><span class="close-cancel-filter"></span></div>');
+$('.filter').after('<div class="cancel-filter"><? echo $_GET["filter"]; ?><span class="close-cancel-filter close_filter"></span></div>');
 
 	// ! ready
 $(document).ready(function(){
@@ -178,15 +168,19 @@ $(document).ready(function(){
 	}, 500);
 	
 	
-	$('.cancel-filter').on('click', function(){
 
-	var without_filter = window.location.href.replace('&filter=messaged', '');
-	window.location.href = without_filter;
-
-})
 
 })
 
 </script>
 
 <? endif; ?>
+
+<script>
+// ! remove searched filter from url
+$('.close_filter').on('click', function(){
+	var searched_word = $(this).closest('div').text().trim();	
+	var without_search = window.location.href.replace(`&filter=${searched_word}`, '');
+	window.location.href = without_search;
+})
+</script>
