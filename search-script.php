@@ -80,13 +80,13 @@ $('.search-word').after('<div class="cancel-filter cancel_filter"><? echo $_GET[
 // ! remove searched word from url
 $('.close_cancel_filter_word').on('click', function(){
 	var searched_word = $(this).closest('div').text().trim();	
-	var without_search = window.location.href.replace(`&search-word=${searched_word}`, '');
+	var without_search = window.location.href.replace(`search-word=${searched_word}&`, '');
 	window.location.href = without_search;
 })
 // ! remove searched tag from url
 $('.close_cancel_filter_tag').on('click', function(){
 	var searched_word = $(this).closest('div').text().trim();	
-	var without_search = window.location.href.replace(`&search-tag=${searched_word}`, '');
+	var without_search = window.location.href.replace(`search-tag=${searched_word}&`, '');
 	window.location.href = without_search;
 })
 

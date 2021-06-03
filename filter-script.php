@@ -180,7 +180,7 @@ $(document).ready(function(){
 // ! remove searched filter from url
 $('.close_filter').on('click', function(){
 	var searched_word = $(this).closest('div').text().trim();	
-	var without_search = window.location.href.replace(`&filter=${searched_word}`, '');
+	var without_search = window.location.href.replace(`filter=${searched_word}&`, '');
 	window.location.href = without_search;
 })
 </script>
