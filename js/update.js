@@ -124,32 +124,7 @@ $(document).ready(function () {
 
 			setTimeout(() => {
 				
-				$('.info__pics').slick({
-					lazyLoad: 'ondemand',
-					infinite: false,
-					slidesToShow: 5,
-					slidesToScroll: 5,
-					responsive: [
-						{
-							breakpoint: 650,
-							settings: {
-								infinite: true,
-								slidesToShow: 4,
-								slidesToScroll: 4,
-							}
-						},
-						{
-							breakpoint: 550,
-							settings: {
-								infinite: true,
-								slidesToShow: 3,
-								slidesToScroll: 3,
-							}
-						},
-					]
-				});
-
-
+				my_slick('.info__pics');
 
 			}, 500);
 			

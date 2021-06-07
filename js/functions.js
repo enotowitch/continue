@@ -14,3 +14,40 @@ function post_hide(){
 	post.slideUp(600);
 }
 
+function my_slick(target){
+
+	$(target).slick({
+		asNavFor: '.slider',
+		lazyLoad: 'ondemand',
+		infinite: false,
+		slidesToShow: 5,
+		slidesToScroll: 5,
+		responsive: [
+			{
+				breakpoint: 650,
+				settings: {
+					infinite: false,
+					slidesToShow: 4,
+					slidesToScroll: 4,
+				}
+			},
+			{
+				breakpoint: 550,
+				settings: {
+					infinite: false,
+					slidesToShow: 3,
+					slidesToScroll: 3,
+				}
+			},
+			{
+					breakpoint: 499,
+					settings: {
+						infinite: false,
+						slidesToShow: 1,
+						slidesToScroll: 1,
+					}
+				},
+		]
+	});
+
+}

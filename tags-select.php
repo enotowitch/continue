@@ -7,7 +7,7 @@
 						<option value="CAD">CAD</option>
 						<option value="cartoonist">cartoonist</option>
 						<option value="character">character</option>
-						<option value="children\'s">children's</option>
+						<option value="childrens">childrens</option>
 						<option value="comic">comic</option>
 						<option value="creative">creative</option>
 						<option value="design">design</option>

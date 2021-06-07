@@ -44,3 +44,7 @@
 <?
 	require_once "functions.php";
 ?>
+
+<? 
+	require_once "slider.php";
+?>

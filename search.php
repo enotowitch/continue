@@ -20,7 +20,7 @@
 			<div class="search__tag tag">CAD</div>
 			<div class="search__tag tag">cartoonist</div>
 			<div class="search__tag tag">character</div>
-			<div class="search__tag tag">children's</div>
+			<div class="search__tag tag">childrens</div>
 			<div class="search__tag tag">comic</div>
 			<div class="search__tag tag">creative</div>
 			<div class="search__tag tag">design</div>

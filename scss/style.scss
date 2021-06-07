@@ -406,7 +406,8 @@
 	max-width: $main-cards-cont-wid;
 	margin: 0 auto;
 	flex-wrap: wrap;
-	>div,>select{
+	> div,
+	> select {
 		margin-left: 15px;
 		margin-top: 5px;
 	}
@@ -558,4 +559,36 @@
 }
 .search-word-div {
 	display: flex;
+}
+// ! slider
+.img-zoom {
+	cursor: zoom-in;
+}
+.zoom-out {
+	cursor: zoom-out;
+}
+.slider-wrap {
+	padding: 0 15px;
+	background-color: #fff;
+	width: calc(100vw - 15px);
+	height: 100vh;
+	position: fixed;
+	z-index: 5;
+	bottom: 0px;
+	left: 0;
+	img {
+		max-height: 100vh;
+		max-width: 100vw;
+		object-fit: contain;
+		position: relative;
+		user-select: none;
+	}
+	.slick-arrow {
+		position: absolute;
+		top: 50%;
+	}
+}
+.slick-disabled {
+	opacity: 0;
+	cursor: auto;
 }
