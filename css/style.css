@@ -248,28 +248,9 @@
 
 .card .info__pics {
   min-width: 0px;
-  width: 430px !important;
-  height: 80px !important;
+  max-width: 650px !important;
   position: relative;
   padding: 0 15px;
-}
-
-@media (max-width: 650px) {
-  .card .info__pics {
-    width: 380px !important;
-  }
-}
-
-@media (max-width: 600px) {
-  .card .info__pics {
-    width: 330px !important;
-  }
-}
-
-@media (max-width: 550px) {
-  .card .info__pics {
-    width: 280px !important;
-  }
 }
 
 @media (max-width: 499px) {
@@ -280,7 +261,7 @@
 
 .card .info__pics img {
   min-width: 80px !important;
-  height: 80px !important;
+  height: 80px;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -402,6 +383,35 @@
   display: none;
 }
 
+.one_slick_pic {
+  background-color: #fff !important;
+  width: 250px !important;
+  position: absolute !important;
+  z-index: 3 !important;
+  padding: 0 !important;
+}
+
+.one_slick_pic img {
+  height: 203px !important;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
+}
+
+.one_slick_pic .slick-arrow {
+  position: absolute !important;
+  top: 40% !important;
+}
+
+.close-one-slick-pic {
+  position: absolute;
+  top: -118px;
+  right: 50px;
+  z-index: 4;
+  -webkit-transform: scale(0.7);
+      -ms-transform: scale(0.7);
+          transform: scale(0.7);
+}
+
 .card-flex {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -462,12 +472,6 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: auto;
-}
-
-@media (max-width: 767px) {
-  .tags_main {
-    width: 40px;
-  }
 }
 
 @media (max-width: 499px) {

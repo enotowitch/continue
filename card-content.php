@@ -44,7 +44,7 @@
 					<div class="info__cell info__simple location">
 						<? echo $post->location; ?>
 					</div>
-					<div class="info__cell info__simple ex">
+					<div class="info__cell info__simple example">
 						Examples
 					</div>
 				</div>

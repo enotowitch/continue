@@ -51,3 +51,15 @@ function my_slick(target){
 	});
 
 }
+
+function my_slick_small(target){
+
+	$(target).slick({
+		asNavFor: '.slider',
+		lazyLoad: 'ondemand',
+		infinite: false,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+	});
+
+}
