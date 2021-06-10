@@ -633,8 +633,8 @@
 			</select>
 			<label class="info__cell info__example" for="fake-example">
 				Load Example
-				<input class="fake-example" type="file" multiple id="fake-example">
 			</label>
+			<input class="fake-example" type="file" multiple id="fake-example">
 		</div>
 	</div>
 </div>

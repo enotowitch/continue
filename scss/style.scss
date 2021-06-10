@@ -101,7 +101,6 @@
 	height: 203px;
 }
 .card {
-	overflow: hidden;
 	position: relative;
 	height: 203px;
 	width: 290px;
@@ -432,6 +431,9 @@
 }
 .brand {
 	color: $brandcolor;
+}
+.brand-bg {
+	background-color: $brandcolor;
 }
 .brand-like {
 	color: $like;

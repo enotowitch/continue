@@ -37,7 +37,7 @@ $(document).ready(function () {
 		var tag_1 = $(e.target).closest('.card').find('.tags').find('.tag').eq(0).text().trim();
 		var tag_2 = $(e.target).closest('.card').find('.tags').find('.tag').eq(1).text().trim();
 		var tag_3 = $(e.target).closest('.card').find('.tags').find('.tag').eq(2).text().trim();
-		
+
 
 
 
@@ -45,21 +45,21 @@ $(document).ready(function () {
 		// ! load update form to card
 		$.post({
 			url: 'update-form.php',
-			data: ({card_from:card_from,card_id:card_id,title:title,subt:subt,salary:salary,duration:duration,experience:experience,workload:workload,location:location,tag_1:tag_1,tag_2:tag_2,tag_3:tag_3}),
+			data: ({ card_from: card_from, card_id: card_id, title: title, subt: subt, salary: salary, duration: duration, experience: experience, workload: workload, location: location, tag_1: tag_1, tag_2: tag_2, tag_3: tag_3 }),
 			success: function (data) {
 				$(e.target).closest('.card').prepend('<div class="card-update"></div>');
 				$(e.target).closest('.card').find('.card-update').html(data);
 			},
 		})
 
-		
+
 		// ! add del icon to imgs in card update
 		setTimeout(() => {
-			$('.update-card').find('.info__pics').find('img').each(function(){
+			$('.update-card').find('.info__pics').find('img').each(function () {
 				$(this).before('<div class="upd_pic_del"><img class="upd_pic_del_img" src="img/icons/delete.svg"></div>');
 			})
 		}, 300);
-		
+
 	})
 
 
@@ -67,16 +67,16 @@ $(document).ready(function () {
 
 
 
-	$(document).on('click', '.upd_pic_del', function(e){
+	$(document).on('click', '.upd_pic_del', function (e) {
 
-		if(confirm('Are you sure you want to delete this picture forever?')){
+		if (confirm('Are you sure you want to delete this picture forever?')) {
 
 			var index = $(this).next().attr('alt');
 			var src = $(this).next('img').attr('src');
 
 			$.post({
 				url: 'update-imgs.php',
-				data: ({card_from:card_from,card_id:card_id,src:src,index:index}),
+				data: ({ card_from: card_from, card_id: card_id, src: src, index: index }),
 				success: function (data) {
 					$(e.target).closest('.slick-slide').detach();
 				},
@@ -84,62 +84,112 @@ $(document).ready(function () {
 
 		}
 
-		
+
 	})
 
 	// ! multiple PREVIEW 
 
-	$(function() {
+	$(function () {
 		// Multiple images preview in browser
-		var imagesPreview = function(input, placeToInsertImagePreview) {
-  
-			 if (input.files) {
-				  var filesAmount = input.files.length;
-  
-				  for (i = 0; i < filesAmount; i++) {
-						var reader = new FileReader();
-  
-						reader.onload = function(event) {
-							 $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
-						}
-  
-						reader.readAsDataURL(input.files[i]);
-				  }
-			 }
-  
+		var imagesPreview = function (input, placeToInsertImagePreview) {
+
+			if (input.files) {
+				var filesAmount = input.files.length;
+
+				for (i = 0; i < filesAmount; i++) {
+					var reader = new FileReader();
+
+					reader.onload = function (event) {
+						$($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+					}
+
+					reader.readAsDataURL(input.files[i]);
+				}
+			}
+
 		};
 
-
+		// ! update preview big
 
 		$(document).on('change', '.fake-example-upd', function (e) {
 
-			console.log($(this));
+			var filesAmount = this.files.length;
+			
+			if(filesAmount > 10){
+				$(this).closest('.card').find('.info__example').addClass('red').text('10 files max!');
+				return;
+			}
+			if(filesAmount <= 10){
+				$(this).closest('.card').find('.info__example').removeClass('red').addClass('brand-bg').text(`${filesAmount}/10`);
+			}
 
-			$('.info__pics').slick('unslick');
+			// ! update preview small
+			if($(this).closest('.w_small').hasClass('w_small')){
+				
+			$(this).closest('.card').next('.post-preview').detach();
+			$(this).closest('.card').after('<div class="post-preview"></div>');
+
+
+			imagesPreview(this, $(this).closest('.card').next('.post-preview'));
+
+
+			setTimeout(() => {
+				my_slick_3($(this).closest('.card').next('.post-preview'));
+			}, 500);
+
+			}
+
+
+			$(e.target).closest('.card').find('.info__pics').slick('unslick');
 			$(e.target).closest('.update-card').find('.info__pics').empty();
 
-			
+
 			imagesPreview(this, 'div.info__pics_preview');
 
 
 			setTimeout(() => {
-				
-				my_slick('.info__pics');
+
+				var info__pics = $(e.target).closest('.card').find('.info__pics');
+				my_slick(info__pics);
 
 			}, 500);
-			
-	
+
+
 		});
-  
-  });
+
+
+		// ! post preview small
+
+		$(document).on('change', '.fake-example', function (e) {
+
+			var filesAmount = this.files.length;
+			
+			if(filesAmount > 10){
+				$(this).closest('.card').find('.info__example').addClass('red').text('10 files max!');
+				return;
+			}
+			if(filesAmount <= 10){
+				$(this).closest('.card').find('.info__example').removeClass('red').addClass('brand-bg').text(`${filesAmount}/10`);
+			}
+
+
+			$(this).closest('.card').next('.post-preview').detach();
+			$(this).closest('.card').after('<div class="post-preview"></div>');
+
+
+			imagesPreview(this, $(this).closest('.card').next('.post-preview'));
+
+
+			setTimeout(() => {
+				my_slick_3($(this).closest('.card').next('.post-preview'));
+			}, 500);
+			
+
+		});
 
 
 
-	
-
-
-
-
+	});
 
 
 

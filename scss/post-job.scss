@@ -126,4 +126,15 @@
 .post {
 	position: relative;
 }
-
+.post-preview {
+	position: absolute;
+	top: 203px;
+	width: 290px;
+	height: 80px;
+	overflow: hidden;
+	img {
+		height: 80px;
+		min-width: 80px;
+		object-fit: cover;
+	}
+}

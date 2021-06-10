@@ -146,7 +146,6 @@
 }
 
 .card {
-  overflow: hidden;
   position: relative;
   height: 203px;
   width: 290px;
@@ -571,6 +570,10 @@
 
 .brand {
   color: #6fda44;
+}
+
+.brand-bg {
+  background-color: #6fda44;
 }
 
 .brand-like {

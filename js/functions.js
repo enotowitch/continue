@@ -63,3 +63,14 @@ function my_slick_small(target){
 	});
 
 }
+
+function my_slick_3(target){
+
+	$(target).slick({
+		lazyLoad: 'ondemand',
+		infinite: false,
+		slidesToShow: 3,
+		slidesToScroll: 3
+	});
+
+}
