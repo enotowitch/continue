@@ -100,7 +100,27 @@
 
 		$('.update-card').find('.tags').addClass('tags_main').wrap('<div class="tags-pics-flex tpfupd"></div>');
 
-		$('.update-card').find('.tags').after(`<div class="info__cell info__simple info__pics info__pics_preview"><img src="<? echo $files["example_1"]; ?>" alt="1"><img src="<? echo $files["example_2"]; ?>" alt="2"><img src="<? echo $files["example_3"]; ?>" alt="3"><img src="<? echo $files["example_4"]; ?>" alt="4"><img src="<? echo $files["example_5"]; ?>" alt="5"><img src="<? echo $files["example_6"]; ?>" alt="6"><img src="<? echo $files["example_7"]; ?>" alt="7"><img src="<? echo $files["example_8"]; ?>" alt="8"><img src="<? echo $files["example_9"]; ?>" alt="9"><img src="<? echo $files["example_10"]; ?>" alt="10"></div>`);
+		// !!! load pics from DB - BIG CARD
+		if(!$('.update-card').closest('.w_small').hasClass('w_small')){
+
+			$('.update-card').find('.tags').after(`<div class="info__cell info__simple info__pics info__pics_preview"><img src="<? echo $files["example_1"]; ?>" alt="1"><img src="<? echo $files["example_2"]; ?>" alt="2"><img src="<? echo $files["example_3"]; ?>" alt="3"><img src="<? echo $files["example_4"]; ?>" alt="4"><img src="<? echo $files["example_5"]; ?>" alt="5"><img src="<? echo $files["example_6"]; ?>" alt="6"><img src="<? echo $files["example_7"]; ?>" alt="7"><img src="<? echo $files["example_8"]; ?>" alt="8"><img src="<? echo $files["example_9"]; ?>" alt="9"><img src="<? echo $files["example_10"]; ?>" alt="10"></div>`);
+
+		}
+
+	
+		// !!! load pics from DB - SMALL CARD
+		if($('.update-card').closest('.w_small').hasClass('w_small')){
+
+			$('.update-card').closest('.card').next('.post-preview').detach();
+			$('.update-card').closest('.card').after('<div class="post-preview"></div>');
+			$('.update-card').closest('.card').next('.post-preview').html(`<img src="<? echo $files["example_1"]; ?>" alt="1"><img src="<? echo $files["example_2"]; ?>" alt="2"><img src="<? echo $files["example_3"]; ?>" alt="3"><img src="<? echo $files["example_4"]; ?>" alt="4"><img src="<? echo $files["example_5"]; ?>" alt="5"><img src="<? echo $files["example_6"]; ?>" alt="6"><img src="<? echo $files["example_7"]; ?>" alt="7"><img src="<? echo $files["example_8"]; ?>" alt="8"><img src="<? echo $files["example_9"]; ?>" alt="9"><img src="<? echo $files["example_10"]; ?>" alt="10">`);
+
+			setTimeout(() => {
+				my_slick_3($('.update-card').closest('.card').next('.post-preview'));
+			}, 500);
+
+
+		}
 
 		// ! delete empty pics before slick init
 		var empty_pic = $('img[src=""]');

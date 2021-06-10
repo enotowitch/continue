@@ -132,7 +132,8 @@
 	width: 290px;
 	height: 80px;
 	overflow: hidden;
-	img {
+	background-color: #fff;
+	img:not(.upd_pic_del_img) {
 		height: 80px;
 		min-width: 80px;
 		object-fit: cover;

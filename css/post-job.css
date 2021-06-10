@@ -180,9 +180,10 @@
   width: 290px;
   height: 80px;
   overflow: hidden;
+  background-color: #fff;
 }
 
-.post-preview img {
+.post-preview img:not(.upd_pic_del_img) {
   height: 80px;
   min-width: 80px;
   -o-object-fit: cover;
