@@ -14,7 +14,7 @@
 		<p>Password</p>
 		<input name="user_pass" type="password">
 	</label>
-	<input type="submit" value="SIGN <? if_page('/reg.php', "UP", "IN"); ?>">
+	<input class="sign-in" type="submit" value="SIGN <? if_page('/reg.php', "UP", "IN"); ?>">
 </div>
 	<p><? if_page('/reg.php', "Already", "Don't"); ?> have account? - <a href="<? if_page('/reg.php', "login.php", "reg.php"); ?>">SIGN <? if_page('/reg.php', "IN", "UP"); ?></a></p>
 </form>

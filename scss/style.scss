@@ -185,7 +185,7 @@
 			max-width: 650px !important;
 			position: relative;
 			padding: 0 15px;
-			img {
+			img:not(.upd_pic_del_img) {
 				min-width: 80px !important;
 				height: 80px;
 				object-fit: cover;
@@ -523,10 +523,16 @@
 	position: relative;
 }
 .upd_pic_del {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.upd_pic_del_img {
 	position: absolute;
+	right: 2px;
 	z-index: 2;
-	font-size: 30px;
-	color: tomato;
+	width: 22px;
+	height: 22px;
 }
 .loading {
 	position: relative;
@@ -603,4 +609,37 @@
 .slick-disabled {
 	opacity: 0;
 	cursor: auto;
+}
+.example-small-slick {
+	text-decoration: underline;
+}
+.like,
+.hide,
+.apply,
+.update,
+.del,
+.cross,
+.cross_reset {
+	&:active {
+		transform: scale(0.9);
+		transition: 0.9;
+	}
+	cursor: pointer;
+}
+.header__icon,
+.search__topic,
+.tag,
+.switch-size,
+.filter,
+.tags__select2,
+.search-word,
+.close-cancel-filter,
+.please-log,
+.add-logo,
+.info__example,
+.example-small-slick,
+.close-one-slick-pic,
+.upd_pic_del,
+.sign-in {
+	cursor: pointer;
 }

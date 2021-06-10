@@ -5,7 +5,8 @@ $('.w_small').find('.example').addClass('example-small-slick').removeClass('exam
 my_slick('.info__pics');
 
 
-// $('.ex').on('click', function (e) {
+// ! old medium pics, maybe later (not finished)
+// $('.example').on('click', function (e) {
 
 // 	$(e.target).closest('.card').find('.info__pics').slick('unslick');
 // 	$(e.target).closest('.card').find('.info__pics').addClass('pics100');

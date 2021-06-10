@@ -56,7 +56,7 @@ $(document).ready(function () {
 		// ! add del icon to imgs in card update
 		setTimeout(() => {
 			$('.update-card').find('.info__pics').find('img').each(function(){
-				$(this).before('<div class="upd_pic_del">X</div>');
+				$(this).before('<div class="upd_pic_del"><img class="upd_pic_del_img" src="img/icons/delete.svg"></div>');
 			})
 		}, 300);
 		
