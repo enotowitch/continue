@@ -14,6 +14,7 @@
 	<script src="js/hide.js"></script>
 	<script src="js/update.js"></script>
 	<script src="js/my-slick.js"></script>
+	<script src="js/preview.js"></script>
 
 
 	<? 
