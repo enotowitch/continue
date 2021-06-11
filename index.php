@@ -42,7 +42,7 @@ session_start();
 	
 ?>
 
-	<div class="card card_main w100 <? echo $user["size"]; ?>">
+	<div class="card card_main w100 <? echo $user["size"]; ?><? echo $_COOKIE['size']; ?>">
 		<? 
 			include "card-content.php";
 		?>
