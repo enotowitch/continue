@@ -433,7 +433,7 @@
 	color: $brandcolor;
 }
 .brand-bg {
-	background-color: $brandcolor;
+	background-color: lighten($brandcolor, 5%);
 }
 .brand-like {
 	color: $like;
