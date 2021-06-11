@@ -41,6 +41,8 @@ $(document).ready(function(){
 				}
 				if(filesAmount == 0){
 					$(this).closest('.card').find('.info__example').addClass('red').text('0/10 files!');
+					$(this).closest('.card').next('.post-preview').detach();
+					return;
 				}
 	
 				// ! update preview small
@@ -58,6 +60,7 @@ $(document).ready(function(){
 				}, 100);
 	
 				}
+				// ? update preview small
 	
 	
 				$(e.target).closest('.card').find('.info__pics').slick('unslick');
@@ -93,6 +96,8 @@ $(document).ready(function(){
 				}
 				if(filesAmount == 0){
 					$(this).closest('.card').find('.info__example').addClass('red').text('0/10 files!');
+					$(this).closest('.card').next('.post-preview').detach();
+					return;
 				}
 	
 	

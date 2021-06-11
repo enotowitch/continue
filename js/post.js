@@ -27,81 +27,81 @@ $(document).on('click', '.ok-gray', function (e) {
 	var subt = $(e.target).closest('.card').find('textarea[name="subt"]');
 
 
-// 	// ! validation
-// 	$('.please-log').detach();
+	// ! validation
+	$('.please-log').detach();
 
-// 	// Title
-// 	if (title_val.length <= 3) {
-// 		my_alert("brand-del", "Title should have more than 3 chars!");
-// 		title.addClass('red-b');
-// 		throw new Error("error from title");
-// 	} else {
-// 		title.removeClass('red-b');
-// 	}
-// 	// Subtitle
-// 	if (subt_val.length <= 3) {
-// 		my_alert("brand-del", "Subtitle should have more than 3 chars!");
-// 		subt.addClass('red-b');
-// 		throw new Error("error from subt");
-// 	} else {
-// 		subt.removeClass('red-b');
-// 	}
+	// Title
+	if (title_val.length <= 3) {
+		my_alert("brand-del", "Title should have more than 3 chars!");
+		title.addClass('red-b');
+		throw new Error("error from title");
+	} else {
+		title.removeClass('red-b');
+	}
+	// Subtitle
+	if (subt_val.length <= 3) {
+		my_alert("brand-del", "Subtitle should have more than 3 chars!");
+		subt.addClass('red-b');
+		throw new Error("error from subt");
+	} else {
+		subt.removeClass('red-b');
+	}
 
-// 	// ! if card_from == post-job.php -> validate selects it can be from update, and update already must have this!
-// 	if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
+	// ! if card_from == post-job.php -> validate selects it can be from update, and update already must have this!
+	if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
 	
-// 		// selects
-// 	// next() = .chosen-container -> select is hidden by chosen-JQ
-// 	$(e.target).closest('.card').find('select').each(function () {
-// 		if ($(this).val() == null) {
+		// selects
+	// next() = .chosen-container -> select is hidden by chosen-JQ
+	$(e.target).closest('.card').find('select').each(function () {
+		if ($(this).val() == null) {
 
-// 			var name = this.name;
+			var name = this.name;
 
-// 			$(this).next().addClass('red-b-chosen');
-// 			my_alert("brand-del", `Please select ${name}!`);
+			$(this).next().addClass('red-b-chosen');
+			my_alert("brand-del", `Please select ${name}!`);
 
-// 			throw new Error("error from each select");
+			throw new Error("error from each select");
 
-// 		} else {
-// 			$(this).next().removeClass('red-b-chosen');
-// 		}
-// 	});
+		} else {
+			$(this).next().removeClass('red-b-chosen');
+		}
+	});
 
-// 	} 
+	} 
 	
 	
-// 	// ! if card_from == post-job.php -> validate files it can be from update, and update already must have this!
-// 	if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
+	// ! if card_from == post-job.php -> validate files it can be from update, and update already must have this!
+	if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
 
-// 	// files
-// 	var files_count = $(e.target).closest('.card').find('.fake-example')[0].files;
-// 	if (files_count.length < 1) {
-// 		my_alert("brand-del", "Please upload atleast 1 example!");
-// 		$(e.target).closest('.card').find('.info__example').addClass('red-b-chosen');
-// 		throw new Error("error from example");
-// 	} else {
-// 		$(e.target).closest('.card').find('.info__example').removeClass('red-b-chosen');
-// 	}
+	// files
+	var files_count = $(e.target).closest('.card').find('.fake-example')[0].files;
+	if (files_count.length < 1) {
+		my_alert("brand-del", "Please upload atleast 1 example!");
+		$(e.target).closest('.card').find('.info__example').addClass('red-b-chosen');
+		throw new Error("error from example");
+	} else {
+		$(e.target).closest('.card').find('.info__example').removeClass('red-b-chosen');
+	}
 
-// }
+}
 
-// // ! if card_from == post-job.php -> validate tags it can be from update, and update already must have this!
-// if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
+// ! tags
+if(card_from == '/post-job.php' || card_from == '/post-portfolio.php' || card_from == '/update-form.php'){
 
-// 	// tags
-// 	var tags_count = $(e.target).closest('.card').find('.tags__select :selected');
 
-// 	if (tags_count.length < 3) {
-// 		my_alert("brand-del", "Please choose 3 tags!");
-// 		$(e.target).closest('.card').find('.chosen-choices').addClass('red-b-chosen');
-// 		throw new Error("error from tags");
-// 	} else {
-// 		$(e.target).closest('.card').find('.chosen-choices').removeClass('red-b-chosen');
-// 	}
+	var tags_count = $(e.target).closest('.card').find('.tags__select :selected');
 
-// }
+	if (tags_count.length < 3) {
+		my_alert("brand-del", "Please choose 3 tags!");
+		$(e.target).closest('.card').find('.chosen-choices').addClass('red-b-chosen');
+		throw new Error("error from tags");
+	} else {
+		$(e.target).closest('.card').find('.chosen-choices').removeClass('red-b-chosen');
+	}
 
-// // ? validation ends
+}
+
+// ? validation ends
 
 	var fd = new FormData();
 
