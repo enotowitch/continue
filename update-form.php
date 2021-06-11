@@ -100,6 +100,10 @@
 
 		$('.update-card').find('.tags').addClass('tags_main').wrap('<div class="tags-pics-flex tpfupd"></div>');
 
+		// load logo from DB
+		$('.update-card').find('.card__logo').before('<img class="card__logo card__logo_db" src="<? echo $files["logo"]; ?>">');
+		$('.update-card').find('label.card__logo').addClass('op05');
+
 		// !!! load pics from DB - BIG CARD
 		if(!$('.update-card').closest('.w_small').hasClass('w_small')){
 
@@ -151,7 +155,10 @@
 
 		$(document).on('change', '.fake-logo-upd', function (e) {
 
+		$('.card__logo_db').detach();
+
 		var preview = URL.createObjectURL(e.target.files[0]);
+		$('.update-card').find('.card__logo_preview').detach();
 		$('.update-card').find('label[for="fake-logo-upd"]').append('<img class="card__logo card__logo_preview" src="' + preview + '" alt="preview">');
 		$('.update-card').find('label[for="fake-logo-upd"]').css({ 'border': 'none' });
 

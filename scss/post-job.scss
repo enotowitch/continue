@@ -56,18 +56,19 @@
 	justify-content: center;
 	border: 2px solid $gray-light;
 	border-radius: 50%;
-	&__line {
-		width: 30px;
+	&__line,
+	&__line::after {
+		border-radius: 8px;
+		width: 20px;
 		height: 2px;
 		background-color: $gray-light;
-		&::after {
-			position: absolute;
-			content: "";
-			width: 30px;
-			height: 2px;
-			background-color: $gray-light;
-			transform: rotate(90deg);
-		}
+		
+	}
+	&__line::after {
+		position: absolute;
+		content: "";
+
+		transform: rotate(90deg);
 	}
 }
 .arrow {

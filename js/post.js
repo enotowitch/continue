@@ -3,6 +3,7 @@
 $(document).on('change', '.fake-logo', function (e) {
 
 	var preview = URL.createObjectURL(e.target.files[0]);
+	$(this).next('.card__logo_preview').detach();
 	$('label[for="fake-logo"]').append('<img class="card__logo card__logo_preview" src="' + preview + '" alt="preview">');
 	$('label[for="fake-logo"]').css({ 'border': 'none' });
 
