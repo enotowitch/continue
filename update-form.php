@@ -94,9 +94,9 @@
 		// ! load examples + slick
 
 		// ! diffs btw post-form & update-form
-		$('.update-card').find('.fake-example').addClass('fake-example-upd');
 		$('.update-card').find('[for="fake-example"]').attr('for', 'fake-example-upd');
 		$('.update-card').find('.fake-example').attr('id', 'fake-example-upd');
+		$('.update-card').find('.fake-example').addClass('fake-example-upd').removeClass('fake-example');
 
 		$('.update-card').find('.tags').addClass('tags_main').wrap('<div class="tags-pics-flex tpfupd"></div>');
 
@@ -117,18 +117,25 @@
 
 			setTimeout(() => {
 				my_slick_3($('.update-card').closest('.card').next('.post-preview'));
+				// count & show pics-count
+				var pics_count = $('.update-card').closest('.card').next('.post-preview').find('.slick-slide').length;
+				$('.update-card').closest('.card').find('.info__example').addClass('brand-bg').text(`${pics_count}/10`);
 			}, 500);
 
 
 		}
 
+
+
 		// ! delete empty pics before slick init
 		var empty_pic = $('img[src=""]');
 		empty_pic.detach();
 
-		var info_pics = $('.update-card').find('.info__pics');
-		
-		my_slick(info_pics);
+			
+		my_slick($('.update-card').find('.info__pics'));
+		// count & show pics-count
+		var pics_count = $('.update-card').closest('.card').find('.info__pics').find('.slick-slide').length;
+		$('.update-card').closest('.card').find('.info__example').addClass('brand-bg').text(`${pics_count}/10`);
 
 		// ! preview
 

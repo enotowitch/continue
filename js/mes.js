@@ -2,6 +2,9 @@ $(document).ready(function () {
 
 	$('.get-mes-form').on('click', function (e) {
 
+		// close this slick pics when message
+		$(this).closest('.card').find('.close-one-slick-pic').trigger('click');
+
 		// ! to pass card_id to mes-form-form to show posts that user messaged
 		$('.get-mes-form').removeClass('clicked');
 		$(this).addClass('clicked');

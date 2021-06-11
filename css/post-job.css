@@ -64,7 +64,8 @@
 
 .fake-logo,
 .fake-example,
-.fake-logo-upd {
+.fake-logo-upd,
+.fake-example-upd {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;

@@ -15,6 +15,8 @@ $(document).ready(function () {
 
 	$('.update').on('click', function (e) {
 
+		// close this slick pics when update
+		$(this).closest('.card').find('.close-one-slick-pic').trigger('click');
 
 		$('.card-update').detach();
 
