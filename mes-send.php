@@ -1,12 +1,16 @@
 <? 
 session_start();
 require_once "DB.php";
-
+var_dump($_POST);
 // 
 
-if($_POST["user_from_msg"] != NULL){
+if($_POST["apply_id"] != "" || $_POST['user_from_msg'] != ""){
 
 	$message = R::dispense('message');
+
+	$message->apply_id = $_POST['apply_id'];
+	$message->applied_to_card = $_POST["card_id"];
+	$message->applied_to_cat = $_POST["card_from"] == '/index.php' ? 'post' : 'portfolio';
 
 	$message->user_to_id = $_POST['user_to_id'];
 	// use DEFAULT logo for messages 

@@ -10,17 +10,17 @@ $user_to_id = $_GET['from'];
 
 	$my_msg = R::find('message', 'user_to_id = ? AND user_from_id = ? OR user_from_id = ? AND user_to_id = ?', [$_SESSION['user']['id'], $_GET['from'], $_SESSION['user']['id'], $_GET['from']]);
 
-
-	// var_dump($my_msg);
-
-
-
 ?>
+
 
 <div class="mes-wrap">
 	<div class="mes-inner">
 
 	<? foreach($my_msg as $my_msg): ?>
+
+		<? if($my_msg["user_from_msg"] == NULL){
+			continue;
+		} ?>
 	
 	<!-- ! msg -->
 		<? require "msg.php"; ?>

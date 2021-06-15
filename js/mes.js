@@ -1,6 +1,10 @@
 $(document).ready(function () {
 
-	$('.get-mes-form').on('click', function (e) {
+
+
+	$(document).on('click', '.get-mes-form:not(".yet-applied")', function (e) {
+
+		$('.please-log').detach();
 
 		// close this slick pics when message
 		$(this).closest('.card').find('.close-one-slick-pic').trigger('click');
@@ -33,7 +37,7 @@ $(document).ready(function () {
 		// ! load form to card
 		$.post({
 			url: 'mes-form.php',
-			data: ({ user_to_id: user_to_id }),
+			data: ({ card_from: card_from, user_to_id: user_to_id }),
 			success: function (data) {
 				$(e.target).closest('.card').prepend('<div class="card-mes"></div>');
 				$(e.target).closest('.card').find('.card-mes').html(data);
@@ -51,19 +55,19 @@ $(document).ready(function () {
 
 		var card_from = $('.card_from').val();
 
+// commented cause of apply_id
+		// if (card_from != undefined) {
+		// 	// if mes_text (everywhere but mes.php) is < 3
+		// 	var mes_text = $('.msg__write_main').val();
+		// 	if (mes_text.length <= 3) {
 
-		if (card_from != undefined) {
-			// if mes_text (everywhere but mes.php) is < 3
-			var mes_text = $('.msg__write_main').val();
-			if (mes_text.length <= 3) {
+		// 		$('.please-log').detach();
 
-				$('.please-log').detach();
+		// 		$('body').before('<div class="please-log brand-del">Message should be > 3 chars<img src="img/icons/cross.svg"></div>');
 
-				$('body').before('<div class="please-log brand-del">Message should be > 3 chars<img src="img/icons/cross.svg"></div>');
-
-				return;
-			};
-		}
+		// 		return;
+		// 	};
+		// }
 
 
 
@@ -80,7 +84,11 @@ $(document).ready(function () {
 			url: 'mes-send.php',
 			data: $(e.target).closest('form').serialize(),
 			success: function (data) {
-				$(e.target).closest('.card-mes').detach();
+				setTimeout(() => {
+					// waiting for anim
+					$(e.target).closest('.card-mes').detach();
+				}, 400);
+				
 
 				var card_from = window.location.href;
 
@@ -136,13 +144,18 @@ $(document).ready(function () {
 					var id = $(this).find('.card_id').val();
 
 					if (id == element) {
-						$(this).addClass('db-messaged');
+						$(this).not('.form-card').addClass('db-messaged');
+						$(this).find('.get-mes-form').addClass('yet-applied').addClass('op05');
+						$(this).not('.form-card').addClass('dn');
 					}
 				})
 			});
 		}
 	});
 
+	$(document).on('click', '.yet-applied', function(){
+		my_alert("brand-del", "You already applied for this post...")
+	})
 
 
 

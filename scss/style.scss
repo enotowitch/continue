@@ -549,7 +549,8 @@
 .cancel-filter,
 .switch-size,
 .tags__select2,
-.search-word {
+.search-word,
+.sort-applies {
 	color: $gray-light;
 	border: 1px solid $gray-light;
 	font-size: 14px;
@@ -644,4 +645,21 @@
 .upd_pic_del,
 .sign-in {
 	cursor: pointer;
+}
+.mes-to-applicant {
+	width: 30px;
+	height: 30px;
+}
+.applied_to_card {
+	position: absolute;
+	top: -20px;
+	left: 0;
+}
+.sort-applies-div {
+	margin-left: 15px;
+	font-size: 18px;
+	font-family: Montserrat;
+}
+.applies {
+	padding-left: 4px;
 }

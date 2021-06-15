@@ -42,6 +42,7 @@
 	background-color: #fff;
 	position: absolute;
 	z-index: 3;
+	border-radius: 4px;
 }
 .card-update {
 	width: calc(100% + 30px);
@@ -50,6 +51,7 @@
 	display: flex;
 	align-items: center;
 	padding-left: 4px;
+	margin-bottom: 10px;
 }
 .mta {
 	margin-top: auto;

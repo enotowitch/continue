@@ -44,6 +44,7 @@
   background-color: #fff;
   position: absolute;
   z-index: 3;
+  border-radius: 4px;
 }
 
 .card-update {
@@ -58,6 +59,7 @@
       -ms-flex-align: center;
           align-items: center;
   padding-left: 4px;
+  margin-bottom: 10px;
 }
 
 .mta {
