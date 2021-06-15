@@ -115,22 +115,14 @@ $(document).ready(function () {
 
 		var size = $(this).val();
 
-		if(size != 'change size' && current_user == ""){
+		if(size != 'change size'){
 			// ! cookie size
 			document.cookie = `size=${size}`;
 			window.location.reload();
 		}
 
 
-		if(size != 'change size' && current_user != ""){
-			$.post({
-				url: 'switch-size-db.php',
-				data: { size: size,current_user:current_user },
-				success: function (data) {
-					window.location.reload();
-				},
-			})
-		}
+
 
 
 	})

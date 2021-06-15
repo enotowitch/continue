@@ -105,7 +105,14 @@ if($_SERVER["PHP_SELF"] == '/messages-folios.php'){
 
 
 <script>
-// !
+
+$('.apply').addClass('mes-to-applicant').removeClass('get-mes-form').attr('src', 'img/icons/email.svg');
+
+$('.mes-to-applicant').on('click', function(){
+	var user_from_id = $(this).closest('.card').find('.user_from_id').val();	
+	window.location.href = `/mes.php?from=${user_from_id}`;
+})
+
 setTimeout(() => {
 	$('.db-messaged').removeClass('dn');
 	$('.info__pics').slick('refresh');

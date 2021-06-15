@@ -36,13 +36,13 @@ session_start();
 		$posts = R::find('portfolio', 'ORDER BY id DESC');
 	}
 	
-	$user = R::load('user', $_SESSION["user"]["id"]);
+
 
 	foreach($posts as $post): 
 	
 ?>
 
-	<div class="card card_main w100 <? echo $user["size"]; ?><? echo $_COOKIE['size']; ?>">
+	<div class="card card_main w100 <? echo $_COOKIE['size']; ?>">
 		<? 
 			include "card-content.php";
 		?>
