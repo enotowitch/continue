@@ -6,7 +6,7 @@ session_start();
 	require_once "search.php";
 ?>
 <!-- ! banner -->
-<div class="banner"></div>
+<div class="banner"><img src="img/banner.gif"></div>
 <!-- ? banner -->
 <!-- ! change-page -->
 <?
