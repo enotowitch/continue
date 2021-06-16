@@ -50,6 +50,8 @@ $(document).ready(function () {
 	var new_user_post = $('.user_id[value="' + current_user + '"]').closest('.card').not('.not100').eq(0);
 	var current_user_posts = $('.user_id[value="' + current_user + '"]').closest('.card').not('.not100');
 
+	current_user_posts.find('.apply').addClass('op03');
+
 
 	new_user_post.append('<div class="post-anim"></div>');
 

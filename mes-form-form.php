@@ -24,17 +24,18 @@
 <!-- ! apply_id -->
 <? if($_SERVER["PHP_SELF"] != '/mes.php'): ?>
 <div class="applies">
-Please select post which you apply with:
+	<div class="select-post">Please select post you apply with:</div>
 
 <? 
 $i = 0;
 foreach($apply_find as $apply_find): 
 ?>
 	
+	<div>
 	<input type="radio" id="apply_id<? echo $i; ?>"
      name="apply_id" value="<? echo $apply_find["id"]; ?>">
     <label for="apply_id<? echo $i; ?>"><? echo $apply_find["title"]; ?></label>
-
+	 </div>
 
 	 <? 
 	 $i++;

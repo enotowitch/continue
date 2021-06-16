@@ -162,6 +162,10 @@
   opacity: 0.1;
 }
 
+.op03 {
+  opacity: 0.3;
+}
+
 .post-show {
   position: relative;
   margin: 0 auto;

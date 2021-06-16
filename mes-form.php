@@ -18,7 +18,7 @@ $user_owner = R::find('user', 'id = ?', [$_POST['user_to_id']]);
 	<img class="card-mes-close" src="img/icons/cross.svg" alt="card-mes-close">
 	</div>
 
-	<div class="card__title mes-to">Message to: <span class="brand"><? echo strtok($user_owner->user_mail, '@'); ?></span></div>
+	<div class="card__title mes-to">Apply to: <span class="brand">&nbsp;<? echo strtok($user_owner->user_mail, '@'); ?></span></div>
 
 <? include "mes-form-form.php"; ?>
 
