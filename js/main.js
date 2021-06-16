@@ -130,6 +130,10 @@ $(document).ready(function () {
 		// ! tags link
 
 		$('.tag').on('click', function () {
+
+			if(card_from == '/mes.php'){
+				return;
+			}
 	
 			var text = $(this).text().trim();
 

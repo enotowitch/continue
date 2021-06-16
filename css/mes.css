@@ -2,10 +2,24 @@
   position: relative;
   border-bottom: 2px solid #222222;
   padding-bottom: 15px;
+  font-family: Roboto;
+}
+
+.msg__title {
+  height: 35px;
+}
+
+.msg__about {
+  color: #969696;
+  font-size: 12px;
+  height: 25px;
 }
 
 .msg__body {
   height: auto;
+  font-size: 14px;
+  border-bottom: 1px solid #969696;
+  word-break: break-word;
 }
 
 .msg__write {
@@ -25,12 +39,12 @@
 
 .mes-wrap {
   max-width: 930px;
-  padding: 0px 15px;
   margin: 15px auto 0;
 }
 
 .mes-inner {
-  min-height: 75vh;
+  min-height: 50vh;
+  margin-top: 50px;
 }
 
 .mes-form {

@@ -4,11 +4,21 @@
 	position: relative;
 	border-bottom: 2px solid $gray-dark;
 	padding-bottom: 15px;
-	&__from {
+	font-family: Roboto;
+	&__title {
+		height: 35px;
+	}
+	&__about {
+		color: $gray-light;
+		font-size: 12px;
+		height: 25px;
 	}
 
 	&__body {
 		height: auto;
+		font-size: 14px;
+		border-bottom: 1px solid $gray-light;
+		word-break: break-word;
 	}
 	&__write {
 		border: 2px solid $gray-light;
@@ -26,11 +36,11 @@
 }
 .mes-wrap {
 	max-width: $main-cards-cont-wid;
-	padding: 0px 15px;
 	margin: 15px auto 0;
 }
 .mes-inner {
-	min-height: 75vh;
+	min-height: 50vh;
+	margin-top: 50px;
 }
 .mes-form {
 	position: relative;

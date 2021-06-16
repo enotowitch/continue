@@ -109,14 +109,22 @@ if($_SERVER["PHP_SELF"] == '/messages-folios.php'){
 $('.apply').addClass('mes-to-applicant').removeClass('get-mes-form').attr('src', 'img/icons/email.svg');
 
 $('.mes-to-applicant').on('click', function(){
-	var user_from_id = $(this).closest('.card').find('.user_from_id').val();	
-	window.location.href = `/mes.php?from=${user_from_id}`;
+	var user_from_id = $(this).closest('.card').find('.user_from_id').val();
+	var about = $(this).closest('.card').find('.card_id').val();
+	(card_from == '/messages.php') ? cat = 'post' : cat = 'portfolio';
+
+	window.location.href = `/mes.php?from=${user_from_id}&about=${about}&cat=${cat}`;
 })
 
-setTimeout(() => {
-	$('.db-messaged').removeClass('dn');
-	$('.info__pics').slick('refresh');
-}, 300);
+
+// ! ready
+$(document).ready(function(){
+	setTimeout(() => {
+		$('.db-messaged').removeClass('dn');
+		$('.db-hidden').removeClass('dn');
+		$('.info__pics').slick('refresh');
+	}, 300);
+})
 
 
 $('.applied_to_card').each(function(){
