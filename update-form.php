@@ -78,7 +78,8 @@
 
 		$('.update-card').find('.cross_reset').after('<img class="del mba" src="img/icons/delete.svg" alt="del">');
 
-		$('.update-card').find('select').chosen();
+		$('.update-card').find('select.info__cell').chosen();
+		$('.update-card').find('select.tags__select').chosen({ max_selected_options: 3 });
 		// 
 		$('.update-card').find('.chosen-single, .info__example').addClass('upd-info');
 		// ! slick will take space so width = auto for now

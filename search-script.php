@@ -60,7 +60,7 @@ $('.cancel_all_filters').on('click', function(){
 
 <script>
 
-var search_word = $('[name="search_word"]').val().replaceAll('?','');
+var search_word = $('[name="search_word"]').val().replaceAll('?','').toLowerCase();
 
 $('.card').hide();
 $(`.card:contains(${search_word})`).show();

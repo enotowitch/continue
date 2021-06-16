@@ -507,7 +507,7 @@
 // ! update
 .upd-info {
 	width: 136px !important;
-	@media (max-width: 767px) {
+	@media (max-width: 500px) {
 		width: 94px !important;
 	}
 }
@@ -516,6 +516,10 @@
 	max-width: 280px !important;
 	margin-left: 6px;
 	margin-bottom: 2px;
+	@media (max-width: 600px) {
+		max-width: 200px !important;
+		margin-bottom: -2px;
+	}
 }
 .update-card .info__flex {
 	position: relative;
@@ -660,6 +664,7 @@
 	margin-left: 15px;
 	font-size: 18px;
 	font-family: Montserrat;
+	width: 100%;
 }
 .applies {
 	padding-left: 4px;

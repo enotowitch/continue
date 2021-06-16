@@ -78,16 +78,25 @@ $(document).ready(function () {
 
 	$(document).on('click', '.upd_pic_del', function (e) {
 
+		var pics_count = $(this).closest('.slick-track').find('.slick-slide').length;
+
+		if(pics_count == 1){
+			alert('Post should have at least 1 picture!');
+			return;
+		}
+
 		if (confirm('Are you sure you want to delete this picture forever?')) {
 
 			var index = $(this).next().attr('alt');
 			var src = $(this).next('img').attr('src');
+
 
 			$.post({
 				url: 'update-imgs.php',
 				data: ({ card_from: card_from, card_id: card_id, src: src, index: index }),
 				success: function (data) {
 					$(e.target).closest('.slick-slide').detach();
+					$(document).find('.update-card').find('.info__example').text(`${pics_count-1}/10`);
 				},
 			})
 
