@@ -16,6 +16,7 @@
 	<script src="js/my-slick.js"></script>
 	<script src="js/preview.js"></script>
 	<script src="js/search.js"></script>
+	<script src="js/jq-ui.js"></script>
 
 
 	<? 

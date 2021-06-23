@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="css/auth.css">
 	<link rel="stylesheet" href="css/mes.css">
 	<link rel="stylesheet" href="chosen/chosen.css">
+	<link rel="stylesheet" href="css/jq-ui.css">
 	<script src="js/jquery.js"></script>
 </head>
 

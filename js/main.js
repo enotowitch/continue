@@ -65,7 +65,7 @@ $(document).ready(function () {
 		$('.post-anim').detach();
 	}, 1200);
 
-	
+
 
 	// ! cross_reset form reset
 	$('.cross_reset').on('click', function (e) {
@@ -117,7 +117,7 @@ $(document).ready(function () {
 
 		var size = $(this).val();
 
-		if(size != 'change size'){
+		if (size != 'change size') {
 			// ! cookie size
 			document.cookie = `size=${size}`;
 			window.location.reload();
@@ -129,19 +129,43 @@ $(document).ready(function () {
 
 	})
 
+	// ! prevent enter btn submiting form in sort-flex
+	$('.sort-flex').find('form').submit(function (e) {
+		e.preventDefault();
+	});
 
 
 
 
 
+	// ! autocomlete TEST
+
+	$(function () {
+
+		$.post({
+			'url': 'titles.php',
+			'data': {},
+			dataType: 'json',
+			success: function (data) {
+
+				var availableTitles = [];
+
+				$.each(data, function(element, i){
+					availableTitles.push(i);
+				})
+
+
+
+				$(".search-word").autocomplete({
+					source: availableTitles
+				});
+			}
+		})
 
 
 
 
+	});
 
-// ! prevent enter btn submiting form in sort-flex
-$('.sort-flex').find('form').submit(function(e){
-	e.preventDefault();
-});
 
 })

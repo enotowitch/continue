@@ -28,6 +28,10 @@ session_start();
 	require_once "DB.php";
 	
 	if($_SERVER['PHP_SELF'] == '/index.php'){
+		// prevent errors
+		$hidden_arr = array();
+		$messaged_arr = array();
+
 		$posts = R::find('post', 'ORDER BY id DESC');
 		foreach($posts as $post){
 			$all_arr[] = $post["id"];

@@ -372,7 +372,7 @@
 		<div class="info__block">
 			<select class="info__cell" name="location" title="Location">
 			<? 
-			include_once "info-select-location.php"; 
+			include "info-select-location.php"; 
 			?>
 			</select>
 			<label class="info__cell info__example" for="fake-example">
