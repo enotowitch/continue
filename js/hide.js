@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-	$('.hide').on('click', function(e){
+	$(document).on('click', '.hide', function(e){
 		
 		var card_id = $(this).closest('.card').find('.card_id').val();
 		var current_user = $('.current_user').val();
@@ -70,10 +70,10 @@ $(document).ready(function () {
 
 					if (id == element) {
 					
-						$(this).addClass('db-hidden').addClass('dn');
+						$(this).addClass('db-hidden');
 							// if cards are on jobs-del or port-del -> show
 						if(card_from == '/jobs-del.php' || card_from == '/port-del.php'){
-							$(this).addClass('db');
+							// $(this).addClass('db');
 						}
 						
 					}

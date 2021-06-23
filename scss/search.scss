@@ -13,6 +13,7 @@
 	z-index: 3;
 	background-color: #fff;
 	display: none;
+	margin-bottom: 15px;
 	&_active {
 		display: block;
 	}
@@ -72,4 +73,9 @@
 
 	&__tag {
 	}
+}
+.search-result {
+	max-width: $main-cards-cont-wid;
+	margin: 0 auto;
+	padding: 0 10px;
 }

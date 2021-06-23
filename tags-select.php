@@ -1,5 +1,6 @@
 <select class="tags__select" name="tags[]" title="Choose 3 tags" data-placeholder="Choose 3 tags..." multiple>
 					<optgroup label="DESIGN">
+					<option style="display: none;" value="0">0</option>
 						<option value="animation">animation</option>
 						<option value="anime">anime</option>
 						<option value="art">art</option>

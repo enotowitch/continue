@@ -1,120 +1,164 @@
-<!-- ! hidden -->
-
-<? if ($_GET["filter"] == "hidden"): ?>
-
-
-<script>
-
-	$('.card-flex').prepend('<div class="w100 loading">Loading hidden...</div>');
-
-	$('.filter').after('<div class="cancel-filter"><? echo $_GET["filter"]; ?><span class="close-cancel-filter close_filter"></span></div>');
-
-	// ! ready
-$(document).ready(function(){
-	setTimeout(() => {
-		$('.card').not('.form-card').not('.card2').addClass('dn');
-		$('.db-hidden').removeClass('dn');
-		$('.info__pics').slick('unslick');
-	}, 500);
-
-	
-
-	setTimeout(() => {
-
-	my_slick('.info__pics');
-
-	$('.loading').detach();
-
-	}, 500);
-	
-	
-
-
-})
-
-</script>
-
+<!-- all -->
+<? if ($_GET): ?>
+	<script>
+	$(document).ready(function(){
+		$('.search-icon').trigger('click');
+	});
+	</script>
 <? endif; ?>
 
 
-<!-- ! liked -->
-<? if($_GET["filter"] == "liked"): ?>
 
+<!-- ! filter -->
+<? if ($_GET["filter"]): ?>
 <script>
 
-$('.card-flex').prepend('<div class="w100 loading">Loading liked...</div>');
-
-$('.filter').after('<div class="cancel-filter"><? echo $_GET["filter"]; ?><span class="close-cancel-filter close_filter"></span></div>');
-
-	// ! ready
-$(document).ready(function(){
+	$(document).ready(function(){
+		// ! render
+	$('.search-result').append('<div class="cancel-filter cancel_filter_filter"><? echo $_GET["filter"]; ?><span class="close-cancel-filter close_filter"></span></div>');
+	// ! fill the form before POST again
+	$('.filter-form').find('.filter').find(`option:contains("<? echo $_GET["filter"]; ?>")`).attr('selected', true);
+	// ! post again
 	setTimeout(() => {
-		$('.card').not('.form-card').not('.card2').addClass('dn');
-		$('.db-liked').removeClass('dn');
-		$('.info__pics').slick('unslick');
-	}, 500);
-
-	
-
-	setTimeout(() => {
-
-	my_slick('.info__pics');
-
-	$('.loading').detach();
-
+		post_filter_card();	
 	}, 500);
 	
+	})
 	
-
-
-})
-
 </script>
-
 <? endif; ?>
 
 
-<!-- ! messaged -->
-<? if($_GET["filter"] == "messaged"): ?>
 
+<!-- ! search-tag -->
+<? if ($_GET["search-tag"]): ?>
 <script>
 
-$('.card-flex').prepend('<div class="w100 loading">Loading messaged...</div>');
-
-$('.filter').after('<div class="cancel-filter"><? echo $_GET["filter"]; ?><span class="close-cancel-filter close_filter"></span></div>');
-
-	// ! ready
 $(document).ready(function(){
+	// ! render 1
+	$('.tag').removeClass('tag_active');
+	$('.tag:contains("<? echo $_GET["search-tag"]; ?>")').addClass('tag_active');
+	// ! render 2
+	$('.search-result').append('<div class="cancel-filter cancel_filter_tag"><? echo $_GET["search-tag"]; ?><span class="close-cancel-filter close_cancel_filter_tag"></span></div>');
+	// ! fill the form before POST again
+	$('.filter-form').find('[name="tags"]').append('<option value="<? echo $_GET["search-tag"]; ?>"><? echo $_GET["search-tag"]; ?></option>');
+	// ! post again
 	setTimeout(() => {
-		$('.card').not('.form-card').not('.card2').addClass('dn');
-		$('.db-messaged').removeClass('dn');
-		$('.info__pics').slick('unslick');
-	}, 500);
-
-	
-
-	setTimeout(() => {
-
-	my_slick('.info__pics');
-
-	$('.loading').detach();
-
+		post_filter_card();	
 	}, 500);
 	
-	
-
-
 })
+	
 
 </script>
-
 <? endif; ?>
 
+
+
+<!-- ! search-word -->
+<? if ($_GET["search-word"]): ?>
 <script>
-// ! remove searched filter from url
-$('.close_filter').on('click', function(){
-	var searched_word = $(this).closest('div').text().trim();	
-	var without_search = window.location.href.replace(`filter=${searched_word}&`, '');
-	window.location.href = without_search;
+
+$(document).ready(function(){
+	// ! render
+	$('.search-result').append(`<div class="cancel-filter cancel_filter_word"><? echo $_GET["search-word"]; ?><span class="close-cancel-filter close_cancel_filter_word"></span></div>`);
+	// ! fill the form before POST again
+	$('.filter-form').find('.search-word').val('<? echo $_GET["search-word"]; ?>');
+	// ! post again
+	setTimeout(() => {
+		post_filter_card();	
+	}, 500);
+	
 })
+
 </script>
+<? endif; ?>
+
+
+
+<!-- ! salary -->
+<? if ($_GET["salary"]): ?>
+<script>
+
+$(document).ready(function(){
+	// ! render
+	$('.search-result').append(`<div class="cancel-filter cancel_filter_salary"><? echo $_GET["salary"]; ?><span class="close-cancel-filter close_cancel_filter_salary"></span></div>`);
+	// ! fill the form before POST again
+	$('.filter-form').find('.search-salary').val('<? echo $_GET["salary"]; ?>');
+	// ! post again
+	setTimeout(() => {
+		post_filter_card();	
+	}, 500);
+	
+})
+
+</script>
+<? endif; ?>
+
+
+<!-- ! experience -->
+<? if ($_GET["experience"]): ?>
+<script>
+
+$(document).ready(function(){
+	// ! render
+	$('.search-result').append(`<div class="cancel-filter cancel_filter_experience"><? echo $_GET["experience"]; ?><span class="close-cancel-filter close_cancel_filter_experience"></span></div>`);
+	// ! fill the form before POST again
+	$('.filter-form').find('.search-experience').val('<? echo $_GET["experience"]; ?>');
+	// 10+ years: render and fill form
+	if('<? echo $_GET["experience"]; ?>' == '10  years'){
+		$('.search-result').find('.cancel_filter_experience').detach();
+		$('.search-result').append(`<div class="cancel-filter cancel_filter_experience">10+ years<span class="close-cancel-filter close_cancel_filter_experience"></span></div>`);
+		$('.filter-form').find('.search-experience').val('10+ years');
+	}
+	// ! post again
+	setTimeout(() => {
+		post_filter_card();	
+	}, 500);
+	
+})
+
+</script>
+<? endif; ?>
+
+
+
+<!-- ! duration -->
+<? if ($_GET["duration"]): ?>
+<script>
+
+$(document).ready(function(){
+	// ! render
+	$('.search-result').append(`<div class="cancel-filter cancel_filter_duration"><? echo $_GET["duration"]; ?><span class="close-cancel-filter close_cancel_filter_duration"></span></div>`);
+	// ! fill the form before POST again
+	$('.filter-form').find('.search-duration').val('<? echo $_GET["duration"]; ?>');
+	// ! post again
+	setTimeout(() => {
+		post_filter_card();	
+	}, 500);
+	
+})
+
+</script>
+<? endif; ?>
+
+
+
+<!-- ! location -->
+<? if ($_GET["location"]): ?>
+<script>
+
+$(document).ready(function(){
+	// ! render
+	$('.search-result').append(`<div class="cancel-filter cancel_filter_location"><? echo $_GET["location"]; ?><span class="close-cancel-filter close_cancel_filter_location"></span></div>`);
+	// ! fill the form before POST again
+	$('.filter-form').find('.search-location').val('<? echo $_GET["location"]; ?>');
+	// ! post again
+	setTimeout(() => {
+		post_filter_card();	
+	}, 500);
+	
+})
+
+</script>
+<? endif; ?>

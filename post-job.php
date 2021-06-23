@@ -40,11 +40,7 @@ include "post-form.php";
 <!-- ? your -->
 
 
-<!-- ! switch -->
-<?
-	include_once "filters.php";
-?>
-<!-- ? switch -->
+
 
 
 <!-- ! CARD -->

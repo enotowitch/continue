@@ -146,7 +146,7 @@ $(document).ready(function () {
 					if (id == element) {
 						$(this).not('.form-card').addClass('db-messaged');
 						$(this).find('.get-mes-form').addClass('yet-applied').addClass('op03');
-						$(this).not('.form-card').addClass('dn');
+						// $(this).not('.form-card').addClass('dn');
 					}
 				})
 			});

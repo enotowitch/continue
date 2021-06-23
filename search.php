@@ -66,4 +66,7 @@
 		<div class="search__tags"></div>
 		<div class="search__tags"></div>
 	</div>
+<?
+include_once "filters.php";
+?>
 </div>

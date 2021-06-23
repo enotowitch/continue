@@ -23,9 +23,7 @@ if($_SESSION["user"]["id"] == NULL){
 	require_once "change-page.php";
 ?>
 
-<?
-	include_once "filters.php";
-?>
+
 
 
 

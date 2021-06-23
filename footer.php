@@ -15,6 +15,7 @@
 	<script src="js/update.js"></script>
 	<script src="js/my-slick.js"></script>
 	<script src="js/preview.js"></script>
+	<script src="js/search.js"></script>
 
 
 	<? 
@@ -22,11 +23,6 @@
 	?>
 
 
-	<!-- ! must be last - search-script -->
-	<? 
-	include_once "search-script.php";
-	?>
-	<!-- ? search-script -->
 
 
 </body>

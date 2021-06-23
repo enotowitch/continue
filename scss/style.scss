@@ -417,13 +417,14 @@
 
 .sort-flex {
 	display: flex;
-	max-width: $main-cards-cont-wid;
+	max-width: $search-maw;
+	padding: 0 15px 15px;
 	margin: 0 auto;
 	flex-wrap: wrap;
-	> div,
-	> select {
-		margin-left: 15px;
-		margin-top: 5px;
+	input,
+	select {
+		margin-top: 4px;
+		width: 120px;
 	}
 }
 .db {
@@ -549,15 +550,16 @@
 	margin-top: 15px;
 	text-align: center;
 }
-.filter-div {
-	display: flex;
-}
+
 .filter,
 .cancel-filter,
 .switch-size,
-.tags__select2,
 .search-word,
-.sort-applies {
+.sort-applies,
+.search-salary,
+.search-experience,
+.search-duration,
+.search-location {
 	color: $gray-light;
 	border: 1px solid $gray-light;
 	font-size: 14px;
@@ -572,7 +574,7 @@
 	color: $brandcolor;
 	position: relative;
 	margin-left: 5px;
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 }
 .close-cancel-filter {
@@ -582,12 +584,7 @@
 	width: 12px;
 	height: 12px;
 }
-.search-select {
-	display: flex;
-}
-.search-word-div {
-	display: flex;
-}
+
 // ! slider
 .img-zoom {
 	cursor: zoom-in;
@@ -641,7 +638,6 @@
 .tag,
 .switch-size,
 .filter,
-.tags__select2,
 .search-word,
 .close-cancel-filter,
 .please-log,

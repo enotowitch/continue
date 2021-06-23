@@ -17,6 +17,7 @@
   z-index: 3;
   background-color: #fff;
   display: none;
+  margin-bottom: 15px;
 }
 
 .search_active {
@@ -84,4 +85,10 @@
 
 .search__tags_active {
   display: block;
+}
+
+.search-result {
+  max-width: 930px;
+  margin: 0 auto;
+  padding: 0 10px;
 }

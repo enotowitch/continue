@@ -74,3 +74,18 @@ function my_slick_3(target){
 	});
 
 }
+
+function post_filter_card(){
+
+	$.post({
+		'url': 'filter-card.php',
+		'data': $('.filter-form').serialize(),
+		success: function (data) {
+			$('.card-flex').html(data);
+			setTimeout(() => {
+				my_slick('.info__pics');
+			}, 300);
+		}
+		})
+
+}

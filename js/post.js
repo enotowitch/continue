@@ -255,3 +255,6 @@ if(card_from == '/post-job.php' || card_from == '/post-portfolio.php' || card_fr
 // $user_from_logo = R::getAll( 'SELECT logo FROM post WHERE user_id = :user_id',
 // [':user_id' => $_SESSION["user"]["id"]]
 // );
+
+// ! sql LIKE
+// https://unetway.com/tutorial/sql-operator-like
