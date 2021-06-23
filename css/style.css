@@ -568,7 +568,7 @@
 .sort-flex input,
 .sort-flex select {
   margin-top: 4px;
-  width: 120px;
+  width: 130px;
 }
 
 .db {
@@ -735,6 +735,7 @@
 .cancel-filter,
 .switch-size,
 .search-word,
+.search-company,
 .sort-applies,
 .search-salary,
 .search-experience,

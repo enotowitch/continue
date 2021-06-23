@@ -76,6 +76,27 @@ $(document).ready(function(){
 
 
 
+<!-- ! search-company -->
+<? if ($_GET["search-company"]): ?>
+<script>
+
+$(document).ready(function(){
+	// ! render
+	$('.search-result').append(`<div class="cancel-filter cancel_filter_company"><? echo $_GET["search-company"]; ?><span class="close-cancel-filter close_cancel_filter_company"></span></div>`);
+	// ! fill the form before POST again
+	$('.filter-form').find('.search-company').val('<? echo $_GET["search-company"]; ?>');
+	// ! post again
+	setTimeout(() => {
+		post_filter_card();	
+	}, 500);
+	
+})
+
+</script>
+<? endif; ?>
+
+
+
 <!-- ! salary -->
 <? if ($_GET["salary"]): ?>
 <script>

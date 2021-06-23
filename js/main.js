@@ -134,12 +134,7 @@ $(document).ready(function () {
 		e.preventDefault();
 	});
 
-
-
-
-
-	// ! autocomlete TEST
-
+	// ! autocomlete titles
 	$(function () {
 
 		$.post({
@@ -154,18 +149,34 @@ $(document).ready(function () {
 					availableTitles.push(i);
 				})
 
-
-
 				$(".search-word").autocomplete({
 					source: availableTitles
 				});
 			}
 		})
-
-
-
-
 	});
+
+		// ! autocomlete company
+		$(function () {
+
+			$.post({
+				'url': 'company.php',
+				'data': {},
+				dataType: 'json',
+				success: function (data) {
+	
+					var availablecompany = [];
+					
+					$.each(data, function(element, i){
+						availablecompany.push(i);
+					})
+					
+					$(".search-company").autocomplete({
+						source: availablecompany
+					});
+				}
+			})
+		});
 
 
 })

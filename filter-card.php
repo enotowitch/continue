@@ -4,6 +4,7 @@
 
 // prevent errors
 $word_arr = array();
+$company_arr = array();
 $tags_arr = array();
 $filter_arr = array();
 $salary_arr = array();
@@ -121,6 +122,20 @@ $search_counter++;
 $final_arr[] = $word_arr;
 }
 
+// ! company
+if($_POST["company"] != ""){
+
+	$company = R::getAll('SELECT * FROM post WHERE subt LIKE :subt ',
+	  array(':subt' => '%'.$_POST["company"].'%' )
+	);
+
+foreach($company as $company){
+	$company_arr[] = $company["id"];
+}
+$search_counter++;
+$final_arr[] = $company_arr;
+}
+
 // ! tags 4
 if($_POST["tags"] != ""){
 	$tags = R::getAll( 'SELECT * FROM post WHERE tag_1 = :tag_1 OR tag_2 = :tag_2 OR tag_3 = :tag_3',
@@ -185,6 +200,10 @@ if($search_counter == 6){
 }
 if($search_counter == 7){
 	$intersect = array_intersect($final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5], $final_arr[6]);
+	$posts = R::loadAll('post', $intersect);
+}
+if($search_counter == 8){
+	$intersect = array_intersect($final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5], $final_arr[6], $final_arr[7]);
 	$posts = R::loadAll('post', $intersect);
 }
 

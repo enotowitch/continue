@@ -89,6 +89,32 @@ $(document).ready(function () {
 		}
 	})
 
+	// ! SEARCH-COMPANY
+	$(document).on('keyup', '.search-company', function (e) {
+
+		var text = $(this).val().trim();
+		// ! post
+		post_filter_card();
+
+		// ! render
+		$('.search-result').find('.cancel_filter_company').detach();
+		$('.search-result').append(`<div class="cancel-filter cancel_filter_company">${text}<span class="close-cancel-filter close_cancel_filter_company"></span></div>`);
+
+		// ! last filter
+		var last_filter = window.location.href.split('?')[1];
+
+		if (last_filter != undefined) {
+			var last_filter = last_filter.replace(/search-company.*?&/, '');
+			history.pushState(null, '', `?${last_filter}search-company=${text}&`);
+		} else {
+			history.pushState(null, '', `?search-company=${text}&`);
+		}
+
+		if (text.length == 0) {
+			$('.search-result').find('.cancel_filter_company').detach();
+		}
+	})
+
 	// ! SALARY
 	$(document).on('change', '.search-salary', function (e) {
 
@@ -240,6 +266,23 @@ $(document).ready(function () {
 
 		// ! unrender
 		$('.search-result').find('.cancel_filter_word').detach();
+		// ! post again
+		post_filter_card();
+	})
+
+	// ? remove SEARCH-COMPANY
+	$(document).on('click', '.close_cancel_filter_company', function () {
+
+		// ! NULL select/input
+		$('.filter-form').find('.search-company').val('');
+
+		// ! push URL
+		var searched_company = encodeURI($(this).closest('div').text().trim());
+		var without_search = window.location.href.replace(`search-company=${searched_company}&`, '');
+		history.pushState(null, '', without_search);
+
+		// ! unrender
+		$('.search-result').find('.cancel_filter_company').detach();
 		// ! post again
 		post_filter_card();
 	})

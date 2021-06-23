@@ -20,8 +20,10 @@
 
 
 <!-- ! search title -->
+		<input class="search-word" name="word" type="text" placeholder="search title">
 
-		<input class="search-word" name="word" type="text" placeholder="search word">
+<!-- ! search company -->
+		<input class="search-company" name="company" type="text" placeholder="search company">
 
 <!-- ! search salary -->
 
