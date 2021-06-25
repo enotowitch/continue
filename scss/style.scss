@@ -576,12 +576,14 @@
 }
 .cancel-filter {
 	border: 1px solid $brandcolor;
-	color: $brandcolor;
 	position: relative;
 	margin-left: 5px;
 	margin-top: 5px;
 	display: inline-flex;
 	align-items: center;
+	> div {
+		color: $brandcolor;
+	}
 }
 .close-cancel-filter {
 	position: relative;
