@@ -262,6 +262,10 @@ if($search_counter == 8){
 	$intersect = array_intersect($final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5], $final_arr[6], $final_arr[7]);
 	$posts = R::loadAll('post', $intersect);
 }
+if($search_counter == 9){
+	$intersect = array_intersect($final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5], $final_arr[6], $final_arr[7], $final_arr[8]);
+	$posts = R::loadAll('post', $intersect);
+}
 
 //  
 echo "counter:".$search_counter;
