@@ -740,7 +740,8 @@
 .search-salary,
 .search-experience,
 .search-duration,
-.search-location {
+.search-location,
+.search-workload {
   color: #969696;
   border: 1px solid #969696;
   font-size: 14px;

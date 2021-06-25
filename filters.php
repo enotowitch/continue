@@ -26,12 +26,24 @@
 		<input class="search-company" name="company" type="text" placeholder="search company">
 
 <!-- ! search salary -->
-
 		<select class="search-salary" name="search-salary">
 			<option value="salary">salary</option>
-			<option value="100-500 USD">100-500 USD</option>
-			<option value="500-1000 USD">500-1000 USD</option>
-			<option value="1000-1500 USD">1000-1500 USD</option>
+			<option value="$1-$5/h">$1-$5/h</option>
+			<option value="$5-$10/h">$5-$10/h</option>
+			<option value="$10-$15/h">$10-$15/h</option>
+			<option value="$15-$20/h">$15-$20/h</option>
+			<option value="$20-$25/h">$20-$25/h</option>
+			<option value="$25-$30/h">$25-$30/h</option>
+			<option value="$30-$35/h">$30-$35/h</option>
+			<option value="$35-$40/h">$35-$40/h</option>
+			<option value="$40-$45/h">$40-$45/h</option>
+			<option value="$45-$50/h">$45-$50/h</option>
+			<option value="$50-$60/h">$50-$60/h</option>
+			<option value="$60-$70/h">$60-$70/h</option>
+			<option value="$70-$80/h">$70-$80/h</option>
+			<option value="$80-$90/h">$80-$90/h</option>
+			<option value="$90-$100/h">$90-$100/h</option>
+			<option value="$100+/h">$100+/h</option>
 		</select>
 
 		<!-- ! search experience -->	
@@ -61,6 +73,17 @@
 <? 
 	include "info-select-location.php";
 ?>
+		</select>
+
+		<!-- ! search workload -->
+		<select class="search-workload" name="search-workload">
+			<option value="workload">workload</option>
+			<option value="1-40 h/mo">1-40 h/mo</option>
+			<option value="40-80 h/mo">40-80 h/mo</option>
+			<option value="80-120 h/mo">80-120 h/mo</option>
+			<option value="120-160 h/mo">120-160 h/mo</option>
+			<option value="160-200 h/mo">160-200 h/mo</option>
+			<option value="200-250 h/mo">200-250 h/mo</option>
 		</select>
 
 </form>

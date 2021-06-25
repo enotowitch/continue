@@ -106,6 +106,13 @@ $(document).ready(function(){
 	$('.search-result').append(`<div class="cancel-filter cancel_filter_salary"><? echo $_GET["salary"]; ?><span class="close-cancel-filter close_cancel_filter_salary"></span></div>`);
 	// ! fill the form before POST again
 	$('.filter-form').find('.search-salary').val('<? echo $_GET["salary"]; ?>');
+	// $100+/h: render and fill form
+	// eats +
+	if('<? echo $_GET["salary"]; ?>' == '$100 /h'){
+		$('.search-result').find('.cancel_filter_salary').detach();
+		$('.search-result').append(`<div class="cancel-filter cancel_filter_salary">$100+/h<span class="close-cancel-filter close_cancel_filter_salary"></span></div>`);
+		$('.filter-form').find('.search-salary').val('$100+/h');
+	}
 	// ! post again
 	setTimeout(() => {
 		post_filter_card();	
@@ -127,6 +134,7 @@ $(document).ready(function(){
 	// ! fill the form before POST again
 	$('.filter-form').find('.search-experience').val('<? echo $_GET["experience"]; ?>');
 	// 10+ years: render and fill form
+	// eats +
 	if('<? echo $_GET["experience"]; ?>' == '10  years'){
 		$('.search-result').find('.cancel_filter_experience').detach();
 		$('.search-result').append(`<div class="cancel-filter cancel_filter_experience">10+ years<span class="close-cancel-filter close_cancel_filter_experience"></span></div>`);
@@ -174,6 +182,27 @@ $(document).ready(function(){
 	$('.search-result').append(`<div class="cancel-filter cancel_filter_location"><? echo $_GET["location"]; ?><span class="close-cancel-filter close_cancel_filter_location"></span></div>`);
 	// ! fill the form before POST again
 	$('.filter-form').find('.search-location').val('<? echo $_GET["location"]; ?>');
+	// ! post again
+	setTimeout(() => {
+		post_filter_card();	
+	}, 500);
+	
+})
+
+</script>
+<? endif; ?>
+
+
+
+<!-- ! workload -->
+<? if ($_GET["workload"]): ?>
+<script>
+
+$(document).ready(function(){
+	// ! render
+	$('.search-result').append(`<div class="cancel-filter cancel_filter_workload"><? echo $_GET["workload"]; ?><span class="close-cancel-filter close_cancel_filter_workload"></span></div>`);
+	// ! fill the form before POST again
+	$('.filter-form').find('.search-workload').val('<? echo $_GET["workload"]; ?>');
 	// ! post again
 	setTimeout(() => {
 		post_filter_card();	

@@ -11,6 +11,7 @@ $salary_arr = array();
 $experience_arr = array();
 $duration_arr = array();
 $location_arr = array();
+$workload_arr = array();
 
 // !!! add to each search!
 $search_counter = 0;
@@ -45,36 +46,91 @@ $final_arr[] = $duration_arr;
 }
 
 
-// ! salary 1
+// ! salary
 if($_POST["search-salary"] != 'salary'){
-	
-	if($_POST["search-salary"] == '100-500 USD'){
+
+
+	if($_POST["search-salary"] == '$1-$5/h'){
 		$s1 = 1;
 		$s2 = 5;
 	}
-	if($_POST["search-salary"] == '500-1000 USD'){
-		$s1 = 5;
-		$s2 = 10;
+
+	for($i=5;$i<=45;$i+=5){
+		$i2 = $i + 5;
+		// $5-$10 ... $10-$15 .. $15-$20 ... $45-$50/h
+		if($_POST["search-salary"] == "$$i-$$i2/h"){
+		$s1 = $i;
+		$s2 = $i+5;
 	}
-	if($_POST["search-salary"] == '1000-1500 USD'){
-		$s1 = 10;
-		$s2 = 15;
+	}
+
+	for($i=50;$i<=95;$i+=10){
+		$i2 = $i + 10;
+		// $50-$60 ... $90-$100/h
+		if($_POST["search-salary"] == "$$i-$$i2/h"){
+		$s1 = $i;
+		$s2 = $i+10;
+	}
+	}
+
+	if($_POST["search-salary"] == "$100+/h"){
+		$s1 = 100;
+		$s2 = 200;
 	}
 
 	
 		for ($i = $s1; $i <= $s2; $i++) {
 			$salary = R::getAll( 'SELECT * FROM post WHERE salary = :salary',
-			[':salary' => $i."00 USD"]
+			[':salary' => "$$i/h"]
 			);
 			foreach($salary as $salary){
 				$salary_arr[] = $salary["id"];
 			}
 	  }
 
-
-
   $search_counter++;
   $final_arr[] = $salary_arr;
+}
+
+// ! workload
+if($_POST["search-workload"] != 'workload'){
+	
+	if($_POST["search-workload"] == '1-40 h/mo'){
+		$s1 = 1;
+		$s2 = 40;
+	}
+	if($_POST["search-workload"] == '40-80 h/mo'){
+		$s1 = 40;
+		$s2 = 80;
+	}
+	if($_POST["search-workload"] == '80-120 h/mo'){
+		$s1 = 80;
+		$s2 = 120;
+	}
+	if($_POST["search-workload"] == '120-160 h/mo'){
+		$s1 = 120;
+		$s2 = 160;
+	}
+	if($_POST["search-workload"] == '160-200 h/mo'){
+		$s1 = 160;
+		$s2 = 200;
+	}
+	if($_POST["search-workload"] == '200-250 h/mo'){
+		$s1 = 200;
+		$s2 = 250;
+	}
+	
+		for ($i = $s1; $i <= $s2; $i++) {
+			$workload = R::getAll( 'SELECT * FROM post WHERE workload = :workload',
+			[':workload' => $i." h/mo"]
+			);
+			foreach($workload as $workload){
+				$workload_arr[] = $workload["id"];
+			}
+	  }
+
+  $search_counter++;
+  $final_arr[] = $workload_arr;
 }
 
 // ! experience 2

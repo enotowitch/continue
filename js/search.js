@@ -137,8 +137,6 @@ $(document).ready(function () {
 				history.pushState(null, '', `?salary=${text}&`);
 			}
 		}
-
-
 	})
 
 	// ! EXPERIENCE 
@@ -212,6 +210,30 @@ $(document).ready(function () {
 		}
 
 	})
+
+		// ! WORKLOAD
+		$(document).on('change', '.search-workload', function (e) {
+
+			var text = $(this).val();
+	
+			if (text != 'workload') {
+				// ! post
+				post_filter_card();
+				// ! render
+				$('.search-result').find('.cancel_filter_workload').detach();
+				$('.search-result').append(`<div class="cancel-filter cancel_filter_workload">${text}<span class="close-cancel-filter close_cancel_filter_workload"></span></div>`);
+	
+				// ! last filter
+				var last_filter = window.location.href.split('?')[1];
+	
+				if (last_filter != undefined) {
+					var last_filter = last_filter.replace(/workload.*?&/, '');
+					history.pushState(null, '', `?${last_filter}workload=${text}&`);
+				} else {
+					history.pushState(null, '', `?workload=${text}&`);
+				}
+			}
+		})
 
 
 	// ? REMOVE
@@ -354,6 +376,23 @@ $(document).ready(function () {
 		// ! post again
 		post_filter_card();
 	})
+
+		// ? remove workload
+		$(document).on('click', '.close_cancel_filter_workload', function () {
+
+			// ! NULL select/input
+			$('.filter-form').find('.search-workload').val('workload');
+	
+			// ! push URL
+			var searched_word = encodeURI($(this).closest('div').text().trim());
+			var without_search = window.location.href.replace(`workload=${searched_word}&`, '');
+			history.pushState(null, '', without_search);
+	
+			// ! unrender
+			$('.search-result').find('.cancel_filter_workload').detach();
+			// ! post again
+			post_filter_card();
+		})
 
 })
 
