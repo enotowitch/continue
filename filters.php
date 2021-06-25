@@ -43,7 +43,7 @@
 			<option value="$70-$80/h">$70-$80/h</option>
 			<option value="$80-$90/h">$80-$90/h</option>
 			<option value="$90-$100/h">$90-$100/h</option>
-			<option value="$100+/h">$100+/h</option>
+			<option value="$100-$200/h">$100-$200/h</option>
 		</select>
 
 		<!-- ! search experience -->	
@@ -58,7 +58,7 @@
 			<option value="7 years">7 years</option>
 			<option value="8 years">8 years</option>
 			<option value="9 years">9 years</option>
-			<option value="10+ years">10+ years</option>
+			<option value="10-50 years">10-50 years</option>
 		</select>
 
 		<!-- ! search duration -->	

@@ -106,13 +106,6 @@ $(document).ready(function(){
 	$('.search-result').append(`<div class="cancel-filter cancel_filter_salary"><span class="gray">Salary:&nbsp</span><div><? echo $_GET["salary"]; ?></div><span class="close-cancel-filter close_cancel_filter_salary"></span></div>`);
 	// ! fill the form before POST again
 	$('.filter-form').find('.search-salary').val('<? echo $_GET["salary"]; ?>');
-	// $100+/h: render and fill form
-	// eats +
-	if('<? echo $_GET["salary"]; ?>' == '$100 /h'){
-		$('.search-result').find('.cancel_filter_salary').detach();
-		$('.search-result').append(`<div class="cancel-filter cancel_filter_salary"><span class="gray">Salary:&nbsp</span>$100+/h<span class="close-cancel-filter close_cancel_filter_salary"></span></div>`);
-		$('.filter-form').find('.search-salary').val('$100+/h');
-	}
 	// ! post again
 	setTimeout(() => {
 		post_filter_card();	
@@ -133,13 +126,6 @@ $(document).ready(function(){
 	$('.search-result').append(`<div class="cancel-filter cancel_filter_experience"><span class="gray">Experience:&nbsp</span><div><? echo $_GET["experience"]; ?></div><span class="close-cancel-filter close_cancel_filter_experience"></span></div>`);
 	// ! fill the form before POST again
 	$('.filter-form').find('.search-experience').val('<? echo $_GET["experience"]; ?>');
-	// 10+ years: render and fill form
-	// eats +
-	if('<? echo $_GET["experience"]; ?>' == '10  years'){
-		$('.search-result').find('.cancel_filter_experience').detach();
-		$('.search-result').append(`<div class="cancel-filter cancel_filter_experience"><span class="gray">Experience:&nbsp</span>10+ years<span class="close-cancel-filter close_cancel_filter_experience"></span></div>`);
-		$('.filter-form').find('.search-experience').val('10+ years');
-	}
 	// ! post again
 	setTimeout(() => {
 		post_filter_card();	

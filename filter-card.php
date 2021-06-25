@@ -73,7 +73,7 @@ if($_POST["search-salary"] != 'salary'){
 	}
 	}
 
-	if($_POST["search-salary"] == "$100+/h"){
+	if($_POST["search-salary"] == "$100-$200/h"){
 		$s1 = 100;
 		$s2 = 200;
 	}
@@ -133,7 +133,7 @@ if($_POST["search-workload"] != 'workload'){
   $final_arr[] = $workload_arr;
 }
 
-// ! experience 2
+// ! experience
 if($_POST["search-experience"] != 'experience'){
 
 
@@ -141,8 +141,8 @@ if($_POST["search-experience"] != 'experience'){
 	[':experience' => $_POST["search-experience"]]
 );
 
-// 10+ years = 10-50 years
-if($_POST["search-experience"] == '10+ years'){
+// 10-50 years = 10-50 years
+if($_POST["search-experience"] == '10-50 years'){
 	for ($i = 10; $i <= 50; $i++){
 		$experience = R::getAll( 'SELECT * FROM post WHERE experience = :experience',
 		[':experience' => $i." years"]
@@ -164,7 +164,7 @@ if($_POST["search-experience"] == '10+ years'){
 
 
 
-// ! word 3
+// ! word
 if($_POST["word"] != ""){
 
 	$word = R::getAll('SELECT * FROM post WHERE title LIKE :title ',
@@ -192,7 +192,7 @@ $search_counter++;
 $final_arr[] = $company_arr;
 }
 
-// ! tags 4
+// ! tags
 if($_POST["tags"] != ""){
 	$tags = R::getAll( 'SELECT * FROM post WHERE tag_1 = :tag_1 OR tag_2 = :tag_2 OR tag_3 = :tag_3',
 	[':tag_1' => $_POST["tags"],':tag_2' => $_POST["tags"],':tag_3' => $_POST["tags"]]
@@ -205,7 +205,7 @@ $search_counter++;
 $final_arr[] = $tags_arr;
 };
 
-// ! filter 5
+// ! filter
 if($_POST["filter"] != 'filter'){
 	if($_POST["filter"] == 'hidden'){
 		$filter = R::find('hide', 'user_id = ?', [$_SESSION["user"]["id"]]);
