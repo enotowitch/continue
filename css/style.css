@@ -595,6 +595,10 @@
   color: #FF4242;
 }
 
+.gray {
+  color: #969696;
+}
+
 .please-log {
   position: fixed;
   z-index: 4;
@@ -757,6 +761,7 @@
   color: #6fda44;
   position: relative;
   margin-left: 5px;
+  margin-top: 5px;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;

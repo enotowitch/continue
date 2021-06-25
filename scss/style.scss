@@ -445,6 +445,9 @@
 .brand-del {
 	color: $del;
 }
+.gray {
+	color: $gray-light;
+}
 // ! please-log
 .please-log {
 	position: fixed;
@@ -576,6 +579,7 @@
 	color: $brandcolor;
 	position: relative;
 	margin-left: 5px;
+	margin-top: 5px;
 	display: inline-flex;
 	align-items: center;
 }

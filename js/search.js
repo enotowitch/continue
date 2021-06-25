@@ -72,7 +72,7 @@ $(document).ready(function () {
 
 		// ! render
 		$('.search-result').find('.cancel_filter_word').detach();
-		$('.search-result').append(`<div class="cancel-filter cancel_filter_word">${text}<span class="close-cancel-filter close_cancel_filter_word"></span></div>`);
+		$('.search-result').append(`<div class="cancel-filter cancel_filter_word"><span class="gray">Title:&nbsp</span>${text}<span class="close-cancel-filter close_cancel_filter_word"></span></div>`);
 
 		// ! last filter
 		var last_filter = window.location.href.split('?')[1];
@@ -98,7 +98,7 @@ $(document).ready(function () {
 
 		// ! render
 		$('.search-result').find('.cancel_filter_company').detach();
-		$('.search-result').append(`<div class="cancel-filter cancel_filter_company">${text}<span class="close-cancel-filter close_cancel_filter_company"></span></div>`);
+		$('.search-result').append(`<div class="cancel-filter cancel_filter_company"><span class="gray">Company:&nbsp</span>${text}<span class="close-cancel-filter close_cancel_filter_company"></span></div>`);
 
 		// ! last filter
 		var last_filter = window.location.href.split('?')[1];
@@ -125,7 +125,7 @@ $(document).ready(function () {
 			post_filter_card();
 			// ! render
 			$('.search-result').find('.cancel_filter_salary').detach();
-			$('.search-result').append(`<div class="cancel-filter cancel_filter_salary">${text}<span class="close-cancel-filter close_cancel_filter_salary"></span></div>`);
+			$('.search-result').append(`<div class="cancel-filter cancel_filter_salary"><span class="gray">Salary:&nbsp</span>${text}<span class="close-cancel-filter close_cancel_filter_salary"></span></div>`);
 
 			// ! last filter
 			var last_filter = window.location.href.split('?')[1];
@@ -149,7 +149,7 @@ $(document).ready(function () {
 			post_filter_card();
 			// ! render
 			$('.search-result').find('.cancel_filter_experience').detach();
-			$('.search-result').append(`<div class="cancel-filter cancel_filter_experience">${text}<span class="close-cancel-filter close_cancel_filter_experience"></span></div>`);
+			$('.search-result').append(`<div class="cancel-filter cancel_filter_experience"><span class="gray">Experience:&nbsp</span>${text}<span class="close-cancel-filter close_cancel_filter_experience"></span></div>`);
 			// ! last filter
 			var last_filter = window.location.href.split('?')[1];
 
@@ -173,7 +173,7 @@ $(document).ready(function () {
 			post_filter_card();
 			// ! render
 			$('.search-result').find('.cancel_filter_duration').detach();
-			$('.search-result').append(`<div class="cancel-filter cancel_filter_duration">${text}<span class="close-cancel-filter close_cancel_filter_duration"></span></div>`);
+			$('.search-result').append(`<div class="cancel-filter cancel_filter_duration"><span class="gray">Duration:&nbsp</span>${text}<span class="close-cancel-filter close_cancel_filter_duration"></span></div>`);
 			// ! last filter
 			var last_filter = window.location.href.split('?')[1];
 
@@ -197,7 +197,7 @@ $(document).ready(function () {
 			post_filter_card();
 			// ! render
 			$('.search-result').find('.cancel_filter_location').detach();
-			$('.search-result').append(`<div class="cancel-filter cancel_filter_location">${text}<span class="close-cancel-filter close_cancel_filter_location"></span></div>`);
+			$('.search-result').append(`<div class="cancel-filter cancel_filter_location"><span class="gray">Location:&nbsp</span>${text}<span class="close-cancel-filter close_cancel_filter_location"></span></div>`);
 			// ! last filter
 			var last_filter = window.location.href.split('?')[1];
 
@@ -221,7 +221,7 @@ $(document).ready(function () {
 				post_filter_card();
 				// ! render
 				$('.search-result').find('.cancel_filter_workload').detach();
-				$('.search-result').append(`<div class="cancel-filter cancel_filter_workload">${text}<span class="close-cancel-filter close_cancel_filter_workload"></span></div>`);
+				$('.search-result').append(`<div class="cancel-filter cancel_filter_workload"><span class="gray">Workload:&nbsp</span>${text}<span class="close-cancel-filter close_cancel_filter_workload"></span></div>`);
 	
 				// ! last filter
 				var last_filter = window.location.href.split('?')[1];
