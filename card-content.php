@@ -1,3 +1,8 @@
+<? 
+$posted = $post->time;
+$posted = date('Y-m-d H:i:s', $posted);
+?>
+
 <div class="card__content">
 	<!-- ! card_id -->
 	<input class="card_id" type="hidden" value="<? echo $post->id; ?>">
@@ -77,6 +82,9 @@
 		<img class="like" src="img/icons/like.svg" alt="like">
 		<img class="apply" src="img/icons/apply.svg" alt="apply">
 	</div>
+<? if($_SERVER['PHP_SELF'] == '/index.php' || $_SERVER['PHP_SELF'] == '/post-job.php' || $_SERVER['PHP_SELF'] == '/filter-card.php'): ?>
+	<div class="time"><? echo time_elapsed_string($posted); ?></div>
+<? endif; ?>
 </div>
 
 <? if($_SERVER['PHP_SELF'] != '/post-job.php' || $_SERVER['PHP_SELF'] != '/post-portfolio.php'): ?>

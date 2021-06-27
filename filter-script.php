@@ -198,3 +198,24 @@ $(document).ready(function(){
 
 </script>
 <? endif; ?>
+
+
+
+<!-- ! posted -->
+<? if ($_GET["posted"]): ?>
+<script>
+
+$(document).ready(function(){
+	// ! render
+	$('.search-result').append(`<div class="cancel-filter cancel_filter_posted"><span class="gray">Posted:&nbsp</span><div><? echo $_GET["posted"]; ?></div><span class="close-cancel-filter close_cancel_filter_posted"></span></div>`);
+	// ! fill the form before POST again
+	$('.filter-form').find('.search-posted').val('<? echo $_GET["posted"]; ?>');
+	// ! post again
+	setTimeout(() => {
+		post_filter_card();	
+	}, 500);
+	
+})
+
+</script>
+<? endif; ?>

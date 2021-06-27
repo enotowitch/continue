@@ -86,6 +86,15 @@
 			<option value="200-250 h/mo">200-250 h/mo</option>
 		</select>
 
+		<!-- ! search posted -->
+		<select class="search-posted" name="search-posted">
+			<option value="posted">posted</option>
+			<option value="today">today</option>
+			<option value="today - 3 days ago">today - 3 days ago</option>
+			<option value="today - 7 days ago">today - 7 days ago</option>
+			<option value="today - 14 days ago">today - 14 days ago</option>
+		</select>
+
 </form>
 </div>
 

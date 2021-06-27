@@ -1,6 +1,7 @@
 <? 
  session_start();
  require_once "DB.php";
+ include_once "functions.php";
 
 // prevent errors
 $word_arr = array();
@@ -12,6 +13,7 @@ $experience_arr = array();
 $duration_arr = array();
 $location_arr = array();
 $workload_arr = array();
+$posted_arr = array();
 
 // !!! add to each search!
 $search_counter = 0;
@@ -222,6 +224,50 @@ if($_POST["filter"] != 'filter'){
 $search_counter++;
 $final_arr[] = $filter_arr;
 }
+
+// ! posted
+if($_POST["search-posted"] != 'posted'){
+
+	$now = time();
+
+	if($_POST["search-posted"] == 'today'){
+		// 1 day;
+		$days = $now - (60*60*24);
+		$posted = R::getAll( 'SELECT * FROM post WHERE time > :days',
+		[':days' => $days]
+		);
+	}
+	if($_POST["search-posted"] == 'today - 3 days ago'){
+		// 3 days + 1;
+		$days = $now - (60*60*24*4);
+		$posted = R::getAll( 'SELECT * FROM post WHERE time > :days',
+		[':days' => $days]
+		);
+	}
+	if($_POST["search-posted"] == 'today - 7 days ago'){
+		// 7 days + 1;
+		$days = $now - (60*60*24*8);
+		$posted = R::getAll( 'SELECT * FROM post WHERE time > :days',
+		[':days' => $days]
+		);
+	}
+	if($_POST["search-posted"] == 'today - 14 days ago'){
+		// 14 days + 1;
+		$days = $now - (60*60*24*15);
+		$posted = R::getAll( 'SELECT * FROM post WHERE time > :days',
+		[':days' => $days]
+		);
+	}
+
+
+
+	
+foreach($posted as $posted){
+	$posted_arr[] = $posted["id"];
+}
+$search_counter++;
+$final_arr[] = $posted_arr;
+}
 ?>
 
 
@@ -264,6 +310,10 @@ if($search_counter == 8){
 }
 if($search_counter == 9){
 	$intersect = array_intersect($final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5], $final_arr[6], $final_arr[7], $final_arr[8]);
+	$posts = R::loadAll('post', $intersect);
+}
+if($search_counter == 10){
+	$intersect = array_intersect($final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5], $final_arr[6], $final_arr[7], $final_arr[8], $final_arr[9]);
 	$posts = R::loadAll('post', $intersect);
 }
 

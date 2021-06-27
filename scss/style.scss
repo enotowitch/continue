@@ -564,7 +564,8 @@
 .search-experience,
 .search-duration,
 .search-location,
-.search-workload {
+.search-workload,
+.search-posted {
 	color: $gray-light;
 	border: 1px solid $gray-light;
 	font-size: 14px;
@@ -749,4 +750,12 @@
 	background-color: $brandcolor;
 	border-radius: 5px;
 	border: 3px solid #fff;
+}
+// ! time
+.time {
+	position: absolute;
+	bottom: 2px;
+	right: 35px;
+	font-size: 11px;
+	color: $gray-light;
 }

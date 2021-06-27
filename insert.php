@@ -63,6 +63,8 @@ require_once "DB.php";
 		$destination->tag_2 = $tag_2;
 		$destination->tag_3 = $tag_3;
 
+		$destination->time = time();
+
 		
 		if(isset($_FILES['logo'])){
 			
