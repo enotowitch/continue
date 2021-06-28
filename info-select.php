@@ -209,9 +209,9 @@
 			</select>
 			<select class="info__cell" name="duration" title="Duration">
 				<option style="display: none;" selected disabled value="0">Duration</option>
-				<option value="Permanent">Permanent</option>
-				<option value="Temporary">Temporary</option>
-				<option value="Time to time">Time to time</option>
+				<?
+					include "info-select-duration.php";
+				?>
 			</select>
 		</div>
 		<div class="info__block">
@@ -271,7 +271,7 @@
 			</select>
 			<select class="info__cell" name="workload" title="Workload">
 				<option style="display: none;" selected disabled value="0">Workload</option>
-				<option value="1 /mo">1 /mo</option>
+				<option value="1 h/mo">1 h/mo</option>
 				<option value="2 h/mo">2 h/mo</option>
 				<option value="3 h/mo">3 h/mo</option>
 				<option value="4 h/mo">4 h/mo</option>

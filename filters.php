@@ -63,10 +63,9 @@
 
 		<!-- ! search duration -->	
 		<select class="search-duration" name="search-duration">
-				<option value="duration">duration</option>
-				<option value="Permanent">Permanent</option>
-				<option value="Temporary">Temporary</option>
-				<option value="Time to time">Time to time</option>
+<?
+	include "info-select-duration.php";
+?>
 		</select>
 
 		<select class="search-location" name="search-location">

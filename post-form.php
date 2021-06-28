@@ -26,7 +26,7 @@
 			</div>
 			<div class="tags">
 				<? 
-					require_once "tags-select.php"
+					require_once "info-select-tags.php"
 				?>
 			</div>
 		</form>
