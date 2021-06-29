@@ -462,25 +462,70 @@ $('.search-result').append(`<div class="cancel-filter cancel_all_filters">Cancel
 
 
 <!-- ! liked -->
-<? if($_POST["filter"] == 'liked'): ?>
+<? 
+$filter = R::find('like', 'user_id = ?', [$_SESSION["user"]["id"]]);
+?>
+<? foreach($filter as $filter): ?>
 	<script>
-	$('.like').attr('src', 'img/icons/liked.svg');
+	$('.card').each(function(){
+		var card_id = $(this).find('.card_id').val();
+		var db_id = '<? echo $filter['card_id']; ?>';
+		if(db_id == card_id){
+			$(this).find('.like').attr('src', 'img/icons/liked.svg');
+		}
+	})
 	</script>
-	<? endif; ?>
+<? endforeach; ?> 
+<!-- ? liked -->
+
+
 
 <!-- ! hidden -->
+<? 
+$filter = R::find('hide', 'user_id = ?', [$_SESSION["user"]["id"]]);
+?>
+<? foreach($filter as $filter): ?>
+	<script>
+	$('.card').each(function(){
+		var card_id = $(this).find('.card_id').val();
+		var db_id = '<? echo $filter['card_id']; ?>';
+		if(db_id == card_id){
+			$(this).addClass('db-hidden');
+		}
+	})
+	$('.db-hidden').addClass('op05');
+	$('.db-hidden').find('.hide').css({'border-bottom':'2px solid tomato', 'padding-bottom':'2px'});
+	</script>
+<? endforeach; ?> 
 <? if($_POST["filter"] == 'hidden'): ?>
 	<script>
-	$('.card').addClass('db-hidden');
+		$('.db-hidden').removeClass('op05');
 	</script>
-	<? endif; ?>
+<? endif; ?>
+<!-- ? hidden -->
+
+
+
 
 <!-- ! messaged -->
-	<? if($_POST["filter"] == 'messaged'): ?>
+<? 
+$filter = R::find('mesd', 'user_id = ?', [$_SESSION["user"]["id"]]);
+?>
+<? foreach($filter as $filter): ?>
 	<script>
-	$('.get-mes-form').addClass('yet-applied').addClass('op03');
+	$('.card').each(function(){
+		var card_id = $(this).find('.card_id').val();
+		var db_id = '<? echo $filter['card_id']; ?>';
+		if(db_id == card_id){
+			$(this).find('.get-mes-form').addClass('yet-applied').addClass('op05').css({'border-bottom':'2px solid #6fda44', 'padding-bottom':'2px'});;
+		}
+	})
 	</script>
-	<? endif; ?>
+<? endforeach; ?> 
+<!-- ? messaged -->
+
+
+
 
 <!-- ! tags -->
 <? if($_POST["tags"] != ""): ?>
