@@ -782,6 +782,11 @@
   height: 12px;
 }
 
+.cancel_all_filters {
+  border: 1px solid tomato;
+  color: tomato;
+}
+
 .img-zoom {
   cursor: -webkit-zoom-in;
   cursor: zoom-in;
@@ -867,7 +872,8 @@
 .example-small-slick,
 .close-one-slick-pic,
 .upd_pic_del,
-.sign-in {
+.sign-in,
+.cancel_all_filters {
   cursor: pointer;
 }
 

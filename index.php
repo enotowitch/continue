@@ -15,9 +15,7 @@ session_start();
 <!-- ? change-page -->
 
 
-	<!-- ! search-result -->
-	<div class="search-result"></div>
-	<!-- ? search-result -->
+
 
 
 <!-- ! CARD -->

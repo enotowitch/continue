@@ -16,13 +16,6 @@ $(document).ready(function () {
 		// ! post
 		post_filter_card();
 
-		// ! render 1
-		$('.tag').removeClass('tag_active');
-		$(`.tag:contains("${text}")`).addClass('tag_active');
-		// ! render 2
-		$('.search-result').find('.cancel_filter_tag').detach();
-		$('.search-result').append(`<div class="cancel-filter cancel_filter_tag">${text}<span class="close-cancel-filter close_cancel_filter_tag"></span></div>`);
-
 		// ! last filter
 		var last_filter = window.location.href.split('?')[1];
 
@@ -46,10 +39,6 @@ $(document).ready(function () {
 			// ! post
 			post_filter_card();
 
-			// ! render
-			$('.search-result').find('.cancel_filter_filter').detach();
-			$('.search-result').append(`<div class="cancel-filter cancel_filter_filter">${text}<span class="close-cancel-filter close_filter"></span></div>`);
-
 			// ! last filter
 			var last_filter = window.location.href.split('?')[1];
 
@@ -69,10 +58,6 @@ $(document).ready(function () {
 		var text = $(this).val().trim();
 		// ! post
 		post_filter_card();
-
-		// ! render
-		$('.search-result').find('.cancel_filter_word').detach();
-		$('.search-result').append(`<div class="cancel-filter cancel_filter_word"><span class="gray">Title:&nbsp</span><div>${text}</div><span class="close-cancel-filter close_cancel_filter_word"></span></div>`);
 
 		// ! last filter
 		var last_filter = window.location.href.split('?')[1];
@@ -95,10 +80,6 @@ $(document).ready(function () {
 		var text = $(this).val().trim();
 		// ! post
 		post_filter_card();
-
-		// ! render
-		$('.search-result').find('.cancel_filter_company').detach();
-		$('.search-result').append(`<div class="cancel-filter cancel_filter_company"><span class="gray">Company:&nbsp</span><div>${text}</div><span class="close-cancel-filter close_cancel_filter_company"></span></div>`);
 
 		// ! last filter
 		var last_filter = window.location.href.split('?')[1];
@@ -123,9 +104,6 @@ $(document).ready(function () {
 		if (text != 'salary') {
 			// ! post
 			post_filter_card();
-			// ! render
-			$('.search-result').find('.cancel_filter_salary').detach();
-			$('.search-result').append(`<div class="cancel-filter cancel_filter_salary"><span class="gray">Salary:&nbsp</span><div>${text}</div><span class="close-cancel-filter close_cancel_filter_salary"></span></div>`);
 
 			// ! last filter
 			var last_filter = window.location.href.split('?')[1];
@@ -147,9 +125,7 @@ $(document).ready(function () {
 		if (text != 'experience') {
 			// ! post
 			post_filter_card();
-			// ! render
-			$('.search-result').find('.cancel_filter_experience').detach();
-			$('.search-result').append(`<div class="cancel-filter cancel_filter_experience"><span class="gray">Experience:&nbsp</span><div>${text}</div><span class="close-cancel-filter close_cancel_filter_experience"></span></div>`);
+			
 			// ! last filter
 			var last_filter = window.location.href.split('?')[1];
 
@@ -171,9 +147,7 @@ $(document).ready(function () {
 		if (text != 'duration') {
 			// ! post
 			post_filter_card();
-			// ! render
-			$('.search-result').find('.cancel_filter_duration').detach();
-			$('.search-result').append(`<div class="cancel-filter cancel_filter_duration"><span class="gray">Duration:&nbsp</span><div>${text}</div><span class="close-cancel-filter close_cancel_filter_duration"></span></div>`);
+			
 			// ! last filter
 			var last_filter = window.location.href.split('?')[1];
 
@@ -195,9 +169,7 @@ $(document).ready(function () {
 		if (text != 'location') {
 			// ! post
 			post_filter_card();
-			// ! render
-			$('.search-result').find('.cancel_filter_location').detach();
-			$('.search-result').append(`<div class="cancel-filter cancel_filter_location"><span class="gray">Location:&nbsp</span><div>${text}</div><span class="close-cancel-filter close_cancel_filter_location"></span></div>`);
+			
 			// ! last filter
 			var last_filter = window.location.href.split('?')[1];
 
@@ -219,9 +191,6 @@ $(document).ready(function () {
 		if (text != 'workload') {
 			// ! post
 			post_filter_card();
-			// ! render
-			$('.search-result').find('.cancel_filter_workload').detach();
-			$('.search-result').append(`<div class="cancel-filter cancel_filter_workload"><span class="gray">Workload:&nbsp</span><div>${text}</div><span class="close-cancel-filter close_cancel_filter_workload"></span></div>`);
 
 			// ! last filter
 			var last_filter = window.location.href.split('?')[1];
@@ -243,9 +212,6 @@ $(document).ready(function () {
 		if (text != 'posted') {
 			// ! post
 			post_filter_card();
-			// ! render
-			$('.search-result').find('.cancel_filter_posted').detach();
-			$('.search-result').append(`<div class="cancel-filter cancel_filter_posted"><span class="gray">Posted:&nbsp</span><div>${text}</div><span class="close-cancel-filter close_cancel_filter_posted"></span></div>`);
 
 			// ! last filter
 			var last_filter = window.location.href.split('?')[1];
@@ -435,5 +401,10 @@ $(document).ready(function () {
 		post_filter_card();
 	})
 
+	// ! CANCEL_ALL_FILTERS
+	$(document).on('click', '.cancel_all_filters', function(){
+		history.pushState(null, '', '/');
+		location.reload();
+	})
 })
 
