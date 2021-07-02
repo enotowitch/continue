@@ -50,12 +50,12 @@ include "post-form.php";
 	require_once "DB.php";
 	// ! SHOW ONLY MY POSTS
 	if($_SERVER['PHP_SELF'] == '/post-job.php'){
-		$posts = R::find('post', 'user_id = ?', [$_SESSION["user"]["id"]], 'ORDER BY id DESC');
+		$destination = 'post';	
 	}
 	if($_SERVER['PHP_SELF'] == '/post-portfolio.php'){
-		$posts = R::find('portfolio', 'user_id = ?', [$_SESSION["user"]["id"]], 'ORDER BY id DESC');
+		$destination = 'portfolio';
 	}
-
+	$posts = load_my_posts($destination); 
 
 
 	foreach($posts as $post): 

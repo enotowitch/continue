@@ -66,4 +66,9 @@ function load_all_posts($destination){
 		$posts = R::loadAll($destination, $result);
 		return $posts;
 }
+
+function load_my_posts($destination){
+	$posts = R::find($destination, 'user_id = ?', [$_SESSION["user"]["id"]], 'ORDER BY id DESC');
+	return $posts;
+}
 ?>
