@@ -134,12 +134,14 @@ $(document).ready(function () {
 		e.preventDefault();
 	});
 
+	
+
 	// ! autocomlete titles
 	$(function () {
 
 		$.post({
 			'url': 'titles.php',
-			'data': {},
+			'data': {card_from:card_from},
 			dataType: 'json',
 			success: function (data) {
 
@@ -161,7 +163,7 @@ $(document).ready(function () {
 
 			$.post({
 				'url': 'company.php',
-				'data': {},
+				'data': {card_from:card_from},
 				dataType: 'json',
 				success: function (data) {
 	
