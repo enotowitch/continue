@@ -26,32 +26,11 @@ session_start();
 	require_once "DB.php";
 	
 	if($_SERVER['PHP_SELF'] == '/index.php'){
-		// prevent errors
-		$hidden_arr = array();
-		$messaged_arr = array();
-
-		$posts = R::find('post', 'ORDER BY id DESC');
-		foreach($posts as $post){
-			$all_arr[] = $post["id"];
-		}
-		// ! hidden
-		$hidden = R::find('hide', 'user_id = ?', [$_SESSION["user"]["id"]]);
-		foreach($hidden as $hidden){
-			$hidden_arr[] = $hidden["card_id"];
-		}		
-		// ! messaged
-		$messaged = R::find('mesd', 'user_id = ?', [$_SESSION["user"]["id"]]);
-		foreach($messaged as $messaged){
-			$messaged_arr[] = $messaged["card_id"];
-		}	
-		$result = array_diff($all_arr, $hidden_arr, $messaged_arr);
-		// filtered posts
-		$posts = R::loadAll('post', $result);
-
+		$posts = load_all_posts('post');
 	}
 	// !!!
 	if($_SERVER['PHP_SELF'] == '/portfolios.php'){
-		$posts = R::find('portfolio', 'ORDER BY id DESC');
+		$posts = load_all_posts('portfolio');
 	}
 	
 

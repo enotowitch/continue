@@ -3,6 +3,15 @@
  require_once "DB.php";
  include_once "functions.php";
 
+// ! search destination
+if($_POST['card_from'] == "/index.php"){
+	$destination = 'post';
+} 
+if($_POST['card_from'] == "/portfolios.php"){
+	$destination = 'portfolio';
+}
+
+
 // prevent errors
 $word_arr = array();
 $company_arr = array();
@@ -22,9 +31,17 @@ $search_counter = 0;
 
 // ! location
 if($_POST["search-location"] != 'location'){
-	$location = R::getAll( 'SELECT * FROM post WHERE location = :location',
-	[':location' => $_POST["search-location"]]
-);
+	if($_POST['card_from'] == "/index.php"){
+		$location = R::getAll( 'SELECT * FROM post WHERE location = :location',
+		[':location' => $_POST["search-location"]]
+	);
+	}
+	if($_POST['card_from'] == "/portfolios.php"){
+		$location = R::getAll( 'SELECT * FROM portfolio WHERE location = :location',
+		[':location' => $_POST["search-location"]]
+	);
+	}
+
 
 foreach($location as $location){
 	$location_arr[] = $location["id"];
@@ -45,9 +62,17 @@ $final_arr[] = $location_arr;
 
 // ! duration
 if($_POST["search-duration"] != 'duration'){
-	$duration = R::getAll( 'SELECT * FROM post WHERE duration = :duration',
-	[':duration' => $_POST["search-duration"]]
-);
+	if($_POST['card_from'] == "/index.php"){
+		$duration = R::getAll( 'SELECT * FROM post WHERE duration = :duration',
+		[':duration' => $_POST["search-duration"]]
+	);
+	}
+	if($_POST['card_from'] == "/portfolios.php"){
+		$duration = R::getAll( 'SELECT * FROM portfolio WHERE duration = :duration',
+		[':duration' => $_POST["search-duration"]]
+	);
+	}
+
 
 foreach($duration as $duration){
 	$duration_arr[] = $duration["id"];
@@ -101,9 +126,17 @@ if($_POST["search-salary"] != 'salary'){
 
 	
 		for ($i = $s1; $i <= $s2; $i++) {
-			$salary = R::getAll( 'SELECT * FROM post WHERE salary = :salary',
-			[':salary' => "$$i/h"]
-			);
+			if($_POST['card_from'] == "/index.php"){
+				$salary = R::getAll( 'SELECT * FROM post WHERE salary = :salary',
+				[':salary' => "$$i/h"]
+				);
+			}
+			if($_POST['card_from'] == "/portfolios.php"){
+				$salary = R::getAll( 'SELECT * FROM portfolio WHERE salary = :salary',
+				[':salary' => "$$i/h"]
+				);
+			}
+
 			foreach($salary as $salary){
 				$salary_arr[] = $salary["id"];
 			}
@@ -152,9 +185,17 @@ if($_POST["search-workload"] != 'workload'){
 	}
 	
 		for ($i = $s1; $i <= $s2; $i++) {
-			$workload = R::getAll( 'SELECT * FROM post WHERE workload = :workload',
-			[':workload' => $i." h/mo"]
-			);
+			if($_POST['card_from'] == "/index.php"){
+				$workload = R::getAll( 'SELECT * FROM post WHERE workload = :workload',
+				[':workload' => $i." h/mo"]
+				);
+			}
+			if($_POST['card_from'] == "/portfolios.php"){
+				$workload = R::getAll( 'SELECT * FROM portfolio WHERE workload = :workload',
+				[':workload' => $i." h/mo"]
+				);
+			}
+
 			foreach($workload as $workload){
 				$workload_arr[] = $workload["id"];
 			}
@@ -177,10 +218,17 @@ if($_POST["search-workload"] != 'workload'){
 // ! experience
 if($_POST["search-experience"] != 'experience'){
 
+	if($_POST['card_from'] == "/index.php"){
+		$experience = R::getAll( 'SELECT * FROM post WHERE experience = :experience',
+		[':experience' => $_POST["search-experience"]]
+	);
+	}
+	if($_POST['card_from'] == "/portfolios.php"){
+		$experience = R::getAll( 'SELECT * FROM portfolio WHERE experience = :experience',
+		[':experience' => $_POST["search-experience"]]
+	);
+	}
 
-	$experience = R::getAll( 'SELECT * FROM post WHERE experience = :experience',
-	[':experience' => $_POST["search-experience"]]
-);
 
 // 10-50 years = 10-50 years
 if($_POST["search-experience"] == '10-50 years'){
@@ -218,9 +266,17 @@ if($_POST["search-experience"] == '10-50 years'){
 // ! word
 if($_POST["search-word"] != ""){
 
-	$word = R::getAll('SELECT * FROM post WHERE title LIKE :title ',
-	  array(':title' => '%'.$_POST["search-word"].'%' )
-	);
+	if($_POST['card_from'] == "/index.php"){
+		$word = R::getAll('SELECT * FROM post WHERE title LIKE :title ',
+		array(':title' => '%'.$_POST["search-word"].'%' )
+	 );
+	}
+	if($_POST['card_from'] == "/portfolios.php"){
+		$word = R::getAll('SELECT * FROM portfolio WHERE title LIKE :title ',
+		array(':title' => '%'.$_POST["search-word"].'%' )
+	 );
+	}
+
 
 foreach($word as $word){
 	$word_arr[] = $word["id"];
@@ -244,9 +300,17 @@ $final_arr[] = $word_arr;
 // ! company
 if($_POST["search-company"] != ""){
 
-	$company = R::getAll('SELECT * FROM post WHERE subt LIKE :subt ',
-	  array(':subt' => '%'.$_POST["search-company"].'%' )
-	);
+	if($_POST['card_from'] == "/index.php"){
+		$company = R::getAll('SELECT * FROM post WHERE subt LIKE :subt ',
+		array(':subt' => '%'.$_POST["search-company"].'%' )
+	 );
+	}
+	if($_POST['card_from'] == "/portfolios.php"){
+		$company = R::getAll('SELECT * FROM portfolio WHERE subt LIKE :subt ',
+		array(':subt' => '%'.$_POST["search-company"].'%' )
+	 );
+	}
+
 
 foreach($company as $company){
 	$company_arr[] = $company["id"];
@@ -270,9 +334,18 @@ $final_arr[] = $company_arr;
 
 // ! tags
 if($_POST["tags"] != ""){
-	$tags = R::getAll( 'SELECT * FROM post WHERE tag_1 = :tag_1 OR tag_2 = :tag_2 OR tag_3 = :tag_3',
-	[':tag_1' => $_POST["tags"],':tag_2' => $_POST["tags"],':tag_3' => $_POST["tags"]]
-);
+
+	if($_POST['card_from'] == "/index.php"){
+		$tags = R::getAll( 'SELECT * FROM post WHERE tag_1 = :tag_1 OR tag_2 = :tag_2 OR tag_3 = :tag_3',
+		[':tag_1' => $_POST["tags"],':tag_2' => $_POST["tags"],':tag_3' => $_POST["tags"]]
+	);
+	}
+	if($_POST['card_from'] == "/portfolios.php"){
+		$tags = R::getAll( 'SELECT * FROM portfolio WHERE tag_1 = :tag_1 OR tag_2 = :tag_2 OR tag_3 = :tag_3',
+		[':tag_1' => $_POST["tags"],':tag_2' => $_POST["tags"],':tag_3' => $_POST["tags"]]
+	);
+	}
+
 
 foreach($tags as $tag){
 	$tags_arr[] = $tag["id"];
@@ -333,31 +406,31 @@ if($_POST["search-posted"] != 'posted'){
 	if($_POST["search-posted"] == 'today'){
 		// 1 day;
 		$days = $now - (60*60*24);
-		$posted = R::getAll( 'SELECT * FROM post WHERE time > :days',
-		[':days' => $days]
-		);
 	}
 	if($_POST["search-posted"] == 'today - 3 days ago'){
 		// 3 days + 1;
 		$days = $now - (60*60*24*4);
-		$posted = R::getAll( 'SELECT * FROM post WHERE time > :days',
-		[':days' => $days]
-		);
 	}
 	if($_POST["search-posted"] == 'today - 7 days ago'){
 		// 7 days + 1;
 		$days = $now - (60*60*24*8);
-		$posted = R::getAll( 'SELECT * FROM post WHERE time > :days',
-		[':days' => $days]
-		);
 	}
 	if($_POST["search-posted"] == 'today - 14 days ago'){
 		// 14 days + 1;
 		$days = $now - (60*60*24*15);
+	}
+
+	if($_POST['card_from'] == "/index.php"){
 		$posted = R::getAll( 'SELECT * FROM post WHERE time > :days',
 		[':days' => $days]
 		);
 	}
+	if($_POST['card_from'] == "/portfolios.php"){
+		$posted = R::getAll( 'SELECT * FROM portfolio WHERE time > :days',
+		[':days' => $days]
+		);
+	}
+
 
 foreach($posted as $posted){
 	$posted_arr[] = $posted["id"];
@@ -376,49 +449,49 @@ $final_arr[] = $posted_arr;
 
 
 
+
 <? if($search_counter == 0): ?>
-	<script>location.reload();</script>
-	<!-- or load all(make function) like in INDEX.PHP -->
+	<? $posts = load_all_posts($destination); ?>
 <? endif; ?>
 <?
 if($search_counter == 1){
-	$posts = R::loadAll('post', $final_arr[0]);
+	$posts = R::loadAll($destination, $final_arr[0]);
 }
 if($search_counter == 2){
 	$intersect = array_intersect($final_arr[0], $final_arr[1]);
-	$posts = R::loadAll('post', $intersect);
+	$posts = R::loadAll($destination, $intersect);
 }
 if($search_counter == 3){
 	$intersect = array_intersect($final_arr[0], $final_arr[1], $final_arr[2]);
-	$posts = R::loadAll('post', $intersect);
+	$posts = R::loadAll($destination, $intersect);
 }
 if($search_counter == 4){
 	$intersect = array_intersect($final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3]);
-	$posts = R::loadAll('post', $intersect);
+	$posts = R::loadAll($destination, $intersect);
 }
 if($search_counter == 5){
 	$intersect = array_intersect($final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4]);
-	$posts = R::loadAll('post', $intersect);
+	$posts = R::loadAll($destination, $intersect);
 }
 if($search_counter == 6){
 	$intersect = array_intersect($final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5]);
-	$posts = R::loadAll('post', $intersect);
+	$posts = R::loadAll($destination, $intersect);
 }
 if($search_counter == 7){
 	$intersect = array_intersect($final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5], $final_arr[6]);
-	$posts = R::loadAll('post', $intersect);
+	$posts = R::loadAll($destination, $intersect);
 }
 if($search_counter == 8){
 	$intersect = array_intersect($final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5], $final_arr[6], $final_arr[7]);
-	$posts = R::loadAll('post', $intersect);
+	$posts = R::loadAll($destination, $intersect);
 }
 if($search_counter == 9){
 	$intersect = array_intersect($final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5], $final_arr[6], $final_arr[7], $final_arr[8]);
-	$posts = R::loadAll('post', $intersect);
+	$posts = R::loadAll($destination, $intersect);
 }
 if($search_counter == 10){
 	$intersect = array_intersect($final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5], $final_arr[6], $final_arr[7], $final_arr[8], $final_arr[9]);
-	$posts = R::loadAll('post', $intersect);
+	$posts = R::loadAll($destination, $intersect);
 }
 
 echo "counter:".$search_counter;

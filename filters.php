@@ -94,6 +94,7 @@
 			<option value="today - 14 days ago">today - 14 days ago</option>
 		</select>
 
+		<input type="hidden" name="card_from" value="<? echo $_SERVER['PHP_SELF']; ?>">
 </form>
 </div>
 

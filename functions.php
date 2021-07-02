@@ -42,4 +42,28 @@ function time_elapsed_string($datetime, $full = false) {
 	return $string ? implode(', ', $string) . '' : '1s';
 }
 
+function load_all_posts($destination){
+		// prevent errors
+		$hidden_arr = array();
+		$messaged_arr = array();
+
+		$posts = R::find($destination, 'ORDER BY id DESC');
+		foreach($posts as $post){
+			$all_arr[] = $post["id"];
+		}
+		// ! hidden
+		$hidden = R::find('hide', 'user_id = ?', [$_SESSION["user"]["id"]]);
+		foreach($hidden as $hidden){
+			$hidden_arr[] = $hidden["card_id"];
+		}		
+		// ! messaged
+		$messaged = R::find('mesd', 'user_id = ?', [$_SESSION["user"]["id"]]);
+		foreach($messaged as $messaged){
+			$messaged_arr[] = $messaged["card_id"];
+		}	
+		$result = array_diff($all_arr, $hidden_arr, $messaged_arr);
+		// filtered posts
+		$posts = R::loadAll($destination, $result);
+		return $posts;
+}
 ?>
