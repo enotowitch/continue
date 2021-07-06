@@ -2,7 +2,7 @@
 require_once "DB.php";
 session_start();
 
-$hide = R::find('hide', 'user_id = ?', [$_SESSION['user']['id']]);
+$hide = R::find('hidden', 'user_id = ?', [$_SESSION['user']['id']]);
 
 $hidden = array();
 

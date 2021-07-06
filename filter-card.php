@@ -358,15 +358,9 @@ $final_arr[] = $tags_arr;
 
 // ! filter
 if($_POST["filter"] != 'filter'){
-	if($_POST["filter"] == 'hidden'){
-		$filter = R::find('hide', 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat]);
-	  }
-	  if($_POST["filter"] == 'liked'){
-		$filter = R::find('like', 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat]);
-	  }
-	  if($_POST["filter"] == 'messaged'){
-		$filter = R::find('mesd', 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat]);
-	  }
+
+	$filter = R::find($_POST["filter"], 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat]);
+
 	  foreach($filter as $filter){
 		  $filter_arr[] = $filter["card_id"];
 		}
@@ -524,7 +518,7 @@ $('.search-result').append(`<div class="cancel-filter cancel_all_filters">cancel
 
 <!-- ! liked -->
 <? 
-$filter = R::find('like', 'user_id = ?', [$_SESSION["user"]["id"]]);
+$filter = R::find('liked', 'user_id = ?', [$_SESSION["user"]["id"]]);
 ?>
 <? foreach($filter as $filter): ?>
 	<script>
@@ -543,7 +537,7 @@ $filter = R::find('like', 'user_id = ?', [$_SESSION["user"]["id"]]);
 
 <!-- ! hidden -->
 <? 
-$filter = R::find('hide', 'user_id = ?', [$_SESSION["user"]["id"]]);
+$filter = R::find('hidden', 'user_id = ?', [$_SESSION["user"]["id"]]);
 ?>
 <? foreach($filter as $filter): ?>
 	<script>
@@ -570,7 +564,7 @@ $filter = R::find('hide', 'user_id = ?', [$_SESSION["user"]["id"]]);
 
 <!-- ! messaged -->
 <? 
-$filter = R::find('mesd', 'user_id = ?', [$_SESSION["user"]["id"]]);
+$filter = R::find('messaged', 'user_id = ?', [$_SESSION["user"]["id"]]);
 ?>
 <? foreach($filter as $filter): ?>
 	<script>

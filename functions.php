@@ -53,12 +53,12 @@ function load_all_posts($cat){
 			$all_arr[] = $post["id"];
 		}
 		// ! hidden
-		$hidden = R::find('hide', 'user_id = ?', [$_SESSION["user"]["id"]]);
+		$hidden = R::find('hidden', 'user_id = ?', [$_SESSION["user"]["id"]]);
 		foreach($hidden as $hidden){
 			$hidden_arr[] = $hidden["card_id"];
 		}		
 		// ! messaged
-		$messaged = R::find('mesd', 'user_id = ?', [$_SESSION["user"]["id"]]);
+		$messaged = R::find('messaged', 'user_id = ?', [$_SESSION["user"]["id"]]);
 		foreach($messaged as $messaged){
 			$messaged_arr[] = $messaged["card_id"];
 		}	

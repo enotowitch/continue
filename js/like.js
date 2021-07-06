@@ -5,7 +5,7 @@ $(document).ready(function () {
 		var card_id = $(this).closest('.card').find('.card_id').val();
 		var current_user = $('.current_user').val();
 		var card_from = $('.card_from').val();
-		var cat = $('.cat').val();
+		var cat = $(this).closest('.card').find('.cat').val();
 
 
 		// ! links for anchors: added to liked & removed from liked

@@ -2,7 +2,7 @@
 require_once "DB.php";
 session_start();
 
-$like = R::find('like', 'user_id = ?', [$_SESSION['user']['id']]);
+$like = R::find('liked', 'user_id = ?', [$_SESSION['user']['id']]);
 
 $likes = array();
 
