@@ -389,7 +389,11 @@ $final_arr[] = $tags_arr;
 	<script>
 	// ! render 1
 	$('.tag').removeClass('tag_active');
-	$(`.tag:contains("<? echo $_POST["tags"]; ?>")`).addClass('tag_active');
+	$(`.tag:contains("<? echo $_POST["tags"]; ?>")`).each(function(){
+		if($(this).text().trim() == "<? echo $_POST["tags"]; ?>"){
+			$(this).addClass('tag_active');
+		}		
+	});
 	// ! render 2
 	$('.search-result').find('.cancel_filter_tag').detach();
 	$('.search-result').append(`<div class="cancel-filter cancel_filter_tag"><? echo $_POST["tags"]; ?><span class="close-cancel-filter close_cancel_filter_tag"></span></div>`);
@@ -636,9 +640,3 @@ $filter = R::find('mesd', 'user_id = ?', [$_SESSION["user"]["id"]]);
 
 
 
-<!-- ! tags -->
-<? if($_POST["tags"] != ""): ?>
-<script>
-$('.card').find(`.tag:contains("<? echo $_POST["tags"] ?>")`).addClass('tag_active');
-</script>
-<? endif; ?>
