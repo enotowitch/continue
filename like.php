@@ -19,6 +19,8 @@ session_start();
 
 			$like->card_id = $_POST['card_id'];
 			$like->user_id = $_SESSION["user"]["id"];
+
+			$like->cat = $_POST['cat'];
 			
 			R::store($like);
 

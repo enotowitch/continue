@@ -21,6 +21,8 @@ if(isset($_SESSION["user"]["id"])){
 
 		$mesd->card_id = $_POST['card_id'];
 		$mesd->user_id = $_SESSION["user"]["id"];
+
+		$mesd->cat = $_POST['cat'];
 		
 		R::store($mesd);
 

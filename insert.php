@@ -38,50 +38,47 @@ require_once "DB.php";
 
 	// ! DB post/folio
 
-	if($card_from == '/post-job.php'){
-		$destination = "post";
-	} else {
-		$destination = "portfolio";
-	}
+
+		$post = R::dispense("post");
 
 
-		$destination = R::dispense("$destination");
+		$post->user_id = $user_id;
 
+		$post->title = $title;
+		$post->subt = $subt;
 
-		$destination->user_id = $user_id;
+		$post->salary = $salary;
+		$post->duration = $duration;
+		$post->experience = $experience;
+		$post->workload = $workload;
+		$post->location = $location;
 
-		$destination->title = $title;
-		$destination->subt = $subt;
+		$post->tag_1 = $tag_1;
+		$post->tag_2 = $tag_2;
+		$post->tag_3 = $tag_3;
 
-		$destination->salary = $salary;
-		$destination->duration = $duration;
-		$destination->experience = $experience;
-		$destination->workload = $workload;
-		$destination->location = $location;
+		$post->time = time();
+		
+		$post->cat = $_POST["card_from"] == '/post-job.php' ? 'job' : 'folio';
 
-		$destination->tag_1 = $tag_1;
-		$destination->tag_2 = $tag_2;
-		$destination->tag_3 = $tag_3;
-
-		$destination->time = time();
 
 		
 		if(isset($_FILES['logo'])){
 			
-			$destination->logo = $logo_path;
+			$post->logo = $logo_path;
 			
 		} else {
 // if no logo added -> logo = $_SESSION['user']['logo'] = first user_mail char
-			$destination->logo = $_SESSION['user']['logo'];
+			$post->logo = $_SESSION['user']['logo'];
 		}
 
 		for($i=1;$i<=10;$i++){
 			if(isset($_FILES["example_$i"])){
-				$destination["example_$i"] = $examples_path[($i-1)];
+				$post["example_$i"] = $examples_path[($i-1)];
 				}
 		}
 		
-		R::store( $destination );
+		R::store( $post );
 		
 
 ?>

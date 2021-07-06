@@ -5,6 +5,9 @@ $posted = date('Y-m-d H:i:s', $posted);
 
 <div class="card__content">
 	<!-- ! card_id -->
+	<input class="cat" type="hidden" value="<? echo $post->cat; ?>">
+	<!-- ? card_id -->
+	<!-- ! card_id -->
 	<input class="card_id" type="hidden" value="<? echo $post->id; ?>">
 	<!-- ? card_id -->
 	<!-- ! user_id -->

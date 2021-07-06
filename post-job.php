@@ -50,12 +50,12 @@ include "post-form.php";
 	require_once "DB.php";
 	// ! SHOW ONLY MY POSTS
 	if($_SERVER['PHP_SELF'] == '/post-job.php'){
-		$destination = 'post';	
+		$cat = 'job';	
 	}
 	if($_SERVER['PHP_SELF'] == '/post-portfolio.php'){
-		$destination = 'portfolio';
+		$cat = 'folio';
 	}
-	$posts = load_my_posts($destination); 
+	$posts = load_my_posts($cat); 
 
 
 	foreach($posts as $post): 

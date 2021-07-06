@@ -42,12 +42,13 @@ function time_elapsed_string($datetime, $full = false) {
 	return $string ? implode(', ', $string) . '' : '1s';
 }
 
-function load_all_posts($destination){
+function load_all_posts($cat){
 		// prevent errors
 		$hidden_arr = array();
 		$messaged_arr = array();
 
-		$posts = R::find($destination, 'ORDER BY id DESC');
+		
+		$posts = R::find('post', 'cat = ?', [$cat], 'ORDER BY id DESC');
 		foreach($posts as $post){
 			$all_arr[] = $post["id"];
 		}
@@ -63,12 +64,12 @@ function load_all_posts($destination){
 		}	
 		$result = array_diff($all_arr, $hidden_arr, $messaged_arr);
 		// filtered posts
-		$posts = R::loadAll($destination, $result);
+		$posts = R::loadAll('post', $result);
 		return $posts;
 }
 
-function load_my_posts($destination){
-	$posts = R::find($destination, 'user_id = ?', [$_SESSION["user"]["id"]], 'ORDER BY id DESC');
+function load_my_posts($cat){
+	$posts = R::find('post', 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat], 'ORDER BY id DESC');
 	return $posts;
 }
 ?>

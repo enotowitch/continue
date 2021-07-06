@@ -19,6 +19,8 @@ session_start();
 
 			$hide->card_id = $_POST['card_id'];
 			$hide->user_id = $_SESSION["user"]["id"];
+
+			$hide->cat = $_POST['cat'];
 			
 			R::store($hide);
 

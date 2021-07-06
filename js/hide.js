@@ -5,6 +5,7 @@ $(document).ready(function () {
 		var card_id = $(this).closest('.card').find('.card_id').val();
 		var current_user = $('.current_user').val();
 		var card_from = $('.card_from').val();
+		var cat = $('.cat').val();
 
 				// ! links for anchors: added to hidden & removed from hidden
 				if(card_from == '/index.php' || card_from == '/jobs-del.php' || card_from == '/jobs-like.php' || card_from == '/jobs-mes.php' || card_from == '/post-job.php'){
@@ -39,7 +40,7 @@ $(document).ready(function () {
 
 		$.post({
 			'url': 'hide.php',
-			'data': { card_id: card_id },
+			'data': { card_id: card_id, cat:cat },
 			success: function () {
 
 				$(e.target).closest('.card').append('<div class="del-anim"></div>');

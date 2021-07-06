@@ -1,9 +1,9 @@
 <?
 	if($_POST["card_from"] == '/index.php'){
-		$apply_find = R::find('portfolio', 'user_id = ?', [$_SESSION['user']['id']]);
+		$apply_find = R::find('post', 'user_id = ? AND cat = ?', [$_SESSION['user']['id'], 'folio']);
 	}
 	if($_POST["card_from"] == '/portfolios.php'){
-		$apply_find = R::find('post', 'user_id = ?', [$_SESSION['user']['id']]);
+		$apply_find = R::find('post', 'user_id = ? AND cat = ?', [$_SESSION['user']['id'], 'job']);
 	}
 ?>
 

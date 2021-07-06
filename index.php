@@ -26,11 +26,11 @@ session_start();
 	require_once "DB.php";
 	
 	if($_SERVER['PHP_SELF'] == '/index.php'){
-		$posts = load_all_posts('post');
+		$posts = load_all_posts('job');
 	}
 	// !!!
 	if($_SERVER['PHP_SELF'] == '/portfolios.php'){
-		$posts = load_all_posts('portfolio');
+		$posts = load_all_posts('folio');
 	}
 	
 

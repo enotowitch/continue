@@ -117,11 +117,12 @@ $(document).ready(function () {
 	$(document).on('click', '.mes-send', function (e) {
 
 		var card_id = $(this).closest('.card').find('.card_id').val();
+		var cat = $('.cat').val();
 
 
 		$.post({
 			url: 'mesd.php',
-			data: { card_id: card_id },
+			data: { card_id: card_id, cat:cat },
 			success: function (data) {
 				// alert('stored to mesd.php');
 			},
