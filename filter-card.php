@@ -167,6 +167,19 @@ if($_POST["search-salary"] != 'salary'){
 				);
 			}
 
+			if($_POST["search-salary"] == 'volunteer'){
+				if($_POST['card_from'] == "/index.php" || $_POST['card_from'] == "/post-job.php"){
+					$salary = R::getAll( 'SELECT * FROM post WHERE salary = :salary',
+					[':salary' => "volunteer"]
+					);
+				}
+				if($_POST['card_from'] == "/portfolios.php" || $_POST['card_from'] == "/post-portfolio.php"){
+					$salary = R::getAll( 'SELECT * FROM portfolio WHERE salary = :salary',
+					[':salary' => "volunteer"]
+					);
+				}
+			}
+
 			foreach($salary as $salary){
 				$salary_arr[] = $salary["id"];
 			}

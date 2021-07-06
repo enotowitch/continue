@@ -28,6 +28,7 @@
 <!-- ! search salary -->
 		<select class="search-salary" name="search-salary">
 			<option value="salary">salary</option>
+			<option value="volunteer">volunteer</option>
 			<option value="$1-$5/h">$1-$5/h</option>
 			<option value="$5-$10/h">$5-$10/h</option>
 			<option value="$10-$15/h">$10-$15/h</option>
@@ -49,6 +50,7 @@
 		<!-- ! search experience -->	
 		<select class="search-experience" name="search-experience">
 			<option value="experience">experience</option>
+			<option value="No Exp.">No Exp.</option>
 			<option value="1 year">1 year</option>
 			<option value="2 years">2 years</option>
 			<option value="3 years">3 years</option>
