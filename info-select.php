@@ -525,6 +525,7 @@
 		</div>
 		<div class="info__block">
 			<select class="info__cell" name="location" title="Location">
+			<option style="display: none;" selected disabled value="0">Location</option>
 			<? 
 			include "info-select-location.php"; 
 			?>

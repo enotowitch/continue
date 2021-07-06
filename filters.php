@@ -12,7 +12,7 @@
 
 
 		<select class="filter" name="filter">
-			<option value="filter">filter</option>
+			<option value="filter">status</option>
 			<option value="liked">liked</option>
 			<option value="hidden">hidden</option>
 			<option value="messaged">messaged</option>
@@ -63,12 +63,14 @@
 
 		<!-- ! search duration -->	
 		<select class="search-duration" name="search-duration">
+		<option value="duration">duration</option>
 <?
 	include "info-select-duration.php";
 ?>
 		</select>
 
 		<select class="search-location" name="search-location">
+		<option value="location">location</option>
 <? 
 	include "info-select-location.php";
 ?>

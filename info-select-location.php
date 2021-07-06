@@ -1,4 +1,3 @@
-				<option style="display: none;" selected value="location">Location</option>
 				<option value="Worldwide">Worldwide</option>
 				<option value="Afghanistan">Afghanistan</option>
 				<option value="Akrotiri">Akrotiri</option>

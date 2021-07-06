@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 	// ! TAG
-	$('.tag').on('click', function () {
+	$(document).on('click', '.tag', function () {
 
 		if (card_from == '/mes.php') {
 			return;
