@@ -63,6 +63,16 @@
 			<option value="10-50 years">10-50 years</option>
 		</select>
 
+
+		<!-- ! search location -->	
+		<select class="search-location" name="search-location">
+		<option value="location">location</option>
+<? 
+	include "info-select-location.php";
+?>
+		</select>
+		
+		
 		<!-- ! search duration -->	
 		<select class="search-duration" name="search-duration">
 		<option value="duration">duration</option>
@@ -71,12 +81,6 @@
 ?>
 		</select>
 
-		<select class="search-location" name="search-location">
-		<option value="location">location</option>
-<? 
-	include "info-select-location.php";
-?>
-		</select>
 
 		<!-- ! search workload -->
 		<select class="search-workload" name="search-workload">

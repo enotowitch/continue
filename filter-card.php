@@ -3,7 +3,7 @@
  require_once "DB.php";
  include_once "functions.php";
 
-// ! search destination
+// ! search cat
 if($_POST['card_from'] == "/index.php" || $_POST['card_from'] == "/post-job.php"){
 	$cat = 'job';
 } 
@@ -53,58 +53,121 @@ if($_POST['card_from'] == "/post-job.php" || $_POST['card_from'] == "/post-portf
 
 
 
-// ! location
-if($_POST["search-location"] != 'location'){
+
+// ! tags =1 (=1 - order)
+if($_POST["tags"] != ""){
+
 	
-		$location = R::getAll( 'SELECT * FROM post WHERE location = :location AND cat = :cat',
-		[':location' => $_POST["search-location"], ':cat' => $cat]
-	);
-
-
-foreach($location as $location){
-	$location_arr[] = $location["id"];
-}
-$search_counter++;
-$final_arr[] = $location_arr;
-}
-// ! render
-?>
-<? if($_POST["search-location"] != 'location'): ?>
-	<script>
-	$('.search-result').find('.cancel_filter_location').detach();
-	$('.search-result').append(`<div class="cancel-filter cancel_filter_location"><span class="gray">location:&nbsp</span><div><? echo $_POST["search-location"]; ?></div><span class="close-cancel-filter close_cancel_filter_location"></span></div>`);
-	</script>
-<? endif; ?>
-<?
-// ? render
-
-// ! duration
-if($_POST["search-duration"] != 'duration'){
-	
-	$duration = R::getAll( 'SELECT * FROM post WHERE duration = :duration AND cat = :cat',
-	[':duration' => $_POST["search-duration"], ':cat' => $cat]
+	$tags = R::getAll( 'SELECT * FROM post WHERE cat = :cat AND tag_1 = :tag_1 OR cat = :cat AND tag_2 = :tag_2 OR cat = :cat AND tag_3 = :tag_3',
+	[':tag_1' => $_POST["tags"],':tag_2' => $_POST["tags"],':tag_3' => $_POST["tags"], ':cat' => $cat]
 );
 
 
-foreach($duration as $duration){
-	$duration_arr[] = $duration["id"];
+foreach($tags as $tag){
+$tags_arr[] = $tag["id"];
 }
 $search_counter++;
-$final_arr[] = $duration_arr;
+$final_arr[] = $tags_arr;
+};
+// ! render
+?>
+<? if($_POST["tags"] != ''): ?>
+<script>
+// ! render 1
+$('.tag').removeClass('tag_active');
+$(`.tag:contains("<? echo $_POST["tags"]; ?>")`).each(function(){
+	if($(this).text().trim() == "<? echo $_POST["tags"]; ?>"){
+		$(this).addClass('tag_active');
+	}		
+});
+// ! render 2
+$('.search-result').find('.cancel_filter_tag').detach();
+$('.search-result').append(`<div class="cancel-filter cancel_filter_tag"><? echo $_POST["tags"]; ?><span class="close-cancel-filter close_cancel_filter_tag"></span></div>`);
+</script>
+<? endif; ?>
+<?
+// ? render
+
+
+
+// ! filter =2
+if($_POST["filter"] != 'filter'){
+
+	$filter = R::find($_POST["filter"], 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat]);
+
+	  foreach($filter as $filter){
+		  $filter_arr[] = $filter["card_id"];
+		}
+$search_counter++;
+$final_arr[] = $filter_arr;
 }
 // ! render
 ?>
-<? if($_POST["search-duration"] != 'duration'): ?>
+<? if($_POST["filter"] != 'filter'): ?>
 	<script>
-	$('.search-result').find('.cancel_filter_duration').detach();
-	$('.search-result').append(`<div class="cancel-filter cancel_filter_duration"><span class="gray">duration:&nbsp</span><div><? echo $_POST["search-duration"]; ?></div><span class="close-cancel-filter close_cancel_filter_duration"></span></div>`);
+	$('.search-result').find('.cancel_filter_filter').detach();
+	$('.search-result').append(`<div class="cancel-filter cancel_filter_filter"><? echo $_POST["filter"]; ?><span class="close-cancel-filter close_filter"></span></div>`);
 	</script>
 <? endif; ?>
 <?
 // ? render
 
 
-// ! salary
+// ! word =3
+if($_POST["search-word"] != ""){
+
+	
+	$word = R::getAll('SELECT * FROM post WHERE title LIKE :title AND cat = :cat',
+	array(':title' => '%'.$_POST["search-word"].'%', ':cat' => $cat )
+ );
+
+
+foreach($word as $word){
+$word_arr[] = $word["id"];
+}
+$search_counter++;
+$final_arr[] = $word_arr;
+}
+// ! render
+?>
+<? if($_POST["search-word"] != ''): ?>
+<script>
+$('.search-result').find('.cancel_filter_word').detach();
+$('.search-result').append(`<div class="cancel-filter cancel_filter_word"><span class="gray">title:&nbsp</span><div><? echo $_POST["search-word"]; ?></div><span class="close-cancel-filter close_cancel_filter_word"></span></div>`);
+</script>
+<? endif; ?>
+<?
+// ? render
+
+
+// ! company =4
+if($_POST["search-company"] != ""){
+
+	
+	$company = R::getAll('SELECT * FROM post WHERE subt LIKE :subt AND cat = :cat',
+	array(':subt' => '%'.$_POST["search-company"].'%', ':cat' => $cat)
+ );
+
+
+foreach($company as $company){
+$company_arr[] = $company["id"];
+}
+$search_counter++;
+$final_arr[] = $company_arr;
+}
+// ! render
+?>
+<? if($_POST["search-company"] != ''): ?>
+<script>
+$('.search-result').find('.cancel_filter_company').detach();
+$('.search-result').append(`<div class="cancel-filter cancel_filter_company"><span class="gray">company:&nbsp</span><div><? echo $_POST["search-company"]; ?></div><span class="close-cancel-filter close_cancel_filter_company"></span></div>`);
+</script>
+<? endif; ?>
+<?
+// ? render
+
+
+// ! salary =5
 if($_POST["search-salary"] != 'salary'){
 
 
@@ -169,7 +232,104 @@ if($_POST["search-salary"] != 'salary'){
 <?
 // ? render
 
-// ! workload
+
+
+// ! experience =6
+if($_POST["search-experience"] != 'experience'){
+
+	
+	$experience = R::getAll( 'SELECT * FROM post WHERE experience = :experience AND cat = :cat',
+	[':experience' => $_POST["search-experience"], ':cat' => $cat]
+);
+
+
+// todo
+// 10-50 years = 10-50 years
+if($_POST["search-experience"] == '10-50 years'){
+for ($i = 10; $i <= 50; $i++){
+	$experience = R::getAll( 'SELECT * FROM post WHERE experience = :experience AND cat = :cat',
+	[':experience' => $i." years", ':cat' => $cat]
+);
+// ! must be here
+foreach($experience as $experience){
+	$experience_arr[] = $experience["id"];
+}
+}
+} 
+
+foreach($experience as $experience){
+	$experience_arr[] = $experience["id"];
+}
+$search_counter++;
+$final_arr[] = $experience_arr;
+
+}
+// ! render
+?>
+<? if($_POST["search-experience"] != 'experience'): ?>
+<script>
+$('.search-result').find('.cancel_filter_experience').detach();
+$('.search-result').append(`<div class="cancel-filter cancel_filter_experience"><span class="gray">experience:&nbsp</span><div><? echo $_POST["search-experience"]; ?></div><span class="close-cancel-filter close_cancel_filter_experience"></span></div>`);
+</script>
+<? endif; ?>
+<?
+// ? render
+
+
+// ! location =7
+if($_POST["search-location"] != 'location'){
+	
+		$location = R::getAll( 'SELECT * FROM post WHERE location = :location AND cat = :cat',
+		[':location' => $_POST["search-location"], ':cat' => $cat]
+	);
+
+
+foreach($location as $location){
+	$location_arr[] = $location["id"];
+}
+$search_counter++;
+$final_arr[] = $location_arr;
+}
+// ! render
+?>
+<? if($_POST["search-location"] != 'location'): ?>
+	<script>
+	$('.search-result').find('.cancel_filter_location').detach();
+	$('.search-result').append(`<div class="cancel-filter cancel_filter_location"><span class="gray">location:&nbsp</span><div><? echo $_POST["search-location"]; ?></div><span class="close-cancel-filter close_cancel_filter_location"></span></div>`);
+	</script>
+<? endif; ?>
+<?
+// ? render
+
+// ! duration =8
+if($_POST["search-duration"] != 'duration'){
+	
+	$duration = R::getAll( 'SELECT * FROM post WHERE duration = :duration AND cat = :cat',
+	[':duration' => $_POST["search-duration"], ':cat' => $cat]
+);
+
+
+foreach($duration as $duration){
+	$duration_arr[] = $duration["id"];
+}
+$search_counter++;
+$final_arr[] = $duration_arr;
+}
+// ! render
+?>
+<? if($_POST["search-duration"] != 'duration'): ?>
+	<script>
+	$('.search-result').find('.cancel_filter_duration').detach();
+	$('.search-result').append(`<div class="cancel-filter cancel_filter_duration"><span class="gray">duration:&nbsp</span><div><? echo $_POST["search-duration"]; ?></div><span class="close-cancel-filter close_cancel_filter_duration"></span></div>`);
+	</script>
+<? endif; ?>
+<?
+// ? render
+
+
+
+
+// ! workload =9
 if($_POST["search-workload"] != 'workload'){
 	
 	if($_POST["search-workload"] == '1-40 h/mo'){
@@ -222,165 +382,9 @@ if($_POST["search-workload"] != 'workload'){
 <?
 // ? render
 
-// ! experience
-if($_POST["search-experience"] != 'experience'){
-
-	
-		$experience = R::getAll( 'SELECT * FROM post WHERE experience = :experience AND cat = :cat',
-		[':experience' => $_POST["search-experience"], ':cat' => $cat]
-	);
 
 
-// todo
-// 10-50 years = 10-50 years
-if($_POST["search-experience"] == '10-50 years'){
-	for ($i = 10; $i <= 50; $i++){
-		$experience = R::getAll( 'SELECT * FROM post WHERE experience = :experience AND cat = :cat',
-		[':experience' => $i." years", ':cat' => $cat]
-	);
-	// ! must be here
-	foreach($experience as $experience){
-		$experience_arr[] = $experience["id"];
-	}
-	}
-} 
-	
-	foreach($experience as $experience){
-		$experience_arr[] = $experience["id"];
-	}
-	$search_counter++;
-	$final_arr[] = $experience_arr;
-
-}
-// ! render
-?>
-<? if($_POST["search-experience"] != 'experience'): ?>
-	<script>
-	$('.search-result').find('.cancel_filter_experience').detach();
-	$('.search-result').append(`<div class="cancel-filter cancel_filter_experience"><span class="gray">experience:&nbsp</span><div><? echo $_POST["search-experience"]; ?></div><span class="close-cancel-filter close_cancel_filter_experience"></span></div>`);
-	</script>
-<? endif; ?>
-<?
-// ? render
-
-
-
-// ! word
-if($_POST["search-word"] != ""){
-
-	
-		$word = R::getAll('SELECT * FROM post WHERE title LIKE :title AND cat = :cat',
-		array(':title' => '%'.$_POST["search-word"].'%', ':cat' => $cat )
-	 );
-
-
-foreach($word as $word){
-	$word_arr[] = $word["id"];
-}
-$search_counter++;
-$final_arr[] = $word_arr;
-}
-// ! render
-?>
-<? if($_POST["search-word"] != ''): ?>
-	<script>
-	$('.search-result').find('.cancel_filter_word').detach();
-	$('.search-result').append(`<div class="cancel-filter cancel_filter_word"><span class="gray">title:&nbsp</span><div><? echo $_POST["search-word"]; ?></div><span class="close-cancel-filter close_cancel_filter_word"></span></div>`);
-	</script>
-<? endif; ?>
-<?
-// ? render
-
-
-
-// ! company
-if($_POST["search-company"] != ""){
-
-	
-		$company = R::getAll('SELECT * FROM post WHERE subt LIKE :subt AND cat = :cat',
-		array(':subt' => '%'.$_POST["search-company"].'%', ':cat' => $cat)
-	 );
-
-
-foreach($company as $company){
-	$company_arr[] = $company["id"];
-}
-$search_counter++;
-$final_arr[] = $company_arr;
-}
-// ! render
-?>
-<? if($_POST["search-company"] != ''): ?>
-	<script>
-	$('.search-result').find('.cancel_filter_company').detach();
-	$('.search-result').append(`<div class="cancel-filter cancel_filter_company"><span class="gray">company:&nbsp</span><div><? echo $_POST["search-company"]; ?></div><span class="close-cancel-filter close_cancel_filter_company"></span></div>`);
-	</script>
-<? endif; ?>
-<?
-// ? render
-
-
-
-
-// ! tags
-if($_POST["tags"] != ""){
-
-	
-		$tags = R::getAll( 'SELECT * FROM post WHERE cat = :cat AND tag_1 = :tag_1 OR tag_2 = :tag_2 OR tag_3 = :tag_3',
-		[':tag_1' => $_POST["tags"],':tag_2' => $_POST["tags"],':tag_3' => $_POST["tags"], ':cat' => $cat]
-	);
-
-
-foreach($tags as $tag){
-	$tags_arr[] = $tag["id"];
-}
-$search_counter++;
-$final_arr[] = $tags_arr;
-};
-// ! render
-?>
-<? if($_POST["tags"] != ''): ?>
-	<script>
-	// ! render 1
-	$('.tag').removeClass('tag_active');
-	$(`.tag:contains("<? echo $_POST["tags"]; ?>")`).each(function(){
-		if($(this).text().trim() == "<? echo $_POST["tags"]; ?>"){
-			$(this).addClass('tag_active');
-		}		
-	});
-	// ! render 2
-	$('.search-result').find('.cancel_filter_tag').detach();
-	$('.search-result').append(`<div class="cancel-filter cancel_filter_tag"><? echo $_POST["tags"]; ?><span class="close-cancel-filter close_cancel_filter_tag"></span></div>`);
-	</script>
-<? endif; ?>
-<?
-// ? render
-
-// ! filter
-if($_POST["filter"] != 'filter'){
-
-	$filter = R::find($_POST["filter"], 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat]);
-
-	  foreach($filter as $filter){
-		  $filter_arr[] = $filter["card_id"];
-		}
-$search_counter++;
-$final_arr[] = $filter_arr;
-}
-// ! render
-?>
-<? if($_POST["filter"] != 'filter'): ?>
-	<script>
-	$('.search-result').find('.cancel_filter_filter').detach();
-	$('.search-result').append(`<div class="cancel-filter cancel_filter_filter"><? echo $_POST["filter"]; ?><span class="close-cancel-filter close_filter"></span></div>`);
-	</script>
-<? endif; ?>
-<?
-// ? render
-
-
-
-// ! posted
+// ! posted =10
 if($_POST["search-posted"] != 'posted'){
 
 	$now = time();
@@ -481,7 +485,7 @@ echo "counter:".$search_counter;
 
 <? if($search_counter == 1): ?>
 <script>
-$('.search-result').append(`<div class="cancel-filter cancel_all_filters">cancel results: <? echo count($final_arr[0]); ?></div>`);
+$('.search-result').append(`<div class="cancel-filter cancel_all_filters">cancel results: <? echo count($intersect); ?></div>`);
 </script>
 <? endif; ?>
 <? if($search_counter > 1): ?>

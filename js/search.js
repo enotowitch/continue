@@ -404,7 +404,7 @@ $(document).ready(function () {
 	// ! CANCEL_ALL_FILTERS
 	$(document).on('click', '.cancel_all_filters', function(){
 		history.pushState(null, '', '/');
-		location.reload();
+		window.location.href = card_from;
 	})
 })
 
