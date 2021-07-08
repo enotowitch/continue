@@ -81,7 +81,7 @@ $(document).ready(function () {
 		var pics_count = $(this).closest('.slick-track').find('.slick-slide').length;
 
 		if(pics_count == 1){
-			alert('Post should have at least 1 picture!');
+			alert('Post must have at least 1 picture!');
 			return;
 		}
 

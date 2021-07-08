@@ -23,6 +23,10 @@
 	include_once "filter-script.php";
 	?>
 
+	<? 
+	include_once "flags.php";
+	?>
+
 
 
 

@@ -181,4 +181,24 @@ $(document).ready(function () {
 		});
 
 
+// ! test location CLICK
+
+		$(document).on('click', '.location', function(){
+			var text = $(this).text().trim();
+			$('.search-icon').trigger('click');
+	
+				$('.search-location').val(`${text}`);
+				post_filter_card();
+
+				// ! last filter
+				var last_filter = window.location.href.split('?')[1];
+
+				if (last_filter != undefined) {
+					var last_filter = last_filter.replace(/location.*?&/, '');
+					history.pushState(null, '', `?${last_filter}location=${text}&`);
+				} else {
+					history.pushState(null, '', `?location=${text}&`);
+				}
+			
+		})
 })

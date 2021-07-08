@@ -585,4 +585,7 @@ $filter = R::find('messaged', 'user_id = ?', [$_SESSION["user"]["id"]]);
 
 
 
+	<? 
+	include_once "flags.php";
+	?>
 

@@ -287,6 +287,9 @@
 	.info__pics {
 		display: none;
 	}
+	.info__simple {
+		width: 75px;
+	}
 }
 .one_slick_pic {
 	background-color: #fff !important;
@@ -594,7 +597,7 @@
 	width: 12px;
 	height: 12px;
 }
-.cancel_all_filters{
+.cancel_all_filters {
 	border: 1px solid tomato;
 	color: tomato;
 }
@@ -660,8 +663,13 @@
 .close-one-slick-pic,
 .upd_pic_del,
 .sign-in,
-.cancel_all_filters {
+.cancel_all_filters,
+.info__simple {
 	cursor: pointer;
+}
+.search-word,
+.search-company {
+	padding-left: 12px;
 }
 .mes-to-applicant {
 	width: 30px;

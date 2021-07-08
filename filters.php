@@ -106,3 +106,8 @@
 </form>
 </div>
 
+<? if($_SERVER['PHP_SELF'] == '/portfolios.php'): ?>
+	<script>
+	$('.search-posted').hide();
+	</script>
+<? endif; ?>
