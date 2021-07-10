@@ -480,7 +480,7 @@ if($search_counter == 10){
 	$posts = R::loadAll('post', $intersect);
 }
 
-echo "counter:".$search_counter;
+// echo "counter:".$search_counter;
 ?>
 
 <? if($search_counter == 1): ?>

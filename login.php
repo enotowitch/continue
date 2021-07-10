@@ -1,7 +1,7 @@
 <?
 session_start();
 if($_SESSION["user"]["id"] != NULL){
-	header("location: jobs-like.php");
+	header("location: profile.php");
 }
  require_once "header.php";
 ?>

@@ -21,6 +21,7 @@
 	box-shadow: 1px 2px 5px #8b8b8b, 1px 0px 5px #d3d3d3;
 	padding: 0 15px 0 15px;
 	margin-bottom: 15px;
+	font-family: Montserrat;
 }
 // ! burger
 .burger {
@@ -143,6 +144,7 @@
 		font-size: 12px;
 		color: $gray-light;
 		height: 25px;
+		padding-top: 4px;
 	}
 	textarea.card__subt {
 		white-space: nowrap;
@@ -778,4 +780,70 @@
 	right: 35px;
 	font-size: 11px;
 	color: $gray-light;
+}
+// ! dropdown
+.dropbtn {
+	background-color: #fff;
+	color: #000;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+}
+.dropdown {
+	position: relative;
+	display: inline-block;
+	z-index: 4;
+}
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #fff;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+}
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+.dropdown-content a:hover {
+	color: $brandcolor;
+}
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+.dropdown:hover .dropbtn {
+	background-color: #fff;
+}
+// ! stat
+.stat-wrap {
+	margin: 0 auto;
+	width: 270px;
+	text-align: center;
+	font-family: Montserrat;
+	font-size: 18px;
+}
+.stat-topic {
+	color: $brandcolor;
+	font-weight: 700;
+	padding-bottom: 4px;
+}
+.stat {
+	border: 1px solid $gray-light;
+	padding: 4px;
+	border-radius: 4px;
+	display: flex;
+	justify-content: space-between;
+	&:hover {
+		background-color: rgb(233, 233, 233);
+	}
+	span {
+		display: block;
+		color: $brandcolor;
+		cursor: pointer;
+	}
 }

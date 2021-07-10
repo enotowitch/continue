@@ -81,17 +81,20 @@ include "post-form.php";
  require_once "footer.php";
 ?>
 
+
 <script>
 
+$(document).ready(function(){
 $('.card2').find('.card__content').addClass('usn');
 $('.card2').find('.card__logo').attr('src', 'img/bitten-donut.jpg');	
 $('.card2').find('.card__title').text('Artist, Developer, Generalist');	
 $('.card2').find('.card__subt').text('Microsoft, Apple, Google');	
-$('.card2').find('.info__simple').eq(0).text('3000 USD');	
-$('.card2').find('.info__simple').eq(1).text('Permanent');	
-$('.card2').find('.info__simple').eq(2).text('10 years');	
-$('.card2').find('.info__simple').eq(3).text('150 h/mo');	
-$('.card2').find('.info__simple').eq(4).text('United States');	
+$('.card2').find('.info__simple').eq(0).text('$34/h');	
+$('.card2').find('.info__simple').eq(1).text('Freelance').css({'padding-top':'4px'});	
+$('.card2').find('.info__simple').eq(2).text('3 years');	
+$('.card2').find('.info__simple').eq(3).text('176 h/mo').css({'padding-top':'4px'});	
+$('.card2').find('.info__simple').removeClass('location').eq(4).text(' US ').prepend(`<img src="img/icons/flags/us.png">`);	
+$('.card2').find('.info__simple').eq(5).html('<label class="info__cell info__example brand-bg">5/10</label>').css({'width':'94px', 'font-size': '13px', 'font-family': 'Montserrat'});	
 $('.card2').find('.tag').eq(0).text('art');	
 $('.card2').find('.tag').eq(1).text('UX / UI');	
 $('.card2').find('.tag').eq(2).text('back-end');
@@ -99,6 +102,9 @@ $('.card2').find('.info__pics ').detach();
 $('.card2').find('.inter-icons').empty();
 $('.card2').find('.inter-icons').append('<input disabled class="cross_reset">');
 $('.card2').find('.inter-icons').append('<img src="img/icons/info-ok.svg" alt="info-ok">');
-			
+$('.card2').find('.time').hide();
+})			
 </script>
+
+
 
