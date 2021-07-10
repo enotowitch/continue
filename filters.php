@@ -75,7 +75,7 @@
 		
 		<!-- ! search duration -->	
 		<select class="search-duration" name="search-duration">
-		<option value="duration">duration</option>
+		<option value="duration">type</option>
 <?
 	include "info-select-duration.php";
 ?>

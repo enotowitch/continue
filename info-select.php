@@ -207,8 +207,8 @@
 				<option value="$200/h">$200/h</option>
 				
 			</select>
-			<select class="info__cell" name="duration" title="Duration">
-				<option style="display: none;" selected disabled value="0">Duration</option>
+			<select class="info__cell" name="duration" title="Type">
+				<option style="display: none;" selected disabled value="0">Type</option>
 				<?
 					include "info-select-duration.php";
 				?>

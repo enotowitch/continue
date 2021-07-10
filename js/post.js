@@ -258,3 +258,6 @@ $(document).on('click', '.ok-gray', function (e) {
 
 // ! sql LIKE
 // https://unetway.com/tutorial/sql-operator-like
+
+// ! flags
+// https://flagpedia.net/download/icons

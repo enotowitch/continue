@@ -320,7 +320,7 @@ $final_arr[] = $duration_arr;
 <? if($_POST["search-duration"] != 'duration'): ?>
 	<script>
 	$('.search-result').find('.cancel_filter_duration').detach();
-	$('.search-result').append(`<div class="cancel-filter cancel_filter_duration"><span class="gray">duration:&nbsp</span><div><? echo $_POST["search-duration"]; ?></div><span class="close-cancel-filter close_cancel_filter_duration"></span></div>`);
+	$('.search-result').append(`<div class="cancel-filter cancel_filter_duration"><span class="gray">type:&nbsp</span><div><? echo $_POST["search-duration"]; ?></div><span class="close-cancel-filter close_cancel_filter_duration"></span></div>`);
 	</script>
 <? endif; ?>
 <?

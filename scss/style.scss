@@ -177,6 +177,13 @@
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
+			img {
+				padding-top: 1px;
+			}
+			&:hover {
+				color: $brandcolor;
+				text-decoration: underline;
+			}
 		}
 		// ! SLICK SLIDER INIT
 		&__pics {

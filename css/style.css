@@ -255,6 +255,15 @@
   white-space: nowrap;
 }
 
+.card .info__simple img {
+  padding-top: 1px;
+}
+
+.card .info__simple:hover {
+  color: #6fda44;
+  text-decoration: underline;
+}
+
 .card .info__pics {
   min-width: 0px;
   max-width: 650px !important;

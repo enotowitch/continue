@@ -33,23 +33,23 @@ $posted = date('Y-m-d H:i:s', $posted);
 		<div class="info">
 			<div class="info__flex">
 				<div class="info__block">
-					<div class="info__cell info__simple salary">
+					<div class="info__cell info__simple salary" id="salary">
 						<? echo $post->salary; ?>
 					</div>
-					<div class="info__cell info__simple duration">
+					<div class="info__cell info__simple duration" id="duration">
 						<? echo $post->duration; ?>
 					</div>
 				</div>
 				<div class="info__block">
-					<div class="info__cell info__simple experience">
+					<div class="info__cell info__simple experience" id="experience">
 						<? echo $post->experience; ?>
 					</div>
-					<div class="info__cell info__simple workload">
+					<div class="info__cell info__simple workload" id="workload">
 						<? echo $post->workload; ?>
 					</div>
 				</div>
 				<div class="info__block">
-					<div class="info__cell info__simple location">
+					<div class="info__cell info__simple location" id="location">
 						<? echo $post->location; ?>
 					</div>
 					<div class="info__cell info__simple example">

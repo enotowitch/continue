@@ -181,24 +181,138 @@ $(document).ready(function () {
 		});
 
 
-// ! test location CLICK
+// ! test search CLICK
 
-		$(document).on('click', '.location', function(){
+		$(document).on('click', '#salary, #experience, #location, #duration, #workload', function(){
 			var text = $(this).text().trim();
+			var search_id = this.id;
+
+			// ! salary
+			for(var i = 1;i<=5;i++){
+				if(text == `$${i}/h`){
+					var text = '$1-$5/h';
+				} 
+			}
+			for(var i = 5;i<=10;i++){
+				if(text == `$${i}/h`){
+					var text = '$5-$10/h';
+				} 
+			}
+			for(var i = 10;i<=15;i++){
+				if(text == `$${i}/h`){
+					var text = '$10-$15/h';
+				} 
+			}
+			for(var i = 15;i<=20;i++){
+				if(text == `$${i}/h`){
+					var text = '$15-$20/h';
+				} 
+			}
+			for(var i = 20;i<=25;i++){
+				if(text == `$${i}/h`){
+					var text = '$20-$25/h';
+				} 
+			}
+			for(var i = 25;i<=30;i++){
+				if(text == `$${i}/h`){
+					var text = '$25-$30/h';
+				} 
+			}
+			for(var i = 30;i<=35;i++){
+				if(text == `$${i}/h`){
+					var text = '$30-$35/h';
+				} 
+			}
+			for(var i = 35;i<=40;i++){
+				if(text == `$${i}/h`){
+					var text = '$35-$40/h';
+				} 
+			}
+			for(var i = 40;i<=45;i++){
+				if(text == `$${i}/h`){
+					var text = '$40-$45/h';
+				} 
+			}
+			for(var i = 45;i<=50;i++){
+				if(text == `$${i}/h`){
+					var text = '$45-$50/h';
+				} 
+			}
+			for(var i = 50;i<=60;i++){
+				if(text == `$${i}/h`){
+					var text = '$50-$60/h';
+				} 
+			}
+			for(var i = 60;i<=70;i++){
+				if(text == `$${i}/h`){
+					var text = '$60-$70/h';
+				} 
+			}
+			for(var i = 70;i<=80;i++){
+				if(text == `$${i}/h`){
+					var text = '$70-$80/h';
+				} 
+			}
+			for(var i = 80;i<=90;i++){
+				if(text == `$${i}/h`){
+					var text = '$80-$90/h';
+				} 
+			}
+			for(var i = 90;i<=100;i++){
+				if(text == `$${i}/h`){
+					var text = '$90-$100/h';
+				} 
+			}
+			for(var i = 100;i<=200;i++){
+				if(text == `$${i}/h`){
+					var text = '$100-$200/h';
+				} 
+			}
+			// ! workload
+			for(var i = 1;i<=40;i++){
+				if(text == `${i} h/mo`){
+					var text = '1-40 h/mo';
+				} 
+			}
+			for(var i = 40;i<=80;i++){
+				if(text == `${i} h/mo`){
+					var text = '40-80 h/mo';
+				} 
+			}
+			for(var i = 80;i<=120;i++){
+				if(text == `${i} h/mo`){
+					var text = '80-120 h/mo';
+				} 
+			}
+			for(var i = 120;i<=160;i++){
+				if(text == `${i} h/mo`){
+					var text = '120-160 h/mo';
+				} 
+			}
+			for(var i = 160;i<=200;i++){
+				if(text == `${i} h/mo`){
+					var text = '160-200 h/mo';
+				} 
+			}
+			for(var i = 200;i<=250;i++){
+				if(text == `${i} h/mo`){
+					var text = '200-250 h/mo';
+				} 
+			}
+			// ! experience
+			for(var i = 10;i<=50;i++){
+				if(text == `${i} years`){
+					var text = '10-50 years';
+				} 
+			}
+
+			
 			$('.search-icon').trigger('click');
 	
-				$('.search-location').val(`${text}`);
+				$(`.search-${search_id}`).val(`${text}`);
 				post_filter_card();
 
-				// ! last filter
-				var last_filter = window.location.href.split('?')[1];
-
-				if (last_filter != undefined) {
-					var last_filter = last_filter.replace(/location.*?&/, '');
-					history.pushState(null, '', `?${last_filter}location=${text}&`);
-				} else {
-					history.pushState(null, '', `?location=${text}&`);
-				}
+				last_filter(text, search_id);
 			
 		})
 })

@@ -1,3 +1,10 @@
-				<option value="Permanent">Permanent</option>
-				<option value="Temporary">Temporary</option>
-				<option value="Time to time">Time to time</option>
+				<option value="Perm">Perm</option>
+				<option value="Temp">Temp</option>
+				<option value="Freelance">Freelance</option>
+				<option value="Full-Time">Full-Time</option>
+				<option value="Part-Time">Part-Time</option>
+				<option value="Trainee">Trainee</option>
+				<option value="Project">Project</option>
+				<option value="Shift">Shift</option>
+				<option value="NDA">NDA</option>
+				<option value="Local">Local</option>

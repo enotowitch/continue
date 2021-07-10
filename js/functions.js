@@ -1,20 +1,20 @@
-function my_alert(color, text){
+function my_alert(color, text) {
 
-		$('.please-log').detach();
+	$('.please-log').detach();
 
-		$('body').before('<div class="please-log '+color+'">'+text+'<img src="img/icons/cross.svg"></div>');
-		
+	$('body').before('<div class="please-log ' + color + '">' + text + '<img src="img/icons/cross.svg"></div>');
+
 }
 
 var post = $('.post');
 
-function post_hide(){
+function post_hide() {
 	$('.post-show').detach();
 	post.before('<div class="burger__button post-show"><div class="burger__line"></div></div>');
 	post.slideUp(600);
 }
 
-function my_slick(target){
+function my_slick(target) {
 
 	$(target).slick({
 		asNavFor: '.slider',
@@ -40,19 +40,19 @@ function my_slick(target){
 				}
 			},
 			{
-					breakpoint: 499,
-					settings: {
-						infinite: false,
-						slidesToShow: 1,
-						slidesToScroll: 1,
-					}
-				},
+				breakpoint: 499,
+				settings: {
+					infinite: false,
+					slidesToShow: 1,
+					slidesToScroll: 1,
+				}
+			},
 		]
 	});
 
 }
 
-function my_slick_small(target){
+function my_slick_small(target) {
 
 	$(target).slick({
 		asNavFor: '.slider',
@@ -64,7 +64,7 @@ function my_slick_small(target){
 
 }
 
-function my_slick_3(target){
+function my_slick_3(target) {
 
 	$(target).slick({
 		lazyLoad: 'ondemand',
@@ -75,7 +75,7 @@ function my_slick_3(target){
 
 }
 
-function post_filter_card(){
+function post_filter_card() {
 
 	$.post({
 		'url': 'filter-card.php',
@@ -86,6 +86,24 @@ function post_filter_card(){
 				my_slick('.info__pics');
 			}, 300);
 		}
-		})
+	})
 
+}
+
+function last_filter(text, search_id) {
+	
+	// ! last filter
+	var last_filter = window.location.href.split('?')[1];
+
+	var RegexEscape = function (s) {
+		return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
+	};
+
+
+	if (last_filter != undefined) {
+		var last_filter = last_filter.replace(new RegExp("" + RegexEscape(search_id) + ".*?&"), '');
+		history.pushState(null, '', `?${last_filter}${search_id}=${text}&`);
+	} else {
+		history.pushState(null, '', `?${search_id}=${text}&`);
+	}
 }
