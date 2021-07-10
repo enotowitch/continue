@@ -8,21 +8,8 @@
 	
 ?>
 
-<input type="hidden" name="card_id" value="<? echo $_POST['card_id']; ?>">
-
-<input type="hidden" name="title" value="<? echo $_POST['title']; ?>">
-<input type="hidden" name="subt" value="<? echo $_POST['subt']; ?>">
-
-<input type="hidden" name="salary" value="<? echo $_POST["salary"]; ?>">
-<input type="hidden" name="duration" value="<? echo $_POST["duration"]; ?>">
-<input type="hidden" name="experience" value="<? echo $_POST["experience"]; ?>">
-<input type="hidden" name="workload" value="<? echo $_POST["workload"]; ?>">
-<input type="hidden" name="location" value="<? echo $_POST["location"]; ?>">
-
-<input type="hidden" name="tag_1" value="<? echo $_POST["tag_1"]; ?>">
-<input type="hidden" name="tag_2" value="<? echo $_POST["tag_2"]; ?>">
-<input type="hidden" name="tag_3" value="<? echo $_POST["tag_3"]; ?>">
-
+<!-- must be here to have some content -->
+<input type="hidden" name="card_id" value="<? echo $_POST["card_id"]; ?>">
 
 <?
 	include "post-form.php";
@@ -35,38 +22,22 @@
 // difference btw update-form & post-form
 	$('.form-card:not(:first-child)').addClass('update-card').removeClass('not100');
 
-	var card_id = $('input[name="card_id"]').val();
+	// ! $_POST insert
 
-	var title = $('input[name="title"]').val();
-	var subt = $('input[name="subt"]').val();
+	$('.update-card').find('.user_id').before('<input class="card_id" name="card_id" type="hidden" value="<? echo $_POST['card_id']; ?>">');
 
-	var salary = $('input[name="salary"]').val();
-	var duration = $('input[name="duration"]').val();
-	var experience = $('input[name="experience"]').val();
-	var workload = $('input[name="workload"]').val();
-	var loca = $('input[name="location"]').val();
+	$('.update-card').find('textarea[name="title"]').text(`<? echo $_POST['title']; ?>`);
+	$('.update-card').find('textarea[name="subt"]').text(`<? echo $_POST['subt']; ?>`);
 
-	var tag_1 = $('input[name="tag_1"]').val();
-	var tag_2 = $('input[name="tag_2"]').val();
-	var tag_3 = $('input[name="tag_3"]').val();
+	$('.update-card').find('select[name="salary"] option[value="0"]').prop("disabled", false).text(`<? echo $_POST["salary"]; ?>`).val(`<? echo $_POST["salary"]; ?>`);
+	$('.update-card').find('select[name="duration"] option[value="0"]').prop("disabled", false).text(`<? echo $_POST["duration"]; ?>`).val(`<? echo $_POST["duration"]; ?>`);
+	$('.update-card').find('select[name="experience"] option[value="0"]').prop("disabled", false).text(`<? echo $_POST["experience"]; ?>`).val(`<? echo $_POST["experience"]; ?>`);
+	$('.update-card').find('select[name="workload"] option[value="0"]').prop("disabled", false).text(`<? echo $_POST["workload"]; ?>`).val(`<? echo $_POST["workload"]; ?>`);
+	$('.update-card').find('select[name="location"] option[value="0"]').prop("disabled", false).text(`<? echo $_POST["location"]; ?>`).val(`<? echo $_POST["location"]; ?>`);
 
-	// ! vars insert
-
-	$('.update-card').find('.user_id').before('<input class="card_id" name="card_id" type="hidden" value="'+card_id+'">');
-
-	$('.update-card').find('textarea[name="title"]').text(`${title}`);
-	$('.update-card').find('textarea[name="subt"]').text(`${subt}`);
-
-	$('.update-card').find('select[name="salary"] option[value="0"]').prop("disabled", false).text(`${salary}`).val(`${salary}`);
-	$('.update-card').find('select[name="duration"] option[value="0"]').prop("disabled", false).text(`${duration}`).val(`${duration}`);
-	$('.update-card').find('select[name="experience"] option[value="0"]').prop("disabled", false).text(`${experience}`).val(`${experience}`);
-	$('.update-card').find('select[name="workload"] option[value="0"]').prop("disabled", false).text(`${workload}`).val(`${workload}`);
-	// location causes problems
-	$('.update-card').find('select[name="location"] option[value="0"]').prop("disabled", false).text(`${loca}`).val(`${loca}`);
-
-	$('.update-card').find('select[name="tags[]"] option').eq(0).attr('selected', 'true').text(`${tag_1}`).val(`${tag_1}`);
-	$('.update-card').find('select[name="tags[]"] option').eq(1).attr('selected', 'true').text(`${tag_2}`).val(`${tag_2}`);
-	$('.update-card').find('select[name="tags[]"] option').eq(2).attr('selected', 'true').text(`${tag_3}`).val(`${tag_3}`);
+	$('.update-card').find('select[name="tags[]"] option').eq(0).attr('selected', 'true').text(`<? echo $_POST["tag_1"]; ?>`).val(`<? echo $_POST["tag_1"]; ?>`);
+	$('.update-card').find('select[name="tags[]"] option').eq(1).attr('selected', 'true').text(`<? echo $_POST["tag_2"]; ?>`).val(`<? echo $_POST["tag_2"]; ?>`);
+	$('.update-card').find('select[name="tags[]"] option').eq(2).attr('selected', 'true').text(`<? echo $_POST["tag_3"]; ?>`).val(`<? echo $_POST["tag_3"]; ?>`);
 
 // ! ready
 	$(document).ready(function(){
@@ -139,6 +110,7 @@
 		// count & show pics-count
 		var pics_count = $('.update-card').closest('.card').find('.info__pics').find('.slick-slide').length;
 		$('.update-card').closest('.card').find('.info__example').addClass('brand-bg').text(`${pics_count}/10`);
+		// if count error -> reload
 		if(pics_count > 10){
 			window.location.reload();
 		}
