@@ -1,20 +1,9 @@
 <?
 	require_once "DB.php";
 
-$card_id = $_POST['card_id'];
-$card_from = $_POST['card_from'];
 
-var_dump($_POST);
-// die();
 
-if($card_from == '/post-job.php'){
-	$destination = "post";
-} 
-if($card_from == '/post-portfolio.php'){
-	$destination = "portfolio";
-}
-
-	$del_files = R::find($destination, 'id = ?', [$card_id]);
+	$del_files = R::find('post', 'id = ?', [$_POST['card_id']]);
 
 	foreach($del_files as $del_file){
 		// if logo src starts from i (img) -> don't delete - it's default file (no-logo)
@@ -32,13 +21,13 @@ if($card_from == '/post-portfolio.php'){
 
 
 
-	$delete = R::hunt($destination, 'id = ?', [$card_id]);
+	$delete = R::hunt('post', 'id = ?', [$_POST['card_id']]);
 
 	// ! delete card_id from DB - LIKE, HIDE, MESD
 
-	R::hunt('like', 'card_id = ?', [$_POST['card_id']]);
-	R::hunt('hide', 'card_id = ?', [$_POST['card_id']]);
-	R::hunt('mesd', 'card_id = ?', [$_POST['card_id']]);
+	R::hunt('liked', 'card_id = ?', [$_POST['card_id']]);
+	R::hunt('hidden', 'card_id = ?', [$_POST['card_id']]);
+	R::hunt('messaged', 'card_id = ?', [$_POST['card_id']]);
 
 
 

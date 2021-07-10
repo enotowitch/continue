@@ -2,13 +2,8 @@
 	session_start();
 	require_once "DB.php";
 
-	if($_POST["card_from"] == '/post-job.php'){
-		$files = R::load('post', $_POST['card_id']);
-	}
 
-	if($_POST["card_from"] == '/post-portfolio.php'){
-		$files = R::load('portfolio', $_POST['card_id']);
-	}
+	$files = R::load('post', $_POST['card_id']);
 
 	
 ?>

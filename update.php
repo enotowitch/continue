@@ -2,13 +2,9 @@
 	session_start();
 	require_once "DB.php";
 
-	if($_POST["update_card_from"] == '/post-job.php'){
-		$update = R::load('post', $_POST["card_id"]);
-	}
 
-	if($_POST["update_card_from"] == '/post-portfolio.php'){
-		$update = R::load('portfolio', $_POST["card_id"]);
-	}
+	$update = R::load('post', $_POST["card_id"]);
+
 	
 	
 	$update->title = $_POST["title"];
