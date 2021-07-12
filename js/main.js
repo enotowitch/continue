@@ -140,45 +140,30 @@ $(document).ready(function () {
 	$(function () {
 
 		$.post({
-			'url': 'titles.php',
+			'url': 'autocomplete.php',
 			'data': {card_from:card_from},
 			dataType: 'json',
 			success: function (data) {
 
 				var availableTitles = [];
+				var availableCompany = [];
 
-				$.each(data, function(element, i){
+				$.each(data.title, function(element, i){
 					availableTitles.push(i);
+				})
+				$.each(data.subt, function(element, i){
+					availableCompany.push(i);
 				})
 
 				$(".search-word").autocomplete({
 					source: availableTitles
 				});
+				$(".search-company").autocomplete({
+					source: availableCompany
+				});
 			}
 		})
 	});
-
-		// ! autocomlete company
-		$(function () {
-
-			$.post({
-				'url': 'company.php',
-				'data': {card_from:card_from},
-				dataType: 'json',
-				success: function (data) {
-	
-					var availablecompany = [];
-					
-					$.each(data, function(element, i){
-						availablecompany.push(i);
-					})
-					
-					$(".search-company").autocomplete({
-						source: availablecompany
-					});
-				}
-			})
-		});
 
 
 // ! test search CLICK
