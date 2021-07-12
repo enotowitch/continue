@@ -21,15 +21,13 @@ $(document).ready(function () {
 
 		// ! log to message
 		if (current_user == "") {
-			$('.please-log').detach();
-			$(e.target).closest('.card').before('<div class="please-log">Please <a class="brand" href="login.php">SIGN IN</a> or <a class="brand" href="reg.php">SIGN UP</a> to message<img src="img/icons/cross.svg"></div>');
+			my_alert_login('brand', 'apply');
 			return;
 		}
 
 		// ! cannt message to yourself
 		if (user_to_id == current_user) {
-			$('.please-log').detach();
-			$(e.target).closest('.card').before('<div class="please-log brand-del">You can not message yourself<img src="img/icons/cross.svg"></div>');
+			my_alert('danger', 'You can not apply to your own post!');
 			return;
 		}
 
@@ -54,20 +52,6 @@ $(document).ready(function () {
 	$(document).on('click', '.mes-send', function (e) {
 
 		var card_from = $('.card_from').val();
-
-// commented cause of apply_id
-		// if (card_from != undefined) {
-		// 	// if mes_text (everywhere but mes.php) is < 3
-		// 	var mes_text = $('.msg__write_main').val();
-		// 	if (mes_text.length <= 3) {
-
-		// 		$('.please-log').detach();
-
-		// 		$('body').before('<div class="please-log brand-del">Message should be > 3 chars<img src="img/icons/cross.svg"></div>');
-
-		// 		return;
-		// 	};
-		// }
 
 
 
@@ -94,10 +78,9 @@ $(document).ready(function () {
 
 				// ! if card_from -> mes.php (messages) -> don't show - notification(please-log)
 				if (!card_from.includes('/mes.php')) {
-					// ! Added to messaged
-					$('.please-log').detach();
-
-					$('body').before('<div class="please-log">Message sent<br>Added to <a class="brand" href="' + mes_link + '">messaged</a><br><a class="brand" href="/messages.php">All messages</a><img src="img/icons/cross.svg"></div>');
+					// ! Added to applied
+					my_alert_filter('Added to', 'applied', 'brand', 'filter=messaged&');
+					$('.please-log').append('<a class="brand tdu" style="display: block; margin-top: 5px" href="/messages.php">All Applications</a>');
 				} else {
 					// ! if card_from -> mes.php -> reload
 					location.reload();
@@ -155,7 +138,7 @@ $(document).ready(function () {
 	});
 
 	$(document).on('click', '.yet-applied', function(){
-		my_alert("brand-del", "You already applied for this post...")
+		my_alert("danger", "You already applied for this post...")
 	})
 
 

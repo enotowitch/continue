@@ -483,6 +483,11 @@ if($search_counter == 10){
 // echo "counter:".$search_counter;
 ?>
 
+<? if(count($intersect) == 0): ?>
+<script>
+$('.card-flex').append(`<div class="oops">OOPS! NOTHING FOUND!</div>`);
+</script>
+<? endif; ?>
 <? if($search_counter == 1): ?>
 <script>
 $('.search-result').append(`<div class="cancel-filter cancel_all_filters">cancel results: <? echo count($intersect); ?></div>`);

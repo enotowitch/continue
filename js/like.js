@@ -18,8 +18,7 @@ $(document).ready(function () {
 
 // ! log to like
 		if(current_user == ""){
-			$('.please-log').detach();
-			$(e.target).closest('.card').before('<div class="please-log">Please <a class="brand" href="login.php">SIGN IN</a> or <a class="brand" href="reg.php">SIGN UP</a> to like<img src="img/icons/cross.svg"></div>');
+			my_alert_login('like-color', 'like');
 			return;
 		}
 
@@ -27,13 +26,11 @@ $(document).ready(function () {
 
 		// ! added to liked
 		if(like == 'img/icons/like.svg'){
-			$('.please-log').detach();
-			$(e.target).closest('.card').before('<div class="please-log">Added to <a href="'+like_link+'"><span class="brand">liked</span></a><img src="img/icons/cross.svg"></div>');
+			my_alert_filter('Added to', 'liked', 'like-color', 'filter=liked&');
 		}
 		// ! removed from liked
 		if(like == 'img/icons/liked.svg'){
-			$('.please-log').detach();
-			$(e.target).closest('.card').before('<div class="please-log">Removed from <a href="'+like_link+'"><span class="brand">liked</span></a><img src="img/icons/cross.svg"></div>');
+			my_alert_filter('Removed from', 'liked', 'like-color', 'filter=liked&');
 		}
 
 		$.post({

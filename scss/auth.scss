@@ -47,7 +47,7 @@
 }
 .out {
 	text-align: right;
-	color: tomato;
+	color: $danger;
 	text-decoration: none !important;
 	font-style: normal;
 	align-self: flex-start;
@@ -79,10 +79,10 @@
 }
 
 .red {
-	background-color: tomato !important;
+	background-color: $danger !important;
 }
 .red-b {
-	border: 2px solid tomato !important;
+	border: 2px solid $danger !important;
 }
 .no-user {
 	width: 100%;

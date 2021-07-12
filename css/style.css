@@ -602,16 +602,20 @@
   background-color: #7fde59;
 }
 
-.brand-like {
+.like-color {
   color: #FFBF1C;
 }
 
-.brand-del {
-  color: #FF4242;
+.danger {
+  color: tomato;
 }
 
 .gray {
   color: #969696;
+}
+
+.tdu {
+  text-decoration: underline;
 }
 
 .please-log {
@@ -673,7 +677,7 @@
 }
 
 .bor-del {
-  border-bottom: 2px solid #FF4242;
+  border-bottom: 2px solid tomato;
 }
 
 .bor-mes {
@@ -1110,4 +1114,9 @@
   display: block;
   color: #6fda44;
   cursor: pointer;
+}
+
+.oops {
+  margin: 15px auto 0;
+  color: tomato;
 }

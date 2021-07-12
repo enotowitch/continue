@@ -35,7 +35,7 @@
 	
 <!-- ! sort-applies -->
 <div class="sort-applies-div">
-	Applications for:
+	Applications for <? if($_SERVER["PHP_SELF"] == '/messages.php'){echo 'portfolio:';} else{echo 'job:';} ?>
 	<select class="sort-applies">
 	<option value="">All</option>
 	</select>
@@ -46,17 +46,17 @@
 
 <? 
 if($_SERVER["PHP_SELF"] == '/messages.php'){
-	$destination = 'post';
+	$cat = 'job';
 }
 if($_SERVER["PHP_SELF"] == '/messages-folios.php'){
-	$destination = 'portfolio';
+	$cat = 'folio';
 }
 ?>
 
 
 <? foreach($my_msg as $my_msg): 
 	// var_dump($my_msg['applied_to_cat']);
-	$post = R::find($destination, 'id = ?', [$my_msg["apply_id"]]);
+	$post = R::find('post', 'id = ? AND cat = ?', [$my_msg["apply_id"], $cat]);
 ?>
 
 
@@ -69,12 +69,12 @@ if($_SERVER["PHP_SELF"] == '/messages-folios.php'){
 		<!-- ! applied_to_card -->
 		<?  
 		if($_SERVER["PHP_SELF"] == '/messages.php'){
-			$show_applied = 'portfolio';
+			$show_applied_cat = 'folio';
 		}
 		if($_SERVER["PHP_SELF"] == '/messages-folios.php'){
-			$show_applied = 'post';
+			$show_applied_cat = 'job';
 		}
-			$applied_to_card = R::find($show_applied, 'id = ?', [$my_msg["applied_to_card"]]);
+			$applied_to_card = R::find('post', 'id = ? AND cat = ?', [$my_msg["applied_to_card"], $show_applied_cat]);
 		?>
 
 		<? foreach($applied_to_card as $applied_to_card): ?>

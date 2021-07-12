@@ -5,6 +5,16 @@ function my_alert(color, text) {
 	$('body').before('<div class="please-log ' + color + '">' + text + '<img src="img/icons/cross.svg"></div>');
 
 }
+function my_alert_filter(text1, text2, color, link){
+	(window.location.href.includes('?')) ? link = window.location.href.replace(/filter.*?&/, '')+link : link = window.location.href.replace(/filter.*?&/, '')+'?'+link;
+	
+	$('.please-log').detach();
+	$('body').before('<div class="please-log">' + text1 + ' <a href="'+link+'" class="' + color + ' tdu">' + text2 + '</a><img src="img/icons/cross.svg"></div>');
+}
+function my_alert_login(color, action){
+	$('.please-log').detach();
+	$('body').before('<div class="please-log">Please <a class="brand tdu" href="login.php">SIGN IN</a> or <a class="brand tdu" href="reg.php">SIGN UP</a> to <span class="'+color+'">'+action+'</span><img src="img/icons/cross.svg"></div>');
+}
 
 var post = $('.post');
 

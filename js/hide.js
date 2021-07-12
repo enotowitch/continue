@@ -17,20 +17,17 @@ $(document).ready(function () {
 
 			// ! removed from hidden
 		if(card_from == "/jobs-del.php" || card_from == "/port-del.php" || $(e.target).closest('.card').hasClass('db-hidden')){
-			$('.please-log').detach();
-			$(e.target).closest('.card').before('<div class="please-log">removed from <a href="'+hide_link+'"><span class="brand">hidden</span></a><img src="img/icons/cross.svg"></div>');
+			my_alert_filter('Removed from', 'hidden', 'danger', 'filter=hidden&');
 		} else {
 			// !!! added to hidden	
-			$('.please-log').detach();
-			$(e.target).closest('.card').before('<div class="please-log">Added to <a href="'+hide_link+'"><span class="brand">hidden</span></a><img src="img/icons/cross.svg"></div>');
+			my_alert_filter('Added to', 'hidden', 'danger', 'filter=hidden&');
 		}
 
 		
 
 		// ! log to hide
 		if(current_user == ""){
-			$('.please-log').detach();
-			$(e.target).closest('.card').before('<div class="please-log">Please <a class="brand" href="login.php">SIGN IN</a> or <a class="brand" href="reg.php">SIGN UP</a> to hide<img src="img/icons/cross.svg"></div>');
+			my_alert_login('danger', 'hide');
 			return;
 		}
 
