@@ -166,7 +166,7 @@ $(document).ready(function () {
 	});
 
 
-// ! test search CLICK
+// ! search CLICK in card
 
 		$(document).on('click', '#salary, #experience, #location, #duration, #workload', function(){
 			var text = $(this).text().trim();

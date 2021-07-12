@@ -31,7 +31,7 @@ $i = 0;
 foreach($apply_find as $apply_find): 
 ?>
 	
-	<div>
+	<div class="stat_radio">
 	<input type="radio" id="apply_id<? echo $i; ?>"
      name="apply_id" value="<? echo $apply_find["id"]; ?>">
     <label for="apply_id<? echo $i; ?>"><? echo $apply_find["title"]; ?></label>

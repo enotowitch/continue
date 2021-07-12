@@ -1074,7 +1074,8 @@
   padding-bottom: 4px;
 }
 
-.stat {
+.stat,
+.stat_radio {
   border: 1px solid #969696;
   padding: 4px;
   border-radius: 4px;
@@ -1084,13 +1085,28 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  position: relative;
+  z-index: 3;
 }
 
-.stat:hover {
+.stat_radio,
+.stat_radio_radio {
+  padding: 4px 0 4px 4px;
+  width: calc(100% - 50px);
+}
+
+.stat_radio label,
+.stat_radio_radio label {
+  width: 100%;
+}
+
+.stat:hover,
+.stat_radio:hover {
   background-color: #e9e9e9;
 }
 
-.stat span {
+.stat span,
+.stat_radio span {
   display: block;
   color: #6fda44;
   cursor: pointer;

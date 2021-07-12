@@ -832,14 +832,25 @@
 	font-weight: 700;
 	padding-bottom: 4px;
 }
-.stat {
+.stat,
+.stat_radio {
 	border: 1px solid $gray-light;
 	padding: 4px;
 	border-radius: 4px;
 	display: flex;
 	justify-content: space-between;
+	position: relative;
+	z-index: 3;
+	&_radio {
+		padding: 4px 0 4px 4px;
+		width: calc(100% - 50px);
+		label {
+			width: 100%;
+		}
+	}
+
 	&:hover {
-		background-color: rgb(233, 233, 233);
+		background-color: $gray-lightest;
 	}
 	span {
 		display: block;
