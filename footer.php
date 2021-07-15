@@ -28,6 +28,9 @@
 	?>
 
 
+	<? 
+	include_once "check-no-post.php";
+	?>
 
 
 </body>

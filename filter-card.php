@@ -483,7 +483,7 @@ if($search_counter == 10){
 // echo "counter:".$search_counter;
 ?>
 
-<? if(count($intersect) == 0): ?>
+<? if(count($intersect) == 0 && $search_counter != 0): ?>
 <script>
 $('.card-flex').append(`<div class="oops">OOPS! NOTHING FOUND!</div>`);
 </script>

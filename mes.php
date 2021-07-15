@@ -11,12 +11,8 @@ $user_to_id = $_GET['from'];
 	$my_msg = R::find('message', 'user_to_id = ? AND user_from_id = ? OR user_from_id = ? AND user_to_id = ?', [$_SESSION['user']['id'], $_GET['from'], $_SESSION['user']['id'], $_GET['from']]);
 
 	
-	if($_GET['cat'] == 'post'){
-		$post = R::load('post', $_GET['about']);
-	}
-	if($_GET['cat'] == 'portfolio'){
-		$post = R::load('portfolio', $_GET['about']);
-	}
+
+	$post = R::load('post', $_GET['about']);
 
 ?>
 

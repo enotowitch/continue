@@ -1120,3 +1120,15 @@
   margin: 15px auto 0;
   color: tomato;
 }
+
+.check-no-post-div {
+  margin: 30px auto 0;
+  font-size: 18px;
+  font-family: Montserrat;
+}
+
+.check-no-post-div p {
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-align: center;
+}
