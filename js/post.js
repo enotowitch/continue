@@ -261,3 +261,11 @@ if(card_from == '/post-job.php' || card_from == '/post-portfolio.php' || card_fr
 
 // ! flags
 // https://flagpedia.net/download/icons
+
+// // ! unrender json
+// $('[name*="pass"]').each(function(){
+// 	if($(this).val() != ''){
+// 		$(this).removeClass('red-b');
+// 	}
+// });
+// // ? unrender json
