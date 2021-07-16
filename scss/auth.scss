@@ -69,6 +69,7 @@
 	font-style: italic;
 	font-family: Montserrat;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
 	margin: 0px auto 15px;
@@ -76,6 +77,9 @@
 .img-mail {
 	display: flex;
 	align-items: center;
+	@media (max-width: 499px){
+		margin: 0 auto;
+	}
 }
 .log-as-img {
 	border-radius: 50%;
@@ -85,7 +89,6 @@
 	font-weight: 700;
 	@media (max-width: 499px) {
 		word-wrap: break-word;
-		width: 190px;
 	}
 }
 

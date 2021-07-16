@@ -895,7 +895,8 @@
 .sign-in,
 .cancel_all_filters,
 .info__simple,
-.forgot-pass {
+.forgot-pass,
+.stat {
   cursor: pointer;
 }
 
@@ -1150,5 +1151,36 @@
 }
 
 .reset_mail {
+  font-weight: 700;
+}
+
+.danger-profile-action {
+  margin: 0 auto;
+  text-align: right;
+  padding-right: 15px;
+  font-family: Montserrat;
+  font-size: 16px;
+  color: tomato;
+  text-transform: uppercase;
+  max-width: 930px;
+}
+
+@media (max-width: 499px) {
+  .profile-actions {
+    margin: 0 auto;
+  }
+}
+
+.dropdown-profile .dropdown-content {
+  right: 0px !important;
+}
+
+.dropdown-profile .out {
+  color: tomato;
+  text-align: left;
+}
+
+.dropdown-profile .out:hover {
+  color: tomato;
   font-weight: 700;
 }

@@ -21,7 +21,7 @@
 
 <header class="header">
 		<a href="/"><img class="header__icon header__logo" src="img/header/01.svg" alt="header__logo"></a>
-		<!--  -->
+		<!-- dropdown post -->
 		<div class="dropdown header__icon">
 			<button class="dropbtn">Post</button>
 			<div class="dropdown-content">
@@ -29,12 +29,26 @@
 				<a href="post-portfolio.php">Portfolio</a>
 			</div>
 		 </div>
-		<!--  -->
+		<!-- dropdown post -->
 		
 		<a class="header__icon" href="messages.php">Applications</a>
 		
-		<a class="header__icon" href="profile.php">Profile</a>
+		
 		<div class="header__icon search-icon">Search</div>
+		<!-- dropdown profile -->
+		<div class="dropdown header__icon dropdown-profile">
+			<? if($_SESSION['user']['id'] == NULL): ?>
+				<button class="dropbtn"><a class="header__icon" href="profile.php">Sign in</a></button>
+			<? endif; ?>
+			<? if($_SESSION['user']['id'] != NULL): ?>
+				<button class="dropbtn"><img src="<? echo $_SESSION['user']['logo']; ?>" alt="profile img"></button>
+				<div class="dropdown-content">
+				<a class="header__icon" href="profile.php">My Profile</a>
+				<a class="out" href="logout.php">LOG OUT</a>
+			</div>
+			<? endif; ?>
+		</div>
+		<!-- dropdown profile -->
 		<!-- ! BURGER-->
 		<div class="burger" hidden>
 			<div class="burger__button">

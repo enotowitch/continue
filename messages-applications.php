@@ -17,9 +17,7 @@
 
 
 
-<!-- ! log-as -->
-<? include "log-as.php"; ?>
-<!-- ? log-as -->
+
 
 <?
 	include "change-page.php";

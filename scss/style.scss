@@ -677,7 +677,8 @@
 .sign-in,
 .cancel_all_filters,
 .info__simple,
-.forgot-pass {
+.forgot-pass,
+.stat {
 	cursor: pointer;
 }
 .search-word,
@@ -890,4 +891,32 @@
 }
 .reset_mail {
 	font-weight: 700;
+}
+.danger-profile-action {
+	margin: 0 auto;
+	text-align: right;
+	padding-right: 15px;
+	font-family: Montserrat;
+	font-size: 16px;
+	color: $danger;
+	text-transform: uppercase;
+	max-width: $main-cards-cont-wid;
+}
+.profile-actions {
+	@media (max-width: 499px) {
+		margin: 0 auto;
+	}
+}
+.dropdown-profile {
+	.dropdown-content {
+		right: 0px !important;
+	}
+	.out {
+		color: $danger;
+		text-align: left;
+		&:hover {
+			color: $danger;
+			font-weight: 700;
+		}
+	}
 }

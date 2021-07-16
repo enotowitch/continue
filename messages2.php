@@ -14,9 +14,7 @@
 
 
 
-<!-- ! log-as -->
-<? include "log-as.php"; ?>
-<!-- ? log-as -->
+
 
 <?
 	require_once "change-page.php";

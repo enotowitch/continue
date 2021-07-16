@@ -85,6 +85,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -103,6 +105,12 @@
           align-items: center;
 }
 
+@media (max-width: 499px) {
+  .img-mail {
+    margin: 0 auto;
+  }
+}
+
 .log-as-img {
   border-radius: 50%;
   margin-right: 8px;
@@ -115,7 +123,6 @@
 @media (max-width: 499px) {
   .log-as-mail {
     word-wrap: break-word;
-    width: 190px;
   }
 }
 
