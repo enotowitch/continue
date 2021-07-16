@@ -316,9 +316,16 @@ $(document).ready(function () {
 				$.post({
 					'url': 'forgot-pass.php',
 					'data': {mail:mail},
+					'dataType': 'json',
 					success: function (data) {
-						$(e.target).after('<div class="reset_mail brand">New password sent to your email!</div>');
-						$('.forgot-pass').text('');
+						if(data.status == false){
+						$(e.target).after('<div class="reset_mail danger">'+data.msg+'</div>');
+						} 
+						if(data.status == true){
+							$(e.target).after('<div class="reset_mail brand">'+data.msg+'</div>');
+							$('.forgot-pass').text('');
+						}
+
 					}
 				})
 

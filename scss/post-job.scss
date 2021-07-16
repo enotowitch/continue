@@ -24,7 +24,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	max-width: 740px;
+	max-width: $post-maw;
 	flex-wrap: wrap;
 	padding: 0 15px 15px;
 	margin: 0 auto 15px;
@@ -118,10 +118,10 @@
 .op01 {
 	opacity: 0.1;
 }
-.op03{
+.op03 {
 	opacity: 0.3;
 }
-.op0{
+.op0 {
 	opacity: 0;
 }
 .post-show {
@@ -153,5 +153,18 @@
 		height: 80px;
 		min-width: 80px;
 		object-fit: cover;
+	}
+}
+.post-smth {
+	color: $brandcolor;
+	max-width: $post-maw;
+	margin: 0 auto;
+	padding: 0 0 10px 15px;
+	font-size: 20px;
+	font-family: Montserrat;
+	@media (max-width: 700px) {
+		max-width: 320px;
+		text-align: center;
+		padding-left: 0;
 	}
 }

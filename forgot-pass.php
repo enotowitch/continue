@@ -15,6 +15,11 @@ $forgot_pass = generatePassword();
 $user_mail = $_POST['mail'];
 $server_name = $_SERVER["SERVER_NAME"];
 
+// ! json errors
+$data = [
+	'status' => false
+];
+
 
 if(filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)){
 
@@ -51,10 +56,20 @@ if(filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)){
 							 </html></body>");
 		// Sending
 		if ($mail->send()) {
-		  echo 'Email Sent!';
+			$data = [
+				'status' => true,
+				'msg' => 'New password sent to your email!'
+			];
+			echo json_encode($data);
 		} else {
-		  echo 'Error: ' . $mail->ErrorInfo;
+			$data['msg'] = ['Error sending password! Please try again!'];
+			echo json_encode($data);
+			die();
 		}
+	} else {
+		$data['msg'] = ['No user with this Email!'];
+		echo json_encode($data);
+		die();
 	}
 	
 }

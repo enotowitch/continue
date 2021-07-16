@@ -121,7 +121,7 @@ if($user_form_from == "/reg.php"){
 				                </html></body>");
 				// Sending
 				if ($mail->send()) {
-				  echo 'Email Sent!';
+				//   echo 'Email Sent!';
 				} else {
 				  echo 'Error: ' . $mail->ErrorInfo;
 				}

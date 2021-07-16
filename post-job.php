@@ -7,6 +7,7 @@ require_once "header.php";
 	require_once "search.php";
 ?>
 <div class="post bg">
+	<? if_page('/post-job.php', '<div class="post-smth">Post Job</div>', '<div class="post-smth">Post Portfolio</div>') ?>
 	<div class="cards-wrapper">
 
 		<!-- ! no user -->

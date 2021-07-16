@@ -43,7 +43,7 @@
 			<div class="burger__menu">
 				<a class="header__icon burger__icon" href="post-job.php"><img src="img/burger/02.svg" alt="img/02.svg">Post Job</a>
 				<a class="header__icon burger__icon" href="messages.php"><img src="img/burger/03.svg" alt="img/03.svg">Applications</a>
-				<a class="header__icon burger__icon" href="post-portfolio.php"><img src="img/burger/04.svg" alt="img/04.svg">Add Portfolio</a>
+				<a class="header__icon burger__icon" href="post-portfolio.php"><img src="img/burger/04.svg" alt="img/04.svg">Post Portfolio</a>
 				<a class="header__icon burger__icon" href="profile.php"><img src="img/burger/05.svg" alt="img/05.svg">Profile</a>
 				<div class="header__icon burger__icon search-icon" href="#"><img src="img/burger/06.svg" alt="img/06.svg">Search</div>
 			</div>

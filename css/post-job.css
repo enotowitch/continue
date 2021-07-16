@@ -207,3 +207,20 @@
   -o-object-fit: cover;
      object-fit: cover;
 }
+
+.post-smth {
+  color: #6fda44;
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 0 0 10px 15px;
+  font-size: 20px;
+  font-family: Montserrat;
+}
+
+@media (max-width: 700px) {
+  .post-smth {
+    max-width: 320px;
+    text-align: center;
+    padding-left: 0;
+  }
+}

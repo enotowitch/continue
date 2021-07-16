@@ -28,7 +28,17 @@ $(document).ready(function () {
 				if(data.status == true){
 					$('input[type="submit"]').val(data.msg);
 					setTimeout(() => {
-						window.history.back();
+						// login -> hist.back
+						if(window.location.href.includes('/login.php')){
+							window.history.back();
+						}
+						// reg -> post smth (dep on role)
+						if($('[name="role"]:checked').val() == 'maker'){
+							window.location.href = '/post-portfolio.php';
+						} 
+						if($('[name="role"]:checked').val() == 'hirer'){
+							window.location.href = '/post-job.php';
+						}
 					}, 600);
 				}
 				
