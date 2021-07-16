@@ -300,4 +300,31 @@ $(document).ready(function () {
 				last_filter(text, search_id);
 			
 		})
+
+		// ! test forgot-pass
+		$('.forgot-pass').on('click', function(e){
+
+			$('.reset_mail').detach();
+
+			var mail = $('[name="user_mail"]').val();
+
+			if(mail == ''){
+				$('.reset_mail').detach();
+				$(this).prepend('<div class="reset_mail">Enter email!</div>');
+			} else {
+
+				$.post({
+					'url': 'forgot-pass.php',
+					'data': {mail:mail},
+					success: function (data) {
+						$(e.target).after('<div class="reset_mail brand">New password sent to your email!</div>');
+						$('.forgot-pass').text('');
+					}
+				})
+
+				
+			}
+
+	
+		})
 })

@@ -50,6 +50,19 @@
   margin-top: 10px;
 }
 
+.user-form .stat_radio {
+  border: 1px solid #6fda44;
+  border-radius: 0px;
+  width: 80%;
+}
+
+.user-form .stat_radio label {
+  padding-left: 24px;
+  text-align: left;
+  margin: 5px 0 5px 0;
+  font-size: 18px;
+}
+
 .inputs {
   margin-top: 25px;
   width: 100%;

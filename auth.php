@@ -1,11 +1,18 @@
 <? 
 session_start();
 require_once "DB.php";
+require_once "functions.php";
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 $user_form_from = $_POST['user_form_from'];
 
 $user_mail = trim($_POST["user_mail"]);
 $user_pass = trim($_POST["user_pass"]);
+$reg_pass = generatePassword();
+$role = $_POST["role"];
+$server_name = $_SERVER["SERVER_NAME"];
 
 // ! json errors
 $data = [
@@ -35,15 +42,15 @@ if(!filter_var($user_mail, FILTER_VALIDATE_EMAIL)){
 	echo json_encode($data);
 	die();
 }
-if($user_pass == ""){
+if($user_form_from == "/login.php" && $user_pass == ""){
 	$data['msg'] = ["Please enter password!"];
 	$data['field'] = ["user_pass"];
 	echo json_encode($data);
 	die();
 }
-if($user_form_from == "/reg.php" && strlen($user_pass) < 6){
-	$data['msg'] = ["Password: 5+ chars!"];
-	$data['field'] = ["user_pass"];
+if($user_form_from == "/reg.php" && $role == ''){
+	$data['msg'] = ["Please choose role!"];
+	$data['field'] = ["role"];
 	echo json_encode($data);
 	die();
 }
@@ -62,12 +69,11 @@ if($user_form_from == "/reg.php"){
 
 	if($check_mail["user_mail"] != $user_mail){
 
-	
 
 		$user = R::dispense('user');
 
 		$user->user_mail = $user_mail; 
-		$user->user_pass = md5($user_pass); 
+		$user->user_pass = md5($reg_pass); 
 		$user->user_logo = $logo;
 	
 		$user_id = R::store($user);
@@ -88,6 +94,38 @@ if($user_form_from == "/reg.php"){
 
 	} 
 
+			// if user OK -> PHPMailer
+			if($new_user){
+				require 'PHPMailer/src/PHPMailer.php';
+				require 'PHPMailer/src/SMTP.php';
+				require 'PHPMailer/src/Exception.php';
+
+
+				$mail = new PHPMailer();
+				$mail->isSMTP();                   
+				$mail->Host = "ssl://smtp.gmail.com";
+				$mail->SMTPAuth   = true;
+				$mail->Username   = 'en.enotowitch4';
+				$mail->Password   = 'qwerty123Q_';
+				$mail->SMTPSecure = 'ssl';
+				$mail->Port   = 465;
+
+				$mail->setFrom('en.enotowitch4@gmail.com', '1 click apply, Remote Jobs!'); // from
+				$mail->addAddress($user_mail, ''); // to
+
+				$mail->Subject = '1 click apply, Remote Jobs!';
+				$mail->msgHTML("<html><body>
+				                <h1>You registered at <<1 click apply, <span style='color: #6fda44;'>Remote Jobs!</span>>></h1>
+				                <p>Your password: $reg_pass</p>
+									 <p><a href='$server_name/login.php?mail=$user_mail&pass=$reg_pass&role=$role'>Your profile</a></p>
+				                </html></body>");
+				// Sending
+				if ($mail->send()) {
+				  echo 'Email Sent!';
+				} else {
+				  echo 'Error: ' . $mail->ErrorInfo;
+				}
+			}
 
 }
 

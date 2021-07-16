@@ -40,6 +40,17 @@
 			margin-top: 10px;
 		}
 	}
+	.stat_radio {
+		border: 1px solid $brandcolor;
+		border-radius: 0px;
+		width: 80%;
+		label {
+			padding-left: 24px;
+			text-align: left;
+			margin: 5px 0 5px 0;
+			font-size: 18px;
+		}
+	}
 }
 .inputs {
 	margin-top: 25px;

@@ -894,7 +894,8 @@
 .upd_pic_del,
 .sign-in,
 .cancel_all_filters,
-.info__simple {
+.info__simple,
+.forgot-pass {
   cursor: pointer;
 }
 
@@ -1131,4 +1132,23 @@
   font-weight: 700;
   margin-bottom: 15px;
   text-align: center;
+}
+
+.m0a {
+  margin: 0 auto;
+}
+
+.reg-role {
+  margin-top: 15px;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.forgot-pass {
+  color: tomato;
+  margin-top: 10px;
+}
+
+.reset_mail {
+  font-weight: 700;
 }
