@@ -1,4 +1,7 @@
 <?
+	use PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\SMTP;
+	use PHPMailer\PHPMailer\Exception;
 	
 	function if_page($page, $echo, $else = NULL){
 
@@ -83,5 +86,34 @@ function generatePassword($length = 8) {
 	}
 
 	return $result;
+}
+
+function mailer($user_mail, $text){
+
+	require 'PHPMailer/src/PHPMailer.php';
+	require 'PHPMailer/src/SMTP.php';
+	require 'PHPMailer/src/Exception.php';
+
+
+	$mail = new PHPMailer();
+	$mail->isSMTP();                   
+	$mail->Host = "ssl://smtp.gmail.com";
+	$mail->SMTPAuth   = true;
+	$mail->Username   = 'en.enotowitch4';
+	$mail->Password   = 'qwerty123Q_';
+	$mail->SMTPSecure = 'ssl';
+	$mail->Port   = 465;
+
+	$mail->setFrom('en.enotowitch4@gmail.com', '1 click apply, Remote Jobs!'); // from
+	$mail->addAddress($user_mail, ''); // to
+
+	$mail->Subject = '1 click apply, Remote Jobs!';
+	$mail->msgHTML($text);
+		// Sending
+		if ($mail->send()) {
+			// echo 'Email Sent!';
+		 } else {
+			echo 'Error: ' . $mail->ErrorInfo;
+		 }
 }
 ?>

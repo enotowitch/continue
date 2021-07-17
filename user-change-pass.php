@@ -1,6 +1,12 @@
 <? 
 session_start();
+
 require_once "DB.php";
+require_once "functions.php";
+
+$pass = $_POST['new_pass'];
+$user_mail = $_SESSION['user']['mail'];
+$server_name = $_SERVER['SERVER_NAME'];
 
 // ! json errors
 $data = [
@@ -28,7 +34,13 @@ if($_POST["new_pass"] == $_POST["new_pass2"]){
 		$user = R::load('user', $user_id);
 		$user->user_pass = md5($_POST["new_pass"]);
 		R::store($user);
-		// TODO MAILER
+		// ! mailer
+		mailer($_SESSION['user']['mail'], "<html><body>
+		<h1>You changed password!</h1>
+		<p>Your new password: $pass</p>
+		<p><a href='$server_name/login.php?mail=$user_mail&pass=$pass&role=$role'>Your profile</a></p>
+		</html></body>");
+		// ? mailer
 		// json OK
 		$data = [
 			'status' => true,

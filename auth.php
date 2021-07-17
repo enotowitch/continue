@@ -2,9 +2,6 @@
 session_start();
 require_once "DB.php";
 require_once "functions.php";
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
 $user_form_from = $_POST['user_form_from'];
 
@@ -96,35 +93,13 @@ if($user_form_from == "/reg.php"){
 
 			// if user OK -> PHPMailer
 			if($new_user){
-				require 'PHPMailer/src/PHPMailer.php';
-				require 'PHPMailer/src/SMTP.php';
-				require 'PHPMailer/src/Exception.php';
-
-
-				$mail = new PHPMailer();
-				$mail->isSMTP();                   
-				$mail->Host = "ssl://smtp.gmail.com";
-				$mail->SMTPAuth   = true;
-				$mail->Username   = 'en.enotowitch4';
-				$mail->Password   = 'qwerty123Q_';
-				$mail->SMTPSecure = 'ssl';
-				$mail->Port   = 465;
-
-				$mail->setFrom('en.enotowitch4@gmail.com', '1 click apply, Remote Jobs!'); // from
-				$mail->addAddress($user_mail, ''); // to
-
-				$mail->Subject = '1 click apply, Remote Jobs!';
-				$mail->msgHTML("<html><body>
-				                <h1>You registered at <<1 click apply, <span style='color: #6fda44;'>Remote Jobs!</span>>></h1>
-				                <p>Your password: $reg_pass</p>
-									 <p><a href='$server_name/login.php?mail=$user_mail&pass=$reg_pass&role=$role'>Your profile</a></p>
-				                </html></body>");
-				// Sending
-				if ($mail->send()) {
-				//   echo 'Email Sent!';
-				} else {
-				  echo 'Error: ' . $mail->ErrorInfo;
-				}
+				// ! mailer
+				mailer($user_mail, "<html><body>
+				<h1>You registered at <<1 click apply, <span style='color: #6fda44;'>Remote Jobs!</span>>></h1>
+				<p>Your password: $reg_pass</p>
+				<p><a href='$server_name/login.php?mail=$user_mail&pass=$reg_pass&role=$role'>Your profile</a></p>
+				</html></body>");
+				// ? mailer
 			}
 
 }
