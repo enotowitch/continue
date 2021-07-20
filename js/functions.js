@@ -117,3 +117,28 @@ function last_filter(text, search_id) {
 		history.pushState(null, '', `?${search_id}=${text}&`);
 	}
 }
+
+function error_in_fields(error, target, target1, target2){
+	$(document).find('.danger').detach();
+
+	var clone_text = $('[type="submit"]').val();
+
+	// ! render danger
+	$('[type="submit"]').val(`${error}`).addClass('red').attr('disabled', true);
+	$('[name="'+target+'"], [name="'+target1+'"], [name="'+target2+'"]').each(function(){
+		if($(this).val() == ''){
+			$(this).addClass('red-b');
+		}
+	})
+	if($('[name="new_pass"]').val() != $('[name="new_pass2"]').val()){
+		$('[name="new_pass"],[name="new_pass2"]').addClass('red-b');
+	}
+	// ! unrender
+	setTimeout(() => {
+		$('[type="submit"]').val(`${clone_text}`).removeClass('red').attr('disabled', false);
+		$('input').removeClass('red-b');
+	}, 600);
+	setTimeout(() => {
+		$(document).find('.danger').detach();
+	}, 3000);
+}

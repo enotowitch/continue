@@ -341,34 +341,65 @@ $(document).ready(function () {
 		$('.stat-wrap').hide();
 	})
 
+
+	// ! user-form-change-pass
 	$(document).on('submit', '.user-form-change-pass', function (e) {
 		e.preventDefault();
 
-		$.post({
-			url: 'user-change-pass.php',
-			data: $(this).serialize(),
-			dataType: 'json',
-			success: function (data) {
-				if (data.status == false) {
-					// ! json
-					data.field.forEach(field => {
-						$(document).find(`[name="${field}"]`).addClass('red-b');
-					});
-					$('[type="submit"]').val(data.msg).addClass('red');
-					// ? json
-					setTimeout(() => {
-						$('[name*="pass"]').removeClass('red-b');
-						$('[type="submit"]').val('Change Password').removeClass('red');
-					}, 600);
-				} 
-				if(data.status == true){
-					$('[type="submit"]').val(data.msg);
-					setTimeout(() => {
-						window.location.reload();
-					}, 3000);
+		// ! PRE-POST validation
+		if($('[name="old_pass"]').val() == '' || $('[name="new_pass"]').val() == '' || $('[name="new_pass2"]').val() == ''){
+			error_in_fields('All fields required!', 'old_pass', 'new_pass', 'new_pass2');
+			$('input:not([type="submit"])').each(function(){
+				if($(this).val() != ''){
+					$(this).removeClass('red-b');
 				}
-			}
-		})
+			})
+			return;
+		}
+		if ($('[name="new_pass"]').val() != $('[name="new_pass2"]').val()) {
+			error_in_fields('passwords don\'t match!', 'new_pass', 'new_pass2');
+			return;
+		}
+		if ($('[name="new_pass"]').val().length <= 7 || $('[name="new_pass2"]').val().length <= 7) {
+			error_in_fields('Short Password!', 'new_pass', 'new_pass2');
+			$('input[type="submit"]').after('<div class="danger">Minimum password length is<br> 8 characters</div>');
+			return;
+		}
+
+
+			$.post({
+				url: 'user-change-pass.php',
+				data: $(this).serialize(),
+				dataType: 'json',
+				success: function (data) {
+					// FALSE
+					if (data.status == false) {
+						// ! json
+						data.field.forEach(field => {
+							$(document).find(`[name="${field}"]`).addClass('red-b');
+						});
+						$('[type="submit"]').val(data.msg).addClass('red');
+						// ? json
+						setTimeout(() => {
+							$('[name*="pass"]').removeClass('red-b');
+							$('[type="submit"]').val('Change Password').removeClass('red');
+						}, 600);
+					}
+					// TRUE
+					if (data.status == true) {
+						$('[type="submit"]').val(data.msg).attr('disabled', true);
+						$(e.target).hide();
+						$('.log-as').append('<div class="your m0a" style="height: 290px; line-height: 290px;">Password changed! Check Email!</div>');
+					}
+				}
+			}).done(function () {
+				// ! done = allow post again
+				$('[type="submit"]').attr('disabled', false);
+			});
+			// ! post 1 time = wait
+			$('[type="submit"]').val('waiting...').attr('disabled', true);
 
 	})
+
+
 })

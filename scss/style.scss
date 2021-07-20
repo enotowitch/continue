@@ -903,9 +903,7 @@
 	max-width: $main-cards-cont-wid;
 }
 .profile-actions {
-	@media (max-width: 499px) {
-		margin: 0 auto;
-	}
+	margin: 0 auto;
 }
 .dropdown-profile {
 	.dropdown-content {
@@ -918,5 +916,23 @@
 			color: $danger;
 			font-weight: 700;
 		}
+	}
+}
+.pr-logo {
+	border-radius: 50%;
+	&_drop {
+		position: relative;
+		left: 4px;
+		top: 4px;
+		margin-right: 15px;
+	}
+}
+.drop-flex {
+	display: flex;
+	align-items: center;
+	position: relative;
+	right: 6px;
+	&:hover {
+		color: $brandcolor;
 	}
 }

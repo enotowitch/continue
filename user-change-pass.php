@@ -54,7 +54,7 @@ if($_POST["new_pass"] == $_POST["new_pass2"]){
 		die();
 	}
 } else {
-	$data['msg'] = ["passwords do not match!"];
+	$data['msg'] = ["passwords don\'t match!"];
 	$data['field'] = ["new_pass2"];
 	echo json_encode($data);
 	die();

@@ -41,9 +41,9 @@
 				<button class="dropbtn"><a class="header__icon" href="profile.php">Sign in</a></button>
 			<? endif; ?>
 			<? if($_SESSION['user']['id'] != NULL): ?>
-				<button class="dropbtn"><img src="<? echo $_SESSION['user']['logo']; ?>" alt="profile img"></button>
+				<button class="dropbtn"><img class="pr-logo" src="<? echo $_SESSION['user']['logo']; ?>" alt="profile"></button>
 				<div class="dropdown-content">
-				<a class="header__icon" href="profile.php">My Profile</a>
+				<a href="profile.php"><div class="drop-flex"><img class="pr-logo pr-logo_drop" src="<? echo $_SESSION['user']['logo']; ?>"><? echo $_SESSION['user']['mail']; ?></div></a>
 				<a class="out" href="logout.php">LOG OUT</a>
 			</div>
 			<? endif; ?>

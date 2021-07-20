@@ -89,7 +89,7 @@
 }
 
 .log-as {
-  max-width: 930px;
+  width: 290px;
   padding: 0px 15px;
   font-style: italic;
   font-family: Montserrat;
@@ -104,37 +104,65 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 0px auto 15px;
+  margin: 0px auto 45px;
 }
 
 .img-mail {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-@media (max-width: 499px) {
-  .img-mail {
-    margin: 0 auto;
-  }
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto 15px;
+  position: relative;
 }
 
 .log-as-img {
+  display: block;
   border-radius: 50%;
   margin-right: 8px;
+  width: 80px;
+  height: 80px;
+}
+
+.log-as-img-upd-div {
+  background-color: #6fda44;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 36px;
+  width: 35px;
+  height: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  left: 109px;
+}
+
+.log-as-img-upd {
+  height: 22px;
+  width: 22px;
 }
 
 .log-as-mail {
   font-weight: 700;
-}
-
-@media (max-width: 499px) {
-  .log-as-mail {
-    word-wrap: break-word;
-  }
+  word-wrap: break-word;
+  width: 200px;
+  text-align: center;
+  margin-top: 4px;
 }
 
 .red {
