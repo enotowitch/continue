@@ -401,5 +401,19 @@ $(document).ready(function () {
 
 	})
 
+// ! test del_account
 
+$('.del_account').on('click', function(){
+
+	if(confirm('Sure you want to delete your account FOREVER?')){
+		$.post({
+			'url': 'delete-account.php',
+			success: function () {
+				window.location.reload();
+			}
+		})
+	}
+
+})
+	
 })

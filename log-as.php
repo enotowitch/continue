@@ -14,7 +14,7 @@
 		<a class="out stat" href="logout.php">LOG OUT</a>
 		<? if($_SERVER['PHP_SELF'] == '/profile.php'): ?>
 		<div class="danger-profile-action change_pass stat">Change password</div>
-		<div class="danger-profile-action stat">Delete account</div>
+		<div class="danger-profile-action del_account stat">Delete account</div>
 		<? endif; ?>
 	</div>
 </div>
