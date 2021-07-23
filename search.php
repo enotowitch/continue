@@ -12,16 +12,9 @@
 			</div>
 			<img class="cross cross_search" src="img/icons/cross.svg" alt="cross">
 		</div>
-		<!-- ! DESIGN -->
-		<div class="search__tags search__tags_active load_design">
-			<!-- design tags -->
-		</div>
-		<!-- ? DESIGN -->
-		<!-- ! DEV -->
-		<div class="search__tags load_dev">
-			<!-- dev tags -->
-		</div>
-		<!-- ? DEV -->
+		<!-- ! TAGS -->
+		<div class="search__tags search__tags_active load_design"></div>
+		<div class="search__tags load_dev"></div>
 		<div class="search__tags load_videoAudio"></div>
 		<div class="search__tags load_marketing"></div>
 		<div class="search__tags load_writing"></div>
@@ -35,9 +28,8 @@ include_once "filters.php";
 
 
 
-
+<!-- ! load tags -->
 <script>
-
 		$.post({
 		url: 'tags-list.php',
 		dataType: 'json',
@@ -65,5 +57,4 @@ include_once "filters.php";
 			});			
 		}
 	})
-	
 </script>

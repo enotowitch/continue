@@ -1,5 +1,5 @@
 <?
-// todo https://www.upwork.com/hire/ - по алфавиту, потом (внизу по категориям) https://www.upwork.com/services/ 
+// https://www.upwork.com/hire/ & https://www.upwork.com/services/ 
 // ! design
 $tags["design"] = ['2D', '3D', 'Product Animation', 'Album', 'Cover Design', 'GIFs', 'Mobile Design', 'Web Design', 'Whiteboard Animation', 'AR Filters', 'Architecture', 'Interior', 'Design', 'Branding', 'Car Wraps', 'Character Modeling', 'Banner Ads', 'Brochure', 'Cartoon', 'Comic', 'Fashion', 'Book / eBook', 'Building Modeling', 'Catalog', 'Flyer', 'Brand Style', 'Stationery', 'Character Animation', 'Character', 'Game Design', 'Graphics', 'Illustration', 'Invitation', 'Product Design', 'Industrial Design', 'Landscape', 'Infographic', 'Logo', 'Menu', 'Package', 'Portrait', 'Caricature', 'Storyboards', 'Pattern Design', 'Postcard', 'Resume', 'T-Shirt', 'Merchandise', 'Poster', 'Signage', 'Tattoo', 'Presentation Design', 'Social Media Design', 'Vector', 'Raster', 'Tracing', 'Modeling', 'Design Lessons', 'Animation', 'Background', 'Art', 'Game Art', 'Render', 'Apparel', 'CAD', 'Concept', 'Identity', 'Childrens', 'Drawing', 'Flat', 'Layout', 'Graphic Design', 'GUI', 'Label', 'Mockup', 'Pixel Art', 'Sculpt', 'Textile', 'UI', 'UX', 'UI / UX', 'V-Ray', 'Watercolor', 'Jewelry', 'Anime'];
 // ! dev
