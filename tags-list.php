@@ -1,0 +1,32 @@
+<?
+// todo https://www.upwork.com/hire/ - по алфавиту, потом (внизу по категориям) https://www.upwork.com/services/ 
+// ! design
+$tags["design"] = ['2D', '3D', 'Product Animation', 'Album', 'Cover Design', 'GIFs', 'Mobile Design', 'Web Design', 'Whiteboard Animation', 'AR Filters', 'Architecture', 'Interior', 'Design', 'Branding', 'Car Wraps', 'Character Modeling', 'Banner Ads', 'Brochure', 'Cartoon', 'Comic', 'Fashion', 'Book / eBook', 'Building Modeling', 'Catalog', 'Flyer', 'Brand Style', 'Stationery', 'Character Animation', 'Character', 'Game Design', 'Graphics', 'Illustration', 'Invitation', 'Product Design', 'Industrial Design', 'Landscape', 'Infographic', 'Logo', 'Menu', 'Package', 'Portrait', 'Caricature', 'Storyboards', 'Pattern Design', 'Postcard', 'Resume', 'T-Shirt', 'Merchandise', 'Poster', 'Signage', 'Tattoo', 'Presentation Design', 'Social Media Design', 'Vector', 'Raster', 'Tracing', 'Modeling', 'Design Lessons', 'Animation', 'Background', 'Art', 'Game Art', 'Render', 'Apparel', 'CAD', 'Concept', 'Identity', 'Childrens', 'Drawing', 'Flat', 'Layout', 'Graphic Design', 'GUI', 'Label', 'Mockup', 'Pixel Art', 'Sculpt', 'Textile', 'UI', 'UX', 'UI / UX', 'V-Ray', 'Watercolor', 'Jewelry', 'Anime'];
+// ! dev
+$tags["dev"] = ['Chatbot', 'Desktop', 'Cybersecurity', 'Data Protection', 'Data Analysis', 'E-Commerce Dev', 'Databases', 'File Conversion', 'Game Dev', 'QA', 'CMS', 'IT Support', 'WordPress', 'Coding Lessons', 'User Testing', 'Unreal Engine', 'JavaScript', 'Java', 'C Sharp', 'Python', 'PHP', 'TypeScript', 'C', 'Swift', 'Ruby', 'Kotlin', 'Go', 'Scala', '1c', 'T-SQL', 'Dart', 'PL-SQL', 'Pascal / Delphi', 'R', 'Apex', 'Elixir', 'Back-end', 'Front-end', 'Mobile Dev', 'Data processing', 'Full Stack', 'DevOps', 'AR Dev', 'VR Dev', 'API Dev', 'Arduino', 'Blockchain', 'Bot', 'Babylon js', 'Codelgniter', 'Extension Dev', 'CRM', 'Cryptocurrency', 'Drupal', 'ElectronJS', 'Elementor', 'Flutter', 'API', 'HTML', 'Joomla', 'Laravel', 'Machine Learning', 'Css', 'Scss', 'MySQL', 'Magento', 'Dot Net', 'OpenCart', 'PrestaShop', 'React Native', 'Raspberry Pi', 'Rust', 'Ruby on Rails', 'React js', 'SquareSpace', 'Shopify', 'Unity', 'Webflow', 'WiX', 'Woocommerce', 'Zapier'];
+// ! videoAudio
+$tags["videoAudio"] = ['Promo Video', 'Explainer Video', 'Intro / Outro', 'Podcast', 'Article to Video', 'Audio Ad', 'Audiobook', 'Book Trailer', 'DJ', 'E-Learning Video', 'Game Trailer', 'Jingle', 'Mixing / Mastering', 'Video', 'Audio', 'Session Musician', 'Music', 'Live-Action Explainer', 'Composition', 'Music Production', 'Podcast Editing', 'Video Ad', 'Music Transcription', 'Singer / Vocalist', 'Music Video', 'Lyric', 'Music Lessons', 'Screencasting Video', 'Slideshow Video', 'Songwriting', 'Sound Design', 'Sound Effects', 'Spokesperson Video', 'Subtitles / Captions', 'Unboxing', 'Video Editing', 'Visual Effects', 'Vocal Tuning', 'Voice-Over', 'Audio Editing', 'Narrator', 'Actor', 'Motion Graphics'];
+// ! marketing
+$tags["marketing"] = ['Marketing Lessons', 'Book / eBook Marketing', 'Community Management', 'Content Marketing', 'Crowdfunding', 'Domain Research', 'Lead Generation', 'E-Commerce Marketing', 'Local SEO', 'Email Marketing', 'Market Research', 'Influencer Marketing', 'Marketing Strategy', 'Mobile Marketing', 'Advertising', 'Public Relations', 'Social Media Management', 'Traffic Optimization', 'Music Promotion', 'SEM', 'Survey', 'SEO', 'Video Marketing', 'Podcast Marketing', 'Social Media Advertising', 'Web Analytics', 'Game Marketing', 'PPC', 'ClickFunnels', 'Conversion Rate', 'AdWords', 'Link Builder', 'Mailchimp', 'PR', 'Backlinking'];
+// ! writing
+$tags["writing"] = ['Writing Lessons', 'Articles', 'Blog Posts', 'Brand Voice', 'Beta Reading', 'Business Names', 'Slogans', 'Book / eBook Writing', 'Case Studies', 'Book Editing', 'Cover Letters', 'Creative Writing', 'Email Copy', 'Grant Writing', 'Legal Writing', 'LinkedIn Profiles', 'Localization', 'Translation', 'Podcast Writing', 'Summaries', 'Press Releases', 'Resume Writing', 'Product Descriptions', 'Sales Copy', 'Proofreading / Editing', 'Scriptwriting', 'Social Media Copy', 'UX Writing', 'Speechwriting', 'Website Content', 'Technical Writing', 'White Paper', 'Game Writing', 'Ghostwriter', 'Screenwriting'];
+// ? platformsSoft
+$tags["platformsSoft"] = ['Photoshop', 'Illustrator', 'InDesign', 'Canva', 'Figma', 'Sketch', 'Zbrush', 'SketchUp', 'SolidWorks', 'Blender', 'AutoCAD', 'Revit', 'Cinema 4D', 'CorelDRAW', 'Website Builders', 'After Effects', 'Camtasia', 'Apple Motion', 'DaVinci Resolve', 'Adobe Premiere', 'Sony Vegas', 'Amazon', 'Asana', 'JIRA', 'ArcGIS', 'AWS', 'Linux', 'Windows', 'macOS', 'Android', 'iOS', 'Cisco', 'Excel', 'Etsy', 'eBay', 'Ethereum', 'Bitcoin', 'Facebook', 'Google', 'Yandex', 'iPhone', 'Instagram', 'Kindle', 'LinkedIn', 'PowerPoint', 'Reddit', 'Smartsheet', 'Spreadsheets', 'Trello', 'Youtube', 'Zoom', 'Zendesk', 'Zoho', 'Blockchain', 'Twitch', 'Salesforce', 'Fusion 360', '3ds Max', 'Maya', 'Arnold'];
+// ! other
+$tags["other"] = ['Arts / Crafts', 'Real Estate', 'Online Lessons', 'Offline Lessons', 'Business Plans', 'Data Entry', 'Consulting', 'Lifestyle', 'Traveling', 'Admin / Customer Support', 'Personal Training', 'Virtual Assistant', 'Assistant', 'Wellness', 'Administrative', 'Optimization', 'Engineer', 'Restoration', 'Customization', 'App', 'Web', 'Accountant', 'Law', 'Store', 'Affiliate', 'Academic', 'Research', 'Brand', 'Manager', 'Business', 'BigCommerce', 'Analysis', 'Blog', 'Call Center', 'Computer Vision', 'Curriculum', 'Campaign', 'Creative', 'Career', 'Copywriter', 'Data', 'Dropshipping', 'Digital', 'Drawer', 'Scientist', 'Miner', 'Drafting', 'Cloud', 'Executive', 'E-Commerce', 'Email', 'Delivery', 'Estimator', 'Economics', 'Finance', 'Fundraising', 'Ad', 'Sheets', 'Slides', 'Studio', 'Information', 'Maps', 'Script', 'Game', 'Shopping', 'Software', 'Hacker', 'HR', 'Image', 'Editing', 'Recognition', 'Bank', 'Investment', 'Canvas', 'Instructional', 'Tax', 'Whitepaper', 'Direction', 'Publishing', 'Learning', 'Management', 'Legal', 'Advisor', 'Medical', 'Manga', 'Server', 'Strategy', 'Market', 'Media', 'Network', 'Trade', 'Outsource', 'Project', 'Product', 'Photo', 'Local', 'Pitch Deck', 'Fix', 'Patent', 'Proposal', 'Statistics', 'Hardware', 'Template', 'Sales', 'Rep', 'Sourcing', 'Content', 'Support', 'Producer', 'Plugin', 'Wireframes', 'Theme'];
+
+
+
+sort($tags["design"]);
+sort($tags["dev"]);
+sort($tags["videoAudio"]);
+sort($tags["marketing"]);
+sort($tags["writing"]);
+sort($tags["platformsSoft"]);
+sort($tags["other"]);
+
+echo json_encode($tags);
+?>
+
+
+

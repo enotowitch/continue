@@ -383,12 +383,13 @@
 	padding: 4px 8px;
 	border-radius: 4px;
 	margin-top: 4px;
+	margin-left: 4px;
 	&_main {
 		margin: 4px 0px 0px 4px;
 	}
 	&:hover,
 	&_active {
-		background-color: #c4c4c4;
+		background-color: #c4c4c4 !important;
 		color: #fff;
 	}
 }
@@ -935,4 +936,7 @@
 	&:hover {
 		color: $brandcolor;
 	}
+}
+.highlight-tag {
+	background-color: lighten($brandcolor, 30%);
 }

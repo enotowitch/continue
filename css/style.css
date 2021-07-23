@@ -517,6 +517,7 @@
   padding: 4px 8px;
   border-radius: 4px;
   margin-top: 4px;
+  margin-left: 4px;
 }
 
 .tag_main {
@@ -524,7 +525,7 @@
 }
 
 .tag:hover, .tag_active {
-  background-color: #c4c4c4;
+  background-color: #c4c4c4 !important;
   color: #fff;
 }
 
@@ -1207,4 +1208,8 @@
 
 .drop-flex:hover {
   color: #6fda44;
+}
+
+.highlight-tag {
+  background-color: #d1f3c4;
 }
