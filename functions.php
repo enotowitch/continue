@@ -117,7 +117,7 @@ function mailer($user_mail, $text){
 		 }
 }
 
-function test_post($user_id, $title, $subt, $salary, $duration, $experience, $workload, $location, $tag_1, $tag_2, $tag_3, $time, $cat, $logo_num, $example_series){
+function test_post($user_id, $title, $subt, $salary, $duration, $experience, $workload, $location, $tag_1, $tag_2, $tag_3, $time, $cat){
 
 $post = R::dispense("post");
 // ! user must exist
@@ -135,11 +135,9 @@ $post->tag_3 = $tag_3;
 $post->time = $time;		
 $post->cat = $cat;
 // !!! pics must exist (logo1 + example 1-10)
-$post->logo = "img/test/" . "logo$logo_num.jpg";
+$post->logo = "img/test/" . "logo".random_int(1, 14).".jpg";
 for($i=1;$i<=10;$i++){
-	// $example_series -> 0 = example1-10.jpg ... 30 = example30-40.jpg ...
-	$example_num = $i + $example_series;
-	$post["example_$i"] = "img/test/" . "example$example_num.jpg";
+	$post["example_$i"] = "img/test/" . "example".random_int(1, 90).".jpg";
 }
 R::store($post);
 

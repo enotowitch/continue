@@ -24,8 +24,8 @@
 	if(isset($_FILES['logo'])){
 
 	// ! delete old logo
-	// if logo src starts from i (img) -> don't delete - it's default file (no-logo)
-	if($update["logo"][0] != 'i'){
+	// delete img only if it's from UPLOADS
+	if($update["logo"][0] == "u"){
 		unlink($update["logo"]);
 	}
 	
@@ -50,6 +50,7 @@
 
 		// ! if atleast 1 uploaded -del all -update all(NULL) 
 		if($_FILES["example_1"] != NULL){
+			// todo
 			unlink($update["example_$i"]);
 			$update["example_$i"] = NULL;
 		}

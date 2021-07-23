@@ -5,12 +5,15 @@ require_once "DB.php";
 // ! delete files
 $del_files = R::find('post', 'user_id = ?', [$_SESSION['user']['id']]);
 	foreach($del_files as $del_file){
-		// if logo src starts from i (img) -> don't delete - it's default file (no-logo)
-	if($del_file["logo"][0] != "i"){
+		// delete img only if it's from UPLOADS
+	if($del_file["logo"][0] == "u"){
 		unlink($del_file["logo"]);
 	} 
+
 	for($i=1;$i<=10;$i++){
-		unlink($del_file["example_$i"]);
+		if($del_file["example_$i"][0] == "u"){
+			unlink($del_file["example_$i"]);
+		}
 	}	
 	}
 // ? delete files

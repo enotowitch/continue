@@ -447,7 +447,34 @@ for (var i = 0; i < highlight_tags.length; i++) {
 		}
 	});
 }
+// ? test available tags
+
+// ! test color select & input type="text" in SEARCH
+// select
+// on load
+setTimeout(() => {
+	$('.sort-flex').find('select').each(function(){
+		// todo $(this).val() != 0
+		var val_0 = $(this).find('option:eq(0)').val();
+		var val_selected = $(this).find('option:selected').val();
+		if(val_0 != val_selected){
+			$(this).css({'color': '#6fda44'});
+		}
+	})
+}, 500);
+// on change
+$('.sort-flex').find('select').on('change', function(){
+	$(this).css({'color': '#6fda44'});
+});
+// input type="text"
+// on load
+$('.sort-flex').find('[type="text"]').each(function(){
+	$(this).css({'color': '#6fda44'});
+});
+// on change
+$('.sort-flex').find('[type="text"]').on('change', function(){
+	$(this).css({'color': '#6fda44'});
+});
 
 
-	
 })
