@@ -418,35 +418,38 @@ $(document).ready(function () {
 
 	// ! test available tags
 
-	// ! page_tags
-	var page_tags = [];
-	$('.card-flex').find('.tag').each(function () {
-		page_tags.push($(this).text().trim());
-	});
-	var unique_page_tags = [];
-	$.each(page_tags, function (i, el) {
-		if ($.inArray(el, unique_page_tags) === -1) unique_page_tags.push(el);
-	});
-	// ? page_tags
 	// ! search_tags
 	var search_tags = [];
 	$('.search').find('.tag').each(function () {
 		search_tags.push($(this).text().trim());
 	});
 	// ? search_tags
-	// highlight_tags in SEARCH which are on the PAGE 
-	var highlight_tags = unique_page_tags.filter(function (n) {
-		return search_tags.indexOf(n) !== -1;
-	});
-
-	// ! highlight_tags
-	for (var i = 0; i < highlight_tags.length; i++) {
-		$('.search').find(`.tag:contains("${highlight_tags[i]}")`).each(function () {
-			if ($(this).text().trim() == highlight_tags[i]) {
-				$(this).addClass('highlight-tag');
+	// ! page_tags
+	var page_tags = [];
+	$.post({
+		url: 'tags-available.php',
+		data: {card_from:card_from},
+		dataType: 'json',
+		success: function (data) {
+			$.each(data, function (i, el) {
+				page_tags.push(el);
+			});
+			// highlight_tags - duplicates SEARCH = ALL TAGS(not hidden, not applied) 
+			var highlight_tags = page_tags.filter(function (n) {
+				return search_tags.indexOf(n) !== -1;
+			});
+			// ! highlight_tags
+			for (var i = 0; i < highlight_tags.length; i++) {
+				$('.search').find(`.tag:contains("${highlight_tags[i]}")`).each(function () {
+					if ($(this).text().trim() == highlight_tags[i]) {
+						$(this).addClass('highlight-tag');
+					}
+				});
 			}
-		});
-	}
+		}
+	})
+	// ? page_tags
+
 	// ? test available tags
 
 	// ! test color select & input type="text" in SEARCH

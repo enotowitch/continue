@@ -56,7 +56,7 @@ include "post-form.php";
 	if($_SERVER['PHP_SELF'] == '/post-portfolio.php'){
 		$cat = 'folio';
 	}
-	$posts = load_my_posts($cat); 
+	$posts = load_my_num_posts($cat); 
 
 
 	foreach($posts as $post): 

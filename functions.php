@@ -104,8 +104,14 @@ function load_all_posts($cat){
 	return $posts;
 }
 
+// ! load_my_posts
 function load_my_posts($cat){
-	$posts = R::find('post', 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat], 'ORDER BY id DESC LIMIT 50');
+	$posts = R::find('post', 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat], 'ORDER BY id DESC');
+	return $posts;
+}
+// ! load_my_num_posts
+function load_my_num_posts($cat){
+	$posts = R::find('post', 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat], 'ORDER BY id DESC LIMIT 10');
 	return $posts;
 }
 
