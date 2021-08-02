@@ -73,7 +73,7 @@ $posted = date('Y-m-d H:i:s', $posted);
 			<div class="info__cell info__simple info__pics">
 				<? for($i=1;$i<=10;$i++): ?>
 				<? if($post["example_$i"] != NULL): ?>
-				<img class="img-zoom" data-lazy="<? echo $post["example_$i"]; ?>" src="">
+				<img class="img-zoom" data-lazy="<? echo $post["example_$i"]; ?>" src="<? echo $post["example_$i"]; ?>">
 				<? endif; ?>
 				<? endfor; ?>
 			</div>

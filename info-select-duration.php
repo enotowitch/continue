@@ -1,4 +1,4 @@
-				<option value="Perm">Remote</option>
+				<option value="Remote">Remote</option>
 				<option value="Perm">Perm</option>
 				<option value="Temp">Temp</option>
 				<option value="Freelance">Freelance</option>

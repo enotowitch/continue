@@ -347,10 +347,10 @@ $(document).ready(function () {
 		e.preventDefault();
 
 		// ! PRE-POST validation
-		if($('[name="old_pass"]').val() == '' || $('[name="new_pass"]').val() == '' || $('[name="new_pass2"]').val() == ''){
+		if ($('[name="old_pass"]').val() == '' || $('[name="new_pass"]').val() == '' || $('[name="new_pass2"]').val() == '') {
 			error_in_fields('All fields required!', 'old_pass', 'new_pass', 'new_pass2');
-			$('input:not([type="submit"])').each(function(){
-				if($(this).val() != ''){
+			$('input:not([type="submit"])').each(function () {
+				if ($(this).val() != '') {
 					$(this).removeClass('red-b');
 				}
 			})
@@ -367,114 +367,134 @@ $(document).ready(function () {
 		}
 
 
-			$.post({
-				url: 'user-change-pass.php',
-				data: $(this).serialize(),
-				dataType: 'json',
-				success: function (data) {
-					// FALSE
-					if (data.status == false) {
-						// ! json
-						data.field.forEach(field => {
-							$(document).find(`[name="${field}"]`).addClass('red-b');
-						});
-						$('[type="submit"]').val(data.msg).addClass('red');
-						// ? json
-						setTimeout(() => {
-							$('[name*="pass"]').removeClass('red-b');
-							$('[type="submit"]').val('Change Password').removeClass('red');
-						}, 600);
-					}
-					// TRUE
-					if (data.status == true) {
-						$('[type="submit"]').val(data.msg).attr('disabled', true);
-						$(e.target).hide();
-						$('.log-as').append('<div class="your m0a" style="height: 290px; line-height: 290px;">Password changed! Check Email!</div>');
-					}
+		$.post({
+			url: 'user-change-pass.php',
+			data: $(this).serialize(),
+			dataType: 'json',
+			success: function (data) {
+				// FALSE
+				if (data.status == false) {
+					// ! json
+					data.field.forEach(field => {
+						$(document).find(`[name="${field}"]`).addClass('red-b');
+					});
+					$('[type="submit"]').val(data.msg).addClass('red');
+					// ? json
+					setTimeout(() => {
+						$('[name*="pass"]').removeClass('red-b');
+						$('[type="submit"]').val('Change Password').removeClass('red');
+					}, 600);
 				}
-			}).done(function () {
-				// ! done = allow post again
-				$('[type="submit"]').attr('disabled', false);
-			});
-			// ! post 1 time = wait
-			$('[type="submit"]').val('waiting...').attr('disabled', true);
+				// TRUE
+				if (data.status == true) {
+					$('[type="submit"]').val(data.msg).attr('disabled', true);
+					$(e.target).hide();
+					$('.log-as').append('<div class="your m0a" style="height: 290px; line-height: 290px;">Password changed! Check Email!</div>');
+				}
+			}
+		}).done(function () {
+			// ! done = allow post again
+			$('[type="submit"]').attr('disabled', false);
+		});
+		// ! post 1 time = wait
+		$('[type="submit"]').val('waiting...').attr('disabled', true);
 
 	})
 
-// ! test del_account
+	// ! test del_account
 
-$('.del_account').on('click', function(){
+	$('.del_account').on('click', function () {
 
-	if(confirm('Sure you want to delete your account FOREVER?')){
-		$.post({
-			'url': 'delete-account.php',
-			success: function () {
-				window.location.reload();
+		if (confirm('Sure you want to delete your account FOREVER?')) {
+			$.post({
+				'url': 'delete-account.php',
+				success: function () {
+					window.location.reload();
+				}
+			})
+		}
+
+	})
+
+	// ! test available tags
+
+	// ! page_tags
+	var page_tags = [];
+	$('.card-flex').find('.tag').each(function () {
+		page_tags.push($(this).text().trim());
+	});
+	var unique_page_tags = [];
+	$.each(page_tags, function (i, el) {
+		if ($.inArray(el, unique_page_tags) === -1) unique_page_tags.push(el);
+	});
+	// ? page_tags
+	// ! search_tags
+	var search_tags = [];
+	$('.search').find('.tag').each(function () {
+		search_tags.push($(this).text().trim());
+	});
+	// ? search_tags
+	// highlight_tags in SEARCH which are on the PAGE 
+	var highlight_tags = unique_page_tags.filter(function (n) {
+		return search_tags.indexOf(n) !== -1;
+	});
+
+	// ! highlight_tags
+	for (var i = 0; i < highlight_tags.length; i++) {
+		$('.search').find(`.tag:contains("${highlight_tags[i]}")`).each(function () {
+			if ($(this).text().trim() == highlight_tags[i]) {
+				$(this).addClass('highlight-tag');
+			}
+		});
+	}
+	// ? test available tags
+
+	// ! test color select & input type="text" in SEARCH
+	// select
+	// on load
+	setTimeout(() => {
+		$('.sort-flex').find('select').each(function () {
+			// todo $(this).val() != 0
+			var val_0 = $(this).find('option:eq(0)').val();
+			var val_selected = $(this).find('option:selected').val();
+			if (val_0 != val_selected) {
+				$(this).css({ 'color': '#6fda44' });
 			}
 		})
-	}
-
-})
-
-// ! test available tags
-
-// ! page_tags
-var page_tags = [];
-$('.card-flex').find('.tag').each(function(){
-	page_tags.push($(this).text().trim());
-});
-var unique_page_tags = [];
-$.each(page_tags, function(i, el){
-    if($.inArray(el, unique_page_tags) === -1) unique_page_tags.push(el);
-});
-// ? page_tags
-// ! search_tags
-var search_tags = [];
-$('.search').find('.tag').each(function(){
-	search_tags.push($(this).text().trim());
-});
-// ? search_tags
-// highlight_tags in SEARCH which are on the PAGE 
-var highlight_tags = unique_page_tags.filter(function(n) {
-	return search_tags.indexOf(n) !== -1;
-});
-
-// ! highlight_tags
-for (var i = 0; i < highlight_tags.length; i++) {
-	$('.search').find(`.tag:contains("${highlight_tags[i]}")`).each(function(){
-		if($(this).text().trim() == highlight_tags[i]){
-			$(this).addClass('highlight-tag');
-		}
+	}, 500);
+	// on change
+	$('.sort-flex').find('select').on('change', function () {
+		$(this).css({ 'color': '#6fda44' });
 	});
-}
-// ? test available tags
+	// input type="text"
+	// on load
+	$('.sort-flex').find('[type="text"]').each(function () {
+		$(this).css({ 'color': '#6fda44' });
+	});
+	// on change
+	$('.sort-flex').find('[type="text"]').on('change', function () {
+		$(this).css({ 'color': '#6fda44' });
+	});
 
-// ! test color select & input type="text" in SEARCH
-// select
-// on load
-setTimeout(() => {
-	$('.sort-flex').find('select').each(function(){
-		// todo $(this).val() != 0
-		var val_0 = $(this).find('option:eq(0)').val();
-		var val_selected = $(this).find('option:selected').val();
-		if(val_0 != val_selected){
-			$(this).css({'color': '#6fda44'});
-		}
+	// ! test load-more
+	$(document).on('click', '.load-more', function () {
+		var quantity = $(document).find('.card').length;
+		var cat = window.location.href.includes('portfolios.php') ? 'folio' : 'job';
+
+
+		$.post({
+			'url': 'load-more.php',
+			'data': { quantity: quantity, cat: cat },
+			success: function (data) {
+				$('.card-flex').append(data);
+				setTimeout(() => {
+					$(document).find('.info__pics').slick('unslick');
+				}, 100);
+				setTimeout(() => {
+					my_slick($('.info__pics'));
+				}, 200);
+
+			}
+		})
 	})
-}, 500);
-// on change
-$('.sort-flex').find('select').on('change', function(){
-	$(this).css({'color': '#6fda44'});
-});
-// input type="text"
-// on load
-$('.sort-flex').find('[type="text"]').each(function(){
-	$(this).css({'color': '#6fda44'});
-});
-// on change
-$('.sort-flex').find('[type="text"]').on('change', function(){
-	$(this).css({'color': '#6fda44'});
-});
-
-
 })

@@ -897,7 +897,8 @@
 .cancel_all_filters,
 .info__simple,
 .forgot-pass,
-.stat {
+.stat,
+.load-more {
   cursor: pointer;
 }
 
@@ -1212,4 +1213,23 @@
 
 .highlight-tag {
   background-color: #d1f3c4;
+}
+
+.load-more {
+  color: #6fda44;
+  border: 2px solid #6fda44;
+  padding: 4px;
+  width: 100px;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-family: Montserrat;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.load-more:hover {
+  background-color: #6fda44;
+  color: #fff;
 }

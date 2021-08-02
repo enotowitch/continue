@@ -430,14 +430,15 @@ $final_arr[] = $posted_arr;
 
 
 
-<? if($search_counter == 0){
-	if($_POST['card_from'] == "/index.php" || $_POST['card_from'] == "/portfolios.php"){
-		$posts = load_all_posts($cat); 
-	}
-	if($_POST['card_from'] == "/post-job.php" || $_POST['card_from'] == "/post-portfolio.php"){
-		$posts = load_my_posts($cat); 
-	}
-} ?>
+<? if($search_counter == 0): ?>
+	<? if($_POST['card_from'] == "/index.php" || $_POST['card_from'] == "/portfolios.php"): ?>
+		<? $posts = load_all_num_posts($cat); ?>
+		<script>setTimeout(() => {$('.load-more').show();}, 500);</script>
+	<? endif; ?>
+	<? if($_POST['card_from'] == "/post-job.php" || $_POST['card_from'] == "/post-portfolio.php"): ?>
+		<? $posts = load_my_posts($cat); ?>
+	<? endif; ?>
+<? endif; ?>
 <?
 if($search_counter == 1){
 	$intersect = array_intersect($search_in_posts_arr, $final_arr[0]);

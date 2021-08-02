@@ -92,6 +92,7 @@ function post_filter_card() {
 		'data': $('.filter-form').serialize(),
 		success: function (data) {
 			$('.card-flex').html(data);
+			$('.load-more').hide();
 			setTimeout(() => {
 				my_slick('.info__pics');
 			}, 300);

@@ -26,11 +26,11 @@ session_start();
 	require_once "DB.php";
 	
 	if($_SERVER['PHP_SELF'] == '/index.php'){
-		$posts = load_all_posts('job');
+		$posts = load_all_num_posts('job');
 	}
 	// !!!
 	if($_SERVER['PHP_SELF'] == '/portfolios.php'){
-		$posts = load_all_posts('folio');
+		$posts = load_all_num_posts('folio');
 	}
 	
 
@@ -47,9 +47,9 @@ session_start();
 	
 <? endforeach; ?>
 
-	
-
 </div>
+
+<div class="load-more">load 10 posts</div>
 
 <!-- ? CARD -->
 

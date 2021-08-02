@@ -45,7 +45,8 @@ function time_elapsed_string($datetime, $full = false) {
 	return $string ? implode(', ', $string) . '' : '1s';
 }
 
-function load_all_posts($cat){
+// ! load_all_num_posts (load-more 10)
+function load_all_num_posts($cat){
 		// prevent errors
 		$hidden_arr = array();
 		$messaged_arr = array();
@@ -65,14 +66,46 @@ function load_all_posts($cat){
 		foreach($messaged as $messaged){
 			$messaged_arr[] = $messaged["card_id"];
 		}	
-		$result = array_diff($all_arr, $hidden_arr, $messaged_arr);
+		$result = array_values(array_diff($all_arr, $hidden_arr, $messaged_arr));
 		// filtered posts
-		$posts = R::loadAll('post', $result);
+		$result_10 = array();
+		for ($i=0; $i<=9; $i++) { 
+			if($result[$i] != NULL){
+				$result_10[] = $result[$i];
+			}
+		}
+		$posts = R::loadAll('post', $result_10);
 		return $posts;
+}
+// ! load_all_posts
+function load_all_posts($cat){
+	// prevent errors
+	$hidden_arr = array();
+	$messaged_arr = array();
+
+	
+	$posts = R::find('post', 'cat = ?', [$cat], 'ORDER BY id DESC');
+	foreach($posts as $post){
+		$all_arr[] = $post["id"];
+	}
+	// ! hidden
+	$hidden = R::find('hidden', 'user_id = ?', [$_SESSION["user"]["id"]]);
+	foreach($hidden as $hidden){
+		$hidden_arr[] = $hidden["card_id"];
+	}		
+	// ! messaged
+	$messaged = R::find('messaged', 'user_id = ?', [$_SESSION["user"]["id"]]);
+	foreach($messaged as $messaged){
+		$messaged_arr[] = $messaged["card_id"];
+	}	
+	$result = array_diff($all_arr, $hidden_arr, $messaged_arr);
+	// filtered posts
+	$posts = R::loadAll('post', $result);
+	return $posts;
 }
 
 function load_my_posts($cat){
-	$posts = R::find('post', 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat], 'ORDER BY id DESC');
+	$posts = R::find('post', 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat], 'ORDER BY id DESC LIMIT 50');
 	return $posts;
 }
 

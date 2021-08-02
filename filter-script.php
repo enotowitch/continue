@@ -3,6 +3,7 @@
 	<script>
 	$(document).ready(function(){
 		$('.search-icon').trigger('click');
+		$('.load-more').hide();
 	});
 	</script>
 <? endif; ?>
