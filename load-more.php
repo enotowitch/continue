@@ -20,9 +20,11 @@ $posts = R::loadAll('post', $load_10);
 ?>
 
 <? foreach($posts as $post): ?>
+	<? if($post['id'] != 0): ?>
 	<div class="card card_main w100 <? echo $_COOKIE['size']; ?>">
 		<? 
 			include "card-content.php";
 		?>
 	</div>
+	<? endif; ?>
 <? endforeach; ?>

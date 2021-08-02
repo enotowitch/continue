@@ -496,6 +496,10 @@ $(document).ready(function () {
 				setTimeout(() => {
 					my_slick($('.info__pics'));
 				}, 200);
+				if(data == 0){
+					// NO NEW POSTS
+					$('.load-more').slideUp(1000);
+				}
 
 			}
 		})
