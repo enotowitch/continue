@@ -92,6 +92,7 @@ function post_filter_card() {
 		'data': $('.filter-form').serialize(),
 		success: function (data) {
 			$('.card-flex').html(data);
+			$('.go-to-first').trigger('click');
 			$('.load-more').hide();
 			setTimeout(() => {
 				my_slick('.info__pics');
@@ -99,6 +100,17 @@ function post_filter_card() {
 		}
 	})
 
+}
+
+function post_filter_card_load(){
+	$.post({
+		'url': 'filter-card.php',
+		'data': $('.filter-form').serialize(),
+		success: function (data) {
+			$('.card-flex').html(data);
+			my_slick($('.info__pics'));
+		}
+	})
 }
 
 function last_filter(text, search_id) {

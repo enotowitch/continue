@@ -440,46 +440,26 @@ $final_arr[] = $posted_arr;
 	<? endif; ?>
 <? endif; ?>
 <?
-if($search_counter == 1){
-	$intersect = array_intersect($search_in_posts_arr, $final_arr[0]);
-	$posts = R::loadAll('post', $intersect);
+// prevent errors: prepare arrays for intersect: if no search-array -> dublicate 0(first) search-array: it's ok
+for($i=1;$i<=9;$i++){
+	if(!isset($final_arr[$i])){
+		$final_arr[$i] = $final_arr[0];
+	}
 }
-if($search_counter == 2){
-	$intersect = array_intersect($search_in_posts_arr, $final_arr[0], $final_arr[1]);
-	$posts = R::loadAll('post', $intersect);
-}
-if($search_counter == 3){
-	$intersect = array_intersect($search_in_posts_arr, $final_arr[0], $final_arr[1], $final_arr[2]);
-	$posts = R::loadAll('post', $intersect);
-}
-if($search_counter == 4){
-	$intersect = array_intersect($search_in_posts_arr, $final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3]);
-	$posts = R::loadAll('post', $intersect);
-}
-if($search_counter == 5){
-	$intersect = array_intersect($search_in_posts_arr, $final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4]);
-	$posts = R::loadAll('post', $intersect);
-}
-if($search_counter == 6){
-	$intersect = array_intersect($search_in_posts_arr, $final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5]);
-	$posts = R::loadAll('post', $intersect);
-}
-if($search_counter == 7){
-	$intersect = array_intersect($search_in_posts_arr, $final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5], $final_arr[6]);
-	$posts = R::loadAll('post', $intersect);
-}
-if($search_counter == 8){
-	$intersect = array_intersect($search_in_posts_arr, $final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5], $final_arr[6], $final_arr[7]);
-	$posts = R::loadAll('post', $intersect);
-}
-if($search_counter == 9){
-	$intersect = array_intersect($search_in_posts_arr, $final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5], $final_arr[6], $final_arr[7], $final_arr[8]);
-	$posts = R::loadAll('post', $intersect);
-}
-if($search_counter == 10){
-	$intersect = array_intersect($search_in_posts_arr, $final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5], $final_arr[6], $final_arr[7], $final_arr[8], $final_arr[9]);
-	$posts = R::loadAll('post', $intersect);
-}
+
+	$intersect = array_values(array_intersect($search_in_posts_arr, $final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5], $final_arr[6], $final_arr[7], $final_arr[8], $final_arr[9]));
+	$intersect_10 = array();
+	if(!isset($_POST["quantity"])){
+		for($i=0;$i<=9;$i++){
+			$intersect_10[] = $intersect[$i];
+		}
+	} else {
+		for($i=$_POST["quantity"];$i<=$_POST["quantity"]+9;$i++){
+			$intersect_10[] = $intersect[$i];
+		}
+	}
+
+	$posts = R::loadAll('post', $intersect_10);
 
 // echo "counter:".$search_counter;
 ?>
@@ -489,14 +469,16 @@ if($search_counter == 10){
 $('.card-flex').append(`<div class="oops">OOPS! NOTHING FOUND!</div>`);
 </script>
 <? endif; ?>
-<? if($search_counter == 1): ?>
+<? if($search_counter > 0): ?>
 <script>
 $('.search-result').append(`<div class="cancel-filter cancel_all_filters">cancel results: <? echo count($intersect); ?></div>`);
-</script>
+// ! render search-result number
+$('.search-result').after('<div class="load-search"><div class="load-less-search">prev</div><div class="search-results-num">results: <? echo $_POST["quantity"]; ?>-<? echo $_POST["quantity"]+9; ?><span class="go-to-first">go to first</span></div><div class="load-more-search">next</div></div>');
+// prevent load-less
+<? if($_POST["quantity"] == 0): ?>
+	$(document).find('.load-less-search').removeClass('load-less-search').addClass('load-less-search-fake');
 <? endif; ?>
-<? if($search_counter > 1): ?>
-<script>
-$('.search-result').append(`<div class="cancel-filter cancel_all_filters">cancel results: <? echo count($intersect); ?></div>`);
+// ? render search-result number
 </script>
 <? endif; ?>
 

@@ -941,7 +941,11 @@
 .highlight-tag {
 	background-color: lighten($brandcolor, 30%);
 }
-.load-more {
+.load-more,
+.load-more-search,
+.load-more-search-fake,
+.load-less-search,
+.load-less-search-fake {
 	color: $brandcolor;
 	border: 2px solid $brandcolor;
 	padding: 4px;
@@ -953,8 +957,33 @@
 	font-family: Montserrat;
 	font-weight: 700;
 	margin-bottom: 15px;
-	&:hover{
+	&:hover {
 		background-color: $brandcolor;
 		color: #fff;
+	}
+}
+.load-less-search-fake,
+.load-more-search-fake {
+	&:hover {
+		background-color: $gray-lightest;
+		border: 2px solid $gray-lightest;
+	}
+}
+.load-search {
+	width: 100%;
+	display: flex;
+	margin-top: 15px;
+	margin-bottom: -15px;
+}
+.search-results-num {
+	color: $brandcolor;
+	font-family: Montserrat;
+	margin-top: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	span {
+		text-decoration: underline;
+		margin-top: 2px;
 	}
 }

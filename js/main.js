@@ -504,4 +504,34 @@ $(document).ready(function () {
 			}
 		})
 	})
+
+	// ! TEST load-more-search
+	var quantity = 0;
+
+	// ! more
+	$(document).on('click', '.load-more-search', function(){
+
+		quantity += 10;	
+		$('.filter-form').append(`<input name="quantity" value="${quantity}" type="hidden">`);
+		// prevent load-more
+		if($('.card').length != 10){
+			$('.load-more-search').removeClass('load-more-search').addClass('load-more-search-fake');
+			return;
+		}
+		post_filter_card_load();
+	})
+	// ! less
+	$(document).on('click', '.load-less-search', function(){
+
+		quantity -= 10;
+		$('.filter-form').append(`<input name="quantity" value="${quantity}" type="hidden">`);
+		post_filter_card_load();
+	})
+	// ! go-to-first
+	$(document).on('click', '.go-to-first', function(){
+
+		quantity = 0;	
+		$('.filter-form').append(`<input name="quantity" value="${quantity}" type="hidden">`);
+		post_filter_card_load();
+	})
 })
