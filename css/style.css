@@ -766,7 +766,9 @@
 .search-duration,
 .search-location,
 .search-workload,
-.search-posted {
+.search-posted,
+.show-hidden-posts,
+.show-applied-posts {
   color: #969696;
   border: 1px solid #969696;
   font-size: 14px;
@@ -777,7 +779,9 @@
   height: 30px;
 }
 
-.cancel-filter {
+.cancel-filter,
+.show-hidden-posts,
+.show-applied-posts {
   border: 1px solid #6fda44;
   color: #6fda44;
   position: relative;
@@ -791,8 +795,16 @@
           align-items: center;
 }
 
-.cancel-filter > div {
+.cancel-filter > div,
+.show-hidden-posts > div,
+.show-applied-posts > div {
   color: #6fda44;
+}
+
+.show-hidden-posts,
+.show-applied-posts {
+  border: 1px solid #969696;
+  color: #969696;
 }
 
 .close-cancel-filter {
@@ -1276,4 +1288,12 @@
 .search-results-num span {
   text-decoration: underline;
   margin-top: 2px;
+}
+
+.db-hidden {
+  background-color: #ffe5e0;
+}
+
+.db-messaged {
+  background-color: #e2f7d9;
 }

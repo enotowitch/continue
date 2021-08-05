@@ -35,6 +35,15 @@ if($_POST['card_from'] == "/index.php" || $_POST['card_from'] == "/portfolios.ph
 	foreach($search_in_posts as $search_in_posts){
 		$search_in_posts_arr[] = $search_in_posts["id"];
 	}
+	// if search does not include hidden or messaged don't show that
+	if($_POST["filter"] != 'hidden' && $_POST["show-hidden-posts"] == NULL){
+		$hidden_arr = hidden_posts();
+		$search_in_posts_arr = array_diff($search_in_posts_arr, $hidden_arr);
+	}
+	if($_POST["filter"] != 'messaged' && $_POST["show-applied-posts"] == NULL){
+		$messaged_arr = messaged_posts();
+		$search_in_posts_arr = array_diff($search_in_posts_arr, $messaged_arr);
+	}
 } 
 // ! my posts
 if($_POST['card_from'] == "/post-job.php" || $_POST['card_from'] == "/post-portfolio.php"){
@@ -446,7 +455,7 @@ for($i=1;$i<=9;$i++){
 		$final_arr[$i] = $final_arr[0];
 	}
 }
-
+	// ! prepare posts (10)
 	$intersect = array_values(array_intersect($search_in_posts_arr, $final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5], $final_arr[6], $final_arr[7], $final_arr[8], $final_arr[9]));
 	$intersect_10 = array();
 	if(!isset($_POST["quantity"])){
@@ -473,12 +482,22 @@ $('.card-flex').append(`<div class="oops">OOPS! NOTHING FOUND!</div>`);
 <script>
 $('.search-result').append(`<div class="cancel-filter cancel_all_filters">cancel results: <? echo count($intersect); ?></div>`);
 // ! render search-result number
+// small card size
+<? if($_COOKIE['size'] != "w100"): ?>
 $('.search-result').after('<div class="load-search"><div class="load-less-search">prev</div><div class="search-results-num">results: <? echo $_POST["quantity"]; ?>-<? echo $_POST["quantity"]+9; ?><span class="go-to-first">go to first</span></div><div class="load-more-search">next</div></div>');
+<? endif; ?>
 // prevent load-less
 <? if($_POST["quantity"] == 0): ?>
 	$(document).find('.load-less-search').removeClass('load-less-search').addClass('load-less-search-fake');
 <? endif; ?>
+// big card size
+<? if($_COOKIE['size'] == "w100"): ?>
+	$('.card-flex').append('<div class="load-search"><div class="load-less-search">prev</div><div class="search-results-num">results: <? echo $_POST["quantity"]; ?>-<? echo $_POST["quantity"]+9; ?><span class="go-to-first">go to first</span></div><div class="load-more-search">next</div></div>');
+<? endif; ?>
 // ? render search-result number
+// show-hidden-posts & show-applied-posts
+$('.search-result').append('<div class="show-hidden-posts" >Show hidden posts</div>');
+$('.search-result').append('<div class="show-applied-posts" >Show applied posts</div>');
 </script>
 <? endif; ?>
 
@@ -540,8 +559,6 @@ $filter = R::find('hidden', 'user_id = ?', [$_SESSION["user"]["id"]]);
 			$(this).addClass('db-hidden');
 		}
 	})
-	$('.db-hidden').addClass('op05');
-	$('.db-hidden').find('.hide').css({'border-bottom':'2px solid tomato', 'padding-bottom':'2px'});
 	</script>
 <? endforeach; ?> 
 <? if($_POST["filter"] == 'hidden'): ?>
@@ -564,7 +581,8 @@ $filter = R::find('messaged', 'user_id = ?', [$_SESSION["user"]["id"]]);
 		var card_id = $(this).find('.card_id').val();
 		var db_id = '<? echo $filter['card_id']; ?>';
 		if(db_id == card_id){
-			$(this).find('.get-mes-form').addClass('yet-applied').addClass('op05').css({'border-bottom':'2px solid #6fda44', 'padding-bottom':'2px'});;
+			$(this).find('.get-mes-form').addClass('yet-applied').addClass('op05');
+			$(this).addClass('db-messaged');
 		}
 	})
 	</script>

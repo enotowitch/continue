@@ -581,7 +581,9 @@
 .search-duration,
 .search-location,
 .search-workload,
-.search-posted {
+.search-posted,
+.show-hidden-posts,
+.show-applied-posts {
 	color: $gray-light;
 	border: 1px solid $gray-light;
 	font-size: 14px;
@@ -591,7 +593,9 @@
 	border-radius: 4px;
 	height: 30px;
 }
-.cancel-filter {
+.cancel-filter,
+.show-hidden-posts,
+.show-applied-posts {
 	border: 1px solid $brandcolor;
 	color: $brandcolor;
 	position: relative;
@@ -602,6 +606,11 @@
 	> div {
 		color: $brandcolor;
 	}
+}
+.show-hidden-posts,
+.show-applied-posts {
+	border: 1px solid $gray-light;
+	color: $gray-light;
 }
 .close-cancel-filter {
 	position: relative;
@@ -986,4 +995,10 @@
 		text-decoration: underline;
 		margin-top: 2px;
 	}
+}
+.db-hidden {
+	background-color: (lighten($danger, 30%));
+}
+.db-messaged {
+	background-color: (lighten($brandcolor, 35%));
 }

@@ -44,7 +44,24 @@ function time_elapsed_string($datetime, $full = false) {
 	if (!$full) $string = array_slice($string, 0, 1);
 	return $string ? implode(', ', $string) . '' : '1s';
 }
-
+// ! hidden_posts
+function hidden_posts(){
+	// ! hidden
+	$hidden = R::find('hidden', 'user_id = ?', [$_SESSION["user"]["id"]]);
+	foreach($hidden as $hidden){
+		$hidden_arr[] = $hidden["card_id"];
+	}	
+	return $hidden_arr;
+}
+// ! messaged_posts
+function messaged_posts(){
+	// ! messaged
+	$messaged = R::find('messaged', 'user_id = ?', [$_SESSION["user"]["id"]]);
+	foreach($messaged as $messaged){
+		$messaged_arr[] = $messaged["card_id"];
+	}
+	return $messaged_arr;
+}
 // ! load_all_num_posts (load-more 10)
 function load_all_num_posts($cat){
 		// prevent errors
@@ -56,16 +73,10 @@ function load_all_num_posts($cat){
 		foreach($posts as $post){
 			$all_arr[] = $post["id"];
 		}
-		// ! hidden
-		$hidden = R::find('hidden', 'user_id = ?', [$_SESSION["user"]["id"]]);
-		foreach($hidden as $hidden){
-			$hidden_arr[] = $hidden["card_id"];
-		}		
-		// ! messaged
-		$messaged = R::find('messaged', 'user_id = ?', [$_SESSION["user"]["id"]]);
-		foreach($messaged as $messaged){
-			$messaged_arr[] = $messaged["card_id"];
-		}	
+	
+		$hidden_arr = hidden_posts();
+		$messaged_arr = messaged_posts();
+
 		$result = array_values(array_diff($all_arr, $hidden_arr, $messaged_arr));
 		// filtered posts
 		$result_10 = array();
@@ -88,16 +99,10 @@ function load_all_posts($cat){
 	foreach($posts as $post){
 		$all_arr[] = $post["id"];
 	}
-	// ! hidden
-	$hidden = R::find('hidden', 'user_id = ?', [$_SESSION["user"]["id"]]);
-	foreach($hidden as $hidden){
-		$hidden_arr[] = $hidden["card_id"];
-	}		
-	// ! messaged
-	$messaged = R::find('messaged', 'user_id = ?', [$_SESSION["user"]["id"]]);
-	foreach($messaged as $messaged){
-		$messaged_arr[] = $messaged["card_id"];
-	}	
+
+	$hidden_arr = hidden_posts();
+	$messaged_arr = messaged_posts();		
+
 	$result = array_diff($all_arr, $hidden_arr, $messaged_arr);
 	// filtered posts
 	$posts = R::loadAll('post', $result);

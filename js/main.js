@@ -428,7 +428,7 @@ $(document).ready(function () {
 	var page_tags = [];
 	$.post({
 		url: 'tags-available.php',
-		data: {card_from:card_from},
+		data: { card_from: card_from },
 		dataType: 'json',
 		success: function (data) {
 			$.each(data, function (i, el) {
@@ -496,7 +496,7 @@ $(document).ready(function () {
 				setTimeout(() => {
 					my_slick($('.info__pics'));
 				}, 200);
-				if(data == 0){
+				if (data == 0) {
 					// NO NEW POSTS
 					$('.load-more').slideUp(1000);
 				}
@@ -509,29 +509,37 @@ $(document).ready(function () {
 	var quantity = 0;
 
 	// ! more
-	$(document).on('click', '.load-more-search', function(){
+	$(document).on('click', '.load-more-search', function () {
 
-		quantity += 10;	
+		quantity += 10;
 		$('.filter-form').append(`<input name="quantity" value="${quantity}" type="hidden">`);
 		// prevent load-more
-		if($('.card').length != 10){
+		if ($('.card').length != 10) {
 			$('.load-more-search').removeClass('load-more-search').addClass('load-more-search-fake');
 			return;
 		}
 		post_filter_card_load();
 	})
 	// ! less
-	$(document).on('click', '.load-less-search', function(){
+	$(document).on('click', '.load-less-search', function () {
 
 		quantity -= 10;
 		$('.filter-form').append(`<input name="quantity" value="${quantity}" type="hidden">`);
 		post_filter_card_load();
 	})
 	// ! go-to-first
-	$(document).on('click', '.go-to-first', function(){
+	$(document).on('click', '.go-to-first', function () {
 
-		quantity = 0;	
+		quantity = 0;
 		$('.filter-form').append(`<input name="quantity" value="${quantity}" type="hidden">`);
+		post_filter_card_load();
+	})
+
+	// ! TEST show-hidden-posts & show-applied-posts
+	$(document).on('click', '.show-hidden-posts, .show-applied-posts', function () {
+		var name = this.className;
+		$('.filter-form').append(`<input name="${name}" type="hidden" value="1">`);
+
 		post_filter_card_load();
 	})
 })
