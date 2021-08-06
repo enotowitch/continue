@@ -387,13 +387,21 @@
 	&_main {
 		margin: 4px 0px 0px 4px;
 	}
-	&:hover{
+	&:hover {
 		font-weight: 700;
 	}
 	&_active {
 		color: $brandcolor;
 		border: 1px solid $brandcolor;
 		font-weight: 700;
+	}
+}
+.search .tag {
+	&_active {
+		color: $brandcolor;
+		border: 2px solid $brandcolor;
+		font-weight: 700;
+		background-color: lighten($brandcolor, 38%);
 	}
 }
 // ! switch
@@ -691,8 +699,7 @@
 .cancel_all_filters,
 .info__simple,
 .forgot-pass,
-.stat,
-.load-more {
+.stat {
 	cursor: pointer;
 }
 .search-word,
@@ -954,11 +961,10 @@
 	color: $brandcolor;
 	border: 1px solid $brandcolor;
 }
-.tag-no-db{
+.tag-no-db {
 	color: $gray-light;
 	border: 1px solid $gray-light;
 }
-.load-more,
 .load-more-search,
 .load-more-search-fake,
 .load-less-search,
@@ -985,6 +991,15 @@
 		background-color: $gray-lightest;
 		border: 2px solid $gray-lightest;
 	}
+}
+.load-more {
+	background: url("../img/loader.gif");
+	position: relative;
+	top: -230px;
+	z-index: 1;
+	width: 200px;
+	height: 200px;
+	margin: 0 auto;
 }
 .load-search {
 	width: 100%;

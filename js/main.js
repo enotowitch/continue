@@ -480,11 +480,16 @@ $(document).ready(function () {
 		$(this).css({ 'color': '#6fda44' });
 	});
 
-	// ! test load-more
+	// ! TEST load-more
+	$(window).scroll(function() {
+		if($(window).scrollTop() == $(document).height() - $(window).height()) {
+				$('.load-more').show().trigger('click');
+		}
+  	});
+
 	$(document).on('click', '.load-more', function () {
 		var quantity = $(document).find('.card').length;
 		var cat = window.location.href.includes('portfolios.php') ? 'folio' : 'job';
-
 
 		$.post({
 			'url': 'load-more.php',

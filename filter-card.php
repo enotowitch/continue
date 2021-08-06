@@ -475,6 +475,8 @@ $('.card-flex').append(`<div class="oops">OOPS! NOTHING FOUND!</div>`);
 <? endif; ?>
 <? if($search_counter > 0): ?>
 <script>
+// prevent load-more posts in search
+$('.load-more').detach();
 $('.search-result').append(`<div class="cancel-filter cancel_all_filters">cancel results: <? echo count($intersect); ?></div>`);
 // ! render search-result number
 // small card size
@@ -496,9 +498,10 @@ $('.search-result').append('<div class="show-applied-posts" >Show applied posts<
 </script>
 <? endif; ?>
 <? if($search_counter == 0): ?>
+	<!-- allow load-more when no search -->
+	<script>$('.card-flex').after('<div hidden class="load-more"></div>');</script>
 	<? if($_POST['card_from'] == "/index.php" || $_POST['card_from'] == "/portfolios.php"): ?>
 		<? $posts = load_all_num_posts($cat); ?>
-		<script>setTimeout(() => {$('.load-more').show();}, 100);</script>
 	<? endif; ?>
 	<? if($_POST['card_from'] == "/post-job.php" || $_POST['card_from'] == "/post-portfolio.php"): ?>
 		<? $posts = load_my_posts($cat); ?>

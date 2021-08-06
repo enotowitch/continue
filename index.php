@@ -49,7 +49,7 @@ session_start();
 
 </div>
 
-<div class="load-more">load 10 posts</div>
+<div hidden class="load-more"></div>
 
 <!-- ? CARD -->
 
