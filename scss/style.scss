@@ -387,10 +387,13 @@
 	&_main {
 		margin: 4px 0px 0px 4px;
 	}
-	&:hover,
+	&:hover{
+		font-weight: 700;
+	}
 	&_active {
-		background-color: #c4c4c4 !important;
-		color: #fff;
+		color: $brandcolor;
+		border: 1px solid $brandcolor;
+		font-weight: 700;
 	}
 }
 // ! switch
@@ -948,7 +951,12 @@
 	}
 }
 .highlight-tag {
-	background-color: lighten($brandcolor, 30%);
+	color: $brandcolor;
+	border: 1px solid $brandcolor;
+}
+.tag-no-db{
+	color: $gray-light;
+	border: 1px solid $gray-light;
 }
 .load-more,
 .load-more-search,
@@ -982,17 +990,19 @@
 	width: 100%;
 	display: flex;
 	margin-top: 15px;
-	margin-bottom: -15px;
+	// margin-bottom: -15px;
 }
 .search-results-num {
 	color: $brandcolor;
 	font-family: Montserrat;
+	font-weight: 700;
 	margin-top: 5px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	span {
 		text-decoration: underline;
+		font-weight: 400;
 		margin-top: 2px;
 	}
 }

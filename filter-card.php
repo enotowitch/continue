@@ -439,17 +439,12 @@ $final_arr[] = $posted_arr;
 
 
 
-<? if($search_counter == 0): ?>
-	<? if($_POST['card_from'] == "/index.php" || $_POST['card_from'] == "/portfolios.php"): ?>
-		<? $posts = load_all_num_posts($cat); ?>
-		<script>setTimeout(() => {$('.load-more').show();}, 500);</script>
-	<? endif; ?>
-	<? if($_POST['card_from'] == "/post-job.php" || $_POST['card_from'] == "/post-portfolio.php"): ?>
-		<? $posts = load_my_posts($cat); ?>
-	<? endif; ?>
-<? endif; ?>
+
 <?
 // prevent errors: prepare arrays for intersect: if no search-array -> dublicate 0(first) search-array: it's ok
+if(!isset($final_arr[0])){
+	$final_arr[0] = array();
+}
 for($i=1;$i<=9;$i++){
 	if(!isset($final_arr[$i])){
 		$final_arr[$i] = $final_arr[0];
@@ -499,6 +494,15 @@ $('.search-result').after('<div class="load-search"><div class="load-less-search
 $('.search-result').append('<div class="show-hidden-posts" >Show hidden posts</div>');
 $('.search-result').append('<div class="show-applied-posts" >Show applied posts</div>');
 </script>
+<? endif; ?>
+<? if($search_counter == 0): ?>
+	<? if($_POST['card_from'] == "/index.php" || $_POST['card_from'] == "/portfolios.php"): ?>
+		<? $posts = load_all_num_posts($cat); ?>
+		<script>setTimeout(() => {$('.load-more').show();}, 100);</script>
+	<? endif; ?>
+	<? if($_POST['card_from'] == "/post-job.php" || $_POST['card_from'] == "/post-portfolio.php"): ?>
+		<? $posts = load_my_posts($cat); ?>
+	<? endif; ?>
 <? endif; ?>
 
 
@@ -557,6 +561,7 @@ $filter = R::find('hidden', 'user_id = ?', [$_SESSION["user"]["id"]]);
 		var db_id = '<? echo $filter['card_id']; ?>';
 		if(db_id == card_id){
 			$(this).addClass('db-hidden');
+			$('.db-hidden').find('.hide').css({'border-bottom':'2px solid tomato', 'padding-bottom':'2px'});
 		}
 	})
 	</script>

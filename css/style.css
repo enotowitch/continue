@@ -524,9 +524,14 @@
   margin: 4px 0px 0px 4px;
 }
 
-.tag:hover, .tag_active {
-  background-color: #c4c4c4 !important;
-  color: #fff;
+.tag:hover {
+  font-weight: 700;
+}
+
+.tag_active {
+  color: #6fda44;
+  border: 1px solid #6fda44;
+  font-weight: 700;
 }
 
 .switch-size {
@@ -1224,7 +1229,13 @@
 }
 
 .highlight-tag {
-  background-color: #d1f3c4;
+  color: #6fda44;
+  border: 1px solid #6fda44;
+}
+
+.tag-no-db {
+  color: #969696;
+  border: 1px solid #969696;
 }
 
 .load-more,
@@ -1266,12 +1277,12 @@
   display: -ms-flexbox;
   display: flex;
   margin-top: 15px;
-  margin-bottom: -15px;
 }
 
 .search-results-num {
   color: #6fda44;
   font-family: Montserrat;
+  font-weight: 700;
   margin-top: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1287,6 +1298,7 @@
 
 .search-results-num span {
   text-decoration: underline;
+  font-weight: 400;
   margin-top: 2px;
 }
 

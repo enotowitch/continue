@@ -439,10 +439,11 @@ $(document).ready(function () {
 				return search_tags.indexOf(n) !== -1;
 			});
 			// ! highlight_tags
+			$('.tag').addClass('tag-no-db');
 			for (var i = 0; i < highlight_tags.length; i++) {
 				$('.search').find(`.tag:contains("${highlight_tags[i]}")`).each(function () {
 					if ($(this).text().trim() == highlight_tags[i]) {
-						$(this).addClass('highlight-tag');
+						$(this).addClass('highlight-tag').removeClass('tag-no-db');
 					}
 				});
 			}
