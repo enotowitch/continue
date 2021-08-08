@@ -90,6 +90,10 @@ function post_filter_card() {
 	$.post({
 		'url': 'filter-card.php',
 		'data': $('.filter-form').serialize(),
+		beforeSend: function(){
+			$('.card').addClass('op0');
+			$('.card-flex').append('<div class="search-loader"></div>');
+		},
 		success: function (data) {
 			$('.card-flex').html(data);
 			$('.go-to-first').trigger('click');

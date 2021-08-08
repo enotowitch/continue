@@ -444,6 +444,7 @@
       flex-wrap: wrap;
   max-width: 930px;
   margin: 0 auto 15px;
+  position: relative;
 }
 
 .inter-icons {
@@ -1279,6 +1280,17 @@
   background: url("../img/loader.gif");
   position: relative;
   top: -230px;
+  z-index: 1;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.search-loader {
+  background: url("../img/search-loader.gif");
+  position: absolute;
+  top: 28%;
+  left: 41%;
   z-index: 1;
   width: 200px;
   height: 200px;
