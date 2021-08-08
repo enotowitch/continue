@@ -512,25 +512,48 @@ $(document).ready(function () {
 	})
 
 	// ! TEST load-more-search
-	var quantity = 0;
 
 	// ! more
 	$(document).on('click', '.load-more-search', function () {
 
+
+		if(!window.location.href.includes('quantity')){
+			quantity = 0;
+		} else {
+			var quantity = parseInt(window.location.href.split('quantity=')[1].replace('&', ''));
+		}
+		
 		quantity += 10;
-		$('.filter-form').append(`<input name="quantity" value="${quantity}" type="hidden">`);
+		$('.filter-form').find(`[name="quantity"]`).val(`${quantity}`);
 		// prevent load-more
 		if ($('.card').length != 10) {
 			$('.load-more-search').removeClass('load-more-search').addClass('load-more-search-fake');
 			return;
+		}
+		// ! last filter
+		var last_filter = window.location.href.split('?')[1];
+		if (last_filter != undefined) {
+			var last_filter = last_filter.replace(/quantity.*?&/, '');
+			history.pushState(null, '', `?${last_filter}quantity=${quantity}&`);
+		} else {
+			history.pushState(null, '', `?quantity=${quantity}&`);
 		}
 		post_filter_card_load();
 	})
 	// ! less
 	$(document).on('click', '.load-less-search', function () {
 
+		var quantity = parseInt(window.location.href.split('quantity=')[1].replace('&', ''));
 		quantity -= 10;
-		$('.filter-form').append(`<input name="quantity" value="${quantity}" type="hidden">`);
+		$('.filter-form').find(`[name="quantity"]`).val(`${quantity}`);
+		// ! last filter
+		var last_filter = window.location.href.split('?')[1];
+		if (last_filter != undefined) {
+			var last_filter = last_filter.replace(/quantity.*?&/, '');
+			history.pushState(null, '', `?${last_filter}quantity=${quantity}&`);
+		} else {
+			history.pushState(null, '', `?quantity=${quantity}&`);
+		}
 		post_filter_card_load();
 	})
 	// ! go-to-first

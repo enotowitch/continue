@@ -34,6 +34,9 @@
 <? if($_GET["posted"]): ?>
 	$('.filter-form').find('.search-posted').val('<? echo $_GET["posted"]; ?>');
 <? endif; ?> 
+<? if($_GET["quantity"]): ?>
+	$('.filter-form').find('[name="quantity"]').val('<? echo $_GET["quantity"]; ?>');
+<? endif; ?> 
 // ! post again
 setTimeout(() => {
 	post_filter_card();	

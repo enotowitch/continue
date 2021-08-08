@@ -96,7 +96,20 @@ function post_filter_card() {
 		},
 		success: function (data) {
 			$('.card-flex').html(data);
-			$('.go-to-first').trigger('click');
+			if($('.card').length == 0){
+				$('.go-to-first').trigger('click');
+				if(window.location.href.includes('quantity')){
+					// ! last filter
+					var last_filter = window.location.href.split('?')[1];
+
+					if (last_filter != undefined) {
+						var last_filter = last_filter.replace(/quantity.*?&/, '');
+						history.pushState(null, '', `?${last_filter}quantity=0&`);
+					} else {
+						history.pushState(null, '', `?quantity=0&`);
+					}
+				}
+			}
 			$('.load-more').hide();
 			setTimeout(() => {
 				my_slick('.info__pics');

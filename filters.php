@@ -4,6 +4,8 @@
 		<select hidden name="tags"></select>
 		<!-- ? hidden tags -->
 
+		<input name="quantity" value="0" type="hidden">
+
 	<select class="switch-size">
 		<option value="change size">change size</option>
 		<option value="w_small">small</option>
