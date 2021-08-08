@@ -595,7 +595,9 @@
 .search-workload,
 .search-posted,
 .show-hidden-posts,
-.show-applied-posts {
+.show-applied-posts,
+.dont-show-hidden-posts,
+.dont-show-applied-posts {
 	color: $gray-light;
 	border: 1px solid $gray-light;
 	font-size: 14px;
@@ -607,7 +609,9 @@
 }
 .cancel-filter,
 .show-hidden-posts,
-.show-applied-posts {
+.show-applied-posts,
+.dont-show-hidden-posts,
+.dont-show-applied-posts {
 	border: 1px solid $brandcolor;
 	color: $brandcolor;
 	position: relative;
@@ -620,7 +624,9 @@
 	}
 }
 .show-hidden-posts,
-.show-applied-posts {
+.show-applied-posts,
+.dont-show-hidden-posts,
+.dont-show-applied-posts {
 	border: 1px solid $gray-light;
 	color: $gray-light;
 }
@@ -1002,7 +1008,7 @@
 	height: 200px;
 	margin: 0 auto;
 }
-.search-loader{
+.search-loader {
 	background: url("../img/search-loader.gif");
 	position: absolute;
 	top: 28%;

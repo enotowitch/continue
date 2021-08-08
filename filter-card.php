@@ -265,9 +265,10 @@ foreach($experience as $experience){
 }
 }
 } 
-
-foreach($experience as $experience){
-	$experience_arr[] = $experience["id"];
+if($_POST["search-experience"] != '10-50 years'){
+	foreach($experience as $experience){
+		$experience_arr[] = $experience["id"];
+	}
 }
 $search_counter++;
 $final_arr[] = $experience_arr;
@@ -475,6 +476,7 @@ $('.card-flex').append(`<div class="oops">OOPS! NOTHING FOUND!</div>`);
 <? endif; ?>
 <? if($search_counter > 0): ?>
 <script>
+// ! SEARCH_COUNTER > 0
 // prevent load-more posts in search
 $('.load-more').detach();
 $('.search-result').append(`<div class="cancel-filter cancel_all_filters">cancel results: <? echo count($intersect); ?></div>`);
@@ -493,8 +495,19 @@ $('.search-result').after('<div class="load-search"><div class="load-less-search
 <? endif; ?>
 // ? render search-result number
 // show-hidden-posts & show-applied-posts
+<? if($_POST["show-hidden-posts"] == NULL): ?>
 $('.search-result').append('<div class="show-hidden-posts" >Show hidden posts</div>');
+<? endif; ?>
+<? if($_POST["show-hidden-posts"] != NULL): ?>
+$('.search-result').append('<div class="dont-show-hidden-posts" >Don\'t show hidden</div>');
+<? endif; ?>
+<? if($_POST["show-applied-posts"] == NULL): ?>
 $('.search-result').append('<div class="show-applied-posts" >Show applied posts</div>');
+<? endif; ?>
+<? if($_POST["show-applied-posts"] != NULL): ?>
+$('.search-result').append('<div class="dont-show-applied-posts" >Don\'t show applied</div>');
+<? endif; ?>
+// ? SEARCH_COUNTER > 0
 </script>
 <? endif; ?>
 <? if($search_counter == 0): ?>

@@ -548,4 +548,11 @@ $(document).ready(function () {
 
 		post_filter_card_load();
 	})
+	// ! TEST dont-show-hidden-posts & dont-show-applied-posts
+	$(document).on('click', '.dont-show-hidden-posts, .dont-show-applied-posts', function () {
+		var name = this.className.replace("dont-", "");
+		$('.filter-form').append(`<input name="${name}" type="hidden" value="">`);
+
+		post_filter_card_load();
+	})
 })

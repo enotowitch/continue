@@ -781,7 +781,9 @@
 .search-workload,
 .search-posted,
 .show-hidden-posts,
-.show-applied-posts {
+.show-applied-posts,
+.dont-show-hidden-posts,
+.dont-show-applied-posts {
   color: #969696;
   border: 1px solid #969696;
   font-size: 14px;
@@ -794,7 +796,9 @@
 
 .cancel-filter,
 .show-hidden-posts,
-.show-applied-posts {
+.show-applied-posts,
+.dont-show-hidden-posts,
+.dont-show-applied-posts {
   border: 1px solid #6fda44;
   color: #6fda44;
   position: relative;
@@ -810,12 +814,16 @@
 
 .cancel-filter > div,
 .show-hidden-posts > div,
-.show-applied-posts > div {
+.show-applied-posts > div,
+.dont-show-hidden-posts > div,
+.dont-show-applied-posts > div {
   color: #6fda44;
 }
 
 .show-hidden-posts,
-.show-applied-posts {
+.show-applied-posts,
+.dont-show-hidden-posts,
+.dont-show-applied-posts {
   border: 1px solid #969696;
   color: #969696;
 }
