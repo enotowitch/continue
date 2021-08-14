@@ -115,27 +115,7 @@ $(document).ready(function () {
 	})
 
 
-	$.post({
-		'url': 'messaged-filter.php',
-		'dataType': 'json',
-		success: function (data) {
-
-			// ! load messaged from DB
-			data.forEach(element => {
-
-				$('.card').each(function () {
-
-					var id = $(this).find('.card_id').val();
-
-					if (id == element) {
-						$(this).not('.form-card').addClass('db-messaged');
-						$(this).find('.get-mes-form').addClass('yet-applied').addClass('op03');
-						// $(this).not('.form-card').addClass('dn');
-					}
-				})
-			});
-		}
-	});
+	render_applied();
 
 	$(document).on('click', '.yet-applied', function(){
 		my_alert("danger", "You already applied for this post...")

@@ -51,34 +51,7 @@ $(document).ready(function () {
 		
 	})
 
-	var card_from = $('.card_from').val();
-
-	// ! hide posts on all pages except: jobs-del or port-del
-	$.post({
-		'url': 'hidden.php',
-		'dataType': 'json',
-		success: function (data) {
-
-			// ! load hidden from DB
-			data.forEach(element => {
-
-				$('.card').each(function () {
-
-					var id = $(this).find('.card_id').val();
-
-					if (id == element) {
-					
-						$(this).addClass('db-hidden');
-							// if cards are on jobs-del or port-del -> show
-						if(card_from == '/jobs-del.php' || card_from == '/port-del.php'){
-							// $(this).addClass('db');
-						}
-						
-					}
-				})
-			});
-		}
-	});
+	render_hidden();
 
 })
 

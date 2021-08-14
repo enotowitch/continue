@@ -52,26 +52,7 @@ $(document).ready(function () {
 		});
 	})
 
-	$.post({
-		'url': 'liked.php',
-		'dataType': 'json',
-		success: function (data) {
-
-			// ! load likes from DB
-			data.forEach(element => {
-
-				$('.card').each(function () {
-
-					var id = $(this).find('.card_id').val();
-
-					if (id == element) {
-						$(this).find('.like').attr('src', 'img/icons/liked.svg');
-						$(this).addClass('db-liked');
-					}
-				})
-			});
-		}
-	});
+	render_liked();
 
 	// ! close please-log
 	$(document).on('click', '.please-log img', function(){

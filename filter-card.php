@@ -543,50 +543,6 @@ $('.search-result').append('<div class="dont-show-applied-posts" >Don\'t show ap
 
 
 
-<div class="liked_arr" hidden></div>
-<div class="hidden_arr" hidden></div>
-<div class="messaged_arr" hidden></div>
-
-
-<!-- ! liked -->
-<? 
-$filter = R::find('liked', 'user_id = ?', [$_SESSION["user"]["id"]]);
-?>
-<? foreach($filter as $filter): ?>
-	<script>
-		$('.liked_arr').append('<? echo $filter["card_id"]; ?>,');
-	</script>
-<? endforeach; ?>
-
-<!-- ? liked -->
-
-
-
-<!-- ! hidden -->
-<? 
-$filter = R::find('hidden', 'user_id = ?', [$_SESSION["user"]["id"]]);
-?>
-<? foreach($filter as $filter): ?>
-	<script>
-		$('.hidden_arr').append('<? echo $filter["card_id"]; ?>,');
-	</script>
-<? endforeach; ?> 
-<!-- ? hidden -->
-
-
-
-
-<!-- ! messaged -->
-<? 
-$filter = R::find('messaged', 'user_id = ?', [$_SESSION["user"]["id"]]);
-?>
-<? foreach($filter as $filter): ?>
-	<script>
-		$('.messaged_arr').append('<? echo $filter["card_id"]; ?>,');
-	</script>
-<? endforeach; ?> 
-<!-- ? messaged -->
-
 
 
 	<? 

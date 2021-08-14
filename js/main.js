@@ -494,6 +494,9 @@ $(document).ready(function () {
 			'data': { card_from: card_from, quantity: quantity, cat: cat },
 			success: function (data) {
 				$('.card-flex').append(data);
+				render_hidden();
+				render_liked();
+				render_applied();
 				setTimeout(() => {
 					$(document).find('.info__pics').slick('unslick');
 				}, 100);
