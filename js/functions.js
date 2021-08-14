@@ -94,10 +94,11 @@ function post_filter_card() {
 			$('.card-flex').append('<div class="search-loader"></div>');
 		},
 		success: function (data) {
+			$('.card-flex').html(data);
 			render_hidden();
 			render_liked();
 			render_applied();
-			$('.card-flex').html(data);
+			render_flags();
 			if (card_from == '/post-job.php' || card_from == '/post-portfolio.php') {
 				$('.hide').after('<img class="update" src="img/icons/update.svg" alt="update">');
 				$('.hide').detach();
@@ -236,4 +237,11 @@ function render_hidden(){
 			});
 		}
 	});
+}
+
+function render_flags(){
+	$('.info__simple.location').each(function(){
+		var text = $(this).text().trim().toLowerCase();
+		$(this).html(`<img src="img/icons/flags/${text}.png">`).append(`${" "+text.toUpperCase()}`);
+	})
 }

@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+	render_flags();
+
 	var burgerMenu = $('.burger__menu');
 	var burger_line = $('.burger__line');
 	var card = $('.card');
@@ -497,6 +499,7 @@ $(document).ready(function () {
 				render_hidden();
 				render_liked();
 				render_applied();
+				render_flags();
 				setTimeout(() => {
 					$(document).find('.info__pics').slick('unslick');
 				}, 100);

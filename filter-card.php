@@ -541,13 +541,5 @@ $('.search-result').append('<div class="dont-show-applied-posts" >Don\'t show ap
 		
 		<? endif; ?>
 		
-	<? endforeach; ?> 
-
-
-
-
-
-	<? 
-	include_once "flags.php";
-	?>
+	<? endforeach; ?>
 
