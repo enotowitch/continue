@@ -295,9 +295,9 @@ $(document).ready(function () {
 		$('.search-icon').trigger('click');
 
 		$(`.search-${search_id}`).val(`${text}`);
-		post_filter_card();
 
 		last_filter(text, search_id);
+		$('.go-to-first').trigger('click');
 
 	})
 
@@ -526,7 +526,7 @@ $(document).ready(function () {
 		quantity += 10;
 		$('.filter-form').find(`[name="quantity"]`).val(`${quantity}`);
 		// prevent load-more
-		if ($('.card').length != 10) {
+		if ($('.card').not('.not100').length != 12) {
 			$('.load-more-search').removeClass('load-more-search').addClass('load-more-search-fake');
 			return;
 		}
@@ -538,7 +538,7 @@ $(document).ready(function () {
 		} else {
 			history.pushState(null, '', `?quantity=${quantity}&`);
 		}
-		post_filter_card_load();
+		post_filter_card();
 	})
 	// ! less
 	$(document).on('click', '.load-less-search', function () {
@@ -554,14 +554,22 @@ $(document).ready(function () {
 		} else {
 			history.pushState(null, '', `?quantity=${quantity}&`);
 		}
-		post_filter_card_load();
+		post_filter_card();
 	})
 	// ! go-to-first
 	$(document).on('click', '.go-to-first', function () {
 
 		quantity = 0;
 		$('.filter-form').append(`<input name="quantity" value="${quantity}" type="hidden">`);
-		post_filter_card_load();
+		// ! last filter
+		var last_filter = window.location.href.split('?')[1];
+		if (last_filter != undefined) {
+			var last_filter = last_filter.replace(/quantity.*?&/, '');
+			history.pushState(null, '', `?${last_filter}quantity=0&`);
+		} else {
+			history.pushState(null, '', `?quantity=0&`);
+		}
+		post_filter_card();
 	})
 
 	// ! TEST show-hidden-posts & show-applied-posts
@@ -569,13 +577,13 @@ $(document).ready(function () {
 		var name = this.className;
 		$('.filter-form').append(`<input name="${name}" type="hidden" value="1">`);
 
-		post_filter_card_load();
+		post_filter_card();
 	})
 	// ! TEST dont-show-hidden-posts & dont-show-applied-posts
 	$(document).on('click', '.dont-show-hidden-posts, .dont-show-applied-posts', function () {
 		var name = this.className.replace("dont-", "");
 		$('.filter-form').append(`<input name="${name}" type="hidden" value="">`);
 
-		post_filter_card_load();
+		post_filter_card();
 	})
 })

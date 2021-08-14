@@ -46,6 +46,8 @@ function time_elapsed_string($datetime, $full = false) {
 }
 // ! hidden_posts
 function hidden_posts(){
+	// prevent errors
+	$hidden_arr = array();
 	// ! hidden
 	$hidden = R::find('hidden', 'user_id = ?', [$_SESSION["user"]["id"]]);
 	foreach($hidden as $hidden){
@@ -55,6 +57,8 @@ function hidden_posts(){
 }
 // ! messaged_posts
 function messaged_posts(){
+	// prevent errors
+	$messaged_arr = array();
 	// ! messaged
 	$messaged = R::find('messaged', 'user_id = ?', [$_SESSION["user"]["id"]]);
 	foreach($messaged as $messaged){
@@ -64,10 +68,6 @@ function messaged_posts(){
 }
 // ! load_all_num_posts (load-more 10)
 function load_all_num_posts($cat){
-		// prevent errors
-		$hidden_arr = array();
-		$messaged_arr = array();
-
 		
 		$posts = R::find('post', 'cat = ?', [$cat], 'ORDER BY id DESC');
 		foreach($posts as $post){
@@ -116,7 +116,7 @@ function load_my_posts($cat){
 }
 // ! load_my_num_posts
 function load_my_num_posts($cat){
-	$posts = R::find('post', 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat], 'ORDER BY id DESC LIMIT 10');
+	$posts = R::find('post', 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat], 'ORDER BY id DESC LIMIT 12');
 	return $posts;
 }
 

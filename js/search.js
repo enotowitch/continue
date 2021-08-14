@@ -3,26 +3,22 @@ $(document).ready(function () {
 	// ! TAG
 	$(document).on('click', '.tag', function () {
 
-		if (card_from == '/mes.php') {
-			return;
-		}
+		if (card_from == '/mes.php') {return;}
 
 		var text = $(this).text().trim();
 
 		// pass tag to hidden select in .filter-form
-		$('.filter-form').find('select[name="tags"]').empty();
-		$('.filter-form').find('select[name="tags"]').append(`<option value="${text}">${text}</option>`);
-
-		// ! post
-		post_filter_card();
+		$('.filter-form').find('select[name="tags"]').html(`<option value="${text}">${text}</option>`);
 
 		// ! last filter
 		var last_filter = window.location.href.split('?')[1];
 
 		if (last_filter != undefined) {
-			var last_filter = last_filter.replace(/search-tag.*?&/, '');
+			var last_filter = last_filter.replace(/search-tag.*?&/, '').replace(/quantity.*?&/, '');
+			$('.go-to-first').trigger('click');
 			history.pushState(null, '', `?${last_filter}search-tag=${text}&`);
 		} else {
+			$('.go-to-first').trigger('click');
 			history.pushState(null, '', `?search-tag=${text}&`);
 		}
 
@@ -43,7 +39,8 @@ $(document).ready(function () {
 			var last_filter = window.location.href.split('?')[1];
 
 			if (last_filter != undefined) {
-				var last_filter = last_filter.replace(/filter.*?&/, '');
+				var last_filter = last_filter.replace(/filter.*?&/, '').replace(/quantity.*?&/, '');
+				$('.go-to-first').trigger('click');
 				history.pushState(null, '', `?${last_filter}filter=${text}&`);
 			} else {
 				history.pushState(null, '', `?filter=${text}&`);
@@ -63,7 +60,8 @@ $(document).ready(function () {
 		var last_filter = window.location.href.split('?')[1];
 
 		if (last_filter != undefined) {
-			var last_filter = last_filter.replace(/search-word.*?&/, '');
+			var last_filter = last_filter.replace(/search-word.*?&/, '').replace(/quantity.*?&/, '');
+			$('.go-to-first').trigger('click');
 			history.pushState(null, '', `?${last_filter}search-word=${text}&`);
 		} else {
 			history.pushState(null, '', `?search-word=${text}&`);
@@ -85,7 +83,8 @@ $(document).ready(function () {
 		var last_filter = window.location.href.split('?')[1];
 
 		if (last_filter != undefined) {
-			var last_filter = last_filter.replace(/search-company.*?&/, '');
+			var last_filter = last_filter.replace(/search-company.*?&/, '').replace(/quantity.*?&/, '');
+			$('.go-to-first').trigger('click');
 			history.pushState(null, '', `?${last_filter}search-company=${text}&`);
 		} else {
 			history.pushState(null, '', `?search-company=${text}&`);
@@ -109,7 +108,8 @@ $(document).ready(function () {
 			var last_filter = window.location.href.split('?')[1];
 
 			if (last_filter != undefined) {
-				var last_filter = last_filter.replace(/salary.*?&/, '');
+				var last_filter = last_filter.replace(/salary.*?&/, '').replace(/quantity.*?&/, '');
+				$('.go-to-first').trigger('click');
 				history.pushState(null, '', `?${last_filter}salary=${text}&`);
 			} else {
 				history.pushState(null, '', `?salary=${text}&`);
@@ -130,7 +130,8 @@ $(document).ready(function () {
 			var last_filter = window.location.href.split('?')[1];
 
 			if (last_filter != undefined) {
-				var last_filter = last_filter.replace(/experience.*?&/, '');
+				var last_filter = last_filter.replace(/experience.*?&/, '').replace(/quantity.*?&/, '');
+				$('.go-to-first').trigger('click');
 				history.pushState(null, '', `?${last_filter}experience=${text}&`);
 			} else {
 				history.pushState(null, '', `?experience=${text}&`);
@@ -152,7 +153,8 @@ $(document).ready(function () {
 			var last_filter = window.location.href.split('?')[1];
 
 			if (last_filter != undefined) {
-				var last_filter = last_filter.replace(/duration.*?&/, '');
+				var last_filter = last_filter.replace(/duration.*?&/, '').replace(/quantity.*?&/, '');
+				$('.go-to-first').trigger('click');
 				history.pushState(null, '', `?${last_filter}duration=${text}&`);
 			} else {
 				history.pushState(null, '', `?duration=${text}&`);
@@ -174,7 +176,8 @@ $(document).ready(function () {
 			var last_filter = window.location.href.split('?')[1];
 
 			if (last_filter != undefined) {
-				var last_filter = last_filter.replace(/location.*?&/, '');
+				var last_filter = last_filter.replace(/location.*?&/, '').replace(/quantity.*?&/, '');
+				$('.go-to-first').trigger('click');
 				history.pushState(null, '', `?${last_filter}location=${text}&`);
 			} else {
 				history.pushState(null, '', `?location=${text}&`);
@@ -196,7 +199,8 @@ $(document).ready(function () {
 			var last_filter = window.location.href.split('?')[1];
 
 			if (last_filter != undefined) {
-				var last_filter = last_filter.replace(/workload.*?&/, '');
+				var last_filter = last_filter.replace(/workload.*?&/, '').replace(/quantity.*?&/, '');
+				$('.go-to-first').trigger('click');
 				history.pushState(null, '', `?${last_filter}workload=${text}&`);
 			} else {
 				history.pushState(null, '', `?workload=${text}&`);
@@ -217,7 +221,8 @@ $(document).ready(function () {
 			var last_filter = window.location.href.split('?')[1];
 
 			if (last_filter != undefined) {
-				var last_filter = last_filter.replace(/posted.*?&/, '');
+				var last_filter = last_filter.replace(/posted.*?&/, '').replace(/quantity.*?&/, '');
+				$('.go-to-first').trigger('click');
 				history.pushState(null, '', `?${last_filter}posted=${text}&`);
 			} else {
 				history.pushState(null, '', `?posted=${text}&`);
@@ -236,7 +241,7 @@ $(document).ready(function () {
 
 		// ! push URL
 		var searched_word = encodeURI($(this).closest('div').text().trim());
-		var without_search = window.location.href.replace(`search-tag=${searched_word}&`, '');
+		var without_search = window.location.href.replace(`search-tag=${searched_word}&`, '').replace(/quantity.*?&/, '');
 		history.pushState(null, '', without_search);
 
 		// ! unrender 1
@@ -244,7 +249,7 @@ $(document).ready(function () {
 		// ! unrender 2
 		$('.search-result').find('.cancel_filter_tag').detach();
 		// ! post again
-		post_filter_card();
+		$('.go-to-first').trigger('click');
 	})
 
 	// ? remove FILTER
@@ -255,13 +260,13 @@ $(document).ready(function () {
 
 		// ! push URL
 		var searched_word = $(this).closest('div').text().trim();
-		var without_search = window.location.href.replace(`filter=${searched_word}&`, '');
+		var without_search = window.location.href.replace(`filter=${searched_word}&`, '').replace(/quantity.*?&/, '');
 		history.pushState(null, '', without_search);
 
 		// ! unrender
 		$('.search-result').find('.cancel_filter_filter').detach();
 		// ! post again
-		post_filter_card();
+		$('.go-to-first').trigger('click');
 
 	})
 
@@ -273,13 +278,13 @@ $(document).ready(function () {
 
 		// ! push URL
 		var searched_word = encodeURI($(this).prev('div').text().trim());
-		var without_search = window.location.href.replace(`search-word=${searched_word}&`, '');
+		var without_search = window.location.href.replace(`search-word=${searched_word}&`, '').replace(/quantity.*?&/, '');
 		history.pushState(null, '', without_search);
 
 		// ! unrender
 		$('.search-result').find('.cancel_filter_word').detach();
 		// ! post again
-		post_filter_card();
+		$('.go-to-first').trigger('click');
 	})
 
 	// ? remove SEARCH-COMPANY
@@ -290,13 +295,13 @@ $(document).ready(function () {
 
 		// ! push URL
 		var searched_company = encodeURI($(this).prev('div').text().trim());
-		var without_search = window.location.href.replace(`search-company=${searched_company}&`, '');
+		var without_search = window.location.href.replace(`search-company=${searched_company}&`, '').replace(/quantity.*?&/, '');
 		history.pushState(null, '', without_search);
 
 		// ! unrender
 		$('.search-result').find('.cancel_filter_company').detach();
 		// ! post again
-		post_filter_card();
+		$('.go-to-first').trigger('click');
 	})
 
 	// ? remove SALARY
@@ -307,13 +312,13 @@ $(document).ready(function () {
 
 		// ! push URL
 		var searched_word = encodeURI($(this).prev('div').text().trim());
-		var without_search = window.location.href.replace(`salary=${searched_word}&`, '');
+		var without_search = window.location.href.replace(`salary=${searched_word}&`, '').replace(/quantity.*?&/, '');
 		history.pushState(null, '', without_search);
 
 		// ! unrender
 		$('.search-result').find('.cancel_filter_salary').detach();
 		// ! post again
-		post_filter_card();
+		$('.go-to-first').trigger('click');
 	})
 
 	// ? remove EXPERIENCE
@@ -324,13 +329,13 @@ $(document).ready(function () {
 
 		// ! push URL
 		var searched_word = encodeURI($(this).prev('div').text().trim());
-		var without_search = window.location.href.replace(`experience=${searched_word}&`, '');
+		var without_search = window.location.href.replace(`experience=${searched_word}&`, '').replace(/quantity.*?&/, '');
 		history.pushState(null, '', without_search);
 
 		// ! unrender
 		$('.search-result').find('.cancel_filter_experience').detach();
 		// ! post again
-		post_filter_card();
+		$('.go-to-first').trigger('click');
 	})
 
 	// ? remove DURATION
@@ -341,13 +346,13 @@ $(document).ready(function () {
 
 		// ! push URL
 		var searched_word = encodeURI($(this).prev('div').text().trim());
-		var without_search = window.location.href.replace(`duration=${searched_word}&`, '');
+		var without_search = window.location.href.replace(`duration=${searched_word}&`, '').replace(/quantity.*?&/, '');
 		history.pushState(null, '', without_search);
 
 		// ! unrender
 		$('.search-result').find('.cancel_filter_duration').detach();
 		// ! post again
-		post_filter_card();
+		$('.go-to-first').trigger('click');
 	})
 
 	// ? remove LOCATION
@@ -358,13 +363,13 @@ $(document).ready(function () {
 
 		// ! push URL
 		var searched_word = encodeURI($(this).prev('div').text().trim());
-		var without_search = window.location.href.replace(`location=${searched_word}&`, '');
+		var without_search = window.location.href.replace(`location=${searched_word}&`, '').replace(/quantity.*?&/, '');
 		history.pushState(null, '', without_search);
 
 		// ! unrender
 		$('.search-result').find('.cancel_filter_location').detach();
 		// ! post again
-		post_filter_card();
+		$('.go-to-first').trigger('click');
 	})
 
 	// ? remove WORKLOAD
@@ -375,13 +380,13 @@ $(document).ready(function () {
 
 		// ! push URL
 		var searched_word = encodeURI($(this).prev('div').text().trim());
-		var without_search = window.location.href.replace(`workload=${searched_word}&`, '');
+		var without_search = window.location.href.replace(`workload=${searched_word}&`, '').replace(/quantity.*?&/, '');
 		history.pushState(null, '', without_search);
 
 		// ! unrender
 		$('.search-result').find('.cancel_filter_workload').detach();
 		// ! post again
-		post_filter_card();
+		$('.go-to-first').trigger('click');
 	})
 
 	// ? remove POSTED
@@ -392,13 +397,13 @@ $(document).ready(function () {
 
 		// ! push URL
 		var searched_word = encodeURI($(this).prev('div').text().trim());
-		var without_search = window.location.href.replace(`posted=${searched_word}&`, '');
+		var without_search = window.location.href.replace(`posted=${searched_word}&`, '').replace(/quantity.*?&/, '');
 		history.pushState(null, '', without_search);
 
 		// ! unrender
 		$('.search-result').find('.cancel_filter_posted').detach();
 		// ! post again
-		post_filter_card();
+		$('.go-to-first').trigger('click');
 	})
 
 	// ! CANCEL_ALL_FILTERS

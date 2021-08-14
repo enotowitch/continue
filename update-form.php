@@ -91,9 +91,6 @@
 				// count & show pics-count
 				var pics_count = $('.update-card').closest('.card').next('.post-preview').find('.slick-slide').length;
 				$('.update-card').closest('.card').find('.info__example').addClass('brand-bg').text(`${pics_count}/10`);
-				if(pics_count > 10){
-					window.location.reload();
-				}
 			}, 000);
 
 
@@ -110,10 +107,6 @@
 		// count & show pics-count
 		var pics_count = $('.update-card').closest('.card').find('.info__pics').find('.slick-slide').length;
 		$('.update-card').closest('.card').find('.info__example').addClass('brand-bg').text(`${pics_count}/10`);
-		// if count error -> reload
-		if(pics_count > 10){
-			window.location.reload();
-		}
 
 		// ! preview
 

@@ -84,6 +84,68 @@ function my_slick_3(target) {
 	});
 
 }
+// ! db_liked_posts
+function db_liked_posts(){
+	setTimeout(() => {
+		var liked_arr = $('.liked_arr').text().split(',');
+		var cards_on_page = [];
+		$('.card').each(function(){
+			cards_on_page.push($(this).find('.card_id').val());
+		});
+		var intersect = liked_arr.filter(function(n) {
+			return cards_on_page.indexOf(n) !== -1;
+	  });
+	  intersect.forEach(element => {
+		$('.card').each(function(){
+			if($(this).find('.card_id').val() == element){
+				$(this).find('.like').attr('src', 'img/icons/liked.svg');
+			}
+		});
+	  });
+	}, 100);
+}
+// ! db_hidden_posts
+function db_hidden_posts(){
+	setTimeout(() => {
+		var hidden_arr = $('.hidden_arr').text().split(',');
+		var cards_on_page = [];
+		$('.card').each(function(){
+			cards_on_page.push($(this).find('.card_id').val());
+		});
+		var intersect = hidden_arr.filter(function(n) {
+			return cards_on_page.indexOf(n) !== -1;
+	  });
+	  intersect.forEach(element => {
+		$('.card').each(function(){
+			if($(this).find('.card_id').val() == element){
+				$(this).addClass('db-hidden');
+				$(this).find('.hide').css({'border-bottom':'2px solid tomato', 'padding-bottom':'2px'});
+			}
+		});
+	  });
+	}, 100);
+}
+// ! db_messaged_posts
+function db_messaged_posts(){
+	setTimeout(() => {
+		var messaged_arr = $('.messaged_arr').text().split(',');
+		var cards_on_page = [];
+		$('.card').each(function(){
+			cards_on_page.push($(this).find('.card_id').val());
+		});
+		var intersect = messaged_arr.filter(function(n) {
+			return cards_on_page.indexOf(n) !== -1;
+	  });
+	  intersect.forEach(element => {
+		$('.card').each(function(){
+			if($(this).find('.card_id').val() == element){
+				$(this).find('.get-mes-form').addClass('yet-applied').addClass('op05');
+				$(this).addClass('db-messaged');
+			}
+		});
+	  });
+	}, 100);
+}
 
 function post_filter_card() {
 
@@ -91,13 +153,20 @@ function post_filter_card() {
 		'url': 'filter-card.php',
 		'data': $('.filter-form').serialize(),
 		beforeSend: function(){
-			$('.card').addClass('op0');
+			$('.card').not('.not100').addClass('op0');
 			$('.card-flex').append('<div class="search-loader"></div>');
 		},
 		success: function (data) {
+			db_liked_posts();
+			db_hidden_posts();
+			db_messaged_posts();
 			$('.card-flex').html(data);
-			if($('.card').length == 0){
-				$('.go-to-first').trigger('click');
+			if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
+				$('.hide').after('<img class="update" src="img/icons/update.svg" alt="update">');
+				$('.hide').detach();
+			}
+			if($('.card').not('.not100').length == 0){
+				// $('.go-to-first').trigger('click');
 				if(window.location.href.includes('quantity')){
 					// ! last filter
 					var last_filter = window.location.href.split('?')[1];
@@ -119,17 +188,6 @@ function post_filter_card() {
 
 }
 
-function post_filter_card_load(){
-	$.post({
-		'url': 'filter-card.php',
-		'data': $('.filter-form').serialize(),
-		success: function (data) {
-			$('.card-flex').html(data);
-			my_slick($('.info__pics'));
-		}
-	})
-}
-
 function last_filter(text, search_id) {
 	
 	// ! last filter
@@ -141,7 +199,7 @@ function last_filter(text, search_id) {
 
 
 	if (last_filter != undefined) {
-		var last_filter = last_filter.replace(new RegExp("" + RegexEscape(search_id) + ".*?&"), '');
+		var last_filter = last_filter.replace(new RegExp("" + RegexEscape(search_id) + ".*?&"), '').replace(/quantity.*?&/, '');
 		history.pushState(null, '', `?${last_filter}${search_id}=${text}&`);
 	} else {
 		history.pushState(null, '', `?${search_id}=${text}&`);

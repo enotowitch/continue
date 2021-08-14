@@ -77,6 +77,7 @@ include "post-form.php";
 
 <!-- ? CARD -->
 
+<span hidden class="go-to-first">go to first</span>
 
 <?
  require_once "footer.php";

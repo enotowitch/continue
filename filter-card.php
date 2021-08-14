@@ -451,15 +451,15 @@ for($i=1;$i<=9;$i++){
 		$final_arr[$i] = $final_arr[0];
 	}
 }
-	// ! prepare posts (10)
+	// ! prepare posts (12)
 	$intersect = array_values(array_intersect($search_in_posts_arr, $final_arr[0], $final_arr[1], $final_arr[2], $final_arr[3], $final_arr[4], $final_arr[5], $final_arr[6], $final_arr[7], $final_arr[8], $final_arr[9]));
 	$intersect_10 = array();
 	if(!isset($_POST["quantity"])){
-		for($i=0;$i<=9;$i++){
+		for($i=0;$i<=11;$i++){
 			$intersect_10[] = $intersect[$i];
 		}
 	} else {
-		for($i=$_POST["quantity"];$i<=$_POST["quantity"]+9;$i++){
+		for($i=$_POST["quantity"];$i<=$_POST["quantity"]+11;$i++){
 			$intersect_10[] = $intersect[$i];
 		}
 	}
@@ -483,7 +483,7 @@ $('.search-result').append(`<div class="cancel-filter cancel_all_filters">cancel
 // ! render search-result number
 // small card size
 <? if($_COOKIE['size'] != "w100"): ?>
-$('.search-result').after('<div class="load-search"><div class="load-less-search">prev</div><div class="search-results-num">results: <? echo $_POST["quantity"]; ?>-<? echo $_POST["quantity"]+9; ?><span class="go-to-first">go to first</span></div><div class="load-more-search">next</div></div>');
+$('.search-result').after('<div class="load-search"><div class="load-less-search">prev</div><div class="search-results-num">results: <? echo $_POST["quantity"]; ?>-<? echo $_POST["quantity"]+11; ?><span class="go-to-first">go to first</span></div><div class="load-more-search">next</div></div>');
 <? endif; ?>
 // prevent load-less
 <? if($_POST["quantity"] == 0): ?>
@@ -491,7 +491,7 @@ $('.search-result').after('<div class="load-search"><div class="load-less-search
 <? endif; ?>
 // big card size
 <? if($_COOKIE['size'] == "w100"): ?>
-	$('.card-flex').append('<div class="load-search"><div class="load-less-search">prev</div><div class="search-results-num">results: <? echo $_POST["quantity"]; ?>-<? echo $_POST["quantity"]+9; ?><span class="go-to-first">go to first</span></div><div class="load-more-search">next</div></div>');
+	$('.card-flex').append('<div class="load-search"><div class="load-less-search">prev</div><div class="search-results-num">results: <? echo $_POST["quantity"]; ?>-<? echo $_POST["quantity"]+11; ?><span class="go-to-first">go to first</span></div><div class="load-more-search">next</div></div>');
 <? endif; ?>
 // ? render search-result number
 // show-hidden-posts & show-applied-posts
@@ -517,10 +517,9 @@ $('.search-result').append('<div class="dont-show-applied-posts" >Don\'t show ap
 		<? $posts = load_all_num_posts($cat); ?>
 	<? endif; ?>
 	<? if($_POST['card_from'] == "/post-job.php" || $_POST['card_from'] == "/post-portfolio.php"): ?>
-		<? $posts = load_my_posts($cat); ?>
+		<? $posts = load_my_num_posts($cat); ?>
 	<? endif; ?>
 <? endif; ?>
-
 
 	<!-- ! search-result -->
 	<div class="search-result"></div>
@@ -544,7 +543,9 @@ $('.search-result').append('<div class="dont-show-applied-posts" >Don\'t show ap
 
 
 
-
+<div class="liked_arr" hidden></div>
+<div class="hidden_arr" hidden></div>
+<div class="messaged_arr" hidden></div>
 
 
 <!-- ! liked -->
@@ -553,15 +554,10 @@ $filter = R::find('liked', 'user_id = ?', [$_SESSION["user"]["id"]]);
 ?>
 <? foreach($filter as $filter): ?>
 	<script>
-	$('.card').each(function(){
-		var card_id = $(this).find('.card_id').val();
-		var db_id = '<? echo $filter['card_id']; ?>';
-		if(db_id == card_id){
-			$(this).find('.like').attr('src', 'img/icons/liked.svg');
-		}
-	})
+		$('.liked_arr').append('<? echo $filter["card_id"]; ?>,');
 	</script>
-<? endforeach; ?> 
+<? endforeach; ?>
+
 <!-- ? liked -->
 
 
@@ -572,21 +568,9 @@ $filter = R::find('hidden', 'user_id = ?', [$_SESSION["user"]["id"]]);
 ?>
 <? foreach($filter as $filter): ?>
 	<script>
-	$('.card').each(function(){
-		var card_id = $(this).find('.card_id').val();
-		var db_id = '<? echo $filter['card_id']; ?>';
-		if(db_id == card_id){
-			$(this).addClass('db-hidden');
-			$('.db-hidden').find('.hide').css({'border-bottom':'2px solid tomato', 'padding-bottom':'2px'});
-		}
-	})
+		$('.hidden_arr').append('<? echo $filter["card_id"]; ?>,');
 	</script>
 <? endforeach; ?> 
-<? if($_POST["filter"] == 'hidden'): ?>
-	<script>
-		$('.db-hidden').removeClass('op05');
-	</script>
-<? endif; ?>
 <!-- ? hidden -->
 
 
@@ -598,14 +582,7 @@ $filter = R::find('messaged', 'user_id = ?', [$_SESSION["user"]["id"]]);
 ?>
 <? foreach($filter as $filter): ?>
 	<script>
-	$('.card').each(function(){
-		var card_id = $(this).find('.card_id').val();
-		var db_id = '<? echo $filter['card_id']; ?>';
-		if(db_id == card_id){
-			$(this).find('.get-mes-form').addClass('yet-applied').addClass('op05');
-			$(this).addClass('db-messaged');
-		}
-	})
+		$('.messaged_arr').append('<? echo $filter["card_id"]; ?>,');
 	</script>
 <? endforeach; ?> 
 <!-- ? messaged -->

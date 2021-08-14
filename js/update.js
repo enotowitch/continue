@@ -13,7 +13,7 @@ if (card_from == '/post-job.php' || card_from == '/post-portfolio.php') {
 
 $(document).ready(function () {
 
-	$('.update').on('click', function (e) {
+	$(document).on('click', '.update', function (e) {
 
 		// close this slick pics when update
 		$(this).closest('.card').find('.close-one-slick-pic').trigger('click');
