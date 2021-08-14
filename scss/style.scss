@@ -999,7 +999,8 @@
 		border: 2px solid $gray-lightest;
 	}
 }
-.load-more {
+.load-more,
+.no-load-more {
 	background: url("../img/loader.gif");
 	position: relative;
 	top: -230px;
@@ -1007,6 +1008,9 @@
 	width: 200px;
 	height: 200px;
 	margin: 0 auto;
+}
+.no-load-more {
+	background: url("../img/no-loader.gif");
 }
 .search-loader {
 	background: url("../img/search-loader.gif");

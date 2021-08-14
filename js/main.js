@@ -500,15 +500,21 @@ $(document).ready(function () {
 				render_liked();
 				render_applied();
 				render_flags();
+				render_update_icon();
 				setTimeout(() => {
 					$(document).find('.info__pics').slick('unslick');
 				}, 100);
 				setTimeout(() => {
 					my_slick($('.info__pics'));
-				}, 200);
+				}, 100);
 				if (data == 0) {
 					// NO NEW POSTS
-					$('.load-more').slideUp(1000);
+					$('.no-load-more').detach();
+					$('.load-more').detach();
+					$('.card-flex').append('<div class="no-load-more"></div>');
+					setTimeout(() => {
+						$('.no-load-more').detach();
+					}, 3000);
 				}
 
 			}

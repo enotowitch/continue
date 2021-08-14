@@ -99,10 +99,7 @@ function post_filter_card() {
 			render_liked();
 			render_applied();
 			render_flags();
-			if (card_from == '/post-job.php' || card_from == '/post-portfolio.php') {
-				$('.hide').after('<img class="update" src="img/icons/update.svg" alt="update">');
-				$('.hide').detach();
-			}
+			render_update_icon();
 			if ($('.card').not('.not100').length == 0) {
 				// $('.go-to-first').eq(0).trigger('click');
 				if (window.location.href.includes('quantity')) {
@@ -120,7 +117,7 @@ function post_filter_card() {
 			$('.load-more').hide();
 			setTimeout(() => {
 				my_slick('.info__pics');
-			}, 300);
+			}, 100);
 		}
 	})
 
@@ -244,4 +241,11 @@ function render_flags(){
 		var text = $(this).text().trim().toLowerCase();
 		$(this).html(`<img src="img/icons/flags/${text}.png">`).append(`${" "+text.toUpperCase()}`);
 	})
+}
+
+function render_update_icon(){
+		if (card_from == '/post-job.php' || card_from == '/post-portfolio.php') {
+			$('.hide').after('<img class="update" src="img/icons/update.svg" alt="update">');
+			$('.hide').detach();
+		}
 }

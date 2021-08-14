@@ -18,29 +18,29 @@
 
 
 <script>
-
-// difference btw update-form & post-form
-	$('.form-card:not(:first-child)').addClass('update-card').removeClass('not100');
-
-	// ! $_POST insert
-
-	$('.update-card').find('.user_id').before('<input class="card_id" name="card_id" type="hidden" value="<? echo $_POST['card_id']; ?>">');
-
-	$('.update-card').find('textarea[name="title"]').text(`<? echo $_POST['title']; ?>`);
-	$('.update-card').find('textarea[name="subt"]').text(`<? echo $_POST['subt']; ?>`);
-
-	$('.update-card').find('select[name="salary"] option[value="0"]').prop("disabled", false).text(`<? echo $_POST["salary"]; ?>`).val(`<? echo $_POST["salary"]; ?>`);
-	$('.update-card').find('select[name="duration"] option[value="0"]').prop("disabled", false).text(`<? echo $_POST["duration"]; ?>`).val(`<? echo $_POST["duration"]; ?>`);
-	$('.update-card').find('select[name="experience"] option[value="0"]').prop("disabled", false).text(`<? echo $_POST["experience"]; ?>`).val(`<? echo $_POST["experience"]; ?>`);
-	$('.update-card').find('select[name="workload"] option[value="0"]').prop("disabled", false).text(`<? echo $_POST["workload"]; ?>`).val(`<? echo $_POST["workload"]; ?>`);
-	$('.update-card').find('select[name="location"] option[value="0"]').prop("disabled", false).text(`<? echo $_POST["location"]; ?>`).val(`<? echo $_POST["location"]; ?>`);
-
-	$('.update-card').find('select[name="tags[]"] option').eq(0).attr('selected', 'true').text(`<? echo $_POST["tag_1"]; ?>`).val(`<? echo $_POST["tag_1"]; ?>`);
-	$('.update-card').find('select[name="tags[]"] option').eq(1).attr('selected', 'true').text(`<? echo $_POST["tag_2"]; ?>`).val(`<? echo $_POST["tag_2"]; ?>`);
-	$('.update-card').find('select[name="tags[]"] option').eq(2).attr('selected', 'true').text(`<? echo $_POST["tag_3"]; ?>`).val(`<? echo $_POST["tag_3"]; ?>`);
-
 // ! ready
 	$(document).ready(function(){
+
+		// difference btw update-form & post-form
+		$('.form-card:not(:first-child)').addClass('update-card').removeClass('not100');
+
+		// ! $_POST insert
+
+		$('.update-card').find('.user_id').before('<input class="card_id" name="card_id" type="hidden" value="<? echo $_POST['card_id']; ?>">');
+			
+		$('.update-card').find('textarea[name="title"]').text(`<? echo $_POST['title']; ?>`);
+		$('.update-card').find('textarea[name="subt"]').text(`<? echo $_POST['subt']; ?>`);
+			
+		$('.update-card').find('select[name="salary"] option[value="0"]').prop("disabled", false).text(`<? echo $_POST["salary"]; ?>`).val(`<? echo $_POST["salary"]; ?>`);
+		$('.update-card').find('select[name="duration"] option[value="0"]').prop("disabled", false).text(`<? echo $_POST["duration"]; ?>`).val(`<? echo $_POST["duration"]; ?>`);
+		$('.update-card').find('select[name="experience"] option[value="0"]').prop("disabled", false).text(`<? echo $_POST["experience"]; ?>`).val(`<? echo $_POST["experience"]; ?>`);
+		$('.update-card').find('select[name="workload"] option[value="0"]').prop("disabled", false).text(`<? echo $_POST["workload"]; ?>`).val(`<? echo $_POST["workload"]; ?>`);
+		$('.update-card').find('select[name="location"] option[value="0"]').prop("disabled", false).text(`<? echo $_POST["location"]; ?>`).val(`<? echo $_POST["location"]; ?>`);
+			
+		$('.update-card').find('select[name="tags[]"] option').eq(0).attr('selected', 'true').text(`<? echo $_POST["tag_1"]; ?>`).val(`<? echo $_POST["tag_1"]; ?>`);
+		$('.update-card').find('select[name="tags[]"] option').eq(1).attr('selected', 'true').text(`<? echo $_POST["tag_2"]; ?>`).val(`<? echo $_POST["tag_2"]; ?>`);
+		$('.update-card').find('select[name="tags[]"] option').eq(2).attr('selected', 'true').text(`<? echo $_POST["tag_3"]; ?>`).val(`<? echo $_POST["tag_3"]; ?>`);
+
 
 		$('.update-card').find('.cross_reset').after('<img class="del mba" src="img/icons/delete.svg" alt="del">');
 
