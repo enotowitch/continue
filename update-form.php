@@ -96,7 +96,19 @@
 
 		}
 
+		// ! add del icon to imgs in card update - BIG CARD
+		setTimeout(() => {
+			$('.update-card').find('.info__pics').find('img').each(function () {
+				$(this).before('<div class="upd_pic_del"><img class="upd_pic_del_img" src="img/icons/delete.svg"></div>');
+			})
+		}, 100);
 
+		// ! add del icon to imgs in card update - SMALL CARD
+		setTimeout(() => {
+			$('.update-card').next('.post-preview').find('img').each(function () {
+				$(this).before('<div class="upd_pic_del"><img class="upd_pic_del_img" src="img/icons/delete.svg"></div>');
+			})
+		}, 100);
 
 		// ! delete empty pics before slick init
 		var empty_pic = $('img[src=""]');

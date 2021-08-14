@@ -55,19 +55,7 @@ $(document).ready(function () {
 		})
 
 
-		// ! add del icon to imgs in card update - BIG CARD
-		setTimeout(() => {
-			$('.update-card').find('.info__pics').find('img').each(function () {
-				$(this).before('<div class="upd_pic_del"><img class="upd_pic_del_img" src="img/icons/delete.svg"></div>');
-			})
-		}, 500);
 
-		// ! add del icon to imgs in card update - SMALL CARD
-		setTimeout(() => {
-			$('.update-card').next('.post-preview').find('img').each(function () {
-				$(this).before('<div class="upd_pic_del"><img class="upd_pic_del_img" src="img/icons/delete.svg"></div>');
-			})
-		}, 500);
 
 	})
 
@@ -87,6 +75,7 @@ $(document).ready(function () {
 
 		if (confirm('Are you sure you want to delete this picture forever?')) {
 
+			var card_id = $(this).closest('.card').find('.card_id').val();
 			var index = $(this).next().attr('alt');
 			var src = $(this).next('img').attr('src');
 
