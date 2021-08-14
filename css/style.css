@@ -1303,7 +1303,7 @@
   background: url("../img/search-loader.gif");
   position: absolute;
   top: 28%;
-  left: 41%;
+  left: 39.5%;
   z-index: 1;
   width: 200px;
   height: 200px;
@@ -1353,4 +1353,14 @@
   color: #969696 !important;
   border: 2px solid #969696 !important;
   background: #fff !important;
+}
+
+.upd-loader {
+  background: url("../img/search-loader.gif") no-repeat 50% 50%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
+  top: 0px;
+  background-color: #fff;
 }

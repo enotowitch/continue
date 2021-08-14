@@ -170,6 +170,7 @@ $(document).ready(function () {
 	$(document).on('click', '#salary, #experience, #location, #duration, #workload', function () {
 		var text = $(this).text().trim();
 		var search_id = this.id;
+		$(`.search-${search_id}`).css({'color': '#6fda44'});
 
 		// ! salary
 		for (var i = 1; i <= 5; i++) {
@@ -290,8 +291,6 @@ $(document).ready(function () {
 			}
 		}
 
-
-		$('.search-icon').trigger('click');
 
 		$(`.search-${search_id}`).val(`${text}`);
 

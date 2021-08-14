@@ -4,10 +4,7 @@ var current_user = $('.current_user').val();
 var current_user_posts = $('.user_id[value="' + current_user + '"]').closest('.card').not('.not100');
 var card_from = $('.card_from').val();
 
-if (card_from == '/post-job.php' || card_from == '/post-portfolio.php') {
-	current_user_posts.find('.hide').after('<img class="update" src="img/icons/update.svg" alt="update">');
-	current_user_posts.find('.hide').detach();
-}
+render_update_icon();
 
 // ! ready
 
@@ -48,9 +45,15 @@ $(document).ready(function () {
 		$.post({
 			url: 'update-form.php',
 			data: ({ card_from: card_from, card_id: card_id, title: title, subt: subt, salary: salary, duration: duration, experience: experience, workload: workload, location: location, tag_1: tag_1, tag_2: tag_2, tag_3: tag_3 }),
+			beforeSend: function (data) {
+				$(e.target).closest('.card').append('<div class="card upd-loader"></div>');
+			},
 			success: function (data) {
 				$(e.target).closest('.card').prepend('<div class="card-update"></div>');
 				$(e.target).closest('.card').find('.card-update').html(data);
+				setTimeout(() => {
+					$('.upd-loader').detach();
+				}, 100);
 			},
 		})
 
