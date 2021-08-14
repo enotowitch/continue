@@ -129,10 +129,7 @@ $(document).ready(function () {
 
 	})
 
-	// ! prevent enter btn submiting form in sort-flex
-	$('.sort-flex').find('form').submit(function (e) {
-		e.preventDefault();
-	});
+
 
 
 
@@ -297,7 +294,8 @@ $(document).ready(function () {
 		$(`.search-${search_id}`).val(`${text}`);
 
 		last_filter(text, search_id);
-		$('.go-to-first').trigger('click');
+		// ! post
+		$('.go-to-first').eq(0).trigger('click');
 
 	})
 
@@ -481,11 +479,11 @@ $(document).ready(function () {
 	});
 
 	// ! TEST load-more
-	$(window).scroll(function() {
-		if($(window).scrollTop() == $(document).height() - $(window).height()) {
-				$('.load-more').show().trigger('click');
+	$(window).scroll(function () {
+		if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+			$('.load-more').show().trigger('click');
 		}
-  	});
+	});
 
 	$(document).on('click', '.load-more', function () {
 		var quantity = $(document).find('.card').length;
@@ -517,12 +515,12 @@ $(document).ready(function () {
 	$(document).on('click', '.load-more-search', function () {
 
 
-		if(!window.location.href.includes('quantity')){
+		if (!window.location.href.includes('quantity')) {
 			quantity = 0;
 		} else {
 			var quantity = parseInt(window.location.href.split('quantity=')[1].replace('&', ''));
 		}
-		
+
 		quantity += 10;
 		$('.filter-form').find(`[name="quantity"]`).val(`${quantity}`);
 		// prevent load-more
