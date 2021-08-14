@@ -491,7 +491,7 @@ $(document).ready(function () {
 
 		$.post({
 			'url': 'load-more.php',
-			'data': { quantity: quantity, cat: cat },
+			'data': { card_from: card_from, quantity: quantity, cat: cat },
 			success: function (data) {
 				$('.card-flex').append(data);
 				setTimeout(() => {
