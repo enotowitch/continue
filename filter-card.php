@@ -472,6 +472,8 @@ for($i=1;$i<=9;$i++){
 <? if(count($intersect) == 0 && $search_counter != 0): ?>
 <script>
 $('.card-flex').append(`<div class="oops">OOPS! NOTHING FOUND!</div>`);
+$('.tag').removeClass('empty-tag');
+$('.tag_active').addClass('empty-tag');
 </script>
 <? endif; ?>
 <? if($search_counter > 0): ?>

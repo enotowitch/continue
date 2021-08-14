@@ -1044,3 +1044,8 @@
 .db-messaged {
 	background-color: (lighten($brandcolor, 35%));
 }
+.empty-tag {
+	color: $gray-light !important;
+	border: 2px solid $gray-light !important;
+	background: #fff !important;
+}

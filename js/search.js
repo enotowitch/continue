@@ -5,6 +5,7 @@ $(document).ready(function () {
 
 		if (card_from == '/mes.php') { return; }
 
+		$('.tag').removeClass('empty-tag');
 		var text = $(this).text().trim();
 
 		// pass tag to hidden select in .filter-form
