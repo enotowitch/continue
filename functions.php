@@ -116,7 +116,7 @@ function load_my_posts($cat){
 }
 // ! load_my_num_posts
 function load_my_num_posts($cat){
-	$posts = R::find('post', 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat], 'ORDER BY id DESC LIMIT 12');
+	$posts = R::find('post', 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat], 'ORDER BY id DESC LIMIT 10');
 	return $posts;
 }
 

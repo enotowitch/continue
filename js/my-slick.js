@@ -99,7 +99,7 @@ $(document).ready(function () {
 
 	// ! small slick
 
-	$('.example-small-slick').on('click', function () {
+	$(document).on('click', '.example-small-slick', function () {
 
 		$(this).closest('.w_small').find('.info__pics').slick('unslick').addClass('one_slick_pic').removeClass('info__simple');
 		var one_slick_pic = $(this).closest('.w_small').find('.one_slick_pic');

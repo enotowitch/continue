@@ -170,7 +170,7 @@ $(document).ready(function () {
 	$(document).on('click', '#salary, #experience, #location, #duration, #workload', function () {
 		var text = $(this).text().trim();
 		var search_id = this.id;
-		$(`.search-${search_id}`).css({'color': '#6fda44'});
+		$(`.search-${search_id}`).css({ 'color': '#6fda44' });
 
 		// ! salary
 		for (var i = 1; i <= 5; i++) {
@@ -487,33 +487,109 @@ $(document).ready(function () {
 	});
 
 	$(document).on('click', '.load-more', function () {
-		var quantity = $(document).find('.card').length;
-		var cat = window.location.href.includes('portfolios.php') ? 'folio' : 'job';
+		var quantity = $(document).find('.card').not('.not100').length;
+		var cat = window.location.href.includes('portfolio') ? 'folio' : 'job';
 
 		$.post({
 			'url': 'load-more.php',
 			'data': { card_from: card_from, quantity: quantity, cat: cat },
+			'dataType': 'json',
 			success: function (data) {
-				$('.card-flex').append(data);
+				// ! NO NEW POSTS -> data == null
+				if (data == null) {
+				$(document).find('.load-more').detach();
+					}
+					// ! render cards
+				$.each(data, function (i, e) {
+					$('.card-flex').append(`<div class="card card_main w100 ${e.size}">
+		
+					<div class="card__content">
+						
+						<input class="cat" type="hidden" value="${e.cat}">		
+						<input class="card_id" type="hidden" value="${e.id}">
+						<input class="user_id" type="hidden" value="${e.user_id}">
+						<input class="current_user" type="hidden" value="${e.current_user}">
+						
+						<!-- todo -->
+						<input class="card_from" type="hidden" value="">
+						<!-- todo -->
+
+						<img class="card__logo" src="${e.logo}" alt="card__logo">
+						<div class="inner-card-flex">
+							<div class="title-and-subt">
+								<div class="card__title">${e.title}</div>
+								<div class="card__subt">${e.subt}</div>
+							</div>
+						
+							<div class="info">
+								<div class="info__flex">
+									<div class="info__block">
+										<div class="info__cell info__simple salary" id="salary">
+											${e.salary}				</div>
+										<div class="info__cell info__simple duration" id="duration">
+											${e.duration}						</div>
+									</div>
+									<div class="info__block">
+										<div class="info__cell info__simple experience" id="experience">
+											${e.experience}					</div>
+										<div class="info__cell info__simple workload" id="workload">
+											${e.workload}					</div>
+									</div>
+									<div class="info__block">
+										<div class="info__cell info__simple location" id="location"><img src="img/icons/flags/gi.png">${e.location}</div>
+										<div class="info__cell info__simple example-small-slick">
+											Examples
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="tags-pics-flex">
+								<div class="tags tags_main">
+									<div class="tag tag_main tag-no-db">
+										${e.tag_1}				</div>
+									<div class="tag tag_main tag-no-db">
+										${e.tag_2}				</div>
+									<div class="tag tag_main tag-no-db">
+										${e.tag_3}				</div>
+								</div>
+
+								<div class="info__cell info__simple info__pics">
+									<img class="img-zoom" data-lazy="${e.example_1}" src="${e.example_1}">
+									<img class="img-zoom" data-lazy="${e.example_2}" src="${e.example_2}">
+									<img class="img-zoom" data-lazy="${e.example_3}" src="${e.example_3}">
+									<img class="img-zoom" data-lazy="${e.example_4}" src="${e.example_4}">
+									<img class="img-zoom" data-lazy="${e.example_5}" src="${e.example_5}">
+									<img class="img-zoom" data-lazy="${e.example_6}" src="${e.example_6}">
+									<img class="img-zoom" data-lazy="${e.example_7}" src="${e.example_7}">
+									<img class="img-zoom" data-lazy="${e.example_8}" src="${e.example_8}">
+									<img class="img-zoom" data-lazy="${e.example_9}" src="${e.example_9}">
+									<img class="img-zoom" data-lazy="${e.example_10}" src="${e.example_10}">
+								</div>
+
+							</div>
+						</div>
+						
+						<div class="inter-icons">
+							<img class="hide" src="img/icons/delete.svg" alt="del">
+							<img class="like" src="img/icons/like.svg" alt="like">
+							<img class="apply get-mes-form op03" src="img/icons/apply.svg" alt="apply">
+						</div>
+						<div class="time">${e.time}</div>
+					</div>
+						</div>`);
+				})
+				// ? render cards
+				$('.apply').not('.ok-gray').addClass('get-mes-form');
+				$('img[src="null"]').detach();
 				render_hidden();
 				render_liked();
 				render_applied();
 				render_flags();
 				render_update_icon();
-				setTimeout(() => {
-					$(document).find('.info__pics').slick('unslick');
-				}, 100);
-				setTimeout(() => {
-					my_slick($('.info__pics'));
-				}, 100);
-				if (data == 0) {
-					// NO NEW POSTS
-					$('.no-load-more').detach();
-					$('.load-more').detach();
-					$('.card-flex').append('<div class="no-load-more"></div>');
-					setTimeout(() => {
-						$('.no-load-more').detach();
-					}, 3000);
+				// ! slick only 10 last loaded cards
+				var card_length = ($('.card').not('.not100').length);
+				for(var i=1;i<=10;i++){
+					my_slick($('.card').not('.not100').eq(card_length-i).find('.info__pics'));
 				}
 
 			}
@@ -595,4 +671,22 @@ $(document).ready(function () {
 
 		post_filter_card();
 	})
+
+	// ! TEST to top btn
+	var btn = $('#button');
+
+	$(window).scroll(function () {
+		if ($(window).scrollTop() > 300) {
+			btn.addClass('show');
+		} else {
+			btn.removeClass('show');
+		}
+	});
+
+	btn.on('click', function (e) {
+		e.preventDefault();
+		$('html, body').animate({ scrollTop: 0 }, '300');
+	});
+
+
 })

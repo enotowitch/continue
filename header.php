@@ -65,6 +65,8 @@
 		<!-- ? BURGER-->
 	</header>
 
+	<a id="button"></a>
+
 <?
 	require_once "functions.php";
 ?>

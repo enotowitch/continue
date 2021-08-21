@@ -24,14 +24,46 @@ for ($i=$_POST["quantity"]; $i<=$_POST["quantity"]+9; $i++) {
 }
 
 $posts = R::loadAll('post', $load_10);
-?>
 
-<? foreach($posts as $post): ?>
-	<? if($post['id'] != 0): ?>
-	<div class="card card_main w100 <? echo $_COOKIE['size']; ?>">
-		<? 
-			include "card-content.php";
-		?>
-	</div>
-	<? endif; ?>
-<? endforeach; ?>
+$i = 0;
+
+foreach($posts as $post){
+	if($post['id'] != NULL){
+	$posted = $post->time;
+	$posted = date('Y-m-d H:i:s', $posted);
+
+	$json[$i]["id"] = $post['id'];
+	$json[$i]["title"] = $post['title'];
+	$json[$i]["subt"] = $post['subt'];
+	$json[$i]["salary"] = $post['salary'];
+	$json[$i]["duration"] = $post['duration'];
+	$json[$i]["experience"] = $post['experience'];
+	$json[$i]["workload"] = $post['workload'];
+	$json[$i]["location"] = $post['location'];
+	$json[$i]["tag_1"] = $post['tag_1'];
+	$json[$i]["tag_2"] = $post['tag_2'];
+	$json[$i]["tag_3"] = $post['tag_3'];
+	$json[$i]["logo"] = $post['logo'];
+	$json[$i]["example_1"] = $post['example_1'];
+	$json[$i]["example_2"] = $post['example_2'];
+	$json[$i]["example_3"] = $post['example_3'];
+	$json[$i]["example_4"] = $post['example_4'];
+	$json[$i]["example_5"] = $post['example_5'];
+	$json[$i]["example_6"] = $post['example_6'];
+	$json[$i]["example_7"] = $post['example_7'];
+	$json[$i]["example_8"] = $post['example_8'];
+	$json[$i]["example_9"] = $post['example_9'];
+	$json[$i]["example_10"] = $post['example_10'];
+
+	$json[$i]["user_id"] = $post['user_id'];
+	$json[$i]["time"] = time_elapsed_string($posted);
+	$json[$i]["cat"] = $post['cat'];
+
+	$json[$i]["current_user"] = $_SESSION["user"]["id"];
+
+	$json[$i]["size"] = $_COOKIE["size"];
+	$i++;
+	}	
+}
+echo json_encode($json);
+?>
