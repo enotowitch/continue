@@ -265,143 +265,54 @@ $(document).ready(function () {
 
 		// ! unrender
 		$('.search-result').find('.cancel_filter_filter').detach();
+		// ! change chosen / color
+		$('.filter').trigger("chosen:updated");
+		$('.filter').next('.chosen-container').find('.chosen-single span').css('color', '#000');
 		// ! post again
 		$('.go-to-first').eq(0).trigger('click');
 
 	})
 
 	// ? remove SEARCH-WORD
-	$(document).on('click', '.close_cancel_filter_word', function () {
-
-		// ! NULL select/input
-		$('.filter-form').find('.search-word').val('');
-
-		// ! push URL
-		var searched_word = encodeURI($(this).prev('div').text().trim());
-		var without_search = window.location.href.replace(`search-word=${searched_word}&`, '').replace(/quantity.*?&/, '');
-		history.pushState(null, '', without_search);
-
-		// ! unrender
-		$('.search-result').find('.cancel_filter_word').detach();
-		// ! post again
-		$('.go-to-first').eq(0).trigger('click');
-	})
-
 	// ? remove SEARCH-COMPANY
-	$(document).on('click', '.close_cancel_filter_company', function () {
 
-		// ! NULL select/input
-		$('.filter-form').find('.search-company').val('');
-
-		// ! push URL
-		var searched_company = encodeURI($(this).prev('div').text().trim());
-		var without_search = window.location.href.replace(`search-company=${searched_company}&`, '').replace(/quantity.*?&/, '');
-		history.pushState(null, '', without_search);
-
-		// ! unrender
-		$('.search-result').find('.cancel_filter_company').detach();
-		// ! post again
-		$('.go-to-first').eq(0).trigger('click');
-	})
 
 	// ? remove SALARY
-	$(document).on('click', '.close_cancel_filter_salary', function () {
-
-		// ! NULL select/input
-		$('.filter-form').find('.search-salary').val('salary');
-
-		// ! push URL
-		var searched_word = encodeURI($(this).prev('div').text().trim());
-		var without_search = window.location.href.replace(`salary=${searched_word}&`, '').replace(/quantity.*?&/, '');
-		history.pushState(null, '', without_search);
-
-		// ! unrender
-		$('.search-result').find('.cancel_filter_salary').detach();
-		// ! post again
-		$('.go-to-first').eq(0).trigger('click');
-	})
 
 	// ? remove EXPERIENCE
-	$(document).on('click', '.close_cancel_filter_experience', function () {
-
-		// ! NULL select/input
-		$('.filter-form').find('.search-experience').val('experience');
-
-		// ! push URL
-		var searched_word = encodeURI($(this).prev('div').text().trim());
-		var without_search = window.location.href.replace(`experience=${searched_word}&`, '').replace(/quantity.*?&/, '');
-		history.pushState(null, '', without_search);
-
-		// ! unrender
-		$('.search-result').find('.cancel_filter_experience').detach();
-		// ! post again
-		$('.go-to-first').eq(0).trigger('click');
-	})
 
 	// ? remove DURATION
-	$(document).on('click', '.close_cancel_filter_duration', function () {
-
-		// ! NULL select/input
-		$('.filter-form').find('.search-duration').val('duration');
-
-		// ! push URL
-		var searched_word = encodeURI($(this).prev('div').text().trim());
-		var without_search = window.location.href.replace(`duration=${searched_word}&`, '').replace(/quantity.*?&/, '');
-		history.pushState(null, '', without_search);
-
-		// ! unrender
-		$('.search-result').find('.cancel_filter_duration').detach();
-		// ! post again
-		$('.go-to-first').eq(0).trigger('click');
-	})
 
 	// ? remove LOCATION
-	$(document).on('click', '.close_cancel_filter_location', function () {
-
-		// ! NULL select/input
-		$('.filter-form').find('.search-location').val('location');
-
-		// ! push URL
-		var searched_word = encodeURI($(this).prev('div').text().trim());
-		var without_search = window.location.href.replace(`location=${searched_word}&`, '').replace(/quantity.*?&/, '');
-		history.pushState(null, '', without_search);
-
-		// ! unrender
-		$('.search-result').find('.cancel_filter_location').detach();
-		// ! post again
-		$('.go-to-first').eq(0).trigger('click');
-	})
 
 	// ? remove WORKLOAD
-	$(document).on('click', '.close_cancel_filter_workload', function () {
 
-		// ! NULL select/input
-		$('.filter-form').find('.search-workload').val('workload');
+	// ? remove almost ALL
+	$(document).on('click', '.close-cancel-filter', function () {
 
-		// ! push URL
+		var className = this.className.replace('close-cancel-filter ', '').replace('close_cancel_filter_', '');
+		if(className == 'company' || className == 'word'){
+			// ! NULL select/input
+			$('.filter-form').find(`.search-${className}`).val('');
+		} else {
+			// ! NULL select/input
+			$('.filter-form').find(`.search-${className}`).val(`${className}`);
+		}
 		var searched_word = encodeURI($(this).prev('div').text().trim());
-		var without_search = window.location.href.replace(`workload=${searched_word}&`, '').replace(/quantity.*?&/, '');
+		if(className == 'company' || className == 'word'){
+			// ! push URL
+			var without_search = window.location.href.replace(`search-${className}=${searched_word}&`, '').replace(/quantity.*?&/, '');
+		} else {
+			// ! push URL
+			var without_search = window.location.href.replace(`${className}=${searched_word}&`, '').replace(/quantity.*?&/, '');
+		}
 		history.pushState(null, '', without_search);
 
 		// ! unrender
-		$('.search-result').find('.cancel_filter_workload').detach();
-		// ! post again
-		$('.go-to-first').eq(0).trigger('click');
-	})
-
-	// ? remove POSTED
-	$(document).on('click', '.close_cancel_filter_posted', function () {
-
-		// ! NULL select/input
-		$('.filter-form').find('.search-posted').val('posted');
-
-		// ! push URL
-		var searched_word = encodeURI($(this).prev('div').text().trim());
-		var without_search = window.location.href.replace(`posted=${searched_word}&`, '').replace(/quantity.*?&/, '');
-		history.pushState(null, '', without_search);
-
-		// ! unrender
-		$('.search-result').find('.cancel_filter_posted').detach();
+		$('.search-result').find(`.cancel_filter_${className}`).detach();
+		// ! change chosen / color
+		$(`.search-${className}`).trigger("chosen:updated");
+		$(`.search-${className}`).next('.chosen-container').find('.chosen-single span').css('color', '#000');
 		// ! post again
 		$('.go-to-first').eq(0).trigger('click');
 	})

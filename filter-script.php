@@ -41,7 +41,13 @@
 setTimeout(() => {
 	post_filter_card();	
 }, 100);
-
+// update chosen
+$('.sort-flex').find('select').each(function(){
+	$(this).trigger("chosen:updated");
+	if($(this).val() != null){
+		$(this).next('.chosen-container').find('.chosen-single span').css({ 'color': '#6fda44' });
+	}
+});
 	});
 	</script>
 <? endif; ?>

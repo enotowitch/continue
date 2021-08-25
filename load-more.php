@@ -44,17 +44,9 @@ foreach($posts as $post){
 	$json[$i]["tag_2"] = $post['tag_2'];
 	$json[$i]["tag_3"] = $post['tag_3'];
 	$json[$i]["logo"] = $post['logo'];
-	$json[$i]["example_1"] = $post['example_1'];
-	$json[$i]["example_2"] = $post['example_2'];
-	$json[$i]["example_3"] = $post['example_3'];
-	$json[$i]["example_4"] = $post['example_4'];
-	$json[$i]["example_5"] = $post['example_5'];
-	$json[$i]["example_6"] = $post['example_6'];
-	$json[$i]["example_7"] = $post['example_7'];
-	$json[$i]["example_8"] = $post['example_8'];
-	$json[$i]["example_9"] = $post['example_9'];
-	$json[$i]["example_10"] = $post['example_10'];
-
+	for($ex=1;$ex<=10;$ex++){ 
+		$json[$i]["example_$ex"] = $post["example_$ex"];
+	}
 	$json[$i]["user_id"] = $post['user_id'];
 	$json[$i]["time"] = time_elapsed_string($posted);
 	$json[$i]["cat"] = $post['cat'];

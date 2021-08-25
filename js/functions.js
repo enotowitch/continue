@@ -115,8 +115,9 @@ function post_filter_card() {
 				}
 			}
 			$('.load-more').hide();
+			$('.info__simple.example').addClass('example-small-slick');
 			setTimeout(() => {
-				my_slick('.info__pics');
+				my_slick($('.info__pics'));
 			}, 100);
 		}
 	})

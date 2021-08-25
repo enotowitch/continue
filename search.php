@@ -56,5 +56,11 @@ include_once "filters.php";
 				$('.load_other').append(`<div class="search__tag tag">${element}</div>`);
 			});			
 		}
-	})
+	}).done(function(){
+		$.get("info-select-tags.php",function(data){
+			$('.load_design, .load_dev, .load_videoAudio, .load_marketing, .load_writing, .load_platformsSoft, .load_other').prepend(data);
+			$('.search').find('.tags__select').addClass('search-tags-list').removeClass('tags__select').attr('multiple', false).attr('title', 'Search tag').attr('data-placeholder', 'Search tag');
+			$('.search-tags-list').find('option:contains("0")').text('Search Tag');
+		});
+	});
 </script>

@@ -100,7 +100,7 @@ $('.search-result').append(`<div class="cancel-filter cancel_filter_tag"><? echo
 
 
 // ! filter =2
-if($_POST["filter"] != 'filter'){
+if($_POST["filter"] != NULL){
 
 	$filter = R::find($_POST["filter"], 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat]);
 
@@ -112,7 +112,7 @@ $final_arr[] = $filter_arr;
 }
 // ! render
 ?>
-<? if($_POST["filter"] != 'filter'): ?>
+<? if($_POST["filter"] != NULL): ?>
 	<script>
 	$('.search-result').find('.cancel_filter_filter').detach();
 	$('.search-result').append(`<div class="cancel-filter cancel_filter_filter"><? echo $_POST["filter"]; ?><span class="close-cancel-filter close_filter"></span></div>`);
@@ -177,7 +177,7 @@ $('.search-result').append(`<div class="cancel-filter cancel_filter_company"><sp
 
 
 // ! salary =5
-if($_POST["search-salary"] != 'salary'){
+if($_POST["search-salary"] != NULL){
 
 
 	if($_POST["search-salary"] == '$1-$5/h'){
@@ -232,7 +232,7 @@ if($_POST["search-salary"] != 'salary'){
 }
 // ! render
 ?>
-<? if($_POST["search-salary"] != 'salary'): ?>
+<? if($_POST["search-salary"] != NULL): ?>
 	<script>
 	$('.search-result').find('.cancel_filter_salary').detach();
 	$('.search-result').append(`<div class="cancel-filter cancel_filter_salary"><span class="gray">salary:&nbsp</span><div><? echo $_POST["search-salary"]; ?></div><span class="close-cancel-filter close_cancel_filter_salary"></span></div>`);
@@ -244,7 +244,7 @@ if($_POST["search-salary"] != 'salary'){
 
 
 // ! experience =6
-if($_POST["search-experience"] != 'experience'){
+if($_POST["search-experience"] != NULL){
 
 	
 	$experience = R::getAll( 'SELECT * FROM post WHERE experience = :experience AND cat = :cat',
@@ -276,7 +276,7 @@ $final_arr[] = $experience_arr;
 }
 // ! render
 ?>
-<? if($_POST["search-experience"] != 'experience'): ?>
+<? if($_POST["search-experience"] != NULL): ?>
 <script>
 $('.search-result').find('.cancel_filter_experience').detach();
 $('.search-result').append(`<div class="cancel-filter cancel_filter_experience"><span class="gray">experience:&nbsp</span><div><? echo $_POST["search-experience"]; ?></div><span class="close-cancel-filter close_cancel_filter_experience"></span></div>`);
@@ -287,7 +287,7 @@ $('.search-result').append(`<div class="cancel-filter cancel_filter_experience">
 
 
 // ! location =7
-if($_POST["search-location"] != 'location'){
+if($_POST["search-location"] != NULL){
 	
 		$location = R::getAll( 'SELECT * FROM post WHERE location = :location AND cat = :cat',
 		[':location' => $_POST["search-location"], ':cat' => $cat]
@@ -302,7 +302,7 @@ $final_arr[] = $location_arr;
 }
 // ! render
 ?>
-<? if($_POST["search-location"] != 'location'): ?>
+<? if($_POST["search-location"] != NULL): ?>
 	<script>
 	$('.search-result').find('.cancel_filter_location').detach();
 	$('.search-result').append(`<div class="cancel-filter cancel_filter_location"><span class="gray">location:&nbsp</span><div><? echo $_POST["search-location"]; ?></div><span class="close-cancel-filter close_cancel_filter_location"></span></div>`);
@@ -312,7 +312,7 @@ $final_arr[] = $location_arr;
 // ? render
 
 // ! duration =8
-if($_POST["search-duration"] != 'duration'){
+if($_POST["search-duration"] != NULL){
 	
 	$duration = R::getAll( 'SELECT * FROM post WHERE duration = :duration AND cat = :cat',
 	[':duration' => $_POST["search-duration"], ':cat' => $cat]
@@ -327,7 +327,7 @@ $final_arr[] = $duration_arr;
 }
 // ! render
 ?>
-<? if($_POST["search-duration"] != 'duration'): ?>
+<? if($_POST["search-duration"] != NULL): ?>
 	<script>
 	$('.search-result').find('.cancel_filter_duration').detach();
 	$('.search-result').append(`<div class="cancel-filter cancel_filter_duration"><span class="gray">type:&nbsp</span><div><? echo $_POST["search-duration"]; ?></div><span class="close-cancel-filter close_cancel_filter_duration"></span></div>`);
@@ -340,7 +340,7 @@ $final_arr[] = $duration_arr;
 
 
 // ! workload =9
-if($_POST["search-workload"] != 'workload'){
+if($_POST["search-workload"] != NULL){
 	
 	if($_POST["search-workload"] == '1-40 h/mo'){
 		$s1 = 1;
@@ -383,7 +383,7 @@ if($_POST["search-workload"] != 'workload'){
 }
 // ! render
 ?>
-<? if($_POST["search-workload"] != 'workload'): ?>
+<? if($_POST["search-workload"] != NULL): ?>
 	<script>
 	$('.search-result').find('.cancel_filter_workload').detach();
 	$('.search-result').append(`<div class="cancel-filter cancel_filter_workload"><span class="gray">workload:&nbsp</span><div><? echo $_POST["search-workload"]; ?></div><span class="close-cancel-filter close_cancel_filter_workload"></span></div>`);
@@ -395,7 +395,7 @@ if($_POST["search-workload"] != 'workload'){
 
 
 // ! posted =10
-if($_POST["search-posted"] != 'posted'){
+if($_POST["search-posted"] != NULL){
 
 	$now = time();
 
@@ -430,7 +430,7 @@ $final_arr[] = $posted_arr;
 }
 // ! render
 ?>
-<? if($_POST["search-posted"] != 'posted'): ?>
+<? if($_POST["search-posted"] != NULL): ?>
 	<script>
 	$('.search-result').find('.cancel_filter_posted').detach();
 	$('.search-result').append(`<div class="cancel-filter cancel_filter_posted"><span class="gray">posted:&nbsp</span><div><? echo $_POST["search-posted"]; ?></div><span class="close-cancel-filter close_cancel_filter_posted"></span></div>`);

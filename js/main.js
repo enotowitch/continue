@@ -39,13 +39,6 @@ $(document).ready(function () {
 		}
 	});
 
-
-
-	// ! chosen
-
-	infoCell.not('.info__example').not('.info__simple').chosen();
-	tagsSelect.chosen({ max_selected_options: 3 });
-
 	// ! current user / new user animations
 
 	var current_user = $('.current_user').val();
@@ -445,6 +438,12 @@ $(document).ready(function () {
 						$(this).addClass('highlight-tag').removeClass('tag-no-db');
 					}
 				});
+				$('.search-tags-list').find('option').each(function(){
+					if ($(this).text().trim() == highlight_tags[i]) {
+						$(this).addClass('highlight');
+					}
+				})
+				$('.search-tags-list').trigger("chosen:updated");
 			}
 		}
 	})
@@ -467,7 +466,7 @@ $(document).ready(function () {
 	}, 500);
 	// on change
 	$('.sort-flex').find('select').on('change', function () {
-		$(this).css({ 'color': '#6fda44' });
+		$(this).next('.chosen-container').find('.chosen-single span').css({ 'color': '#6fda44' });
 	});
 	// input type="text"
 	// on load
@@ -478,6 +477,15 @@ $(document).ready(function () {
 	$('.sort-flex').find('[type="text"]').on('change', function () {
 		$(this).css({ 'color': '#6fda44' });
 	});
+
+		// ! chosen
+
+		infoCell.not('.info__example').not('.info__simple').chosen();
+		tagsSelect.chosen({ max_selected_options: 3 });
+		$('.search-tags-list').chosen({ max_selected_options: 1 });
+		$('.sort-flex').find('select').not('[name="tags"]').each(function(){
+			$(this).chosen({ max_selected_options: 1, display_disabled_options: false });
+		})
 
 	// ! TEST load-more
 	$(window).scroll(function () {
@@ -608,7 +616,7 @@ $(document).ready(function () {
 			var quantity = parseInt(window.location.href.split('quantity=')[1].replace('&', ''));
 		}
 
-		quantity += 10;
+		quantity += 12;
 		$('.filter-form').find(`[name="quantity"]`).val(`${quantity}`);
 		// prevent load-more
 		if ($('.card').not('.not100').length != 12) {
@@ -629,7 +637,7 @@ $(document).ready(function () {
 	$(document).on('click', '.load-less-search', function () {
 
 		var quantity = parseInt(window.location.href.split('quantity=')[1].replace('&', ''));
-		quantity -= 10;
+		quantity -= 12;
 		$('.filter-form').find(`[name="quantity"]`).val(`${quantity}`);
 		// ! last filter
 		var last_filter = window.location.href.split('?')[1];
@@ -688,5 +696,18 @@ $(document).ready(function () {
 		$('html, body').animate({ scrollTop: 0 }, '300');
 	});
 
-
+	// ! TEST search-tags-list
+	$('.search-tags-list').on('change', function(){
+		var text = $(this).val();
+		$('[name="tags"]').html(`<option value="${text}"></option>`);
+		// ! last filter
+		var last_filter = window.location.href.split('?')[1];
+		if (last_filter != undefined) {
+			var last_filter = last_filter.replace(/search-tag.*?&/, '');
+			history.pushState(null, '', `?${last_filter}search-tag=${text}&`);
+		} else {
+			history.pushState(null, '', `?search-tag=${text}&`);
+		}
+		post_filter_card();
+	})
 })
