@@ -2,7 +2,9 @@
 <? if ($_GET): ?>
 	<script>
 	$(document).ready(function(){
-		$('.search-icon').trigger('click');
+		$('.search').show();
+		$('.banner').hide();
+		$('.post').hide();
 		$('.load-more').detach();
 <? if($_GET["filter"]): ?>
 	$('.filter-form').find('.filter').find(`option:contains("<? echo $_GET["filter"]; ?>")`).attr('selected', true);

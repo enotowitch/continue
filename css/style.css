@@ -1462,3 +1462,16 @@
 .search__body .chosen-container-single .chosen-single span {
   color: #969696 !important;
 }
+
+.select-tags-div {
+  display: inline-block;
+  position: absolute;
+  top: 61px;
+  z-index: 2;
+}
+
+.hidden-tag {
+  width: 140px;
+  display: inline-block;
+  opacity: 0;
+}

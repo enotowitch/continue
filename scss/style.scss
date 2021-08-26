@@ -1130,8 +1130,19 @@
 	font-size: 14px !important;
 	border-radius: 4px !important;
 	width: 126px !important;
-	span{
+	span {
 		color: $gray-light !important;
 	}
 }
 // ? search-tags-list => after chosen plugin
+.select-tags-div {
+	display: inline-block;
+	position: absolute;
+	top: 61px;
+	z-index: 2;
+}
+.hidden-tag{
+	width: 140px;
+	display: inline-block;
+	opacity: 0;
+}
