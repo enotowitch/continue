@@ -13,10 +13,10 @@
 	$('.filter-form').find('[name="tags"]').append('<option value="<? echo $_GET["search-tag"]; ?>"><? echo $_GET["search-tag"]; ?></option>');
 <? endif; ?> 
 <? if($_GET["search-word"]): ?>
-	$('.filter-form').find('.search-word').val('<? echo $_GET["search-word"]; ?>');
+	$('.filter-form').find('.search-word').prepend('<option selected value="<? echo $_GET["search-word"]; ?>"><? echo $_GET["search-word"]; ?></option>');
 <? endif; ?> 
 <? if($_GET["search-company"]): ?>
-	$('.filter-form').find('.search-company').val('<? echo $_GET["search-company"]; ?>');
+	$('.filter-form').find('.search-company').prepend('<option selected value="<? echo $_GET["search-company"]; ?>"><? echo $_GET["search-company"]; ?></option>');
 <? endif; ?> 
 <? if($_GET["salary"]): ?>
 	$('.filter-form').find('.search-salary').val('<? echo $_GET["salary"]; ?>');
@@ -47,7 +47,7 @@ setTimeout(() => {
 $('.sort-flex').find('select').each(function(){
 	$(this).trigger("chosen:updated");
 	if($(this).val() != null){
-		$(this).next('.chosen-container').find('.chosen-single span').css({ 'color': '#6fda44' });
+		$(this).next('.chosen-container').find('.chosen-single span').css({ 'color': '#6fda44', 'font-weight': '700' });
 	}
 });
 	});

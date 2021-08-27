@@ -25,209 +25,21 @@ $(document).ready(function () {
 
 	})
 
-	// ! FILTER
-	$('.filter').on('change', function () {
+	// ! SEARCH-WORD, SEARCH-COMPANY
 
+	// ! POSTED, WORKLOAD, LOCATION, DURATION, EXPERIENCE, SALARY, FILTER
+	$(document).on('change', '.search-posted, .search-workload, .search-location, .search-duration, .search-experience, .search-salary, .filter, .search-word, .search-company', function (e) {
+
+		if(this.className == 'search-word' || this.className == 'search-company'){
+			var className = this.className;
+		} else {
+			var className = this.className.replace('search-', '');
+		}
 		var text = $(this).val();
 
-
-		if (text != 'filter') {
-
-
-			// ! last filter
-			var last_filter = window.location.href.split('?')[1];
-
-			if (last_filter != undefined) {
-				var last_filter = last_filter.replace(/filter.*?&/, '').replace(/quantity.*?&/, '');
-				history.pushState(null, '', `?${last_filter}filter=${text}&`);
-			} else {
-				history.pushState(null, '', `?filter=${text}&`);
-			}
-			// ! post
-			$('.go-to-first').eq(0).trigger('click');
-		}
-
-	})
-
-	// ! SEARCH-WORD
-	$(document).on('keyup', '.search-word', function (e) {
-
-		var text = $(this).val().trim();
-
-
-		// ! last filter
-		var last_filter = window.location.href.split('?')[1];
-
-		if (last_filter != undefined) {
-			var last_filter = last_filter.replace(/search-word.*?&/, '').replace(/quantity.*?&/, '');
-			history.pushState(null, '', `?${last_filter}search-word=${text}&`);
-		} else {
-			history.pushState(null, '', `?search-word=${text}&`);
-		}
+		last_filter(text, className);
 		// ! post
 		$('.go-to-first').eq(0).trigger('click');
-
-		if (text.length == 0) {
-			$('.search-result').find('.cancel_filter_word').detach();
-		}
-	})
-
-	// ! SEARCH-COMPANY
-	$(document).on('keyup', '.search-company', function (e) {
-
-		var text = $(this).val().trim();
-
-
-		// ! last filter
-		var last_filter = window.location.href.split('?')[1];
-
-		if (last_filter != undefined) {
-			var last_filter = last_filter.replace(/search-company.*?&/, '').replace(/quantity.*?&/, '');
-			history.pushState(null, '', `?${last_filter}search-company=${text}&`);
-		} else {
-			history.pushState(null, '', `?search-company=${text}&`);
-		}
-		// ! post
-		$('.go-to-first').eq(0).trigger('click');
-
-		if (text.length == 0) {
-			$('.search-result').find('.cancel_filter_company').detach();
-		}
-	})
-
-	// ! SALARY
-	$(document).on('change', '.search-salary', function (e) {
-
-		var text = $(this).val();
-
-		if (text != 'salary') {
-
-
-			// ! last filter
-			var last_filter = window.location.href.split('?')[1];
-
-			if (last_filter != undefined) {
-				var last_filter = last_filter.replace(/salary.*?&/, '').replace(/quantity.*?&/, '');
-				history.pushState(null, '', `?${last_filter}salary=${text}&`);
-			} else {
-				history.pushState(null, '', `?salary=${text}&`);
-			}
-			// ! post
-			$('.go-to-first').eq(0).trigger('click');
-		}
-	})
-
-	// ! EXPERIENCE 
-	$(document).on('change', '.search-experience', function (e) {
-
-		var text = $(this).val();
-
-		if (text != 'experience') {
-
-
-			// ! last filter
-			var last_filter = window.location.href.split('?')[1];
-
-			if (last_filter != undefined) {
-				var last_filter = last_filter.replace(/experience.*?&/, '').replace(/quantity.*?&/, '');
-				history.pushState(null, '', `?${last_filter}experience=${text}&`);
-			} else {
-				history.pushState(null, '', `?experience=${text}&`);
-			}
-			// ! post
-			$('.go-to-first').eq(0).trigger('click');
-		}
-
-	})
-
-	// ! DURATION
-	$(document).on('change', '.search-duration', function (e) {
-
-		var text = $(this).val();
-
-		if (text != 'duration') {
-
-
-			// ! last filter
-			var last_filter = window.location.href.split('?')[1];
-
-			if (last_filter != undefined) {
-				var last_filter = last_filter.replace(/duration.*?&/, '').replace(/quantity.*?&/, '');
-				history.pushState(null, '', `?${last_filter}duration=${text}&`);
-			} else {
-				history.pushState(null, '', `?duration=${text}&`);
-			}
-			// ! post
-			$('.go-to-first').eq(0).trigger('click');
-		}
-
-	})
-
-	// ! LOCATION
-	$(document).on('change', '.search-location', function (e) {
-
-		var text = $(this).val();
-
-		if (text != 'location') {
-
-
-			// ! last filter
-			var last_filter = window.location.href.split('?')[1];
-
-			if (last_filter != undefined) {
-				var last_filter = last_filter.replace(/location.*?&/, '').replace(/quantity.*?&/, '');
-				history.pushState(null, '', `?${last_filter}location=${text}&`);
-			} else {
-				history.pushState(null, '', `?location=${text}&`);
-			}
-			// ! post
-			$('.go-to-first').eq(0).trigger('click');
-		}
-
-	})
-
-	// ! WORKLOAD
-	$(document).on('change', '.search-workload', function (e) {
-
-		var text = $(this).val();
-
-		if (text != 'workload') {
-
-
-			// ! last filter
-			var last_filter = window.location.href.split('?')[1];
-
-			if (last_filter != undefined) {
-				var last_filter = last_filter.replace(/workload.*?&/, '').replace(/quantity.*?&/, '');
-				history.pushState(null, '', `?${last_filter}workload=${text}&`);
-			} else {
-				history.pushState(null, '', `?workload=${text}&`);
-			}
-			// ! post
-			$('.go-to-first').eq(0).trigger('click');
-		}
-	})
-
-	// ! POSTED
-	$(document).on('change', '.search-posted', function (e) {
-
-		var text = $(this).val();
-
-		if (text != 'posted') {
-
-
-			// ! last filter
-			var last_filter = window.location.href.split('?')[1];
-
-			if (last_filter != undefined) {
-				var last_filter = last_filter.replace(/posted.*?&/, '').replace(/quantity.*?&/, '');
-				history.pushState(null, '', `?${last_filter}posted=${text}&`);
-			} else {
-				history.pushState(null, '', `?posted=${text}&`);
-			}
-			// ! post
-			$('.go-to-first').eq(0).trigger('click');
-		}
 	})
 
 
@@ -291,10 +103,17 @@ $(document).ready(function () {
 	$(document).on('click', '.close-cancel-filter', function () {
 
 		var className = this.className.replace('close-cancel-filter ', '').replace('close_cancel_filter_', '');
-		if(className == 'company' || className == 'word'){
+		if(className == 'word'){
 			// ! NULL select/input
-			$('.filter-form').find(`.search-${className}`).val('');
-		} else {
+			$('.filter-form').find(`.search-${className}`).prepend('<option disabled selected value="0">title</option>');
+			$('.filter-form').find(`.search-${className}`).trigger('chosen:updated');
+		} 
+		else if(className == 'company'){
+			// ! NULL select/input
+			$('.filter-form').find(`.search-${className}`).prepend('<option disabled selected value="0">company</option>');
+			$('.filter-form').find(`.search-${className}`).trigger('chosen:updated');
+		}
+		else {
 			// ! NULL select/input
 			$('.filter-form').find(`.search-${className}`).val(`${className}`);
 		}
@@ -316,6 +135,9 @@ $(document).ready(function () {
 		// ! post again
 		$('.go-to-first').eq(0).trigger('click');
 	})
+
+
+	
 
 	// ! CANCEL_ALL_FILTERS
 	$(document).on('click', '.cancel_all_filters', function () {

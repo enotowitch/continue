@@ -98,10 +98,14 @@
 		</select>
 
 		<!-- ! search title -->
-		<input class="search-word" name="search-word" type="text" placeholder="search title">
+		<select class="search-word" name="search-word" id="search-word">
+			<option disabled selected value="0">title</option>
+		</select>
 
 		<!-- ! search company -->
-		<input class="search-company" name="search-company" type="text" placeholder="search company">
+		<select class="search-company" name="search-company" id="search-company">
+			<option disabled selected value="0">company</option>
+		</select>
 
 		<input type="hidden" name="card_from" value="<? echo $_SERVER['PHP_SELF']; ?>">
 </form>

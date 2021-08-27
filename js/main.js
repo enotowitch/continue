@@ -137,22 +137,17 @@ $(document).ready(function () {
 			dataType: 'json',
 			success: function (data) {
 
-				var availableTitles = [];
-				var availableCompany = [];
-
 				$.each(data.title, function (element, i) {
-					availableTitles.push(i);
+					$('.search-word').append(`<option value="${i}">${i}</option>`);
+					$('.search-word').trigger('chosen:updated');
 				})
 				$.each(data.subt, function (element, i) {
-					availableCompany.push(i);
+					$('.search-company').append(`<option value="${i}">${i}</option>`);
+					$('.search-company').trigger('chosen:updated');
 				})
 
-				$(".search-word").autocomplete({
-					source: availableTitles
-				});
-				$(".search-company").autocomplete({
-					source: availableCompany
-				});
+				
+
 			}
 		})
 	});
@@ -466,12 +461,12 @@ $(document).ready(function () {
 	}, 500);
 	// on change
 	$('.sort-flex').find('select').on('change', function () {
-		$(this).next('.chosen-container').find('.chosen-single span').css({ 'color': '#6fda44' });
+		$(this).next('.chosen-container').find('.chosen-single span').css({ 'color': '#6fda44', 'font-weight': '700' });
 	});
 	// input type="text"
 	// on load
 	$('.sort-flex').find('[type="text"]').each(function () {
-		$(this).css({ 'color': '#6fda44' });
+		$(this).css({ 'color': '#6fda44', 'font-weight': '700' });
 	});
 	// on change
 	$('.sort-flex').find('[type="text"]').on('change', function () {
@@ -483,9 +478,10 @@ $(document).ready(function () {
 		infoCell.not('.info__example').not('.info__simple').chosen();
 		tagsSelect.chosen({ max_selected_options: 3 });
 		$('.search-tags-list').chosen({ max_selected_options: 1 });
-		$('.sort-flex').find('select').not('[name="tags"]').each(function(){
-			$(this).chosen({ max_selected_options: 1, display_disabled_options: false });
+		$('.sort-flex').find('select').not('[name="tags"], .search-location, .search-word, .search-company').each(function(){
+			$(this).chosen({ max_selected_options: 1, display_disabled_options: false, disable_search: true });
 		})
+		$('.search-location, .search-word, .search-company').chosen({ max_selected_options: 1, display_disabled_options: false, disable_search: false });
 
 	// ! TEST load-more
 	$(window).scroll(function () {

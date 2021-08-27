@@ -14,13 +14,15 @@
 		</div>
 		<div class="select-tags-div"></div>
 			<!-- ! TAGS -->
-			<div class="search__tags search__tags_active load_design"></div>
-			<div class="search__tags load_dev"></div>
-			<div class="search__tags load_videoAudio"></div>
-			<div class="search__tags load_marketing"></div>
-			<div class="search__tags load_writing"></div>
-			<div class="search__tags load_platformsSoft"></div>
-			<div class="search__tags load_other"></div>
+			<div class="search__tags-wrap">
+				<div class="search__tags search__tags_active load_design"></div>
+				<div class="search__tags load_dev"></div>
+				<div class="search__tags load_videoAudio"></div>
+				<div class="search__tags load_marketing"></div>
+				<div class="search__tags load_writing"></div>
+				<div class="search__tags load_platformsSoft"></div>
+				<div class="search__tags load_other"></div>
+			</div>
 		</div>
 		<?
 		include_once "filters.php";
