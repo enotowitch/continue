@@ -28,6 +28,7 @@
   max-width: 600px;
   margin: 0px auto 15px;
   padding: 15px;
+  position: relative;
 }
 
 .search__topics {

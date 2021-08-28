@@ -8,6 +8,9 @@ $(document).ready(function () {
 		$('.tag').removeClass('empty-tag');
 		var text = $(this).text().trim();
 
+		$('.search-tags-list').val(`${text}`);
+		$('.search-tags-list').trigger('chosen:updated');
+
 		// pass tag to hidden select in .filter-form
 		$('.filter-form').find('select[name="tags"]').html(`<option value="${text}">${text}</option>`);
 

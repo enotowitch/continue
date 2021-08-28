@@ -694,7 +694,45 @@ $(document).ready(function () {
 
 	// ! TEST search-tags-list
 	$('.search-tags-list').on('change', function(){
+
 		var text = $(this).val();
+		// ! change TOPIC depending on TAG
+		// ! design
+		var design = [];
+		$('.load_design .search__tag').each(function(){design.push($(this).text().trim());});
+		design.forEach(element => {if(text == element){$('.search-topic-design').trigger('click');}});
+		// ? design
+		// ! dev
+		var dev = [];
+		$('.load_dev .search__tag').each(function(){dev.push($(this).text().trim());});
+		dev.forEach(element => {if(text == element){$('.search-topic-dev').trigger('click');}});
+		// ? dev
+		// ! videoAudio
+		var videoAudio = [];
+		$('.load_videoAudio .search__tag').each(function(){videoAudio.push($(this).text().trim());});
+		videoAudio.forEach(element => {if(text == element){$('.search-topic-videoAudio').trigger('click');}});
+		// ? videoAudio
+		// ! marketing
+		var marketing = [];
+		$('.load_marketing .search__tag').each(function(){marketing.push($(this).text().trim());});
+		marketing.forEach(element => {if(text == element){$('.search-topic-marketing').trigger('click');}});
+		// ? marketing
+		// ! writing
+		var writing = [];
+		$('.load_writing .search__tag').each(function(){writing.push($(this).text().trim());});
+		writing.forEach(element => {if(text == element){$('.search-topic-writing').trigger('click');}});
+		// ? writing
+		// ! platformsSoft
+		var platformsSoft = [];
+		$('.load_platformsSoft .search__tag').each(function(){platformsSoft.push($(this).text().trim());});
+		platformsSoft.forEach(element => {if(text == element){$('.search-topic-platformsSoft').trigger('click');}});
+		// ? platformsSoft
+		// ! other
+		var other = [];
+		$('.load_other .search__tag').each(function(){other.push($(this).text().trim());});
+		other.forEach(element => {if(text == element){$('.search-topic-other').trigger('click');}});
+		// ? other
+		// ? change TOPIC depending on TAG
 		$('[name="tags"]').html(`<option value="${text}"></option>`);
 		// ! last filter
 		var last_filter = window.location.href.split('?')[1];

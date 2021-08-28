@@ -92,6 +92,7 @@ function post_filter_card() {
 		beforeSend: function () {
 			$('.card').not('.not100').addClass('op0');
 			$('.card-flex').append('<div class="search-loader"></div>');
+			$('.search__body').append('<div class="search-loader-top"></div>');
 		},
 		success: function (data) {
 			$('.card-flex').html(data);
@@ -119,6 +120,7 @@ function post_filter_card() {
 			setTimeout(() => {
 				my_slick($('.info__pics'));
 			}, 100);
+			$('.search-loader-top').detach();
 		}
 	})
 
