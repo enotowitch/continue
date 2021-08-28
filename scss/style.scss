@@ -926,7 +926,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	&__title{
+	&__title {
 		color: $brandcolor;
 		font-size: 20px;
 		font-family: Montserrat;
@@ -1190,4 +1190,59 @@
 .ui-autocomplete {
 	font-family: Montserrat !important;
 	font-size: 15px !important;
+}
+// ! skeleton animation
+.sk {
+	&__card {
+		width: 290px;
+		height: 203px;
+		position: relative;
+	}
+	&__logo {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		margin: 4px 0 0 4px;
+	}
+	&__title, &__title2 {
+		width: 185px;
+		height: 20px;
+		display: inline-block;
+		position: relative;
+		left: 60px;
+		bottom: 40px;
+		border-radius: 4px;
+	}
+	&__title2 {
+		width: 140px;
+	}
+	&__infos,
+	&__infos2 {
+		display: flex;
+		flex-wrap: wrap;
+		width: 250px;
+	}
+	&__info {
+		width: 75px;
+		height: 16px;
+		margin: 0 0 4px 4px;
+		border-radius: 4px;
+	}
+	&__infos2 {
+		margin-top: 47px;
+		.sk__info {
+			width: 60px;
+			height: 23px;
+		}
+	}
+}
+.sk-anim {
+	-webkit-mask-repeat: no-repeat;
+	background: linear-gradient(90deg, #ccca 40%, #fffa, #ccca 60%) right/300% 100%;
+	animation: m 1s linear infinite;
+}
+@keyframes m {
+	to {
+		background-position: left;
+	}
 }

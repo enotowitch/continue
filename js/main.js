@@ -158,7 +158,6 @@ $(document).ready(function () {
 	$(document).on('click', '#salary, #experience, #location, #duration, #workload', function () {
 		var text = $(this).text().trim();
 		var search_id = this.id;
-		$(`.search-${search_id}`).css({ 'color': '#6fda44' });
 
 		// ! salary
 		for (var i = 1; i <= 5; i++) {
@@ -281,6 +280,8 @@ $(document).ready(function () {
 
 
 		$(`.search-${search_id}`).val(`${text}`);
+		$(`.search-${search_id}`).next('.chosen-container').find('.chosen-single span').css({ 'color': '#6fda44', 'font-weight': '700' });
+		$(`.search-${search_id}`).trigger('chosen:updated');
 
 		last_filter(text, search_id);
 		// ! post

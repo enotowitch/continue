@@ -6,17 +6,10 @@ $(document).ready(function () {
 		var current_user = $('.current_user').val();
 		var card_from = $('.card_from').val();
 		var cat = $('.cat').val();
-
-				// ! links for anchors: added to hidden & removed from hidden
-				if(card_from == '/index.php' || card_from == '/jobs-del.php' || card_from == '/jobs-like.php' || card_from == '/jobs-mes.php' || card_from == '/post-job.php'){
-					var hide_link = '/jobs-del.php';
-				}
-				if(card_from == '/portfolios.php' || card_from == '/port-del.php' || card_from == '/port-like.php' || card_from == '/port-mes.php'){
-					var hide_link = '/port-del.php';
-				}
+		var new_counter = $(document).find('.cancel_all_filters').text().replace(/\D/g,'');
 
 			// ! removed from hidden
-		if(card_from == "/jobs-del.php" || card_from == "/port-del.php" || $(e.target).closest('.card').hasClass('db-hidden')){
+		if($(e.target).closest('.card').hasClass('db-hidden')){
 			my_alert_filter('Removed from', 'hidden', 'danger', 'filter=hidden&');
 		} else {
 			// !!! added to hidden	
@@ -46,6 +39,9 @@ $(document).ready(function () {
 					$(e.target).closest('.card').hide();
 				}, 600);
 				
+				// ! change result counter
+				$('.cancel_all_filters').text(`cancel results: ${new_counter - 1}`);
+
 			}
 		});
 		

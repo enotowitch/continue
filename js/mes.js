@@ -52,17 +52,7 @@ $(document).ready(function () {
 	$(document).on('click', '.mes-send', function (e) {
 
 		var card_from = $('.card_from').val();
-
-
-
-		// ! links for anchors: mes_link
-		if (card_from == '/index.php' || card_from == '/jobs-like.php' || card_from == '/jobs-del.php' || card_from == '/jobs-mes.php') {
-			var mes_link = '/jobs-mes.php';
-		}
-
-		if (card_from == '/portfolios.php' || card_from == '/port-like.php' || card_from == '/port-del.php' || card_from == '/port-mes.php') {
-			var mes_link = '/port-mes.php';
-		}
+		var new_counter = $(document).find('.cancel_all_filters').text().replace(/\D/g,'');
 
 		$.post({
 			url: 'mes-send.php',
@@ -86,7 +76,8 @@ $(document).ready(function () {
 					location.reload();
 				}
 
-
+				// ! change result counter
+				$('.cancel_all_filters').text(`cancel results: ${new_counter - 1}`);
 
 			},
 		})

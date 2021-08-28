@@ -497,16 +497,16 @@ $('.search-result').after('<div class="load-search"><div class="load-less-search
 <? endif; ?>
 // ? render search-result number
 // show-hidden-posts & show-applied-posts
-<? if($_POST["show-hidden-posts"] == NULL): ?>
+<? if($_POST["show-hidden-posts"] == NULL && $_POST["card_from"] != "/post-job.php" && $_POST["card_from"] != "/post-portfolio.php"): ?>
 $('.search-result').append('<div class="show-hidden-posts" >Show hidden posts</div>');
 <? endif; ?>
-<? if($_POST["show-hidden-posts"] != NULL): ?>
+<? if($_POST["show-hidden-posts"] != NULL && $_POST["card_from"] != "/post-job.php" && $_POST["card_from"] != "/post-portfolio.php"): ?>
 $('.search-result').append('<div class="dont-show-hidden-posts" >Don\'t show hidden</div>');
 <? endif; ?>
-<? if($_POST["show-applied-posts"] == NULL): ?>
+<? if($_POST["show-applied-posts"] == NULL && $_POST["card_from"] != "/post-job.php" && $_POST["card_from"] != "/post-portfolio.php"): ?>
 $('.search-result').append('<div class="show-applied-posts" >Show applied posts</div>');
 <? endif; ?>
-<? if($_POST["show-applied-posts"] != NULL): ?>
+<? if($_POST["show-applied-posts"] != NULL && $_POST["card_from"] != "/post-job.php" && $_POST["card_from"] != "/post-portfolio.php"): ?>
 $('.search-result').append('<div class="dont-show-applied-posts" >Don\'t show applied</div>');
 <? endif; ?>
 // ? SEARCH_COUNTER > 0
@@ -514,14 +514,20 @@ $('.search-result').append('<div class="dont-show-applied-posts" >Don\'t show ap
 <? endif; ?>
 <? if(count($intersect) == 0): ?>
 	<script>
+		// SEARCH_COUNTER = filters; count($intersect) = RESULTS
 		// ! 0 RESULTS
 		$('.load-search').detach();
 		$('.card-flex').append('<div class="try"><div class="try__title">Try:</div><div class="show-hidden-posts">Show hidden posts</div><div class="show-applied-posts">Show applied posts</div><div class="try-tag">Search only tag</div></div>');
+		// ? 0 RESULTS
 	</script>
 <? endif; ?>
+<!-- ! $SEARCH_COUNTER == 0 -->
 <? if($search_counter == 0): ?>
 	<!-- allow load-more when no search -->
-	<script>$('.card-flex').after('<div hidden class="load-more"></div>');</script>
+	<script>
+	$('.card-flex').after('<div hidden class="load-more"></div>');
+	$('.try').detach();
+	</script>
 	<? if($_POST['card_from'] == "/index.php" || $_POST['card_from'] == "/portfolios.php"): ?>
 		<? $posts = load_all_num_posts($cat); ?>
 	<? endif; ?>
@@ -529,6 +535,7 @@ $('.search-result').append('<div class="dont-show-applied-posts" >Don\'t show ap
 		<? $posts = load_my_num_posts($cat); ?>
 	<? endif; ?>
 <? endif; ?>
+<!-- ? $SEARCH_COUNTER == 0 -->
 
 	<!-- ! search-result -->
 	<div class="search-result"></div>

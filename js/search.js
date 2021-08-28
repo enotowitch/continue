@@ -71,7 +71,7 @@ $(document).ready(function () {
 	$(document).on('click', '.close_filter', function () {
 
 		// ! NULL select/input
-		$('.filter-form').find('select.filter').val('filter');
+		$('.filter-form').find('select.filter').val('0');
 
 		// ! push URL
 		var searched_word = $(this).closest('div').text().trim();
@@ -118,7 +118,7 @@ $(document).ready(function () {
 		}
 		else {
 			// ! NULL select/input
-			$('.filter-form').find(`.search-${className}`).val(`${className}`);
+			$('.filter-form').find(`.search-${className}`).val(`0`);
 		}
 		var searched_word = encodeURI($(this).prev('div').text().trim());
 		if(className == 'company' || className == 'word'){

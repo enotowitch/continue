@@ -7,15 +7,6 @@ $(document).ready(function () {
 		var card_from = $('.card_from').val();
 		var cat = $(this).closest('.card').find('.cat').val();
 
-
-		// ! links for anchors: added to liked & removed from liked
-		if(card_from == '/index.php' || card_from == '/jobs-like.php' || card_from == '/jobs-del.php' || card_from == '/jobs-mes.php' || card_from == '/post-job.php'){
-			var like_link = '/jobs-like.php';
-		}
-		if(card_from == '/portfolios.php' || card_from == '/port-like.php' || card_from == '/port-del.php' || card_from == '/port-mes.php' || card_from == '/post-portfolio.php'){
-			var like_link = '/port-like.php';
-		}
-
 // ! log to like
 		if(current_user == ""){
 			my_alert_login('like-color', 'like');
