@@ -14,7 +14,7 @@
 
 
 		<select class="filter" name="filter">
-			<option disabled selected value="filter">status</option>
+			<option disabled selected value="0">status</option>
 			<option value="liked">liked</option>
 			<option value="hidden">hidden</option>
 			<option value="messaged">messaged</option>
@@ -22,7 +22,7 @@
 
 <!-- ! search salary -->
 		<select class="search-salary" name="search-salary">
-			<option disabled selected value="salary">salary</option>
+			<option disabled selected value="0">salary</option>
 			<option value="volunteer">volunteer</option>
 			<option value="$1-$5/h">$1-$5/h</option>
 			<option value="$5-$10/h">$5-$10/h</option>
@@ -44,7 +44,7 @@
 
 		<!-- ! search experience -->	
 		<select class="search-experience" name="search-experience">
-			<option disabled selected value="experience">experience</option>
+			<option disabled selected value="0">experience</option>
 			<option value="No Exp.">No Exp.</option>
 			<option value="1 year">1 year</option>
 			<option value="2 years">2 years</option>
@@ -61,7 +61,7 @@
 
 		<!-- ! search location -->	
 		<select class="search-location" name="search-location">
-		<option disabled selected value="location">location</option>
+		<option disabled selected value="0">location</option>
 <? 
 	include "info-select-location.php";
 ?>
@@ -70,7 +70,7 @@
 		
 		<!-- ! search duration -->	
 		<select class="search-duration" name="search-duration">
-		<option disabled selected value="duration">type</option>
+		<option disabled selected value="0">type</option>
 <?
 	include "info-select-duration.php";
 ?>
@@ -79,7 +79,7 @@
 
 		<!-- ! search workload -->
 		<select class="search-workload" name="search-workload">
-			<option disabled selected value="workload">workload</option>
+			<option disabled selected value="0">workload</option>
 			<option value="1-40 h/mo">1-40 h/mo</option>
 			<option value="40-80 h/mo">40-80 h/mo</option>
 			<option value="80-120 h/mo">80-120 h/mo</option>
@@ -90,7 +90,7 @@
 
 		<!-- ! search posted -->
 		<select class="search-posted" name="search-posted">
-			<option disabled selected value="posted">posted</option>
+			<option disabled selected value="0">posted</option>
 			<option value="today">today</option>
 			<option value="today - 3 days ago">today - 3 days ago</option>
 			<option value="today - 7 days ago">today - 7 days ago</option>

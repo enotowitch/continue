@@ -606,7 +606,8 @@
 .show-hidden-posts,
 .show-applied-posts,
 .dont-show-hidden-posts,
-.dont-show-applied-posts {
+.dont-show-applied-posts,
+.try-tag {
 	color: $gray-light;
 	border: 1px solid $gray-light;
 	font-size: 14px;
@@ -620,7 +621,8 @@
 .show-hidden-posts,
 .show-applied-posts,
 .dont-show-hidden-posts,
-.dont-show-applied-posts {
+.dont-show-applied-posts,
+.try-tag {
 	border: 1px solid $brandcolor;
 	color: $brandcolor;
 	position: relative;
@@ -635,7 +637,8 @@
 .show-hidden-posts,
 .show-applied-posts,
 .dont-show-hidden-posts,
-.dont-show-applied-posts {
+.dont-show-applied-posts,
+.try-tag {
 	border: 1px solid $gray-light;
 	color: $gray-light;
 }
@@ -912,8 +915,23 @@
 	}
 }
 .oops {
-	margin: 15px auto 0;
+	margin: 30px auto 0;
 	color: $danger;
+	width: $main-cards-cont-wid;
+	text-align: center;
+}
+.try {
+	margin-top: 10px;
+	width: $main-cards-cont-wid;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	&__title{
+		color: $brandcolor;
+		font-size: 20px;
+		font-family: Montserrat;
+		font-weight: 700;
+	}
 }
 .check-no-post-div {
 	p {

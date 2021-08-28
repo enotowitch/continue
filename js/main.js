@@ -744,4 +744,22 @@ $(document).ready(function () {
 		}
 		post_filter_card();
 	})
+
+	// ! TEST try-tag
+	$(document).on('click', '.try-tag', function(){
+		var tag = window.location.href.split('?')[1];
+		var re = /search-tag.*?&/;
+		var tag = tag.match(re);
+		if(tag != null){
+			history.pushState('null', '', `?${tag}`);
+		} else {
+			history.pushState('null', '', `/`);
+		}
+		$('.filter-form').find('select').not('[name="tags"], .switch-size').each(function(){
+			$(this).val(0);
+			$(this).trigger('chosen:updated');
+			$(this).next('.chosen-container').find('.chosen-single span').css({'color': '#000', 'font-weight': '400'})
+		})
+		post_filter_card();
+	})
 })
