@@ -37,9 +37,9 @@
 		$('.update-card').find('select[name="workload"] option[value="0"]').prop("disabled", false).text(`<? echo $_POST["workload"]; ?>`).val(`<? echo $_POST["workload"]; ?>`);
 		$('.update-card').find('select[name="location"] option[value="0"]').prop("disabled", false).text(`<? echo $_POST["location"]; ?>`).val(`<? echo $_POST["location"]; ?>`);
 			
-		$('.update-card').find('select[name="tags[]"] option').eq(0).attr('selected', 'true').text(`<? echo $_POST["tag_1"]; ?>`).val(`<? echo $_POST["tag_1"]; ?>`);
-		$('.update-card').find('select[name="tags[]"] option').eq(1).attr('selected', 'true').text(`<? echo $_POST["tag_2"]; ?>`).val(`<? echo $_POST["tag_2"]; ?>`);
-		$('.update-card').find('select[name="tags[]"] option').eq(2).attr('selected', 'true').text(`<? echo $_POST["tag_3"]; ?>`).val(`<? echo $_POST["tag_3"]; ?>`);
+		$('.update-card').find('select[name="tags[]"]').append('<option selected value="<? echo $_POST["tag_1"]; ?>"><? echo $_POST["tag_1"]; ?></option>')
+		$('.update-card').find('select[name="tags[]"]').append('<option selected value="<? echo $_POST["tag_2"]; ?>"><? echo $_POST["tag_2"]; ?></option>')
+		$('.update-card').find('select[name="tags[]"]').append('<option selected value="<? echo $_POST["tag_3"]; ?>"><? echo $_POST["tag_3"]; ?></option>')
 
 
 		$('.update-card').find('.cross_reset').after('<img class="del mba" src="img/icons/delete.svg" alt="del">');
