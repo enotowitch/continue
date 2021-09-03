@@ -1618,3 +1618,14 @@
     background-position: left;
   }
 }
+
+.select-loader {
+  background: url("../img/select-loader.gif");
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  position: absolute;
+  bottom: 36px;
+  right: 2px;
+}

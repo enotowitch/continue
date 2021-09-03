@@ -33,6 +33,9 @@ if($_POST["card_from"] == "/post-portfolio.php"){
 		$result["subt"]["text$i"] = $titles[$i]["subt"];
 	}
 
+	$result["title"] = array_unique($result["title"]);
+	$result["subt"] = array_unique($result["subt"]);
+
 
  
 echo json_encode($result, JSON_UNESCAPED_UNICODE);

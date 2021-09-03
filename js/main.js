@@ -124,32 +124,35 @@ $(document).ready(function () {
 
 	})
 
+	$(document).one('focus', '.search-word ~ .chosen-container, .search-company ~ .chosen-container', function (e) {
+		// ! autocomlete titles
+		$(function () {
 
+			$.post({
+				'url': 'autocomplete.php',
+				'data': { card_from: card_from },
+				dataType: 'json',
+				beforeSend: function(){
+					$(e.target).after('<div class="select-loader"></div>');
+				},
+				success: function (data) {
 
+					$.each(data.title, function (element, i) {
+						$('.search-word').append(`<option value="${i}">${i}</option>`);
+					})
+					$.each(data.subt, function (element, i) {
+						$('.search-company').append(`<option value="${i}">${i}</option>`);
+					})
 
-
-	// ! autocomlete titles
-	$(function () {
-
-		$.post({
-			'url': 'autocomplete.php',
-			'data': { card_from: card_from },
-			dataType: 'json',
-			success: function (data) {
-
-				$.each(data.title, function (element, i) {
-					$('.search-word').append(`<option value="${i}">${i}</option>`);
 					$('.search-word').trigger('chosen:updated');
-				})
-				$.each(data.subt, function (element, i) {
-					$('.search-company').append(`<option value="${i}">${i}</option>`);
 					$('.search-company').trigger('chosen:updated');
-				})
+					$('.select-loader').detach();	
 
-				
 
-			}
-		})
+
+				}
+			})
+		});
 	});
 
 
@@ -434,7 +437,7 @@ $(document).ready(function () {
 						$(this).addClass('highlight-tag').removeClass('tag-no-db');
 					}
 				});
-				$('.search-tags-list').find('option').each(function(){
+				$('.search-tags-list').find('option').each(function () {
 					if ($(this).text().trim() == highlight_tags[i]) {
 						$(this).addClass('highlight');
 					}
@@ -474,15 +477,15 @@ $(document).ready(function () {
 		$(this).css({ 'color': '#6fda44' });
 	});
 
-		// ! chosen
+	// ! chosen
 
-		infoCell.not('.info__example').not('.info__simple').chosen();
-		tagsSelect.chosen({ max_selected_options: 3 });
-		$('.search-tags-list').chosen({ max_selected_options: 1 });
-		$('.sort-flex').find('select').not('[name="tags"], .search-location, .search-word, .search-company').each(function(){
-			$(this).chosen({ max_selected_options: 1, display_disabled_options: false, disable_search: true });
-		})
-		$('.search-location, .search-word, .search-company').chosen({ max_selected_options: 1, display_disabled_options: false, disable_search: false });
+	infoCell.not('.info__example').not('.info__simple').chosen();
+	tagsSelect.chosen({ max_selected_options: 3 });
+	$('.search-tags-list').chosen({ max_selected_options: 1 });
+	$('.sort-flex').find('select').not('[name="tags"], .search-location, .search-word, .search-company').each(function () {
+		$(this).chosen({ max_selected_options: 1, display_disabled_options: false, disable_search: true });
+	})
+	$('.search-location, .search-word, .search-company').chosen({ max_selected_options: 1, display_disabled_options: false, disable_search: false });
 
 	// ! TEST load-more
 	$(window).scroll(function () {
@@ -502,9 +505,9 @@ $(document).ready(function () {
 			success: function (data) {
 				// ! NO NEW POSTS -> data == null
 				if (data == null) {
-				$(document).find('.load-more').detach();
-					}
-					// ! render cards
+					$(document).find('.load-more').detach();
+				}
+				// ! render cards
 				$.each(data, function (i, e) {
 					$('.card-flex').append(`<div class="card card_main w100 ${e.size}">
 		
@@ -593,8 +596,8 @@ $(document).ready(function () {
 				render_update_icon();
 				// ! slick only 10 last loaded cards
 				var card_length = ($('.card').not('.not100').length);
-				for(var i=1;i<=10;i++){
-					my_slick($('.card').not('.not100').eq(card_length-i).find('.info__pics'));
+				for (var i = 1; i <= 10; i++) {
+					my_slick($('.card').not('.not100').eq(card_length - i).find('.info__pics'));
 				}
 
 			}
@@ -694,44 +697,44 @@ $(document).ready(function () {
 	});
 
 	// ! TEST search-tags-list
-	$('.search-tags-list').on('change', function(){
+	$('.search-tags-list').on('change', function () {
 
 		var text = $(this).val();
 		// ! change TOPIC depending on TAG
 		// ! design
 		var design = [];
-		$('.load_design .search__tag').each(function(){design.push($(this).text().trim());});
-		design.forEach(element => {if(text == element){$('.search-topic-design').trigger('click');}});
+		$('.load_design .search__tag').each(function () { design.push($(this).text().trim()); });
+		design.forEach(element => { if (text == element) { $('.search-topic-design').trigger('click'); } });
 		// ? design
 		// ! dev
 		var dev = [];
-		$('.load_dev .search__tag').each(function(){dev.push($(this).text().trim());});
-		dev.forEach(element => {if(text == element){$('.search-topic-dev').trigger('click');}});
+		$('.load_dev .search__tag').each(function () { dev.push($(this).text().trim()); });
+		dev.forEach(element => { if (text == element) { $('.search-topic-dev').trigger('click'); } });
 		// ? dev
 		// ! videoAudio
 		var videoAudio = [];
-		$('.load_videoAudio .search__tag').each(function(){videoAudio.push($(this).text().trim());});
-		videoAudio.forEach(element => {if(text == element){$('.search-topic-videoAudio').trigger('click');}});
+		$('.load_videoAudio .search__tag').each(function () { videoAudio.push($(this).text().trim()); });
+		videoAudio.forEach(element => { if (text == element) { $('.search-topic-videoAudio').trigger('click'); } });
 		// ? videoAudio
 		// ! marketing
 		var marketing = [];
-		$('.load_marketing .search__tag').each(function(){marketing.push($(this).text().trim());});
-		marketing.forEach(element => {if(text == element){$('.search-topic-marketing').trigger('click');}});
+		$('.load_marketing .search__tag').each(function () { marketing.push($(this).text().trim()); });
+		marketing.forEach(element => { if (text == element) { $('.search-topic-marketing').trigger('click'); } });
 		// ? marketing
 		// ! writing
 		var writing = [];
-		$('.load_writing .search__tag').each(function(){writing.push($(this).text().trim());});
-		writing.forEach(element => {if(text == element){$('.search-topic-writing').trigger('click');}});
+		$('.load_writing .search__tag').each(function () { writing.push($(this).text().trim()); });
+		writing.forEach(element => { if (text == element) { $('.search-topic-writing').trigger('click'); } });
 		// ? writing
 		// ! platformsSoft
 		var platformsSoft = [];
-		$('.load_platformsSoft .search__tag').each(function(){platformsSoft.push($(this).text().trim());});
-		platformsSoft.forEach(element => {if(text == element){$('.search-topic-platformsSoft').trigger('click');}});
+		$('.load_platformsSoft .search__tag').each(function () { platformsSoft.push($(this).text().trim()); });
+		platformsSoft.forEach(element => { if (text == element) { $('.search-topic-platformsSoft').trigger('click'); } });
 		// ? platformsSoft
 		// ! other
 		var other = [];
-		$('.load_other .search__tag').each(function(){other.push($(this).text().trim());});
-		other.forEach(element => {if(text == element){$('.search-topic-other').trigger('click');}});
+		$('.load_other .search__tag').each(function () { other.push($(this).text().trim()); });
+		other.forEach(element => { if (text == element) { $('.search-topic-other').trigger('click'); } });
 		// ? other
 		// ? change TOPIC depending on TAG
 		$('[name="tags"]').html(`<option value="${text}"></option>`);
@@ -747,19 +750,19 @@ $(document).ready(function () {
 	})
 
 	// ! TEST try-tag
-	$(document).on('click', '.try-tag', function(){
+	$(document).on('click', '.try-tag', function () {
 		var tag = window.location.href.split('?')[1];
 		var re = /search-tag.*?&/;
 		var tag = tag.match(re);
-		if(tag != null){
+		if (tag != null) {
 			history.pushState('null', '', `?${tag}`);
 		} else {
 			history.pushState('null', '', `/`);
 		}
-		$('.filter-form').find('select').not('[name="tags"], .switch-size').each(function(){
+		$('.filter-form').find('select').not('[name="tags"], .switch-size').each(function () {
 			$(this).val(0);
 			$(this).trigger('chosen:updated');
-			$(this).next('.chosen-container').find('.chosen-single span').css({'color': '#000', 'font-weight': '400'})
+			$(this).next('.chosen-container').find('.chosen-single span').css({ 'color': '#000', 'font-weight': '400' })
 		})
 		post_filter_card();
 	})

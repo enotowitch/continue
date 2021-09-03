@@ -1220,7 +1220,7 @@
 		display: flex;
 		flex-wrap: wrap;
 	}
-	&__infos-section{
+	&__infos-section {
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
@@ -1249,4 +1249,14 @@
 	to {
 		background-position: left;
 	}
+}
+.select-loader {
+	background: url("../img/select-loader.gif");
+	background-size: contain;
+	width: 20px;
+	height: 20px;
+	background-color: #fff;
+	position: absolute;
+	bottom: 36px;
+	right: 2px;
 }
