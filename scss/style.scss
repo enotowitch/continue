@@ -718,8 +718,19 @@
 .cancel_all_filters,
 .info__simple,
 .forgot-pass,
-.stat {
+.stat,
+.show-hidden-posts,
+.dont-show-hidden-posts,
+.show-applied-posts,
+.dont-show-applied-posts,
+.load-less-search,
+.load-more-search,
+.go-to-first {
 	cursor: pointer;
+}
+.load-less-search-fake,
+.load-more-search-fake{
+	cursor: not-allowed;
 }
 .search-word,
 .search-company {

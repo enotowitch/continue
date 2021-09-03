@@ -10,6 +10,7 @@ $(document).ready(function () {
 
 		$('.search-tags-list').val(`${text}`);
 		$('.search-tags-list').trigger('chosen:updated');
+		$('.search-tags-list').trigger('change');
 
 		// pass tag to hidden select in .filter-form
 		$('.filter-form').find('select[name="tags"]').html(`<option value="${text}">${text}</option>`);

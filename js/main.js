@@ -632,6 +632,8 @@ $(document).ready(function () {
 			history.pushState(null, '', `?quantity=${quantity}&`);
 		}
 		post_filter_card();
+		// ! scroll top
+		$('html, body').animate({scrollTop: $('.card-flex').offset().top}, 1000);
 	})
 	// ! less
 	$(document).on('click', '.load-less-search', function () {
