@@ -642,27 +642,191 @@
   text-decoration: underline;
 }
 
-.please-log {
+.my-alert {
   position: fixed;
-  z-index: 4;
+  z-index: 11;
   top: 50px;
   right: 15px;
-  padding: 4px 40px 4px 4px;
   width: 290px;
-  background-color: #ffffff;
-  -webkit-box-shadow: 1px 4px 5px #8b8b8b, 1px -2px 5px #d3d3d3;
-          box-shadow: 1px 4px 5px #8b8b8b, 1px -2px 5px #d3d3d3;
-  font-size: 20px;
+  font-family: Montserrat;
+  font-size: 18px;
   line-height: 22px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 50px;
+  border-radius: 2px;
+  -webkit-animation-name: alert;
+          animation-name: alert;
+  -webkit-animation-duration: 0.7s;
+          animation-duration: 0.7s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
 }
 
-.please-log img {
+@media (min-width: 767px) {
+  .my-alert {
+    top: 72px;
+  }
+}
+
+.my-alert img {
   position: absolute;
-  top: 2px;
+  top: 24%;
   right: 2px;
   -webkit-transform: scale(0.7);
       -ms-transform: scale(0.7);
           transform: scale(0.7);
+  opacity: 0;
+  -webkit-animation-name: alert-cross;
+          animation-name: alert-cross;
+  -webkit-animation-duration: 0.7s;
+          animation-duration: 0.7s;
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.my-alert__bg {
+  background-color: transparent;
+  position: relative;
+  min-height: 50px;
+  z-index: 2;
+  -webkit-animation-name: alert-bg;
+          animation-name: alert-bg;
+  -webkit-animation-duration: 0.7s;
+          animation-duration: 0.7s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.my-alert__text {
+  position: absolute;
+  min-height: 50px;
+  right: 15px;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0;
+  padding: 0 18px 0 12px;
+  -webkit-animation-name: alert-text;
+          animation-name: alert-text;
+  -webkit-animation-duration: 0.7s;
+          animation-duration: 0.7s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+}
+
+@-webkit-keyframes alert-bg {
+  0% {
+    right: -100%;
+  }
+  50% {
+    right: 0px;
+  }
+  100% {
+    right: 97%;
+  }
+}
+
+@keyframes alert-bg {
+  0% {
+    right: -100%;
+  }
+  50% {
+    right: 0px;
+  }
+  100% {
+    right: 97%;
+  }
+}
+
+@-webkit-keyframes alert-text {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes alert-text {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes alert {
+  100% {
+    overflow: hidden;
+    background-color: #fff;
+    -webkit-box-shadow: 1px 4px 5px #8b8b8b, 1px -2px 5px #d3d3d3;
+            box-shadow: 1px 4px 5px #8b8b8b, 1px -2px 5px #d3d3d3;
+  }
+}
+
+@keyframes alert {
+  100% {
+    overflow: hidden;
+    background-color: #fff;
+    -webkit-box-shadow: 1px 4px 5px #8b8b8b, 1px -2px 5px #d3d3d3;
+            box-shadow: 1px 4px 5px #8b8b8b, 1px -2px 5px #d3d3d3;
+  }
+}
+
+@-webkit-keyframes alert-cross {
+  100% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes alert-cross {
+  100% {
+    opacity: 0.9;
+  }
+}
+
+.bg-danger {
+  background-color: tomato;
+}
+
+.bg-like-color {
+  background-color: #FFBF1C;
+}
+
+.bg-brand {
+  background-color: #6fda44;
+}
+
+.bxsh-danger {
+  -webkit-box-shadow: 0px 0px 100px 0px tomato;
+          box-shadow: 0px 0px 100px 0px tomato;
+}
+
+.bxsh-like-color {
+  -webkit-box-shadow: 0px 0px 100px 0px #FFBF1C;
+          box-shadow: 0px 0px 100px 0px #FFBF1C;
+}
+
+.bxsh-brand {
+  -webkit-box-shadow: 0px 0px 100px 0px #6fda44;
+          box-shadow: 0px 0px 100px 0px #6fda44;
 }
 
 .flex-sb {
@@ -934,7 +1098,7 @@
 .filter,
 .search-word,
 .close-cancel-filter,
-.please-log,
+.my-alert,
 .add-logo,
 .info__example,
 .example-small-slick,
@@ -1099,7 +1263,7 @@
 }
 
 .dropbtn {
-  background-color: #fff;
+  background-color: transparent;
   color: #000;
   padding: 16px;
   font-size: 16px;
@@ -1109,7 +1273,7 @@
 .dropdown {
   position: relative;
   display: inline-block;
-  z-index: 4;
+  z-index: 12;
 }
 
 .dropdown-content {

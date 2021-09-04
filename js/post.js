@@ -16,7 +16,7 @@ $(document).on('click', '.ok-gray', function (e) {
 
 	e.preventDefault();
 
-	
+
 	var update_card_from = $('.post').find('.card_from').val();
 	var card_from = $(e.target).closest('.card').find('.card_from').val();
 
@@ -28,7 +28,7 @@ $(document).on('click', '.ok-gray', function (e) {
 
 
 	// ! validation
-	$('.please-log').detach();
+	$('.my-alert').detach();
 
 	// Title
 	if (title_val.length <= 3) {
@@ -48,78 +48,78 @@ $(document).on('click', '.ok-gray', function (e) {
 	}
 
 	// ! if card_from == post-job.php -> validate selects it can be from update, and update already must have this!
-	if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
-	
+	if (card_from == '/post-job.php' || card_from == '/post-portfolio.php') {
+
 		// selects
-	// next() = .chosen-container -> select is hidden by chosen-JQ
-	$(e.target).closest('.card').find('select').each(function () {
-		if ($(this).val() == null) {
+		// next() = .chosen-container -> select is hidden by chosen-JQ
+		$(e.target).closest('.card').find('select').each(function () {
+			if ($(this).val() == null) {
 
-			var name = this.name;
+				var name = this.name;
 
-			$(this).next().addClass('red-b-chosen');
-			my_alert("danger", `Please select ${name}!`);
+				$(this).next().addClass('red-b-chosen');
+				my_alert("danger", `Please select ${name}!`);
 
-			throw new Error("error from each select");
+				throw new Error("error from each select");
 
-		} else {
-			$(this).next().removeClass('red-b-chosen');
-		}
-	});
+			} else {
+				$(this).next().removeClass('red-b-chosen');
+			}
+		});
 
-	} 
-	
-	
+	}
+
+
 	// ! if card_from == post-job.php -> validate files it can be from update, and update already must have this!
-	if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
+	if (card_from == '/post-job.php' || card_from == '/post-portfolio.php') {
 
-	// files
-	var files_count = $(e.target).closest('.card').find('.fake-example')[0].files;
-	if (files_count.length < 1) {
-		my_alert("danger", "Please upload atleast 1 example!");
-		$(e.target).closest('.card').find('.info__example').addClass('red-b-chosen');
-		throw new Error("error from example");
-	} else {
-		$(e.target).closest('.card').find('.info__example').removeClass('red-b-chosen');
+		// files
+		var files_count = $(e.target).closest('.card').find('.fake-example')[0].files;
+		if (files_count.length < 1) {
+			my_alert("danger", "Please upload atleast 1 example!");
+			$(e.target).closest('.card').find('.info__example').addClass('red-b-chosen');
+			throw new Error("error from example");
+		} else {
+			$(e.target).closest('.card').find('.info__example').removeClass('red-b-chosen');
+		}
+
 	}
 
-}
-
-// ! tags
-if(card_from == '/post-job.php' || card_from == '/post-portfolio.php' || card_from == '/update-form.php'){
+	// ! tags
+	if (card_from == '/post-job.php' || card_from == '/post-portfolio.php' || card_from == '/update-form.php') {
 
 
-	var tags_count = $(e.target).closest('.card').find('.tags__select :selected');
+		var tags_count = $(e.target).closest('.card').find('.tags__select :selected');
 
-	if (tags_count.length < 3) {
-		my_alert("danger", "Please choose 3 tags!");
-		$(e.target).closest('.card').find('.chosen-choices').addClass('red-b-chosen');
-		throw new Error("error from tags");
-	} else {
-		$(e.target).closest('.card').find('.chosen-choices').removeClass('red-b-chosen');
+		if (tags_count.length < 3) {
+			my_alert("danger", "Please choose 3 tags!");
+			$(e.target).closest('.card').find('.chosen-choices').addClass('red-b-chosen');
+			throw new Error("error from tags");
+		} else {
+			$(e.target).closest('.card').find('.chosen-choices').removeClass('red-b-chosen');
+		}
+
 	}
 
-}
-
-// ? validation ends
+	// ? validation ends
 
 	var fd = new FormData();
 
 	// ! logo
-	if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
+	if (card_from == '/post-job.php' || card_from == '/post-portfolio.php') {
 		var logo = $('.fake-logo').prop('files')[0];
 	}
-	if(card_from == '/update-form.php'){
+	if (card_from == '/update-form.php') {
 		var logo = $('.fake-logo-upd').prop('files')[0];
 	}
-	
+
 	fd.append("logo", logo);
 
 	// ! files
-	if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
+	if (card_from == '/post-job.php' || card_from == '/post-portfolio.php') {
 		var file_data = $('input[type="file"]')[1].files; // for multiple files
 	}
-	if(card_from == '/update-form.php'){
+	if (card_from == '/update-form.php') {
 		var file_data = $('.update-card').find('input[type="file"]')[1].files; // for multiple files
 	}
 	// ! examples
@@ -145,10 +145,10 @@ if(card_from == '/post-job.php' || card_from == '/post-portfolio.php' || card_fr
 	fd.append("update_card_from", update_card_from);
 
 
-	if(card_from == '/post-job.php' || card_from == '/post-portfolio.php'){
+	if (card_from == '/post-job.php' || card_from == '/post-portfolio.php') {
 		var link = 'insert.php';
 	}
-	if(card_from == '/update-form.php'){
+	if (card_from == '/update-form.php') {
 		var link = 'update.php';
 	}
 
@@ -173,7 +173,7 @@ if(card_from == '/post-job.php' || card_from == '/post-portfolio.php' || card_fr
 					window.location.href = 'portfolios.php';
 				}
 				if (card_from == '/update-form.php') {
-					window.location.reload();	
+					window.location.reload();
 				}
 
 			}, 300);

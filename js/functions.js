@@ -1,19 +1,31 @@
 function my_alert(color, text) {
 
-	$('.please-log').detach();
+	$('.my-alert').detach();
 
-	$('body').before('<div class="please-log ' + color + '">' + text + '<img src="img/icons/cross.svg"></div>');
+	$('body').before(`<div class="my-alert ${color}">
+	<div class="my-alert__bg bg-${color} bxsh-${color}"></div>
+	<div class="my-alert__text">${text}</div>
+	<img src="img/icons/cross.svg">
+						</div>`);
 
 }
 function my_alert_filter(text1, text2, color, link) {
 	(window.location.href.includes('?')) ? link = window.location.href.replace(/filter.*?&/, '') + link : link = window.location.href.replace(/filter.*?&/, '') + '?' + link;
 
-	$('.please-log').detach();
-	$('body').before('<div class="please-log">' + text1 + ' <a href="' + link + '" class="' + color + ' tdu">' + text2 + '</a><img src="img/icons/cross.svg"></div>');
+	$('.my-alert').detach();
+	$('body').before(`<div class="my-alert">
+	<div class="my-alert__bg bg-${color} bxsh-${color}"></div>
+	<div class="my-alert__text">${text1}&nbsp<a href="${link}" class="${color} tdu">${text2}</a></div>
+						<img src="img/icons/cross.svg">
+						</div>`);
 }
-function my_alert_login(color, action) {
-	$('.please-log').detach();
-	$('body').before('<div class="please-log">Please <a class="brand tdu" href="login.php">SIGN IN</a> or <a class="brand tdu" href="reg.php">SIGN UP</a> to <span class="' + color + '">' + action + '</span><img src="img/icons/cross.svg"></div>');
+function my_alert_login(color, text) {
+	$('.my-alert').detach();
+	$('body').before(`<div class="my-alert">
+	<div class="my-alert__bg bg-danger bxsh-danger"></div>
+	<div class="my-alert__text"><div>Please <a class="brand tdu" href="login.php">SIGN IN</a> or <a class="brand tdu" href="reg.php">SIGN UP</a> to <span class="${color}">${text}</span></div></div>
+	<img src="img/icons/cross.svg">
+						</div>`);
 }
 
 var post = $('.post');
@@ -168,7 +180,7 @@ function error_in_fields(error, target, target1, target2) {
 	}, 3000);
 }
 
-function render_applied(){
+function render_applied() {
 	$.post({
 		'url': 'messaged-filter.php',
 		'dataType': 'json',
@@ -191,7 +203,7 @@ function render_applied(){
 	});
 }
 
-function render_liked(){
+function render_liked() {
 	$.post({
 		'url': 'liked.php',
 		'dataType': 'json',
@@ -213,7 +225,7 @@ function render_liked(){
 	});
 }
 
-function render_hidden(){
+function render_hidden() {
 	$.post({
 		'url': 'hidden.php',
 		'dataType': 'json',
@@ -227,10 +239,10 @@ function render_hidden(){
 					var id = $(this).find('.card_id').val();
 
 					if (id == element) {
-					
+
 						$(this).addClass('db-hidden');
 						$(this).find('.hide').css({ 'border-bottom': '2px solid tomato', 'padding-bottom': '2px' });
-						
+
 					}
 				})
 			});
@@ -238,16 +250,16 @@ function render_hidden(){
 	});
 }
 
-function render_flags(){
-	$('.info__simple.location').each(function(){
+function render_flags() {
+	$('.info__simple.location').each(function () {
 		var text = $(this).text().trim().toLowerCase();
-		$(this).html(`<img src="img/icons/flags/${text}.png">`).append(`${" "+text.toUpperCase()}`);
+		$(this).html(`<img src="img/icons/flags/${text}.png">`).append(`${" " + text.toUpperCase()}`);
 	})
 }
 
-function render_update_icon(){
-		if (card_from == '/post-job.php' || card_from == '/post-portfolio.php') {
-			$('.hide').after('<img class="update" src="img/icons/update.svg" alt="update">');
-			$('.hide').detach();
-		}
+function render_update_icon() {
+	if (card_from == '/post-job.php' || card_from == '/post-portfolio.php') {
+		$('.hide').after('<img class="update" src="img/icons/update.svg" alt="update">');
+		$('.hide').detach();
+	}
 }

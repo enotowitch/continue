@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 	$(document).on('click', '.get-mes-form:not(".yet-applied")', function (e) {
 
-		$('.please-log').detach();
+		$('.my-alert').detach();
 
 		// close this slick pics when message
 		$(this).closest('.card').find('.close-one-slick-pic').trigger('click');
@@ -52,7 +52,7 @@ $(document).ready(function () {
 	$(document).on('click', '.mes-send', function (e) {
 
 		var card_from = $('.card_from').val();
-		var new_counter = $(document).find('.cancel_all_filters').text().replace(/\D/g,'');
+		var new_counter = $(document).find('.cancel_all_filters').text().replace(/\D/g, '');
 
 		$.post({
 			url: 'mes-send.php',
@@ -62,15 +62,15 @@ $(document).ready(function () {
 					// waiting for anim
 					$(e.target).closest('.card-mes').detach();
 				}, 400);
-				
+
 
 				var card_from = window.location.href;
 
-				// ! if card_from -> mes.php (messages) -> don't show - notification(please-log)
+				// ! if card_from -> mes.php (messages) -> don't show - notification(my-alert)
 				if (!card_from.includes('/mes.php')) {
 					// ! Added to applied
 					my_alert_filter('Added to', 'applied', 'brand', 'filter=messaged&');
-					$('.please-log').append('<a class="brand tdu" style="display: block; margin-top: 5px" href="/messages.php">All Applications</a>');
+					// $('.my-alert__text').append('<a class="brand tdu" style="display: block; margin-top: 5px" href="/messages.php">All Applications</a>');
 				} else {
 					// ! if card_from -> mes.php -> reload
 					location.reload();
@@ -96,7 +96,7 @@ $(document).ready(function () {
 
 		$.post({
 			url: 'mesd.php',
-			data: { card_id: card_id, cat:cat },
+			data: { card_id: card_id, cat: cat },
 			success: function (data) {
 				// alert('stored to mesd.php');
 			},
@@ -108,7 +108,7 @@ $(document).ready(function () {
 
 	render_applied();
 
-	$(document).on('click', '.yet-applied', function(){
+	$(document).on('click', '.yet-applied', function () {
 		my_alert("danger", "You already applied for this post...")
 	})
 
