@@ -41,14 +41,14 @@ if($_POST['card_from'] == "/index.php" || $_POST['card_from'] == "/portfolios.ph
 	foreach($search_in_posts as $search_in_posts){
 		$search_in_posts_arr[] = $search_in_posts["id"];
 	}
-	// if search does not include hidden or messaged don't show that
+	// if search does not include hidden or applied don't show that
 	if($_POST["filter"] != 'hidden' && $_POST["show-hidden-posts"] == NULL){
 		$hidden_arr = hidden_posts();
 		$search_in_posts_arr = array_diff($search_in_posts_arr, $hidden_arr);
 	}
-	if($_POST["filter"] != 'messaged' && $_POST["show-applied-posts"] == NULL){
-		$messaged_arr = messaged_posts();
-		$search_in_posts_arr = array_diff($search_in_posts_arr, $messaged_arr);
+	if($_POST["filter"] != 'applied' && $_POST["show-applied-posts"] == NULL){
+		$applied_arr = applied_posts();
+		$search_in_posts_arr = array_diff($search_in_posts_arr, $applied_arr);
 	}
 } 
 // ! my posts
@@ -80,14 +80,14 @@ foreach($search_in_posts as $search_in_posts){
 
 $search_in_posts_arr = array_unique($search_in_posts_arr);
 
-	// if search does not include hidden or messaged don't show that
+	// if search does not include hidden or applied don't show that
 	if($_POST["filter"] != 'hidden' && $_POST["show-hidden-posts"] == NULL){
 		$hidden_arr = hidden_posts();
 		$search_in_posts_arr = array_diff($search_in_posts_arr, $hidden_arr);
 	}
-	if($_POST["filter"] != 'messaged' && $_POST["show-applied-posts"] == NULL){
-		$messaged_arr = messaged_posts();
-		$search_in_posts_arr = array_diff($search_in_posts_arr, $messaged_arr);
+	if($_POST["filter"] != 'applied' && $_POST["show-applied-posts"] == NULL){
+		$applied_arr = applied_posts();
+		$search_in_posts_arr = array_diff($search_in_posts_arr, $applied_arr);
 	}
 }
 
@@ -529,16 +529,16 @@ $('.search-result').after('<div class="load-search"><div class="load-less-search
 <? endif; ?>
 // ? render search-result number
 // show-hidden-posts & show-applied-posts
-<? if($_POST["show-hidden-posts"] == NULL && $_POST["card_from"] != "/post-job.php" && $_POST["card_from"] != "/post-portfolio.php" && !$_POST["filter"]): ?>
+<? if($_POST["show-hidden-posts"] == NULL && $_POST["card_from"] != "/post-job.php" && $_POST["card_from"] != "/post-portfolio.php"): ?>
 $('.search-result').append('<div class="show-hidden-posts" >Show hidden posts</div>');
 <? endif; ?>
-<? if($_POST["show-hidden-posts"] != NULL && $_POST["card_from"] != "/post-job.php" && $_POST["card_from"] != "/post-portfolio.php" && !$_POST["filter"]): ?>
+<? if($_POST["show-hidden-posts"] != NULL && $_POST["card_from"] != "/post-job.php" && $_POST["card_from"] != "/post-portfolio.php"): ?>
 $('.search-result').append('<div class="dont-show-hidden-posts" >Don\'t show hidden</div>');
 <? endif; ?>
-<? if($_POST["show-applied-posts"] == NULL && $_POST["card_from"] != "/post-job.php" && $_POST["card_from"] != "/post-portfolio.php" && !$_POST["filter"]): ?>
+<? if($_POST["show-applied-posts"] == NULL && $_POST["card_from"] != "/post-job.php" && $_POST["card_from"] != "/post-portfolio.php"): ?>
 $('.search-result').append('<div class="show-applied-posts" >Show applied posts</div>');
 <? endif; ?>
-<? if($_POST["show-applied-posts"] != NULL && $_POST["card_from"] != "/post-job.php" && $_POST["card_from"] != "/post-portfolio.php" && !$_POST["filter"]): ?>
+<? if($_POST["show-applied-posts"] != NULL && $_POST["card_from"] != "/post-job.php" && $_POST["card_from"] != "/post-portfolio.php"): ?>
 $('.search-result').append('<div class="dont-show-applied-posts" >Don\'t show applied</div>');
 <? endif; ?>
 // ? SEARCH_COUNTER > 0
@@ -577,6 +577,10 @@ $('.search-result').append('<div class="dont-show-applied-posts" >Don\'t show ap
 		$posts = load_applications($cat); 
 		$posts = $posts[0];
 		?>
+		<div style="width: 100%">
+			<div class="show-hidden-posts">Show hidden posts</div>
+			<div class="show-applied-posts">Show applied posts</div>
+		</div>
 	<? endif; ?>
 <? endif; ?>
 <!-- ? $SEARCH_COUNTER == 0 -->

@@ -17,7 +17,7 @@
 			<option disabled selected value="0">status</option>
 			<option value="liked">liked</option>
 			<option value="hidden">hidden</option>
-			<option value="messaged">messaged</option>
+			<option value="applied">applied</option>
 		</select>
 
 <!-- ! search salary -->

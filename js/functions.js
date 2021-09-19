@@ -186,7 +186,7 @@ function render_applied() {
 		'dataType': 'json',
 		success: function (data) {
 
-			// ! load messaged from DB
+			// ! load applied from DB
 			data.forEach(element => {
 
 				$('.card').each(function () {
@@ -194,7 +194,7 @@ function render_applied() {
 					var id = $(this).find('.card_id').val();
 
 					if (id == element) {
-						$(this).not('.form-card').addClass('db-messaged');
+						$(this).not('.form-card').addClass('db-applied');
 						$(this).find('.get-mes-form').addClass('yet-applied').addClass('op03');
 					}
 				})

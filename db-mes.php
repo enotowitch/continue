@@ -2,7 +2,7 @@
  session_start();
  require_once "DB.php";
 
- $mesd = R::find('messaged', 'user_id = ?', [$_SESSION["user"]["id"]]);
+ $mesd = R::find('applied', 'user_id = ?', [$_SESSION["user"]["id"]]);
 
 
 

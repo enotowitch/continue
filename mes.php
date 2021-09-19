@@ -62,7 +62,7 @@ $user_to_id = $_GET['from'];
 	// ! ready
 	$(document).ready(function(){
 		setTimeout(() => {
-			$('.db-messaged').removeClass('dn');
+			$('.db-applied').removeClass('dn');
 			$('.db-hidden').removeClass('dn');
 			$('.info__pics').slick('refresh');
 		}, 300);

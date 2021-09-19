@@ -88,7 +88,7 @@ render_mes_to_applicant();
 // ! ready
 $(document).ready(function(){
 	setTimeout(() => {
-		$('.db-messaged').removeClass('dn');
+		$('.db-applied').removeClass('dn');
 		$('.db-hidden').removeClass('dn');
 		$('.info__pics').slick('refresh');
 	}, 300);

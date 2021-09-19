@@ -20,7 +20,7 @@ $del_files = R::find('post', 'user_id = ?', [$_SESSION['user']['id']]);
 $message = R::hunt('message', 'user_to_id = ?', [$_SESSION['user']['id']]);
 $message = R::hunt('message', 'user_from_id = ?', [$_SESSION['user']['id']]);
 // 
-$messaged = R::hunt('messaged', 'user_id = ?', [$_SESSION['user']['id']]);
+$applied = R::hunt('applied', 'user_id = ?', [$_SESSION['user']['id']]);
 $liked = R::hunt('liked', 'user_id = ?', [$_SESSION['user']['id']]);
 $hidden = R::hunt('hidden', 'user_id = ?', [$_SESSION['user']['id']]);
 $user = R::hunt('user', 'id = ?', [$_SESSION['user']['id']]);

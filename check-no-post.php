@@ -2,7 +2,7 @@
 <script>
 if($('.card-flex').find('.card').length == 0){
 	(window.location.href.includes('?')) ? hidden = window.location.href.replace(/filter.*?&/, '')+'filter=hidden&' : hidden = window.location.href.replace(/filter.*?&/, '')+'?'+'filter=hidden&';
-	(window.location.href.includes('?')) ? applied = window.location.href.replace(/filter.*?&/, '')+'filter=messaged&' : applied = window.location.href.replace(/filter.*?&/, '')+'?'+'filter=messaged&';
+	(window.location.href.includes('?')) ? applied = window.location.href.replace(/filter.*?&/, '')+'filter=applied&' : applied = window.location.href.replace(/filter.*?&/, '')+'?'+'filter=applied&';
 	$('.card-flex').append('<div class="check-no-post-div"><p>No posts?</p></div>');
 	$('.check-no-post-div').append(`<div class="check-no-post">Check <a href="${hidden}" class="danger tdu">hidden</a> posts </div>`);
 	$('.check-no-post-div').append(`<div class="check-no-post">Check <a href="${applied}" class="brand tdu">applied</a> posts </div>`);	

@@ -29,7 +29,7 @@
 
 	R::hunt('liked', 'card_id = ?', [$_POST['card_id']]);
 	R::hunt('hidden', 'card_id = ?', [$_POST['card_id']]);
-	R::hunt('messaged', 'card_id = ?', [$_POST['card_id']]);
+	R::hunt('applied', 'card_id = ?', [$_POST['card_id']]);
 
 
 

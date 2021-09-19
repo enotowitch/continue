@@ -55,23 +55,23 @@ function hidden_posts(){
 	}	
 	return $hidden_arr;
 }
-// ! messaged_posts
-function messaged_posts(){
+// ! applied_posts
+function applied_posts(){
 	// prevent errors
-	$messaged_arr = array();
-	// ! messaged
-	$messaged = R::find('messaged', 'user_id = ?', [$_SESSION["user"]["id"]]);
-	foreach($messaged as $messaged){
-		$messaged_arr[] = $messaged["card_id"];
+	$applied_arr = array();
+	// ! applied
+	$applied = R::find('applied', 'user_id = ?', [$_SESSION["user"]["id"]]);
+	foreach($applied as $applied){
+		$applied_arr[] = $applied["card_id"];
 	}
-	return $messaged_arr;
+	return $applied_arr;
 }
-// ! throw_hidden_and_messaged
-function throw_hidden_and_messaged($target_arr){
+// ! throw_hidden_and_applied
+function throw_hidden_and_applied($target_arr){
 	$hidden_arr = hidden_posts();
-	$messaged_arr = messaged_posts();
+	$applied_arr = applied_posts();
 
-	$result = array_values(array_diff($target_arr, $hidden_arr, $messaged_arr));
+	$result = array_values(array_diff($target_arr, $hidden_arr, $applied_arr));
 	return $result;
 }
 // ! load_all_num_posts (load-more 10)
@@ -82,7 +82,7 @@ function load_all_num_posts($cat){
 			$all_arr[] = $post["id"];
 		}
 
-		$result = throw_hidden_and_messaged($all_arr);
+		$result = throw_hidden_and_applied($all_arr);
 		// filtered posts
 		$result_10 = array();
 		for ($i=0; $i<=9; $i++) { 
@@ -97,7 +97,7 @@ function load_all_num_posts($cat){
 function load_all_posts($cat){
 	// prevent errors
 	$hidden_arr = array();
-	$messaged_arr = array();
+	$applied_arr = array();
 
 	
 	$posts = R::find('post', 'cat = ?', [$cat], 'ORDER BY id DESC');
@@ -105,7 +105,7 @@ function load_all_posts($cat){
 		$all_arr[] = $post["id"];
 	}
 
-	$result = throw_hidden_and_messaged($all_arr);
+	$result = throw_hidden_and_applied($all_arr);
 	// filtered posts
 	$posts = R::loadAll('post', $result);
 	return $posts;
@@ -152,7 +152,7 @@ function load_applications($cat = NULL){
 			$i++;
 		}
 	
-		$post = throw_hidden_and_messaged($post_12);
+		$post = throw_hidden_and_applied($post_12);
 	
 		$post = R::loadAll('post', $post);
 		return array($post, $my_msg_applied_to_card);

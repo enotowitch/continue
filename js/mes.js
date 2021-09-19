@@ -9,7 +9,7 @@ $(document).ready(function () {
 		// close this slick pics when message
 		$(this).closest('.card').find('.close-one-slick-pic').trigger('click');
 
-		// ! to pass card_id to mes-form-form to show posts that user messaged
+		// ! to pass card_id to mes-form-form to show posts that user applied
 		$('.get-mes-form').removeClass('clicked');
 		$(this).addClass('clicked');
 
@@ -69,7 +69,7 @@ $(document).ready(function () {
 				// ! if card_from -> mes.php (messages) -> don't show - notification(my-alert)
 				if (!card_from.includes('/mes.php')) {
 					// ! Added to applied
-					my_alert_filter('Added to', 'applied', 'brand', 'filter=messaged&');
+					my_alert_filter('Added to', 'applied', 'brand', 'filter=applied&');
 					// $('.my-alert__text').append('<a class="brand tdu" style="display: block; margin-top: 5px" href="/messages.php">All Applications</a>');
 				} else {
 					// ! if card_from -> mes.php -> reload

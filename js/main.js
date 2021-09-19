@@ -593,7 +593,6 @@ $(document).ready(function () {
 		var name = this.className;
 		$('.filter-form').append(`<input name="${name}" type="hidden" value="1">`);
 
-		// todo messaged = applied 
 		if(window.location.href.includes('messages')){
 			$('.filter').val(name.replace('show-', '').replace('-posts', ''));
 			$('.filter').trigger('chosen:updated');
