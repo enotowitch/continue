@@ -10,7 +10,7 @@ if($_POST["apply_id"] != "" || $_POST['user_from_msg'] != ""){
 
 	$message->apply_id = $_POST['apply_id'];
 	$message->applied_to_card = $_POST["card_id"];
-	$message->applied_to_cat = $_POST["card_from"] == '/index.php' ? 'post' : 'portfolio';
+	$message->applied_to_cat = $_POST["card_from"] == '/index.php' ? 'job' : 'folio';
 	$message->apply_title = $_POST['apply_title'];
 
 	$message->user_to_id = $_POST['user_to_id'];

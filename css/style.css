@@ -1165,6 +1165,12 @@
   width: 100%;
 }
 
+.sort-applies-div {
+  width: 930px;
+  margin: 0 auto;
+  padding-left: 15px;
+}
+
 .applies {
   padding-left: 4px;
 }

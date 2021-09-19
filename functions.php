@@ -66,6 +66,14 @@ function messaged_posts(){
 	}
 	return $messaged_arr;
 }
+// ! throw_hidden_and_messaged
+function throw_hidden_and_messaged($target_arr){
+	$hidden_arr = hidden_posts();
+	$messaged_arr = messaged_posts();
+
+	$result = array_values(array_diff($target_arr, $hidden_arr, $messaged_arr));
+	return $result;
+}
 // ! load_all_num_posts (load-more 10)
 function load_all_num_posts($cat){
 		
@@ -73,11 +81,8 @@ function load_all_num_posts($cat){
 		foreach($posts as $post){
 			$all_arr[] = $post["id"];
 		}
-	
-		$hidden_arr = hidden_posts();
-		$messaged_arr = messaged_posts();
 
-		$result = array_values(array_diff($all_arr, $hidden_arr, $messaged_arr));
+		$result = throw_hidden_and_messaged($all_arr);
 		// filtered posts
 		$result_10 = array();
 		for ($i=0; $i<=9; $i++) { 
@@ -100,10 +105,7 @@ function load_all_posts($cat){
 		$all_arr[] = $post["id"];
 	}
 
-	$hidden_arr = hidden_posts();
-	$messaged_arr = messaged_posts();		
-
-	$result = array_diff($all_arr, $hidden_arr, $messaged_arr);
+	$result = throw_hidden_and_messaged($all_arr);
 	// filtered posts
 	$posts = R::loadAll('post', $result);
 	return $posts;
@@ -118,6 +120,42 @@ function load_my_posts($cat){
 function load_my_num_posts($cat){
 	$posts = R::find('post', 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat], 'ORDER BY id DESC LIMIT 10');
 	return $posts;
+}
+// ! load_applications
+function load_applications($cat = NULL){
+	if($_SERVER["PHP_SELF"] == '/messages.php'){
+		$cat = 'folio';
+	}
+	if($_SERVER["PHP_SELF"] == '/messages-folios.php'){
+		$cat = 'job';
+	}
+		// ! find all applications
+		$my_msg = R::getAll( 'SELECT apply_id,applied_to_card FROM message WHERE user_to_id = :user_to_id AND applied_to_cat = :applied_to_cat',
+		[':user_to_id' => $_SESSION["user"]["id"], ':applied_to_cat' => $cat]
+		);
+		$my_msg_arr = array();
+		$my_msg_applied_to_card = array();
+		foreach($my_msg as $my_msg){
+			$my_msg_arr[] = $my_msg["apply_id"];
+			$my_msg_applied_to_card[] = $my_msg["applied_to_card"];
+		}
+		$my_msg_arr = array_unique($my_msg_arr);
+		$my_msg_applied_to_card = array_values(array_unique($my_msg_applied_to_card));
+		// ! load posts
+		$post = R::loadAll('post', $my_msg_arr);
+	
+		$post_12 = array();
+		$i = 0;
+		foreach($post as $post){
+			if($i <= 11)
+			$post_12[] = $post["id"];
+			$i++;
+		}
+	
+		$post = throw_hidden_and_messaged($post_12);
+	
+		$post = R::loadAll('post', $post);
+		return array($post, $my_msg_applied_to_card);
 }
 
 function generatePassword($length = 8) {
@@ -185,5 +223,41 @@ for($i=1;$i<=10;$i++){
 }
 R::store($post);
 
+}
+// ! render_cards_json
+function render_cards_json($posts){
+	$i = 0;
+
+foreach($posts as $post){
+	if($post['id'] != NULL){
+	$posted = $post->time;
+	$posted = date('Y-m-d H:i:s', $posted);
+
+	$json[$i]["id"] = $post['id'];
+	$json[$i]["title"] = $post['title'];
+	$json[$i]["subt"] = $post['subt'];
+	$json[$i]["salary"] = $post['salary'];
+	$json[$i]["duration"] = $post['duration'];
+	$json[$i]["experience"] = $post['experience'];
+	$json[$i]["workload"] = $post['workload'];
+	$json[$i]["location"] = $post['location'];
+	$json[$i]["tag_1"] = $post['tag_1'];
+	$json[$i]["tag_2"] = $post['tag_2'];
+	$json[$i]["tag_3"] = $post['tag_3'];
+	$json[$i]["logo"] = $post['logo'];
+	for($ex=1;$ex<=10;$ex++){ 
+		$json[$i]["example_$ex"] = $post["example_$ex"];
+	}
+	$json[$i]["user_id"] = $post['user_id'];
+	$json[$i]["time"] = time_elapsed_string($posted);
+	$json[$i]["cat"] = $post['cat'];
+
+	$json[$i]["current_user"] = $_SESSION["user"]["id"];
+
+	$json[$i]["size"] = $_COOKIE["size"];
+	$i++;
+	}	
+}
+echo json_encode($json);
 }
 ?>

@@ -17,7 +17,7 @@
 				</select>
 
 
-<? if($_SERVER['PHP_SELF'] == '/update-form.php'): ?>
+
 	<script>
 		$.post({
 			url: 'tags-list.php',
@@ -43,4 +43,3 @@
 			}
 		})
 	</script>
-<? endif; ?>

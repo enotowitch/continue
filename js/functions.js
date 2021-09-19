@@ -263,3 +263,88 @@ function render_update_icon() {
 		$('.hide').detach();
 	}
 }
+function render_cards(data) {
+	// ! render cards
+	$.each(data, function (i, e) {
+		$('.card-flex').append(`<div class="card card_main w100 ${e.size}">
+			
+						<div class="card__content">
+							
+							<input class="cat" type="hidden" value="${e.cat}">		
+							<input class="card_id" type="hidden" value="${e.id}">
+							<input class="user_id" type="hidden" value="${e.user_id}">
+							<input class="current_user" type="hidden" value="${e.current_user}">
+							
+							<!-- todo -->
+							<input class="card_from" type="hidden" value="">
+							<!-- todo -->
+	
+							<img class="card__logo" src="${e.logo}" alt="card__logo">
+							<div class="inner-card-flex">
+								<div class="title-and-subt">
+									<div class="card__title">${e.title}</div>
+									<div class="card__subt">${e.subt}</div>
+								</div>
+							
+								<div class="info">
+									<div class="info__flex">
+										<div class="info__block">
+											<div class="info__cell info__simple salary" id="salary">
+												${e.salary}				</div>
+											<div class="info__cell info__simple duration" id="duration">
+												${e.duration}						</div>
+										</div>
+										<div class="info__block">
+											<div class="info__cell info__simple experience" id="experience">
+												${e.experience}					</div>
+											<div class="info__cell info__simple workload" id="workload">
+												${e.workload}					</div>
+										</div>
+										<div class="info__block">
+											<div class="info__cell info__simple location" id="location"><img src="img/icons/flags/gi.png">${e.location}</div>
+											<div class="info__cell info__simple example-small-slick">
+												Examples
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tags-pics-flex">
+									<div class="tags tags_main">
+										<div class="tag tag_main tag-no-db">
+											${e.tag_1}				</div>
+										<div class="tag tag_main tag-no-db">
+											${e.tag_2}				</div>
+										<div class="tag tag_main tag-no-db">
+											${e.tag_3}				</div>
+									</div>
+	
+									<div class="info__cell info__simple info__pics">
+										<img class="img-zoom" data-lazy="${e.example_1}" src="${e.example_1}">
+										<img class="img-zoom" data-lazy="${e.example_2}" src="${e.example_2}">
+										<img class="img-zoom" data-lazy="${e.example_3}" src="${e.example_3}">
+										<img class="img-zoom" data-lazy="${e.example_4}" src="${e.example_4}">
+										<img class="img-zoom" data-lazy="${e.example_5}" src="${e.example_5}">
+										<img class="img-zoom" data-lazy="${e.example_6}" src="${e.example_6}">
+										<img class="img-zoom" data-lazy="${e.example_7}" src="${e.example_7}">
+										<img class="img-zoom" data-lazy="${e.example_8}" src="${e.example_8}">
+										<img class="img-zoom" data-lazy="${e.example_9}" src="${e.example_9}">
+										<img class="img-zoom" data-lazy="${e.example_10}" src="${e.example_10}">
+									</div>
+	
+								</div>
+							</div>
+							
+							<div class="inter-icons">
+								<img class="hide" src="img/icons/delete.svg" alt="del">
+								<img class="like" src="img/icons/like.svg" alt="like">
+								<img class="apply get-mes-form op03" src="img/icons/apply.svg" alt="apply">
+							</div>
+							<div class="time">${e.time}</div>
+						</div>
+							</div>`);
+	})
+	// ? render cards
+}
+function render_mes_to_applicant(){
+	$('.apply').addClass('mes-to-applicant').removeClass('get-mes-form').attr('src', 'img/icons/email.svg');
+}

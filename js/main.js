@@ -507,86 +507,7 @@ $(document).ready(function () {
 				if (data == null) {
 					$(document).find('.load-more').detach();
 				}
-				// ! render cards
-				$.each(data, function (i, e) {
-					$('.card-flex').append(`<div class="card card_main w100 ${e.size}">
-		
-					<div class="card__content">
-						
-						<input class="cat" type="hidden" value="${e.cat}">		
-						<input class="card_id" type="hidden" value="${e.id}">
-						<input class="user_id" type="hidden" value="${e.user_id}">
-						<input class="current_user" type="hidden" value="${e.current_user}">
-						
-						<!-- todo -->
-						<input class="card_from" type="hidden" value="">
-						<!-- todo -->
-
-						<img class="card__logo" src="${e.logo}" alt="card__logo">
-						<div class="inner-card-flex">
-							<div class="title-and-subt">
-								<div class="card__title">${e.title}</div>
-								<div class="card__subt">${e.subt}</div>
-							</div>
-						
-							<div class="info">
-								<div class="info__flex">
-									<div class="info__block">
-										<div class="info__cell info__simple salary" id="salary">
-											${e.salary}				</div>
-										<div class="info__cell info__simple duration" id="duration">
-											${e.duration}						</div>
-									</div>
-									<div class="info__block">
-										<div class="info__cell info__simple experience" id="experience">
-											${e.experience}					</div>
-										<div class="info__cell info__simple workload" id="workload">
-											${e.workload}					</div>
-									</div>
-									<div class="info__block">
-										<div class="info__cell info__simple location" id="location"><img src="img/icons/flags/gi.png">${e.location}</div>
-										<div class="info__cell info__simple example-small-slick">
-											Examples
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="tags-pics-flex">
-								<div class="tags tags_main">
-									<div class="tag tag_main tag-no-db">
-										${e.tag_1}				</div>
-									<div class="tag tag_main tag-no-db">
-										${e.tag_2}				</div>
-									<div class="tag tag_main tag-no-db">
-										${e.tag_3}				</div>
-								</div>
-
-								<div class="info__cell info__simple info__pics">
-									<img class="img-zoom" data-lazy="${e.example_1}" src="${e.example_1}">
-									<img class="img-zoom" data-lazy="${e.example_2}" src="${e.example_2}">
-									<img class="img-zoom" data-lazy="${e.example_3}" src="${e.example_3}">
-									<img class="img-zoom" data-lazy="${e.example_4}" src="${e.example_4}">
-									<img class="img-zoom" data-lazy="${e.example_5}" src="${e.example_5}">
-									<img class="img-zoom" data-lazy="${e.example_6}" src="${e.example_6}">
-									<img class="img-zoom" data-lazy="${e.example_7}" src="${e.example_7}">
-									<img class="img-zoom" data-lazy="${e.example_8}" src="${e.example_8}">
-									<img class="img-zoom" data-lazy="${e.example_9}" src="${e.example_9}">
-									<img class="img-zoom" data-lazy="${e.example_10}" src="${e.example_10}">
-								</div>
-
-							</div>
-						</div>
-						
-						<div class="inter-icons">
-							<img class="hide" src="img/icons/delete.svg" alt="del">
-							<img class="like" src="img/icons/like.svg" alt="like">
-							<img class="apply get-mes-form op03" src="img/icons/apply.svg" alt="apply">
-						</div>
-						<div class="time">${e.time}</div>
-					</div>
-						</div>`);
-				})
-				// ? render cards
+				render_cards(data);
 				$('.apply').not('.ok-gray').addClass('get-mes-form');
 				$('img[src="null"]').detach();
 				render_hidden();
@@ -671,6 +592,13 @@ $(document).ready(function () {
 	$(document).on('click', '.show-hidden-posts, .show-applied-posts', function () {
 		var name = this.className;
 		$('.filter-form').append(`<input name="${name}" type="hidden" value="1">`);
+
+		// todo messaged = applied 
+		if(window.location.href.includes('messages')){
+			$('.filter').val(name.replace('show-', '').replace('-posts', ''));
+			$('.filter').trigger('chosen:updated');
+			$('.filter').next('.chosen-container').find('.chosen-single span').css({ 'color': '#6fda44', 'font-weight': '700' });
+		}	
 
 		post_filter_card();
 	})
@@ -767,5 +695,36 @@ $(document).ready(function () {
 			$(this).next('.chosen-container').find('.chosen-single span').css({ 'color': '#000', 'font-weight': '400' })
 		})
 		post_filter_card();
+	})
+	// ! mes-to-applicant
+	$(document).on('click', '.mes-to-applicant', function(){
+		var user_id = $(this).closest('.card').find('.user_id').val();
+		var about = $(this).closest('.card').find('.card_id').val();
+		(card_from == '/messages.php') ? cat = 'job' : cat = 'folio';
+	
+		window.location.href = `/mes.php?from=${user_id}&about=${about}&cat=${cat}`;
+	})
+	// ! TEST load-apps to select "Applications for (job/folio)"
+	$(document).on('change', '.sort-applies', function(e){
+
+		var post_id = $(e.target).val();
+
+		$.post({
+			url: 'load-apps.php',
+			data: {post_id:post_id},
+			dataType: 'json',
+			beforeSend: function(){
+				$('.card-flex').empty();
+			},
+			success: function(data){
+				render_cards(data);
+				render_hidden();
+				render_liked();
+				render_applied();
+				render_flags();
+				render_mes_to_applicant();
+				$('img[src="null"]').detach();
+			},
+		})
 	})
 })

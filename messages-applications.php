@@ -2,13 +2,8 @@
 	session_start();
 	require_once "header.php";
 	require_once "DB.php";
-
-	// todo
-	
-	$my_msg = R::find('message', 'user_to_id = ?', [$_SESSION['user']['id']], 'ORDER BY id DESC');
-	
-
-	
+	require_once "search.php";
+	require_once "functions.php";
 ?>
 
 <!-- ! no user -->
@@ -26,11 +21,6 @@
 	include "change-page.php";
 ?>
 
-
-
-
-<div class="card-flex">
-	
 <!-- ! sort-applies -->
 <div class="sort-applies-div">
 	Applications for <? if($_SERVER["PHP_SELF"] == '/messages.php'){echo 'portfolio:';} else{echo 'job:';} ?>
@@ -40,22 +30,30 @@
 </div>
 
 
+<div class="card-flex">
 
+<div style="width: 100%">
+<div class="show-hidden-posts">Show hidden posts</div>
+<div class="show-applied-posts">Show applied posts</div>
+</div>
 
-<? 
-if($_SERVER["PHP_SELF"] == '/messages.php'){
-	$cat = 'job';
-}
-if($_SERVER["PHP_SELF"] == '/messages-folios.php'){
-	$cat = 'folio';
-}
-?>
+<?
+	// ! $post = applications to me 
+	// ! $my_msg_applied_to_card = my cards (titles) to which I got applies
+	$posts_and_applied_to_card = load_applications();
 
+	$post = $posts_and_applied_to_card[0];
+	$my_msg_applied_to_card = $posts_and_applied_to_card[1];
 
-<? foreach($my_msg as $my_msg): 
-	// var_dump($my_msg['applied_to_cat']);
-	$post = R::find('post', 'id = ? AND cat = ?', [$my_msg["apply_id"], $cat]);
-?>
+	// ! append IDs/titles to select "Applications for (job/folio)"
+	$options = R::loadAll('post', $my_msg_applied_to_card);
+	?>
+
+	<? foreach($options as $option): ?>
+	<script>
+		$('.sort-applies').append('<option value="<? echo $option["id"]; ?>"><? echo $option["title"]; ?></option>');
+	</script>
+	<? endforeach; ?>
 
 
 
@@ -64,26 +62,6 @@ if($_SERVER["PHP_SELF"] == '/messages-folios.php'){
 
 		<div class="card card_main w100 <? echo $_COOKIE['size']; ?>">
 
-		<!-- ! applied_to_card -->
-		<?  
-		if($_SERVER["PHP_SELF"] == '/messages.php'){
-			$show_applied_cat = 'folio';
-		}
-		if($_SERVER["PHP_SELF"] == '/messages-folios.php'){
-			$show_applied_cat = 'job';
-		}
-			$applied_to_card = R::find('post', 'id = ? AND cat = ?', [$my_msg["applied_to_card"], $show_applied_cat]);
-		?>
-
-		<? foreach($applied_to_card as $applied_to_card): ?>
-		<div hidden class="applied_to_card"><? echo $applied_to_card['title']; ?></div>
-
-		<? endforeach; ?>
-		<!-- ? applied_to_card -->
-
-		<!-- ! user_from_id -->
-		<input class="user_from_id" type="hidden" value="<? echo $my_msg->user_from_id; ?>">
-
 		<? 
 			include "card-content.php";
 		?>
@@ -91,10 +69,10 @@ if($_SERVER["PHP_SELF"] == '/messages-folios.php'){
 
 	<? endforeach; ?>
 
-<? endforeach; ?>
-
 
 </div>
+
+<span hidden class="go-to-first">go to first</span>
 
 
 <?
@@ -104,15 +82,7 @@ if($_SERVER["PHP_SELF"] == '/messages-folios.php'){
 
 <script>
 
-$('.apply').addClass('mes-to-applicant').removeClass('get-mes-form').attr('src', 'img/icons/email.svg');
-
-$('.mes-to-applicant').on('click', function(){
-	var user_from_id = $(this).closest('.card').find('.user_from_id').val();
-	var about = $(this).closest('.card').find('.card_id').val();
-	(card_from == '/messages.php') ? cat = 'post' : cat = 'portfolio';
-
-	window.location.href = `/mes.php?from=${user_from_id}&about=${about}&cat=${cat}`;
-})
+render_mes_to_applicant();
 
 
 // ! ready
@@ -122,32 +92,5 @@ $(document).ready(function(){
 		$('.db-hidden').removeClass('dn');
 		$('.info__pics').slick('refresh');
 	}, 300);
-})
-
-
-$('.applied_to_card').each(function(){
-	
-	var options = $(this).text().trim();
-	
-	$('.sort-applies').append($('<option>', {
-    value: options,
-    text: `${options}`
-}));
-});	
-
-// remove duplicate options
-var usedNames = {};
-$(".sort-applies > option").each(function () {
-    if(usedNames[this.text]) {
-        $(this).remove();
-    } else {
-        usedNames[this.text] = this.value;
-    }
-});
-
-$('.sort-applies').on('change', function(){
-	var val = $(this).val();
-	$('.card').hide();
-	$(`.card:contains("${val}")`).show();
 })
 </script>
