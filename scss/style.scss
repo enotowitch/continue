@@ -703,6 +703,9 @@
 	border-radius: 4px;
 	height: 30px;
 }
+.sort-applies {
+	font-family: Montserrat;
+}
 .cancel-filter,
 .show-hidden-posts,
 .show-applied-posts,
@@ -850,7 +853,7 @@
 	width: 100%;
 }
 .sort-applies-div {
-	width: $main-cards-cont-wid;
+	max-width: $main-cards-cont-wid;
 	margin: 0 auto;
 	padding-left: 15px;
 }
@@ -1044,6 +1047,7 @@
 	margin: 30px auto 0;
 	font-size: 18px;
 	font-family: Montserrat;
+	padding: 0 15px;
 }
 .m0a {
 	margin: 0 auto;
@@ -1361,4 +1365,8 @@
 	position: absolute;
 	bottom: 36px;
 	right: 2px;
+}
+.show-hid-app {
+	width: 100%;
+	padding-left: 10px;
 }

@@ -29,6 +29,7 @@ $duration_arr = array();
 $location_arr = array();
 $workload_arr = array();
 $posted_arr = array();
+$application_arr = array();
 
 // !!! add to each search!
 $search_counter = 0;
@@ -92,8 +93,15 @@ $search_in_posts_arr = array_unique($search_in_posts_arr);
 }
 
 
+// ! application =0 (avail only on messages.php & messages-folios.php)
+if($_POST["application"] != ""){
+	$posts_to_app = R::findAll('message', 'applied_to_card = ?', [$_POST["application"]]);
 
-
+	foreach($posts_to_app as $posts_to_app){
+		$application_arr[] = $posts_to_app["apply_id"];
+	}
+	$final_arr[] = $application_arr;
+}
 
 // ! tags =1 (=1 - order)
 if($_POST["tags"] != ""){
@@ -577,7 +585,7 @@ $('.search-result').append('<div class="dont-show-applied-posts" >Don\'t show ap
 		$posts = load_applications($cat); 
 		$posts = $posts[0];
 		?>
-		<div style="width: 100%">
+		<div class="show-hid-app">
 			<div class="show-hidden-posts">Show hidden posts</div>
 			<div class="show-applied-posts">Show applied posts</div>
 		</div>

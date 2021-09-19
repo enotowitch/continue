@@ -32,7 +32,7 @@
 
 <div class="card-flex">
 
-<div style="width: 100%">
+<div class="show-hid-app">
 <div class="show-hidden-posts">Show hidden posts</div>
 <div class="show-applied-posts">Show applied posts</div>
 </div>

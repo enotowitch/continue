@@ -112,7 +112,7 @@ $(document).ready(function () {
 
 		var size = $(this).val();
 
-		if (size != 'change size') {
+		if (size != '') {
 			// ! cookie size
 			document.cookie = `size=${size}`;
 			window.location.reload();
@@ -482,6 +482,7 @@ $(document).ready(function () {
 	infoCell.not('.info__example').not('.info__simple').chosen();
 	tagsSelect.chosen({ max_selected_options: 3 });
 	$('.search-tags-list').chosen({ max_selected_options: 1 });
+	$('.sort-applies').chosen({ max_selected_options: 1 });
 	$('.sort-flex').find('select').not('[name="tags"], .search-location, .search-word, .search-company').each(function () {
 		$(this).chosen({ max_selected_options: 1, display_disabled_options: false, disable_search: true });
 	})
@@ -707,7 +708,16 @@ $(document).ready(function () {
 	$(document).on('change', '.sort-applies', function(e){
 
 		var post_id = $(e.target).val();
+		// ! pass post_id to filter-form to search only in applications
+		$('.filter-form').append(`<input type="hidden" name="application" value="${post_id}">`);
+		history.pushState(null, '', `?`);
+		$('.filter-form').find('select, input').not('[name="card_from"],[name="quantity"],[name="application"]').each(function(){
+			$(this).val("");
+			$(this).trigger("chosen:updated");
+			$(this).next('.chosen-container').find('.chosen-single span').css({ 'color': '#000', 'font-weight': '400' });
+		})
 
+		// ! load applications
 		$.post({
 			url: 'load-apps.php',
 			data: {post_id:post_id},
