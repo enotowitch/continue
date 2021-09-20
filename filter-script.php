@@ -42,6 +42,15 @@
 <? if($_GET["quantity"]): ?>
 	$('.filter-form').find('[name="quantity"]').val('<? echo $_GET["quantity"]; ?>');
 <? endif; ?> 
+<? if($_GET["application"]): ?>
+	$('.filter-form').find('[name="application"]').val('<? echo $_GET["application"]; ?>');
+	$('.sort-applies').find('option').each(function(){
+		if($(this).val() == '<? echo $_GET["application"]; ?>'){
+			$(this).attr('selected', true);
+			$(this).closest('select').trigger("chosen:updated");
+		}
+	})
+<? endif; ?> 
 // ! post again
 setTimeout(() => {
 	post_filter_card();	

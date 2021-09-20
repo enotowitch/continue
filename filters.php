@@ -108,6 +108,7 @@
 		</select>
 
 		<input type="hidden" name="card_from" value="<? echo $_SERVER['PHP_SELF']; ?>">
+		<input type="hidden" name="application" value="">
 </form>
 </div>
 

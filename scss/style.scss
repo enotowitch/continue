@@ -856,6 +856,7 @@
 	max-width: $main-cards-cont-wid;
 	margin: 0 auto;
 	padding-left: 15px;
+	position: relative;
 }
 .applies {
 	padding-left: 4px;
@@ -1362,9 +1363,17 @@
 	width: 20px;
 	height: 20px;
 	background-color: #fff;
-	position: absolute;
-	bottom: 36px;
-	right: 2px;
+	&_search {
+		position: absolute;
+		bottom: 36px;
+		right: 2px;
+	}
+	&_apps {
+		position: absolute;
+		display: inline-block;
+		left: 490px;
+		top: 2px;
+	}
 }
 .show-hid-app {
 	width: 100%;

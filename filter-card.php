@@ -34,7 +34,7 @@ $application_arr = array();
 // !!! add to each search!
 $search_counter = 0;
 
-// ! all posts
+// ! search in: all posts
 if($_POST['card_from'] == "/index.php" || $_POST['card_from'] == "/portfolios.php"){
 
 	$search_in_posts = R::find('post');
@@ -52,7 +52,7 @@ if($_POST['card_from'] == "/index.php" || $_POST['card_from'] == "/portfolios.ph
 		$search_in_posts_arr = array_diff($search_in_posts_arr, $applied_arr);
 	}
 } 
-// ! my posts
+// ! search in: my posts
 if($_POST['card_from'] == "/post-job.php" || $_POST['card_from'] == "/post-portfolio.php"){
 
 	
@@ -65,7 +65,7 @@ if($_POST['card_from'] == "/post-job.php" || $_POST['card_from'] == "/post-portf
 		$search_in_posts_arr[] = $search_in_posts["id"];
 	}
 }
-// ! applications
+// ! search in: applications
 if($_POST['card_from'] == "/messages.php" || $_POST['card_from'] == "/messages-folios.php"){
 	
 	$search_in_posts = R::getAll( 'SELECT * FROM message WHERE user_to_id = :user_to_id',
@@ -100,6 +100,7 @@ if($_POST["application"] != ""){
 	foreach($posts_to_app as $posts_to_app){
 		$application_arr[] = $posts_to_app["apply_id"];
 	}
+	$search_counter++;
 	$final_arr[] = $application_arr;
 }
 

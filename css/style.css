@@ -1173,6 +1173,7 @@
   max-width: 930px;
   margin: 0 auto;
   padding-left: 15px;
+  position: relative;
 }
 
 .applies {
@@ -1812,9 +1813,19 @@
   width: 20px;
   height: 20px;
   background-color: #fff;
+}
+
+.select-loader_search {
   position: absolute;
   bottom: 36px;
   right: 2px;
+}
+
+.select-loader_apps {
+  position: absolute;
+  display: inline-block;
+  left: 490px;
+  top: 2px;
 }
 
 .show-hid-app {

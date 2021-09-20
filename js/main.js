@@ -133,7 +133,7 @@ $(document).ready(function () {
 				'data': { card_from: card_from },
 				dataType: 'json',
 				beforeSend: function(){
-					$(e.target).after('<div class="select-loader"></div>');
+					$(e.target).after('<div class="select-loader select-loader_search"></div>');
 				},
 				success: function (data) {
 
@@ -488,43 +488,44 @@ $(document).ready(function () {
 	})
 	$('.search-location, .search-word, .search-company').chosen({ max_selected_options: 1, display_disabled_options: false, disable_search: false });
 
-	// ! TEST load-more
-	$(window).scroll(function () {
-		if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-			$('.load-more').show().trigger('click');
-		}
-	});
+	// // ! TEST load-more
+	// $(window).scroll(function () {
+	// 	if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+	// 		$('.load-more').show().trigger('click');
+	// 	}
+	// });
 
-	$(document).on('click', '.load-more', function () {
-		var quantity = $(document).find('.card').not('.not100').length;
-		var cat = window.location.href.includes('portfolio') ? 'folio' : 'job';
+	// $(document).on('click', '.load-more', function () {
+	// 	var quantity = $(document).find('.card').not('.not100').length;
+	// 	var cat = window.location.href.includes('portfolio') ? 'folio' : 'job';
 
-		$.post({
-			'url': 'load-more.php',
-			'data': { card_from: card_from, quantity: quantity, cat: cat },
-			'dataType': 'json',
-			success: function (data) {
-				// ! NO NEW POSTS -> data == null
-				if (data == null) {
-					$(document).find('.load-more').detach();
-				}
-				render_cards(data);
-				$('.apply').not('.ok-gray').addClass('get-mes-form');
-				$('img[src="null"]').detach();
-				render_hidden();
-				render_liked();
-				render_applied();
-				render_flags();
-				render_update_icon();
-				// ! slick only 10 last loaded cards
-				var card_length = ($('.card').not('.not100').length);
-				for (var i = 1; i <= 10; i++) {
-					my_slick($('.card').not('.not100').eq(card_length - i).find('.info__pics'));
-				}
+	// 	$.post({
+	// 		'url': 'load-more.php',
+	// 		'data': { card_from: card_from, quantity: quantity, cat: cat },
+	// 		'dataType': 'json',
+	// 		success: function (data) {
+	// 			// ! NO NEW POSTS -> data == null
+	// 			if (data == null) {
+	// 				$(document).find('.load-more').detach();
+	// 			}
+	// 			render_cards(data);
+	// 			$('.apply').not('.ok-gray').addClass('get-mes-form');
+	// 			$('img[src="null"]').detach();
+	// 			render_hidden();
+	// 			render_liked();
+	// 			render_applied();
+	// 			render_flags();
+	// 			render_update_icon();
+	// 			// ! slick only 10 last loaded cards
+	// 			var card_length = ($('.card').not('.not100').length);
+	// 			for (var i = 1; i <= 10; i++) {
+	// 				my_slick($('.card').not('.not100').eq(card_length - i).find('.info__pics'));
+	// 			}
 
-			}
-		})
-	})
+	// 		}
+	// 	})
+	// })
+	// // ? TEST load-more
 
 	// ! TEST load-more-search
 
@@ -704,18 +705,17 @@ $(document).ready(function () {
 	
 		window.location.href = `/mes.php?from=${user_id}&about=${about}&cat=${cat}`;
 	})
-	// ! TEST load-apps to select "Applications for (job/folio)"
+	// ! TEST sort-applies = load-apps to select "Applications for (job/folio)"
 	$(document).on('change', '.sort-applies', function(e){
 
 		var post_id = $(e.target).val();
+
 		// ! pass post_id to filter-form to search only in applications
-		$('.filter-form').append(`<input type="hidden" name="application" value="${post_id}">`);
-		history.pushState(null, '', `?`);
-		$('.filter-form').find('select, input').not('[name="card_from"],[name="quantity"],[name="application"]').each(function(){
-			$(this).val("");
-			$(this).trigger("chosen:updated");
-			$(this).next('.chosen-container').find('.chosen-single span').css({ 'color': '#000', 'font-weight': '400' });
-		})
+		$('.filter-form').find('[name="application"]').val(post_id);
+
+		$('.filter-form').find('[name="quantity"]').val('0');
+		
+		last_filter(post_id, 'application');
 
 		// ! load applications
 		$.post({
@@ -724,6 +724,7 @@ $(document).ready(function () {
 			dataType: 'json',
 			beforeSend: function(){
 				$('.card-flex').empty();
+				$(e.target).after('<div class="select-loader select-loader_apps"></div>');
 			},
 			success: function(data){
 				render_cards(data);
@@ -732,8 +733,16 @@ $(document).ready(function () {
 				render_applied();
 				render_flags();
 				render_mes_to_applicant();
+				$('.select-loader_apps').detach();
 				$('img[src="null"]').detach();
+
+				$('.card-flex').prepend(`<div class="show-hid-app">
+				<div class="show-hidden-posts">Show hidden posts</div>
+				<div class="show-applied-posts">Show applied posts</div>
+				</div>`);
 			},
+		}).done(function(){
+				post_filter_card();
 		})
 	})
 })
