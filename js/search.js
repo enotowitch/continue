@@ -117,7 +117,21 @@ $(document).ready(function () {
 	// ? remove WORKLOAD
 
 	// ? remove almost ALL
+	colorInfo = Array();
 	$(document).on('click', '.close-cancel-filter', function () {
+
+		// ! colorInfo
+		var this_class = this.className.replace('close-cancel-filter close_cancel_filter_', '');
+		
+		$(document).find('.card:eq(0) .info .info__cell').each(function(){
+			if($(this).hasClass('brand')){
+				if(!colorInfo.includes(this.id)){
+					colorInfo.push(this.id);
+				}
+			}
+		})
+		colorInfo = colorInfo.filter(v => v != this_class);
+		// ? colorInfo
 
 		var className = this.className.replace('close-cancel-filter ', '').replace('close_cancel_filter_', '');
 		if(className == 'word'){
@@ -152,7 +166,7 @@ $(document).ready(function () {
 		$(`.search-${className}`).next('.chosen-container').find('.chosen-single span').css('color', '#000');
 		// ! post again
 		$('[name="quantity"]').val(0)
-		post_filter_card();
+		post_filter_card(colorInfo);
 	})
 
 

@@ -1,6 +1,7 @@
 <!-- all -->
 <? if ($_GET): ?>
 	<script>
+	colorInfo = Array();
 	$(document).ready(function(){
 
 		if (card_from == '/mes.php') { return; }	
@@ -27,18 +28,23 @@
 	$('.filter-form').find('.search-company').prepend('<option selected value="<? echo $_GET["search-company"]; ?>"><? echo $_GET["search-company"]; ?></option>');
 <? endif; ?> 
 <? if($_GET["salary"]): ?>
+	colorInfo.push('salary');
 	$('.filter-form').find('.search-salary').val('<? echo $_GET["salary"]; ?>');
 <? endif; ?> 
 <? if($_GET["experience"]): ?>
+	colorInfo.push('experience');
 	$('.filter-form').find('.search-experience').val('<? echo $_GET["experience"]; ?>');
 <? endif; ?> 
 <? if($_GET["duration"]): ?>
+	colorInfo.push('duration');
 	$('.filter-form').find('.search-duration').val('<? echo $_GET["duration"]; ?>');
 <? endif; ?> 
 <? if($_GET["location"]): ?>
+	colorInfo.push('location');
 	$('.filter-form').find('.search-location').val('<? echo $_GET["location"]; ?>');
 <? endif; ?> 
 <? if($_GET["workload"]): ?>
+	colorInfo.push('workload');
 	$('.filter-form').find('.search-workload').val('<? echo $_GET["workload"]; ?>');
 <? endif; ?> 
 <? if($_GET["posted"]): ?>
@@ -58,7 +64,7 @@
 <? endif; ?> 
 // ! post again
 setTimeout(() => {
-	post_filter_card();	
+	post_filter_card(colorInfo);	
 }, 100);
 // update chosen
 $('.sort-flex').find('select').each(function(){

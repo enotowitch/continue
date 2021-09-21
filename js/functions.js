@@ -96,7 +96,7 @@ function my_slick_3(target) {
 	});
 
 }
-function post_filter_card() {
+function post_filter_card(colorInfo) {
 
 	if (card_from == '/mes.php') { return; }
 
@@ -133,6 +133,10 @@ function post_filter_card() {
 				my_slick($('.info__pics'));
 			}, 100);
 			$('.search-loader-top').detach();
+
+			colorInfo.forEach(function(el){
+				$(`.${el}`).addClass('brand');
+			})
 		}
 	}).done(function(){
 		if (window.location.href.includes('messages')){

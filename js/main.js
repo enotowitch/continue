@@ -157,7 +157,7 @@ $(document).ready(function () {
 
 
 	// ! search CLICK in card
-
+	colorInfo = Array();
 	$(document).on('click', '#salary, #experience, #location, #duration, #workload', function () {
 
 		if (card_from == '/mes.php') { return; }
@@ -292,9 +292,13 @@ $(document).ready(function () {
 		$(`.search-${search_id}`).trigger('chosen:updated');
 
 		last_filter(text, search_id);
+		// ! TEST colorInfo
+		if(!colorInfo.includes(search_id)){
+			colorInfo.push(search_id);
+		}
 		// ! post
-		$('[name="quantity"]').val(0)
-		post_filter_card();
+		$('[name="quantity"]').val(0);
+		post_filter_card(colorInfo);
 
 	})
 
