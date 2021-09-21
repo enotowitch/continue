@@ -121,8 +121,30 @@ function load_my_num_posts($cat){
 	$posts = R::find('post', 'user_id = ? AND cat = ?', [$_SESSION["user"]["id"], $cat], 'ORDER BY id DESC LIMIT 10');
 	return $posts;
 }
-// ! load_applications
-function load_applications($cat = NULL){
+// ! load_all_applications
+function load_all_applications($cat){
+	// ! find all applications
+	$my_msg = R::getAll( 'SELECT apply_id FROM message WHERE user_to_id = :user_to_id AND applied_to_cat = :applied_to_cat',
+	[':user_to_id' => $_SESSION["user"]["id"], ':applied_to_cat' => $cat]
+	);
+	$my_msg_arr = array();
+	foreach($my_msg as $my_msg){
+		$my_msg_arr[] = $my_msg["apply_id"];
+	}
+	$my_msg_arr = array_unique($my_msg_arr);
+	// ! load posts
+	$post = R::loadAll('post', $my_msg_arr);
+
+	$post = throw_hidden_and_applied($post);
+	foreach($post as $post){
+		$load_all[] = $post["id"];
+	}
+
+	$post = R::loadAll('post', $load_all);
+	return $post;
+}
+// ! load_num_applications
+function load_num_applications($cat = NULL){
 	if($_SERVER["PHP_SELF"] == '/messages.php'){
 		$cat = 'folio';
 	}
@@ -144,15 +166,15 @@ function load_applications($cat = NULL){
 		// ! load posts
 		$post = R::loadAll('post', $my_msg_arr);
 	
-		$post_12 = array();
+		$post_10 = array();
 		$i = 0;
 		foreach($post as $post){
-			if($i <= 11)
-			$post_12[] = $post["id"];
+			if($i <= 10)
+			$post_10[] = $post["id"];
 			$i++;
 		}
 	
-		$post = throw_hidden_and_applied($post_12);
+		$post = throw_hidden_and_applied($post_10);
 	
 		$post = R::loadAll('post', $post);
 		return array($post, $my_msg_applied_to_card);

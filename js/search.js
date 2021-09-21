@@ -64,6 +64,11 @@ $(document).ready(function () {
 		$('.tag').removeClass('tag_active');
 		// ! unrender 2
 		$('.search-result').find('.cancel_filter_tag').detach();
+		// ! unrender 3
+		$('.search-tags-list').val('0');
+		$('.search-tags-list').trigger("chosen:updated");
+		// ! unrender 4
+		$('.search__tag').removeClass('empty-tag');
 		// ! post again
 		$('.go-to-first').eq(0).trigger('click');
 	})
@@ -72,7 +77,7 @@ $(document).ready(function () {
 	$(document).on('click', '.close_filter', function () {
 
 		// ! NULL select/input
-		$('.filter-form').find('select.filter').val('0');
+		$('.filter-form').find('select.filter').val("");
 
 		// ! push URL
 		var searched_word = $(this).closest('div').text().trim();
@@ -119,7 +124,8 @@ $(document).ready(function () {
 		}
 		else {
 			// ! NULL select/input
-			$('.filter-form').find(`.search-${className}`).val(`0`);
+			$('.filter-form').find(`.search-${className}`).val("");
+			$('.filter-form').find(`.search-${className}`).trigger('chosen:updated');
 		}
 		var searched_word = encodeURI($(this).prev('div').text().trim());
 		if(className == 'company' || className == 'word'){

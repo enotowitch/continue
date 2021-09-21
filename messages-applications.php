@@ -40,7 +40,7 @@
 <?
 	// ! $post = applications to me 
 	// ! $my_msg_applied_to_card = my cards (titles) to which I got applies
-	$posts_and_applied_to_card = load_applications();
+	$posts_and_applied_to_card = load_num_applications();
 
 	$post = $posts_and_applied_to_card[0];
 	$my_msg_applied_to_card = $posts_and_applied_to_card[1];
@@ -82,7 +82,7 @@
 
 <script>
 
-render_mes_to_applicant();
+post_filter_card();
 
 
 // ! ready

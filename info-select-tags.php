@@ -38,7 +38,7 @@
 			data.other.forEach(element => {	setTimeout(() => {$('.optgroup-other').append(`<option value="${element}">${element}</option>`);}, 100);
 			});
 			setTimeout(() => {
-				$('.tags__select').trigger("chosen:updated");
+				$('.search-tags-list').trigger("chosen:updated");
 			}, 100);
 			}
 		})

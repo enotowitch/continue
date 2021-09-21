@@ -583,7 +583,7 @@ $('.search-result').append('<div class="dont-show-applied-posts" >Don\'t show ap
 		if($_POST['card_from'] == "/messages-folios.php"){
 			$cat = 'job';
 		}
-		$posts = load_applications($cat); 
+		$posts = load_num_applications($cat); 
 		$posts = $posts[0];
 		?>
 		<div class="show-hid-app">

@@ -2,6 +2,9 @@
 <? if ($_GET): ?>
 	<script>
 	$(document).ready(function(){
+
+		if (card_from == '/mes.php') { return; }	
+
 		$('.search').show();
 		$('.banner').hide();
 		$('.post').hide();

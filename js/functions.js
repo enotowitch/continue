@@ -98,6 +98,8 @@ function my_slick_3(target) {
 }
 function post_filter_card() {
 
+	if (card_from == '/mes.php') { return; }
+
 	$.post({
 		'url': 'filter-card.php',
 		'data': $('.filter-form').serialize(),
@@ -132,6 +134,10 @@ function post_filter_card() {
 				my_slick($('.info__pics'));
 			}, 100);
 			$('.search-loader-top').detach();
+		}
+	}).done(function(){
+		if (window.location.href.includes('messages')){
+			render_mes_to_applicant();
 		}
 	})
 
@@ -347,4 +353,7 @@ function render_cards(data) {
 }
 function render_mes_to_applicant(){
 	$('.apply').addClass('mes-to-applicant').removeClass('get-mes-form').attr('src', 'img/icons/email.svg');
+}
+function hide_search_icon(){
+	$('.search-icon').addClass('op0').css({'cursor':'default'});
 }

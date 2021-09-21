@@ -85,5 +85,7 @@ window.location.href = `/mes.php?from=<? echo $_GET['from']; ?>&about=${about}&c
 var title = $('.card').find('.card__title').text().trim();
 $('.mes-form').append(`<input type="hidden" name="apply_title" value="${title}">`);
 
+hide_search_icon();
+
 
 </script>

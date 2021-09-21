@@ -16,6 +16,12 @@ if($_POST["card_from"] == "/post-job.php"){
 if($_POST["card_from"] == "/post-portfolio.php"){
 	$tags = load_my_posts('folio');
 }
+if($_POST["card_from"] == "/messages.php"){
+	$tags = load_all_applications('folio');
+}
+if($_POST["card_from"] == "/messages-folios.php"){
+	$tags = load_all_applications('job');
+}
 
 
 $tags_available = array();

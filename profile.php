@@ -43,5 +43,5 @@ $folios_applied = R::find('applied', 'cat = ? AND user_id = ?', ['folio', $_SESS
 ?>
 
 <script>
-	$('.search-icon').addClass('op0').css({'cursor':'default'});
+	hide_search_icon();
 </script>

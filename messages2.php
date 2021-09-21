@@ -68,4 +68,6 @@
 $('.search__topic:first-child()').text('Applications').attr('href', '/messages.php');
 $('.search__topic:last-child()').addClass('search__topic_active').text('Messages').attr('href', '/messages2.php');
 
+hide_search_icon();
+
 </script>
