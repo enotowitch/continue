@@ -5,6 +5,8 @@ $(document).ready(function () {
 
 		if (card_from == '/mes.php') { return; }
 
+		dont_load_more();
+
 		$('.tag').removeClass('empty-tag');
 		var text = $(this).text().trim();
 
@@ -25,7 +27,8 @@ $(document).ready(function () {
 			history.pushState(null, '', `?search-tag=${text}&`);
 		}
 		// ! post
-		$('.go-to-first').eq(0).trigger('click');
+		$('[name="quantity"]').val(0)
+		post_filter_card();
 
 	})
 
@@ -33,6 +36,8 @@ $(document).ready(function () {
 
 	// ! POSTED, WORKLOAD, LOCATION, DURATION, EXPERIENCE, SALARY, FILTER
 	$(document).on('change', '.search-posted, .search-workload, .search-location, .search-duration, .search-experience, .search-salary, .filter, .search-word, .search-company', function (e) {
+
+		dont_load_more();
 
 		if(this.className == 'search-word' || this.className == 'search-company'){
 			var className = this.className;
@@ -43,7 +48,8 @@ $(document).ready(function () {
 
 		last_filter(text, className);
 		// ! post
-		$('.go-to-first').eq(0).trigger('click');
+		$('[name="quantity"]').val(0)
+		post_filter_card();
 	})
 
 
@@ -70,7 +76,8 @@ $(document).ready(function () {
 		// ! unrender 4
 		$('.search__tag').removeClass('empty-tag');
 		// ! post again
-		$('.go-to-first').eq(0).trigger('click');
+		$('[name="quantity"]').val(0)
+		post_filter_card();
 	})
 
 	// ? remove FILTER
@@ -90,7 +97,8 @@ $(document).ready(function () {
 		$('.filter').trigger("chosen:updated");
 		$('.filter').next('.chosen-container').find('.chosen-single span').css('color', '#000');
 		// ! post again
-		$('.go-to-first').eq(0).trigger('click');
+		$('[name="quantity"]').val(0)
+		post_filter_card();
 
 	})
 
@@ -143,7 +151,8 @@ $(document).ready(function () {
 		$(`.search-${className}`).trigger("chosen:updated");
 		$(`.search-${className}`).next('.chosen-container').find('.chosen-single span').css('color', '#000');
 		// ! post again
-		$('.go-to-first').eq(0).trigger('click');
+		$('[name="quantity"]').val(0)
+		post_filter_card();
 	})
 
 

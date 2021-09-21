@@ -115,7 +115,6 @@ function post_filter_card() {
 			render_flags();
 			render_update_icon();
 			if ($('.card').not('.not100').length == 0) {
-				// $('.go-to-first').eq(0).trigger('click');
 				if (window.location.href.includes('quantity')) {
 					// ! last filter
 					var last_filter = window.location.href.split('?')[1];
@@ -356,4 +355,7 @@ function render_mes_to_applicant(){
 }
 function hide_search_icon(){
 	$('.search-icon').addClass('op0').css({'cursor':'default'});
+}
+function dont_load_more(){
+	$('.card-flex').addClass('dont-load-more');
 }

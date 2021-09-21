@@ -162,6 +162,8 @@ $(document).ready(function () {
 
 		if (card_from == '/mes.php') { return; }
 
+		dont_load_more();
+
 		var text = $(this).text().trim();
 		var search_id = this.id;
 
@@ -291,7 +293,8 @@ $(document).ready(function () {
 
 		last_filter(text, search_id);
 		// ! post
-		$('.go-to-first').eq(0).trigger('click');
+		$('[name="quantity"]').val(0)
+		post_filter_card();
 
 	})
 
@@ -493,46 +496,45 @@ $(document).ready(function () {
 
 	// ! TEST load-more
 	$(window).scroll(function () {
-		if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-			$('.load-more').show().trigger('click');
+		if ($(window).scrollTop() == $(document).height() - $(window).height() && !$('.card-flex').hasClass('dont-load-more')) {
+
+			var quantity = $(document).find('.card').not('.not100').length;
+			var cat = window.location.href.includes('portfolio') ? 'folio' : 'job';
+
+			$.post({
+				'url': 'load-more.php',
+				'data': { card_from: card_from, quantity: quantity, cat: cat },
+				'dataType': 'json',
+				success: function (data) {
+					// ! NO NEW POSTS -> data == null
+					if (data == null) {
+						$(document).find('.load-more').detach();
+					}
+					render_cards(data);
+					$('.apply').not('.ok-gray').addClass('get-mes-form');
+					$('img[src="null"]').detach();
+					render_hidden();
+					render_liked();
+					render_applied();
+					render_flags();
+					render_update_icon();
+				}
+			}).done(function () {
+				// ! render_mes_to_applicant
+				if (window.location.href.includes('messages')) {
+					render_mes_to_applicant();
+				}
+				// ! slick only 10 last loaded cards
+				var card_length = ($('.card').not('.not100').length);
+				for (var i = 1; i <= 10; i++) {
+					my_slick($('.card').not('.not100').eq(card_length - i).find('.info__pics'));
+				}
+			})
+
 		}
 	});
 
 	// TODO load more NOT CLICK
-	$(document).on('click', '.load-more', function () {
-		var quantity = $(document).find('.card').not('.not100').length;
-		var cat = window.location.href.includes('portfolio') ? 'folio' : 'job';
-
-		$.post({
-			'url': 'load-more.php',
-			'data': { card_from: card_from, quantity: quantity, cat: cat },
-			'dataType': 'json',
-			success: function (data) {
-				// ! NO NEW POSTS -> data == null
-				if (data == null) {
-					$(document).find('.load-more').detach();
-				}
-				render_cards(data);
-				$('.apply').not('.ok-gray').addClass('get-mes-form');
-				$('img[src="null"]').detach();
-				render_hidden();
-				render_liked();
-				render_applied();
-				render_flags();
-				render_update_icon();
-			}
-		}).done(function () {
-			// ! render_mes_to_applicant
-			if (window.location.href.includes('messages')) {
-				render_mes_to_applicant();
-			}
-			// ! slick only 10 last loaded cards
-			var card_length = ($('.card').not('.not100').length);
-			for (var i = 1; i <= 10; i++) {
-				my_slick($('.card').not('.not100').eq(card_length - i).find('.info__pics'));
-			}
-		})
-	})
 	// ? TEST load-more
 
 	// ! TEST load-more-search

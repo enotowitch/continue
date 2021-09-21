@@ -82,9 +82,6 @@
 
 <script>
 
-post_filter_card();
-
-
 // ! ready
 $(document).ready(function(){
 	setTimeout(() => {

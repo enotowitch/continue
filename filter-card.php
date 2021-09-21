@@ -559,6 +559,7 @@ $('.search-result').append('<div class="dont-show-applied-posts" >Don\'t show ap
 		// ! 0 RESULTS
 		$('.load-search').detach();
 		$('.card-flex').append('<div class="try"><div class="try__title">Try:</div><div class="show-hidden-posts">Show hidden posts</div><div class="show-applied-posts">Show applied posts</div><div class="try-tag">Search only tag</div></div>');
+		$('.card-flex').removeClass('dont-load-more');
 		// ? 0 RESULTS
 	</script>
 <? endif; ?>

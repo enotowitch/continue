@@ -5,6 +5,8 @@
 
 		if (card_from == '/mes.php') { return; }	
 
+		$('.card-flex').addClass('dont-load-more');
+
 		$('.search').show();
 		$('.banner').hide();
 		$('.post').hide();
