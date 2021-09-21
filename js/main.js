@@ -132,7 +132,7 @@ $(document).ready(function () {
 				'url': 'autocomplete.php',
 				'data': { card_from: card_from },
 				dataType: 'json',
-				beforeSend: function(){
+				beforeSend: function () {
 					$(e.target).after('<div class="select-loader select-loader_search"></div>');
 				},
 				success: function (data) {
@@ -146,7 +146,7 @@ $(document).ready(function () {
 
 					$('.search-word').trigger('chosen:updated');
 					$('.search-company').trigger('chosen:updated');
-					$('.select-loader').detach();	
+					$('.select-loader').detach();
 
 
 
@@ -520,12 +520,16 @@ $(document).ready(function () {
 				render_applied();
 				render_flags();
 				render_update_icon();
-				// ! slick only 10 last loaded cards
-				var card_length = ($('.card').not('.not100').length);
-				for (var i = 1; i <= 10; i++) {
-					my_slick($('.card').not('.not100').eq(card_length - i).find('.info__pics'));
-				}
-
+			}
+		}).done(function () {
+			// ! render_mes_to_applicant
+			if (window.location.href.includes('messages')) {
+				render_mes_to_applicant();
+			}
+			// ! slick only 10 last loaded cards
+			var card_length = ($('.card').not('.not100').length);
+			for (var i = 1; i <= 10; i++) {
+				my_slick($('.card').not('.not100').eq(card_length - i).find('.info__pics'));
 			}
 		})
 	})
@@ -560,7 +564,7 @@ $(document).ready(function () {
 		}
 		post_filter_card();
 		// ! scroll top
-		$('html, body').animate({scrollTop: $('.card-flex').offset().top}, 1000);
+		$('html, body').animate({ scrollTop: $('.card-flex').offset().top }, 1000);
 	})
 	// ! less
 	$(document).on('click', '.load-less-search', function () {
@@ -599,11 +603,11 @@ $(document).ready(function () {
 		var name = this.className;
 		$('.filter-form').append(`<input name="${name}" type="hidden" value="1">`);
 
-		if(window.location.href.includes('messages')){
+		if (window.location.href.includes('messages')) {
 			$('.filter').val(name.replace('show-', '').replace('-posts', ''));
 			$('.filter').trigger('chosen:updated');
 			$('.filter').next('.chosen-container').find('.chosen-single span').css({ 'color': '#6fda44', 'font-weight': '700' });
-		}	
+		}
 
 		post_filter_card();
 	})
@@ -702,15 +706,15 @@ $(document).ready(function () {
 		post_filter_card();
 	})
 	// ! mes-to-applicant
-	$(document).on('click', '.mes-to-applicant', function(){
+	$(document).on('click', '.mes-to-applicant', function () {
 		var user_id = $(this).closest('.card').find('.user_id').val();
 		var about = $(this).closest('.card').find('.card_id').val();
 		(card_from == '/messages.php') ? cat = 'job' : cat = 'folio';
-	
+
 		window.location.href = `/mes.php?from=${user_id}&about=${about}&cat=${cat}`;
 	})
 	// ! TEST sort-applies = load-apps to select "Applications for (job/folio)"
-	$(document).on('change', '.sort-applies', function(e){
+	$(document).on('change', '.sort-applies', function (e) {
 
 		var post_id = $(e.target).val();
 
@@ -718,7 +722,7 @@ $(document).ready(function () {
 		$('.filter-form').find('[name="application"]').val(post_id);
 
 		$('.filter-form').find('[name="quantity"]').val('0');
-		
+
 		last_filter(post_id, 'application');
 
 		// ! load applications

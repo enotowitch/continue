@@ -352,7 +352,7 @@ function render_cards(data) {
 	// ? render cards
 }
 function render_mes_to_applicant(){
-	$('.apply').addClass('mes-to-applicant').removeClass('get-mes-form').attr('src', 'img/icons/email.svg');
+	$(document).find('.apply').addClass('mes-to-applicant').removeClass('get-mes-form').attr('src', 'img/icons/email.svg');
 }
 function hide_search_icon(){
 	$('.search-icon').addClass('op0').css({'cursor':'default'});
