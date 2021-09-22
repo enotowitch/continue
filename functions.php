@@ -169,7 +169,7 @@ function load_num_applications($cat = NULL){
 		$post_10 = array();
 		$i = 0;
 		foreach($post as $post){
-			if($i <= 10)
+			if($i <= 9)
 			$post_10[] = $post["id"];
 			$i++;
 		}

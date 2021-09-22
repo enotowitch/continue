@@ -527,7 +527,7 @@ $('.search-result').append(`<div class="cancel-filter cancel_all_filters">cancel
 // ! render search-result number
 // small card size
 <? if($_COOKIE['size'] != "w100"): ?>
-$('.search-result').after('<div class="load-search"><div class="load-less-search">prev</div><div class="search-results-num">results: <? echo $_POST["quantity"]; ?>-<? echo $_POST["quantity"]+11; ?><span class="go-to-first">go to first</span></div><div class="load-more-search">next</div></div>');
+$('.search-result').after('<div class="load-search"><div class="load-less-search">prev</div><div class="search-results-num">results: <? echo $_POST["quantity"]+1; ?>-<? echo $_POST["quantity"]+12; ?><span class="go-to-first">go to first</span></div><div class="load-more-search">next</div></div>');
 <? endif; ?>
 // prevent load-less
 <? if($_POST["quantity"] == 0): ?>
@@ -535,7 +535,7 @@ $('.search-result').after('<div class="load-search"><div class="load-less-search
 <? endif; ?>
 // big card size
 <? if($_COOKIE['size'] == "w100"): ?>
-	$('.card-flex').append('<div class="load-search"><div class="load-less-search">prev</div><div class="search-results-num">results: <? echo $_POST["quantity"]; ?>-<? echo $_POST["quantity"]+11; ?><span class="go-to-first">go to first</span></div><div class="load-more-search">next</div></div>');
+	$('.card-flex').append('<div class="load-search"><div class="load-less-search">prev</div><div class="search-results-num">results: <? echo $_POST["quantity"]+1; ?>-<? echo $_POST["quantity"]+12; ?><span class="go-to-first">go to first</span></div><div class="load-more-search">next</div></div>');
 <? endif; ?>
 // ? render search-result number
 // show-hidden-posts & show-applied-posts

@@ -1274,7 +1274,7 @@
 	}
 }
 // ? search-tags-list => after chosen plugin
-.select-tags-div {
+.search-tags-list ~ .chosen-container {
 	display: inline-block;
 	position: relative;
 	top: 8px;

@@ -17,6 +17,7 @@ if($_POST["card_from"] == "/messages.php"){
 
 
 $load_all = array();
+if($posts != NULL)
 foreach($posts as $post){
 	$load_all[] = $post["id"];
 }
