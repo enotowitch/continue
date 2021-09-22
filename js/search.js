@@ -1,9 +1,13 @@
 $(document).ready(function () {
 
+	colorInfo = Array();
+
 	// ! TAG
 	$(document).on('click', '.tag', function () {
 
 		if (card_from == '/mes.php') { return; }
+
+		prepareColorInfo();
 
 		dont_load_more();
 
@@ -28,7 +32,7 @@ $(document).ready(function () {
 		}
 		// ! post
 		$('[name="quantity"]').val(0)
-		post_filter_card();
+		post_filter_card(colorInfo);
 
 	})
 
@@ -37,6 +41,12 @@ $(document).ready(function () {
 	// ! POSTED, WORKLOAD, LOCATION, DURATION, EXPERIENCE, SALARY, FILTER
 	$(document).on('change', '.search-posted, .search-workload, .search-location, .search-duration, .search-experience, .search-salary, .filter, .search-word, .search-company', function (e) {
 
+		// ! colorInfo "manually"
+		var color_class = this.className.replace('search-', '');
+		$('.info').find(`#${color_class}`).addClass('brand');
+
+		prepareColorInfo();
+		
 		dont_load_more();
 
 		if(this.className == 'search-word' || this.className == 'search-company'){
@@ -49,7 +59,7 @@ $(document).ready(function () {
 		last_filter(text, className);
 		// ! post
 		$('[name="quantity"]').val(0)
-		post_filter_card();
+		post_filter_card(colorInfo);
 	})
 
 
@@ -117,19 +127,13 @@ $(document).ready(function () {
 	// ? remove WORKLOAD
 
 	// ? remove almost ALL
-	colorInfo = Array();
 	$(document).on('click', '.close-cancel-filter', function () {
 
 		// ! colorInfo
 		var this_class = this.className.replace('close-cancel-filter close_cancel_filter_', '');
 		
-		$(document).find('.card:eq(0) .info .info__cell').each(function(){
-			if($(this).hasClass('brand')){
-				if(!colorInfo.includes(this.id)){
-					colorInfo.push(this.id);
-				}
-			}
-		})
+		prepareColorInfo();
+
 		colorInfo = colorInfo.filter(v => v != this_class);
 		// ? colorInfo
 

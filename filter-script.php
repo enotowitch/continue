@@ -11,7 +11,7 @@
 		$('.search').show();
 		$('.banner').hide();
 		$('.post').hide();
-		$('.load-more').detach();
+
 		$('.search__body').append('<div class="search-loader-top"></div>');
 		// skeleton
 		$('.card').not('.not100').html('<div class="sk__card"><div class="sk__logo sk-anim"></div><div class="sk__title sk-anim"></div><div class="sk__title2 sk-anim"></div><div class="sk__infos"><div class="sk__info sk-anim"></div><div class="sk__info sk-anim"></div><div class="sk__info sk-anim"></div><div class="sk__info sk-anim"></div><div class="sk__info sk-anim"></div><div class="sk__info sk-anim"></div></div><div class="sk__infos2"><div class="sk__info sk-anim"></div><div class="sk__info sk-anim"></div><div class="sk__info sk-anim"></div></div></div>');

@@ -512,6 +512,7 @@ for($i=1;$i<=9;$i++){
 
 <? if(count($intersect) == 0 && $search_counter != 0): ?>
 <script>
+$('.card-flex').addClass('dont-load-more');
 $('.card-flex').append(`<div class="oops">OOPS! NOTHING FOUND!</div>`);
 $('.tag').removeClass('empty-tag');
 $('.tag_active').addClass('empty-tag');
@@ -521,7 +522,7 @@ $('.tag_active').addClass('empty-tag');
 <script>
 // ! SEARCH_COUNTER > 0
 // prevent load-more posts in search
-$('.load-more').detach();
+
 $('.search-result').append(`<div class="cancel-filter cancel_all_filters">cancel results: <? echo count($intersect); ?></div>`);
 // ! render search-result number
 // small card size
@@ -559,7 +560,6 @@ $('.search-result').append('<div class="dont-show-applied-posts" >Don\'t show ap
 		// ! 0 RESULTS
 		$('.load-search').detach();
 		$('.card-flex').append('<div class="try"><div class="try__title">Try:</div><div class="show-hidden-posts">Show hidden posts</div><div class="show-applied-posts">Show applied posts</div><div class="try-tag">Search only tag</div></div>');
-		$('.card-flex').removeClass('dont-load-more');
 		// ? 0 RESULTS
 	</script>
 <? endif; ?>
@@ -567,7 +567,8 @@ $('.search-result').append('<div class="dont-show-applied-posts" >Don\'t show ap
 <? if($search_counter == 0): ?>
 	<!-- allow load-more when no search -->
 	<script>
-	$('.card-flex').after('<div hidden class="load-more"></div>');
+	$('.card-flex').removeClass('dont-load-more');
+	
 	$('.try').detach();
 	</script>
 	<? if($_POST['card_from'] == "/index.php" || $_POST['card_from'] == "/portfolios.php"): ?>

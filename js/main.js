@@ -293,7 +293,7 @@ $(document).ready(function () {
 
 		last_filter(text, search_id);
 		// ! TEST colorInfo
-		if(!colorInfo.includes(search_id)){
+		if (!colorInfo.includes(search_id)) {
 			colorInfo.push(search_id);
 		}
 		// ! post
@@ -505,35 +505,48 @@ $(document).ready(function () {
 			var quantity = $(document).find('.card').not('.not100').length;
 			var cat = window.location.href.includes('portfolio') ? 'folio' : 'job';
 
-			$.post({
-				'url': 'load-more.php',
-				'data': { card_from: card_from, quantity: quantity, cat: cat },
-				'dataType': 'json',
-				success: function (data) {
-					// ! NO NEW POSTS -> data == null
-					if (data == null) {
+			if (!$('.card-flex').hasClass('stop-load-more')) {
+				$.post({
+					'url': 'load-more.php',
+					'data': { card_from: card_from, quantity: quantity, cat: cat },
+					'dataType': 'json',
+					beforeSend: function () {
+						$('.card-flex').after('<div class="load-more"></div>');
+						$('.card-flex').addClass('stop-load-more');
+					},
+					success: function (data) {
+						// ! NO NEW POSTS -> data == null
 						$(document).find('.load-more').detach();
+						render_cards(data);
+						$('.apply').not('.ok-gray').addClass('get-mes-form');
+						$('img[src="null"]').detach();
+						render_hidden();
+						render_liked();
+						render_applied();
+						render_flags();
+						render_update_icon();
 					}
-					render_cards(data);
-					$('.apply').not('.ok-gray').addClass('get-mes-form');
-					$('img[src="null"]').detach();
-					render_hidden();
-					render_liked();
-					render_applied();
-					render_flags();
-					render_update_icon();
-				}
-			}).done(function () {
-				// ! render_mes_to_applicant
-				if (window.location.href.includes('messages')) {
-					render_mes_to_applicant();
-				}
-				// ! slick only 10 last loaded cards
-				var card_length = ($('.card').not('.not100').length);
-				for (var i = 1; i <= 10; i++) {
-					my_slick($('.card').not('.not100').eq(card_length - i).find('.info__pics'));
-				}
-			})
+				}).done(function (data) {
+					$('.card-flex').removeClass('stop-load-more');
+					if (data == null){
+						$('.card-flex').after('<div class="loading danger" style="font-family: Montserrat">NO NEW POSTS</div>');
+						$('.card-flex').addClass('stop-load-more');
+						setTimeout(() => {
+							$('.loading.danger').slideUp(1000);
+						}, 2000);
+					}
+					// ! render_mes_to_applicant
+					if (window.location.href.includes('messages')) {
+						render_mes_to_applicant();
+					}
+					// ! slick only 10 last loaded cards
+					var card_length = ($('.card').not('.not100').length);
+					for (var i = 1; i <= 10; i++) {
+						my_slick($('.card').not('.not100').eq(card_length - i).find('.info__pics'));
+					}
+				})
+			}
+
 
 		}
 	});

@@ -445,6 +445,7 @@
   max-width: 930px;
   margin: 0 auto 15px;
   position: relative;
+  padding-bottom: 30px;
 }
 
 .inter-icons {
@@ -1533,13 +1534,17 @@
 }
 
 .load-more {
-  background: url("../img/loader.gif");
+  background: url("../img/select-loader.gif");
   position: relative;
-  top: -230px;
+  top: -115px;
   z-index: 5;
   width: 200px;
   height: 200px;
+  -webkit-transform: scale(0.2);
+      -ms-transform: scale(0.2);
+          transform: scale(0.2);
   margin: 0 auto;
+  border: 2px solid red;
 }
 
 .search-loader,

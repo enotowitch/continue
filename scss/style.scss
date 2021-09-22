@@ -328,6 +328,7 @@
 	max-width: $main-cards-cont-wid;
 	margin: 0 auto 15px;
 	position: relative;
+	padding-bottom: 30px;
 }
 .inter-icons {
 	position: absolute;
@@ -1149,12 +1150,13 @@
 	}
 }
 .load-more {
-	background: url("../img/loader.gif");
+	background: url("../img/select-loader.gif");
 	position: relative;
-	top: -230px;
+	top: -115px;
 	z-index: 5;
 	width: 200px;
 	height: 200px;
+	transform: scale(0.2);
 	margin: 0 auto;
 }
 .search-loader,

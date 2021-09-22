@@ -20,6 +20,16 @@
 			<option value="applied">applied</option>
 		</select>
 
+		<!-- ! search title -->
+		<select class="search-word" name="search-word" id="search-word">
+			<option disabled selected value="">title</option>
+		</select>
+
+		<!-- ! search company -->
+		<select class="search-company" name="search-company" id="search-company">
+			<option disabled selected value="">company</option>
+		</select>
+
 <!-- ! search salary -->
 		<select class="search-salary" name="search-salary">
 			<option disabled selected value="">salary</option>
@@ -97,15 +107,7 @@
 			<option value="today - 14 days ago">today - 14 days ago</option>
 		</select>
 
-		<!-- ! search title -->
-		<select class="search-word" name="search-word" id="search-word">
-			<option disabled selected value="">title</option>
-		</select>
 
-		<!-- ! search company -->
-		<select class="search-company" name="search-company" id="search-company">
-			<option disabled selected value="">company</option>
-		</select>
 
 		<input type="hidden" name="card_from" value="<? echo $_SERVER['PHP_SELF']; ?>">
 		<input type="hidden" name="application" value="">

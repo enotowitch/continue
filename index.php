@@ -50,7 +50,7 @@ session_start();
 </div>
 
 <span hidden class="go-to-first">go to first</span>
-<div hidden class="load-more"></div>
+
 
 <!-- ? CARD -->
 

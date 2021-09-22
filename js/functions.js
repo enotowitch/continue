@@ -127,7 +127,7 @@ function post_filter_card(colorInfo) {
 					}
 				}
 			}
-			$('.load-more').hide();
+			
 			$('.info__simple.example').addClass('example-small-slick');
 			setTimeout(() => {
 				my_slick($('.info__pics'));
@@ -362,4 +362,13 @@ function hide_search_icon(){
 }
 function dont_load_more(){
 	$('.card-flex').addClass('dont-load-more');
+}
+function prepareColorInfo(){
+	$(document).find('.card:eq(0) .info .info__cell').each(function(){
+		if($(this).hasClass('brand')){
+			if(!colorInfo.includes(this.id)){
+				colorInfo.push(this.id);
+			}
+		}
+	})
 }
