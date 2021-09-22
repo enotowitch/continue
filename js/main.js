@@ -528,7 +528,7 @@ $(document).ready(function () {
 					}
 				}).done(function (data) {
 					$('.card-flex').removeClass('stop-load-more');
-					if (data == null){
+					if (data == null) {
 						$('.card-flex').after('<div class="loading danger" style="font-family: Montserrat">NO NEW POSTS</div>');
 						$('.card-flex').addClass('stop-load-more');
 						setTimeout(() => {
@@ -736,6 +736,13 @@ $(document).ready(function () {
 	$(document).on('change', '.sort-applies', function (e) {
 
 		var post_id = $(e.target).val();
+
+		// if there is a search addClass stop-load-more to stop $.post->load-more.php
+		if (post_id != "") {
+			$('.card-flex').addClass('stop-load-more');
+		} else {
+			$('.card-flex').removeClass('stop-load-more');
+		}
 
 		// ! pass post_id to filter-form to search only in applications
 		$('.filter-form').find('[name="application"]').val(post_id);

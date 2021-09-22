@@ -1536,7 +1536,7 @@
 .load-more {
   background: url("../img/select-loader.gif");
   position: relative;
-  top: -115px;
+  top: -125px;
   z-index: 5;
   width: 200px;
   height: 200px;
@@ -1544,7 +1544,6 @@
       -ms-transform: scale(0.2);
           transform: scale(0.2);
   margin: 0 auto;
-  border: 2px solid red;
 }
 
 .search-loader,

@@ -82,6 +82,8 @@
 
 <script>
 
+render_mes_to_applicant();
+
 // ! ready
 $(document).ready(function(){
 	setTimeout(() => {

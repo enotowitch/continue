@@ -346,7 +346,7 @@ function render_cards(data) {
 							<div class="inter-icons">
 								<img class="hide" src="img/icons/delete.svg" alt="del">
 								<img class="like" src="img/icons/like.svg" alt="like">
-								<img class="apply get-mes-form op03" src="img/icons/apply.svg" alt="apply">
+								<img class="apply get-mes-form" src="img/icons/apply.svg" alt="apply">
 							</div>
 							<div class="time">${e.time}</div>
 						</div>

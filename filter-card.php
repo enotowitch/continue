@@ -522,7 +522,7 @@ $('.tag_active').addClass('empty-tag');
 <script>
 // ! SEARCH_COUNTER > 0
 // prevent load-more posts in search
-
+$('.card-flex').addClass('dont-load-more');
 $('.search-result').append(`<div class="cancel-filter cancel_all_filters">cancel results: <? echo count($intersect); ?></div>`);
 // ! render search-result number
 // small card size
@@ -568,6 +568,7 @@ $('.search-result').append('<div class="dont-show-applied-posts" >Don\'t show ap
 	<!-- allow load-more when no search -->
 	<script>
 	$('.card-flex').removeClass('dont-load-more');
+	$('.card-flex').removeClass('stop-load-more');
 	
 	$('.try').detach();
 	</script>
