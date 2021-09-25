@@ -92,16 +92,25 @@ $search_in_posts_arr = array_unique($search_in_posts_arr);
 	}
 }
 
+if($_POST["application"]){
+	// applied_to_cat
+	$_POST['card_from'] == "/messages.php" ? $applied_to_cat = 'folio' : $applied_to_cat = 'job';
 
 // ! application =0 (avail only on messages.php & messages-folios.php)
-if($_POST["application"] != ""){
-	$posts_to_app = R::findAll('message', 'applied_to_card = ?', [$_POST["application"]]);
+if($_POST["application"] != "all"){
 
-	foreach($posts_to_app as $posts_to_app){
-		$application_arr[] = $posts_to_app["apply_id"];
-	}
-	$search_counter++;
-	$final_arr[] = $application_arr;
+	$posts_to_app = R::findAll('message', 'applied_to_card = ? AND applied_to_cat = ?', [$_POST["application"], $applied_to_cat]);
+} else {
+	// else search ALL
+	$posts_to_app = R::getAll( 'SELECT * FROM message WHERE applied_to_cat = :applied_to_cat AND apply_id > 0',
+	[':applied_to_cat' => $applied_to_cat]
+	);	
+}
+foreach($posts_to_app as $posts_to_app){
+	$application_arr[] = $posts_to_app["apply_id"];
+}
+$search_counter++;
+$final_arr[] = $application_arr;
 }
 
 // ! tags =1 (=1 - order)
@@ -578,22 +587,7 @@ $('.search-result').append('<div class="dont-show-applied-posts" >Don\'t show ap
 	<? if($_POST['card_from'] == "/post-job.php" || $_POST['card_from'] == "/post-portfolio.php"): ?>
 		<? $posts = load_my_num_posts($cat); ?>
 	<? endif; ?>
-	<? if($_POST['card_from'] == "/messages.php" || $_POST['card_from'] == "/messages-folios.php"): ?>
-		<? 
-		if($_POST['card_from'] == "/messages.php"){
-			$cat = 'folio';
-		}
-		if($_POST['card_from'] == "/messages-folios.php"){
-			$cat = 'job';
-		}
-		$posts = load_num_applications($cat); 
-		$posts = $posts[0];
-		?>
-		<div class="show-hid-app">
-			<div class="show-hidden-posts">Show hidden posts</div>
-			<div class="show-applied-posts">Show applied posts</div>
-		</div>
-	<? endif; ?>
+	
 <? endif; ?>
 <!-- ? $SEARCH_COUNTER == 0 -->
 

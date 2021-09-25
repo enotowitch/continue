@@ -6,7 +6,8 @@
 
 		if (card_from == '/mes.php') { return; }	
 
-		$('.card-flex').addClass('dont-load-more');
+		// if there is a search => dont-load-more
+		dont_load_more();
 
 		$('.search').show();
 		$('.banner').hide();

@@ -531,7 +531,7 @@ $(document).ready(function () {
 					// ! if response < 10 cards dont-load-more
 					if (data.length < 10) {
 						$('.card-flex').after('<div class="loading danger" style="font-family: Montserrat">NO NEW POSTS</div>');
-						$('.card-flex').addClass('dont-load-more');
+						dont_load_more();
 						setTimeout(() => {
 							$('.loading.danger').slideUp(1000);
 						}, 2000);
@@ -628,12 +628,6 @@ $(document).ready(function () {
 	$(document).on('click', '.show-hidden-posts, .show-applied-posts', function () {
 		var name = this.className;
 		$('.filter-form').append(`<input name="${name}" type="hidden" value="1">`);
-
-		if (window.location.href.includes('messages')) {
-			$('.filter').val(name.replace('show-', '').replace('-posts', ''));
-			$('.filter').trigger('chosen:updated');
-			$('.filter').next('.chosen-container').find('.chosen-single span').css({ 'color': '#6fda44', 'font-weight': '700' });
-		}
 
 		post_filter_card();
 	})

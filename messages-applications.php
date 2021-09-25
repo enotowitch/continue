@@ -25,24 +25,18 @@
 <div class="sort-applies-div">
 	Applications for <? if($_SERVER["PHP_SELF"] == '/messages.php'){echo 'portfolio:';} else{echo 'job:';} ?>
 	<select class="sort-applies">
-	<option value="">All</option>
+	<option value="all">All</option>
 	</select>
 </div>
 
 
-<div class="card-flex">
-
-<div class="show-hid-app">
-<div class="show-hidden-posts">Show hidden posts</div>
-<div class="show-applied-posts">Show applied posts</div>
-</div>
+<div class="card-flex dont-load-more">
 
 <?
 	// ! $post = applications to me 
 	// ! $my_msg_applied_to_card = my cards (titles) to which I got applies
 	$posts_and_applied_to_card = load_num_applications();
 
-	$post = $posts_and_applied_to_card[0];
 	$my_msg_applied_to_card = $posts_and_applied_to_card[1];
 
 	// ! append IDs/titles to select "Applications for (job/folio)"
@@ -57,17 +51,7 @@
 
 
 
-	<? foreach($post as $post): ?>
 
-
-		<div class="card card_main w100 <? echo $_COOKIE['size']; ?>">
-
-		<? 
-			include "card-content.php";
-		?>
-		</div>
-
-	<? endforeach; ?>
 
 
 </div>
@@ -82,10 +66,16 @@
 
 <script>
 
+$('[name="application"]').val('all');	
+
 render_mes_to_applicant();
 
 // ! ready
 $(document).ready(function(){
+
+	prepareColorInfo();
+	post_filter_card(colorInfo);
+
 	setTimeout(() => {
 		$('.db-applied').removeClass('dn');
 		$('.db-hidden').removeClass('dn');
