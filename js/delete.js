@@ -26,7 +26,8 @@ $(document).ready(function () {
 					$(e.target).closest('.card').append('<div class="del-anim"></div>');
 					$('.del-anim').animate({ 'width': '100%' });
 					setTimeout(() => {
-						$(e.target).closest('.card').hide();
+						$(e.target).closest('.card_main').hide();
+						$('.card').removeClass('op01');
 					}, 600);
 
 				}

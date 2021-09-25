@@ -502,13 +502,13 @@ $(document).ready(function () {
 	$(window).scroll(function () {
 		if ($(window).scrollTop() == $(document).height() - $(window).height() && !$('.card-flex').hasClass('dont-load-more')) {
 
-			var quantity = $(document).find('.card').not('.not100').length;
+			var last_card_id = $(document).find('.card').not('.not100').last().find('.card_id').val();
 			var cat = window.location.href.includes('portfolio') ? 'folio' : 'job';
 
 			if (!$('.card-flex').hasClass('stop-load-more')) {
 				$.post({
 					'url': 'load-more.php',
-					'data': { card_from: card_from, quantity: quantity, cat: cat },
+					'data': { card_from: card_from, last_card_id: last_card_id, cat: cat },
 					'dataType': 'json',
 					beforeSend: function () {
 						$('.card-flex').after('<div class="load-more"></div>');
@@ -528,12 +528,19 @@ $(document).ready(function () {
 					}
 				}).done(function (data) {
 					$('.card-flex').removeClass('stop-load-more');
-					if (data == null) {
+					// ! if response < 10 cards dont-load-more
+					if (data.length < 10) {
 						$('.card-flex').after('<div class="loading danger" style="font-family: Montserrat">NO NEW POSTS</div>');
-						$('.card-flex').addClass('stop-load-more');
+						$('.card-flex').addClass('dont-load-more');
 						setTimeout(() => {
 							$('.loading.danger').slideUp(1000);
 						}, 2000);
+						// hide THE VERY LAST card (best solution)
+						var last = $('.card').not('.not100').last().find('.card_id').val();
+						var pre_last = $('.card').not('.not100').length-2;
+						if($('.card').not('.not100').eq(pre_last).find('.card_id').val() == last){
+							$('.card').not('.not100').last().hide();
+						}
 					}
 					// ! render_mes_to_applicant
 					if (window.location.href.includes('messages')) {

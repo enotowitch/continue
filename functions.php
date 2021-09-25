@@ -282,4 +282,23 @@ foreach($posts as $post){
 }
 echo json_encode($json);
 }
+function load_10($posts, $last_card_id){
+	foreach($posts as $post){
+		$posts_id[] = $post["id"];
+	}
+		
+	// find post key -> if false ++ to search next nearest post
+	$n = -1;
+	while($key == false){
+		$key = array_search($last_card_id+$n, $posts_id);
+		$n++;
+	}
+	
+	for($i = 0;$i<=9;$i++){
+		$load_10[] = $posts_id[$key+$i];
+	}
+	$posts = R::loadAll('post', $load_10);
+
+	return $posts;
+}
 ?>

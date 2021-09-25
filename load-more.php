@@ -16,19 +16,11 @@ if($_POST["card_from"] == "/messages.php"){
 
 
 
-$load_all = array();
-if($posts != NULL)
-foreach($posts as $post){
-	$load_all[] = $post["id"];
-}
+
+$posts = load_10($posts, $_POST["last_card_id"]);
 
 
-$load_10 = array();
-for ($i=$_POST["quantity"]; $i<=$_POST["quantity"]+9; $i++) { 
-	$load_10[] = $load_all[$i];
-}
 
-$posts = R::loadAll('post', $load_10);
 
 render_cards_json($posts);
 ?>
